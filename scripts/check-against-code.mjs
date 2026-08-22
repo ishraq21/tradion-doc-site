@@ -24,10 +24,51 @@ import { join, resolve, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const APP = resolve(ROOT, '..');
+
+/**
+ * Locating the application source.
+ *
+ * This originally assumed the docs lived inside the app repo and hardcoded
+ * `../`. When the docs moved to their own repo that path stopped resolving,
+ * every check silently skipped, and the script still printed a tick — a guard
+ * that passes without checking anything is worse than no guard, because it
+ * buys false confidence. So: find the app, and if we can't, say so loudly.
+ */
+const APP_MARKER = 'server/workers/automationWorker.js';
+const CANDIDATES = [
+  process.env.TRADION_APP_PATH,          // explicit wins
+  resolve(ROOT, '..', 'tradion'),        // sibling checkout — the usual layout
+  resolve(ROOT, '..', 'Tradion', 'tradion'),
+  resolve(ROOT, '..'),                   // docs nested inside the app repo
+].filter(Boolean);
+
+const APP = CANDIDATES.find((c) => existsSync(join(c, APP_MARKER))) ?? null;
+const OPTIONAL = process.argv.includes('--optional');
 
 const errors = [];
 const notes = [];
+
+if (!APP) {
+  const msg = [
+    'Cannot find the Tradion application source, so nothing was verified.',
+    '',
+    'Looked for ' + APP_MARKER + ' in:',
+    ...CANDIDATES.map((c) => '  - ' + c),
+    '',
+    'Point at it with:  TRADION_APP_PATH=/path/to/tradion npm run check:code',
+    'In CI without the app checked out, pass --optional to downgrade this to a warning.',
+  ].join('\n');
+
+  if (OPTIONAL) {
+    console.log('⚠  ' + msg + '\n');
+    console.log('⚠  skipped — the docs were NOT checked against the code');
+    process.exit(0);
+  }
+  console.error('✗  ' + msg);
+  process.exit(1);
+}
+
+console.log(`  app source: ${APP}\n`);
 
 const readIf = async (p) => (existsSync(join(APP, p)) ? readFile(join(APP, p), 'utf8') : null);
 
@@ -59,7 +100,7 @@ async function branchHasRelativeVolume() {
   const { promisify } = await import('node:util');
   const run = promisify(execFile);
   try {
-    const { stdout } = await run('git', ['branch', '-a', '--format=%(refname:short)'], { cwd: APP });
+    const { stdout } = await run('git', ['branch', '-a', '--format=%(refname:short)'], { cwd: APP ?? ROOT });
     for (const b of stdout.split('\n').map((s) => s.trim()).filter(Boolean)) {
       try {
         const { stdout: src } = await run('git', ['show', `${b}:server/workers/automationWorker.js`], { cwd: APP, maxBuffer: 32 * 1024 * 1024 });
