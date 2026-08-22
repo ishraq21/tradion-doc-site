@@ -23,8 +23,8 @@
   },
   "favicon": "/favicon.png",
   "logo": {
-    "light": "/logo/tradion-wordmark.svg",
-    "dark": "/logo/tradion-wordmark.svg",
+    "light": "/logo/tradion.png",
+    "dark": "/logo/tradion.png",
     "href": "https://tradionlabs.com"
   },
   "navbar": {
