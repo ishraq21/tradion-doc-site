@@ -1,0 +1,362 @@
+[
+  {
+    "slug": "account/danger-zone",
+    "caption": "The danger zone",
+    "page": "account/deleting-your-account"
+  },
+  {
+    "slug": "account/settings-full",
+    "caption": "Settings",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "account/subscription-panel",
+    "caption": "The subscription panel",
+    "page": "account/managing-subscription"
+  },
+  {
+    "slug": "account/usage-meters",
+    "caption": "Usage meters",
+    "page": "concepts/usage-limits"
+  },
+  {
+    "slug": "auth/login",
+    "caption": "The sign-in screen",
+    "page": "get-started/creating-your-account"
+  },
+  {
+    "slug": "auth/magic-link-sent",
+    "caption": "Magic link confirmation state",
+    "page": "get-started/creating-your-account"
+  },
+  {
+    "slug": "auth/onboarding-step-1",
+    "caption": "Step 1",
+    "page": "get-started/onboarding"
+  },
+  {
+    "slug": "auth/onboarding-step-2",
+    "caption": "Step 2 \u2014 experience calibration",
+    "page": "get-started/onboarding"
+  },
+  {
+    "slug": "auth/onboarding-step-3",
+    "caption": "Step 3 \u2014 trading goals",
+    "page": "get-started/onboarding"
+  },
+  {
+    "slug": "auth/onboarding-step-4",
+    "caption": "Step 4 \u2014 self-reported mistakes",
+    "page": "get-started/onboarding"
+  },
+  {
+    "slug": "auth/paywall-gate",
+    "caption": "The three-plan selection screen",
+    "page": "get-started/choosing-a-plan"
+  },
+  {
+    "slug": "automations/action-node-channels",
+    "caption": "Channel selection",
+    "page": "automations/notifications"
+  },
+  {
+    "slug": "automations/agent-node-config",
+    "caption": "Agent node configuration",
+    "page": "automations/ai-agent-node"
+  },
+  {
+    "slug": "automations/agent-results",
+    "caption": "Agent results panel",
+    "page": "automations/ai-agent-node"
+  },
+  {
+    "slug": "automations/automation-card-active",
+    "caption": "Active automation card",
+    "page": "automations/first-automation"
+  },
+  {
+    "slug": "automations/automations-list",
+    "caption": "Automations",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "automations/canvas-empty",
+    "caption": "Empty automation canvas",
+    "page": "automations/first-automation"
+  },
+  {
+    "slug": "automations/canvas-full",
+    "caption": "The canvas builder",
+    "page": "automations/overview"
+  },
+  {
+    "slug": "automations/canvas-two-conditions",
+    "caption": "Two conditions with AND logic",
+    "page": "automations/first-automation"
+  },
+  {
+    "slug": "automations/condition-node-indicator",
+    "caption": "Indicator condition config",
+    "page": "automations/signal-types"
+  },
+  {
+    "slug": "automations/indicator-preview",
+    "caption": "Indicator sparkline preview",
+    "page": "automations/signal-types"
+  },
+  {
+    "slug": "automations/message-template",
+    "caption": "Message template editor",
+    "page": "automations/notifications"
+  },
+  {
+    "slug": "automations/options-chain-picker",
+    "caption": "Live options chain picker",
+    "page": "automations/signal-types"
+  },
+  {
+    "slug": "automations/run-detail",
+    "caption": "Run detail timeline",
+    "page": "automations/runs-and-history"
+  },
+  {
+    "slug": "automations/runs-list",
+    "caption": "Runs list",
+    "page": "automations/runs-and-history"
+  },
+  {
+    "slug": "home/home-full",
+    "caption": "Home",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "portfolio/asset-manager-chart",
+    "caption": "An embedded chart in a response",
+    "page": "portfolio/ai-asset-manager"
+  },
+  {
+    "slug": "portfolio/asset-manager-full",
+    "caption": "AI Asset Manager",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "portfolio/connect-modal",
+    "caption": "SnapTrade connection portal",
+    "page": "portfolio/connect-brokerage"
+  },
+  {
+    "slug": "portfolio/holdings-table",
+    "caption": "Holdings table",
+    "page": "portfolio/reading-the-dashboard"
+  },
+  {
+    "slug": "portfolio/net-worth-chart",
+    "caption": "Net worth chart",
+    "page": "portfolio/reading-the-dashboard"
+  },
+  {
+    "slug": "portfolio/portfolio-full",
+    "caption": "Portfolio",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "portfolio/sector-allocation",
+    "caption": "Sector allocation",
+    "page": "portfolio/reading-the-dashboard"
+  },
+  {
+    "slug": "research/canvas-cell-code",
+    "caption": "Cell code view",
+    "page": "research/the-canvas"
+  },
+  {
+    "slug": "research/canvas-multi-cell",
+    "caption": "A multi-cell canvas",
+    "page": "research/the-canvas"
+  },
+  {
+    "slug": "research/chart-analyzer-full",
+    "caption": "Chart Analyzer",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "research/chart-analyzer-upload",
+    "caption": "The upload state",
+    "page": "research/chart-analyzer"
+  },
+  {
+    "slug": "research/confidence-breakdown",
+    "caption": "Confidence factor breakdown",
+    "page": "concepts/reading-a-verdict"
+  },
+  {
+    "slug": "research/earnings-full",
+    "caption": "Earnings Spider",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "research/earnings-metrics",
+    "caption": "Key metrics cards",
+    "page": "research/earnings-spider"
+  },
+  {
+    "slug": "research/earnings-straddle",
+    "caption": "Straddle calculator",
+    "page": "research/earnings-spider"
+  },
+  {
+    "slug": "research/earnings-verdict",
+    "caption": "The earnings verdict",
+    "page": "research/earnings-spider"
+  },
+  {
+    "slug": "research/forecast-cone",
+    "caption": "Forecast cone",
+    "page": "research/chart-analyzer"
+  },
+  {
+    "slug": "research/lens-capture",
+    "caption": "The capture flow",
+    "page": "research/lens"
+  },
+  {
+    "slug": "research/lens-full",
+    "caption": "Lens",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "research/lens-verdict",
+    "caption": "A Lens verdict card",
+    "page": "research/lens"
+  },
+  {
+    "slug": "research/quant-cell-running",
+    "caption": "A cell executing",
+    "page": "research/your-first-analysis"
+  },
+  {
+    "slug": "research/quant-full",
+    "caption": "AI Quant Research",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "research/quant-new-session",
+    "caption": "Starting a session",
+    "page": "research/your-first-analysis"
+  },
+  {
+    "slug": "research/quant-result",
+    "caption": "Finished cell with chart",
+    "page": "research/your-first-analysis"
+  },
+  {
+    "slug": "research/template-library",
+    "caption": "The template library",
+    "page": "research/templates-and-scenarios"
+  },
+  {
+    "slug": "research/trade-levels",
+    "caption": "Entry, stop, and target levels",
+    "page": "concepts/reading-a-verdict"
+  },
+  {
+    "slug": "research/verdict-card",
+    "caption": "A verdict card",
+    "page": "concepts/reading-a-verdict"
+  },
+  {
+    "slug": "shell/feedback-modal",
+    "caption": "The in-app feedback modal",
+    "page": "help/contact"
+  },
+  {
+    "slug": "shell/sidebar-annotated",
+    "caption": "The sidebar",
+    "page": "concepts/the-loop"
+  },
+  {
+    "slug": "trade/autopsy-blame-pie",
+    "caption": "Blame breakdown",
+    "page": "trade-intelligence/reading-an-autopsy"
+  },
+  {
+    "slug": "trade/autopsy-overview",
+    "caption": "Trade Autopsy",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "trade/autopsy-report",
+    "caption": "A full autopsy report",
+    "page": "trade-intelligence/reading-an-autopsy"
+  },
+  {
+    "slug": "trade/autopsy-scorecard",
+    "caption": "The scorecard",
+    "page": "trade-intelligence/reading-an-autopsy"
+  },
+  {
+    "slug": "trade/broker-trades",
+    "caption": "Broker trades tab",
+    "page": "trade-intelligence/importing-broker-trades"
+  },
+  {
+    "slug": "trade/import-modal",
+    "caption": "Import review step",
+    "page": "trade-intelligence/importing-broker-trades"
+  },
+  {
+    "slug": "trade/playbook-manager",
+    "caption": "Playbook manager",
+    "page": "trade-intelligence/playbook-and-preflight"
+  },
+  {
+    "slug": "trade/preflight-modal",
+    "caption": "Pre-flight checklist",
+    "page": "trade-intelligence/playbook-and-preflight"
+  },
+  {
+    "slug": "trade/profile-confidence-bar",
+    "caption": "Confidence progress bar",
+    "page": "concepts/tradion-memory"
+  },
+  {
+    "slug": "trade/profile-fingerprint",
+    "caption": "Behavioural fingerprint radar",
+    "page": "trade-intelligence/profile"
+  },
+  {
+    "slug": "trade/profile-full",
+    "caption": "Profile",
+    "page": "get-started/tour"
+  },
+  {
+    "slug": "trade/profile-heatmap",
+    "caption": "Activity heatmap",
+    "page": "trade-intelligence/profile"
+  },
+  {
+    "slug": "trade/profile-memory-section",
+    "caption": "The trader profile",
+    "page": "concepts/tradion-memory"
+  },
+  {
+    "slug": "trade/profile-patterns",
+    "caption": "Behavioural patterns",
+    "page": "trade-intelligence/profile"
+  },
+  {
+    "slug": "trade/profile-psych",
+    "caption": "Psychological Profile",
+    "page": "concepts/tradion-memory"
+  },
+  {
+    "slug": "trade/trade-intake-form",
+    "caption": "Form intake",
+    "page": "trade-intelligence/logging-a-trade"
+  },
+  {
+    "slug": "trade/trade-intake-narrative",
+    "caption": "Narrative intake",
+    "page": "trade-intelligence/logging-a-trade"
+  }
+]

@@ -1,0 +1,122 @@
+---
+title: "Playbook and Pre-Flight"
+description: "Turn findings into written rules, and read them before the next entry."
+icon: "clipboard-check"
+---
+
+The Playbook is where a finding from an autopsy becomes a written rule, stored with the situation it applies to, so you can read it before a similar trade.
+
+<Frame caption="The loop this page closes: a finding becomes a rule, and the rule is read before the next entry.">
+  <img src="/images/diagrams/autopsy-loop.svg" alt="Circular diagram showing a trade leading to an autopsy, the autopsy producing a pattern, the pattern producing a playbook rule, and the rule feeding a pre-flight check before the next trade" />
+</Frame>
+
+## What a playbook rule is
+
+Three things, stored together:
+
+- **The rule** — the behaviour you're committing to.
+- **The trigger** — the situation that makes the rule apply. Without one, nothing tells you to go and look at the rule.
+- **The checklist** — the steps that make the rule concrete, one per line.
+
+Rules can also carry **tags**, which are free text for grouping them by instrument, setup, or anything else useful to you.
+
+### In plain English
+
+A rule is a sentence. A trigger is the condition that should bring that sentence to your attention. Tradion stores both and shows them to you. It does not watch your account, it does not fire the rule, and it does not know whether you followed it. Reading the playbook is something you do, at a moment you choose.
+
+## Creating a rule from a finding
+
+<Steps>
+  <Step title="Finish an autopsy and read the lesson">
+    Every report ends with one rule, one trigger, and a short checklist. See [reading an autopsy](/trade-intelligence/reading-an-autopsy).
+  </Step>
+  <Step title="Press Save to Playbook">
+    The rule text lands in your playbook.
+  </Step>
+  <Step title="Open Trade Autopsy → Playbook and finish the job">
+    The trigger and the checklist steps are not carried over — you add those yourself. Press **Add Rule** if you'd rather write one from scratch.
+  </Step>
+</Steps>
+
+The create form has four fields: **Rule**, **Trigger condition**, **Checklist items** (press *+ Add step* for each one), and **Tags** (press *+ Add tag*). Rule and trigger are both required.
+
+## Writing a rule you can check
+
+The test is whether someone else could look at your screen and say yes or no. If the answer depends on how you feel, it's a wish rather than a rule.
+
+<AccordionGroup>
+  <Accordion title="Bad: 'Be more disciplined.'">
+    Nothing to check. Disciplined about what, measured how?
+  </Accordion>
+  <Accordion title="Bad: 'Stop revenge trading.'">
+    Names the mistake but describes no action, and in the moment that matters you won't recognise the state you're in.
+  </Accordion>
+  <Accordion title="Good: 'If I've taken a loss in the last 30 minutes, I don't open a new position until the next session.'">
+    Checkable against a clock, and it fires at exactly the moment judgement is hardest.
+  </Accordion>
+  <Accordion title="Good: 'No entry without a stop placed before the order, risking at most 1% of the account, with a target at least 3x that distance.'">
+    Three yes-or-no conditions and a stated **R:R** — risk to reward, the ratio between what you stand to lose and what you stand to gain. You can verify all of it before you click buy.
+  </Accordion>
+  <Accordion title="Good: 'On options, I don't hold through an earnings release unless the trade was opened as an earnings trade.'">
+    Specific to an instrument and an event. Either you did or you didn't.
+  </Accordion>
+</AccordionGroup>
+
+A useful shape for the rule: **"If _situation_, I will _specific action_."** For the trigger, describe what you'd see on screen — *"Before entering any breakout"*, *"When I'm already red on the day"*. Keep the checklist to three or four steps; a ten-step checklist gets skipped.
+
+## Keeping the playbook short
+
+Rules stack up. Six months of autopsies produces a playbook long enough that nobody reads it.
+
+Tradion does not remind you to review, does not count your reviews, and does not track whether you followed a rule — it has no way to know unless you tell it. The cadence is yours: read the playbook weekly and delete what you no longer need.
+
+The feedback loop runs through the autopsies. When you log the next trade, say in the narrative whether you followed your rules. That answer feeds [Tradion Memory](/concepts/tradion-memory), and it's what turns "I have a rule about this" into a measurable adherence rate.
+
+## The Pre-Flight Checklist card
+
+On the **Overview** tab of Trade Autopsy, the **Pre-Flight Checklist** card shows the rule from your most recent autopsy with an **Open Playbook** button next to it. Before your first autopsy it shows a placeholder line instead.
+
+That card is the whole of pre-flight. There is no separate screen and no step that sits between you and an order.
+
+<Warning>
+  Tradion never blocks an order. It has no connection to your broker's order entry and never places, cancels, or prevents a trade. Pre-flight is a routine you run yourself, with material Tradion assembled.
+</Warning>
+
+Two other panels on that tab are worth reading before an entry:
+
+- **Mistake Patterns** — your recurring errors on losing trades, each with a **severity** label (Tradion's rating of how damaging the pattern is, from low to critical) and a count of how often it has happened.
+- **Your Edge** — what you did right on winning trades, so you know which setups have gone well.
+
+## Running pre-flight before an entry
+
+<Steps>
+  <Step title="Open Playbook before you place the order, not after">
+    The sequence is what makes it worth doing.
+  </Step>
+  <Step title="Read the triggers, not the rules">
+    Scan for a trigger matching what's in front of you. Most days none will.
+  </Step>
+  <Step title="Walk the checklist on any rule that fires">
+    Each step is a yes or a no.
+  </Step>
+  <Step title="If a step is a no, the entry doesn't happen yet">
+    Fix the missing condition — place the stop, cut the size, wait for the session — or pass on it.
+  </Step>
+</Steps>
+
+## Reviewing adherence over time
+
+The measurement lives in [Profile](/trade-intelligence/profile), not in the playbook:
+
+- **Exit Discipline** is the score most directly tied to whether you keep your rules, and it carries the heaviest weight in your risk score.
+- **Mistake Patterns** should drop in occurrence count once a rule is working. Tradion saves a copy of your patterns daily and needs five of those copies spanning 30 days before calling a pattern improving or worsening, so give a new rule a month.
+- The **behavioural fingerprint** draws your last 30 days over the prior 60 and labels the gap improving, declining, or stable — the fastest read on whether anything has moved.
+
+<CardGroup cols={2}>
+  <Card title="Your Profile" icon="user" href="/trade-intelligence/profile">
+    Where adherence shows up as numbers.
+  </Card>
+  <Card title="Reading an autopsy" icon="file-magnifying-glass" href="/trade-intelligence/reading-an-autopsy">
+    Where the rules come from in the first place.
+  </Card>
+</CardGroup>

@@ -1,0 +1,80 @@
+---
+title: "Onboarding"
+description: "The five questions that set up your AI analyst, and what each answer changes."
+icon: "clipboard-list"
+---
+
+The first thing you see after signing in is a five-step wizard. It takes about 30 seconds, and it does more than collect a name — steps 3 and 4 write the first entries into your trader profile, which is the record Tradion reads before it answers anything.
+
+<Frame caption="You can go back at any point before the final step, so a wrong tap costs nothing.">
+  <img src="/images/diagrams/onboarding-steps.svg" alt="The five onboarding steps shown in order: name, background, goals, self-reported mistakes, and plan selection" />
+</Frame>
+
+## Step 1 — "What should we call you?"
+
+A single text field. Your name personalises the terminal and appears at the top of the reports Tradion generates for you. You have to enter something to continue; pressing Enter moves you on.
+
+## Step 2 — "Tell us about yourself"
+
+Three questions on one screen, and all three are required.
+
+| Question | Options |
+| --- | --- |
+| Experience level | New to trading · Some experience · Active trader · Professional |
+| Primary style | Day Trading · Swing Trading · Position Trading · Long-term Investing |
+| Instruments (pick as many as apply) | Stocks · Options · Crypto · Forex · ETFs |
+
+These set the register of every AI response you get. "New to trading" plus "Long-term Investing" produces different wording and depth from "Professional" plus "Day Trading" — the same analysis, explained for a different reader. The instruments you pick decide what Tradion assumes you care about: tick Options and it raises things like implied volatility (the market's estimate of how much a stock will move, priced into its options) without being asked.
+
+## Step 3 — "What do you want to improve?"
+
+Pick up to three of four areas: **Entry Quality**, **Exit Discipline**, **Risk Management**, **Win Rate**. The fourth option greys out once three are selected.
+
+These are not preferences. Each becomes a tracked **Trading Goal** — a target of 80 out of 100 on that measure, with a 30-day deadline, shown on your [Profile](/trade-intelligence/profile) page. Three of the four are scores Tradion calculates itself from your trade autopsies (its post-trade analysis reports), so the goal has a real number moving under it rather than a vague intention.
+
+Goals also change how the AI coaches you. If Exit Discipline is live, the commentary on a closed trade keeps returning to when you got out and why.
+
+## Step 4 — "What's costing you money?"
+
+Select any of seven common failure patterns, or none:
+
+- FOMO entries — buying late because the move already started without you
+- Holding losers too long
+- Oversizing positions — risking more per trade than your plan allows
+- Revenge trading — trading again immediately to win back a loss
+- No clear strategy
+- Taking profits too early
+- Poor risk/reward discipline — accepting trades where the possible gain is small next to the possible loss
+
+Your answers are stored as the first entries in the behavioural pattern detector — the part of Tradion that watches for recurring mistakes across your trades. Until you have logged some trades, this list is the only thing it has to look for.
+
+<Tip>
+  Later, Tradion compares what you selected here against what your trades show. Selecting nothing leaves it nothing to compare, so the first few weeks of analysis come back more generic. Leaving the step empty is allowed; it means the pattern detector starts from scratch.
+</Tip>
+
+## Step 5 — "Choose your plan"
+
+Three cards, side by side. Picking one saves everything from steps 1–4 and sends you to the payment page. Starter and Trader include a 7-day free trial; Quant is billed immediately. The **Back** button still works here if you want to change an earlier answer first.
+
+See [Choosing a plan](/get-started/choosing-a-plan) for how to decide between them.
+
+## In plain English: what these answers do
+
+Nothing you type here is used to pick trades for you. It decides **how Tradion talks to you and what it watches for**.
+
+Steps 1 and 2 are written into your profile as a background note, step 3 as measurable goals, step 4 as self-reported patterns. From then on, every chart analysis, autopsy, and research answer is generated with that context attached — which is why the same question can get a different answer for two users. As real activity builds up, evidence from your own trades outweighs what you selected at signup. See [Tradion Memory](/concepts/tradion-memory).
+
+## Changing your answers later
+
+- **Your name** — Settings. See [Settings](/account/settings).
+- **Your goals** — the Profile page, where you can remove a goal, add a different one, and set your own target and deadline instead of the defaults.
+- **Experience, style, instruments, and the step 4 patterns** — these are written once at signup and there is no editor for them in the app today. They fade in importance as your real history builds. If one is badly wrong, email [support@tradionlabs.com](mailto:support@tradionlabs.com).
+
+<CardGroup cols={2}>
+  <Card title="Take the tour" icon="compass" href="/get-started/tour">
+    Every screen in the sidebar, and what each one is for.
+  </Card>
+  <Card title="How Memory uses this" icon="brain" href="/concepts/tradion-memory">
+    Ten data sources, one profile, and every AI answer reading from it.
+  </Card>
+</CardGroup>

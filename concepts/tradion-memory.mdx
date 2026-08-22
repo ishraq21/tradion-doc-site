@@ -1,0 +1,117 @@
+---
+title: "Tradion Memory"
+description: "The always-on layer that makes every AI response specific to you."
+icon: "brain"
+---
+
+Most chart tools start each conversation from nothing. They do not know that you close winners two days early, that your worst trades follow a loss, or that you have analysed the same ticker eleven times and traded it twice. Tradion Memory is the layer that does know, and it is on by default.
+
+<Frame caption="Ten sources feed one profile, and that profile feeds every AI answer you get.">
+  <img src="/images/diagrams/memory-sources.svg" alt="Ten data sources converging into a single trader profile, which then feeds the quant terminal, portfolio chat, Lens, and automation agents" />
+</Frame>
+
+## In plain English
+
+Memory is a summary of your behaviour that Tradion keeps up to date and adds to the top of every AI request you make. Ask the quant terminal about a breakout and the model gets your question plus a short brief on how you have traded breakouts before.
+
+None of it is a chat log. Tradion stores computed facts — counts, rates, scores, recurring mistakes — plus a set of short written insights, and sends those.
+
+## The ten sources it reads
+
+| Source | What it contributes |
+| --- | --- |
+| [Quant terminal](/research/quant-research) analyses | Most-analysed tickers, the kinds of analysis you run, session depth |
+| [Chart Analyzer](/research/chart-analyzer) signals | Signal count, accuracy, the timeframe you favour |
+| [Lens](/research/lens) captures | Capture count, top tickers, how often your captures come back bullish |
+| Trade journal | Trades logged, win rate, average result as a percentage |
+| [Trade autopsies](/trade-intelligence/trade-autopsy) | Entry, exit, and risk scores; recurring mistakes; psychology notes |
+| [Earnings Spider](/research/earnings-spider) reports | How many reports you read and which sectors they sit in |
+| [Automations](/automations/overview) | Which symbols you watch and which trigger types you reach for |
+| Trading patterns | Repeat behaviours, with resolved ones filtered back out |
+| Chat sessions | Whether you converse with the AI or ask one-shot questions |
+| Portfolio positions | What you hold, entered manually or synced from a [connected brokerage](/portfolio/connect-brokerage) |
+
+The profile rebuilds in the background after anything on that list changes, at most once an hour, so a busy afternoon does not trigger a hundred rebuilds.
+
+## The profile it builds
+
+Seven fixed sections, so it reads the same way every month:
+
+<AccordionGroup>
+  <Accordion title="Verdict">
+    One of four: **Structurally sound** (improving), **Underperforming** (there is a leak), **At risk** (several things are wrong at once), or **Breakeven trap** (you win often but the account goes nowhere, meaning sizing or exits are broken).
+  </Accordion>
+  <Accordion title="Executive summary">
+    Three sentences. The core problem, what is moving in which direction, and the one thing to fix first.
+  </Accordion>
+  <Accordion title="Key findings">
+    Up to three cross-referenced observations — relationships between numbers that no single dashboard card shows.
+  </Accordion>
+  <Accordion title="Risk flags">
+    Up to three, rated critical, high, or moderate. Concentration in one symbol shows up here.
+  </Accordion>
+  <Accordion title="Performance signals">
+    Up to three things that are working, split into established strengths and developing ones.
+  </Accordion>
+  <Accordion title="Prescribed actions">
+    Up to three instructions, each with a measurable target. One is always about completing more autopsies.
+  </Accordion>
+  <Accordion title="Data confidence">
+    How much evidence the rest of the profile rests on. Covered below.
+  </Accordion>
+</AccordionGroup>
+
+## The Psychological Profile
+
+At **two completed autopsies**, a second section unlocks below the profile. It is generated separately, and it is behavioural rather than financial.
+
+- **Trader archetype** — one of five: Momentum Chaser, Methodical Planner, Contrarian Thinker, Reactive Trader, or Patient Stalker. Shown with a confidence percentage, because two autopsies is a thin basis for a label.
+- **Emotional intelligence** — a 0–100 score split into self-awareness (do you name your emotional state correctly at the time), self-regulation (do you follow your rules under pressure), and motivation (is your trading process-driven or mood-driven).
+- **Cognitive biases** — a cognitive bias is a predictable thinking error, like holding losers longer than winners. Up to four are listed, each with the evidence from your own trades and an impact rating of high, moderate, or low.
+- **Stress response and decision fatigue** — how your behaviour changes after a loss, and late in a session.
+
+All of it is computed from five things in your autopsied trades: the emotional states you record, how often you say the plan was followed, how long you hold winners versus losers, how quickly you re-enter after a loss, and morning versus afternoon win rate.
+
+## Patterns tracked over time
+
+A single bad trade is noise. The same mistake nine times is a pattern, and Tradion snapshots each one so you can see which way it is moving.
+
+Every pattern carries a **severity score from 0 to 100**: how often it occurs relative to all your reviewed trades (up to 60 points) plus how much it has cost relative to your most expensive pattern (up to 40 points).
+
+Each pattern also carries a **trend** — improving, stable, or worsening. Tradion will not label one until it holds at least five snapshots spanning 30 days or more; until then it reports insufficient data rather than guessing. After that it compares the older half of the snapshots against the newer half, and a severity swing of 10 points or more sets the label.
+
+## Goals steer the coaching
+
+In [Profile](/trade-intelligence/profile) you can set one improvement goal per tracked measure — a target and a deadline against a starting value. Goals are written into the profile request, and the prescribed actions are aimed at them. Set a goal of raising exit discipline and the coaching stops being general and starts being about your exits.
+
+## How confident the profile is
+
+The confidence bar counts one thing: completed autopsies.
+
+| Level | Autopsies | What it means |
+| --- | --- | --- |
+| **Low** | 0–19 | Directionally useful, statistically thin. Scores can move a lot. |
+| **Moderate** | 20–49 | Enough for the score averages to stop swinging on one trade. |
+| **High** | 50+ | Patterns are established rather than suggested. |
+
+<Note>
+  Logging trades is not the same as reviewing them. A hundred logged trades with three autopsies still reads as low confidence, and the profile will tell you exactly how many more reviews reach the next tier.
+</Note>
+
+## What is stored, and how to clear it
+
+Memory holds one summary record per account, up to 30 short written insights, and a private search index over them scoped to your account alone. Insights lose weight as they age — last week's observation outranks one from six months ago, though nothing is fully discarded.
+
+You control two switches in **Profile**:
+
+- **Personalization toggle** — turn it off and no profile text is added to any AI request. The data stays; it stops being sent.
+- **Reset profile** — clears every learned field, insight, psychological profile, and search index entry. Your trades, autopsies, and trading preferences are untouched. This cannot be undone.
+
+<CardGroup cols={2}>
+  <Card title="Your Profile page" icon="user" href="/trade-intelligence/profile">
+    Where the profile, psychological analysis, and goals live.
+  </Card>
+  <Card title="Reading an autopsy" icon="microscope" href="/trade-intelligence/reading-an-autopsy">
+    The reviews that everything above is built from.
+  </Card>
+</CardGroup>

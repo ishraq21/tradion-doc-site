@@ -1,0 +1,99 @@
+---
+title: "Where the data comes from"
+sidebarTitle: "Data sources"
+description: "Every provider behind the numbers, and how fresh each one is."
+icon: "database"
+---
+
+Every price, ratio, and filing Tradion shows you came from somewhere specific. This page names each provider, says how often the number is refreshed, and ends with a list of what Tradion does not have.
+
+<Frame caption="Six providers, each responsible for a different kind of number.">
+  <img src="/images/diagrams/data-sources-map.svg" alt="Map showing six data providers and the categories of data each one supplies to Tradion" />
+</Frame>
+
+## In plain English
+
+Tradion has no market data of its own. It buys each kind from a specialist: prices from Alpaca, company financials from Alpha Vantage, interest rates from FRED, filings from SEC EDGAR, and your own positions from SnapTrade.
+
+Two things follow from that. Nothing on screen is fresher than the cache table below says it is. And when a provider has a gap or an outage, Tradion has the same gap — it shows a stale-data indicator rather than filling in a number.
+
+## Market prices — Alpaca
+
+Alpaca supplies the live and historical prices behind charts, indicators, automations, and the quant terminal.
+
+| Asset type | What you get |
+| --- | --- |
+| US stocks and ETFs | Live quotes and historical bars from the consolidated tape — the single feed that merges trades from every US exchange, so you see the whole market rather than one venue |
+| Crypto | Pairs like BTC/USD and ETH/USD, including the order book — the list of buy and sell orders waiting at each price |
+| Forex | Pairs like EUR/USD and GBP/USD |
+| Options | Full chains via the OPRA feed |
+
+**OPRA** stands for Options Price Reporting Authority. Every US options exchange reports its quotes and trades into it, and OPRA redistributes them as one stream. So when Tradion shows you an options chain, the numbers cover the whole market rather than one exchange's slice of it.
+
+An **options chain** is the grid of every strike price and expiry date available on a ticker. Each row carries a bid, an ask, and the **greeks** — a set of measures for how that option's price reacts to the stock moving, to time passing, and to the market's expectations getting louder or quieter.
+
+Alpaca also supplies the **real-time news stream**. Headlines arrive over a live connection as they publish, with a REST lookup as backup when the live buffer is thin. Sentiment labels attached to those headlines are assigned by Tradion's own models, not by the publisher.
+
+## Fundamentals and earnings — Alpha Vantage
+
+Company financials, the earnings calendar, historical earnings results, company overview data, and screener output come from Alpha Vantage. This is what Earnings Spider compares a fresh report against, and what the AI Asset Manager reads when you ask about a company's numbers rather than its chart.
+
+## Economic data — FRED
+
+FRED is the Federal Reserve Bank of St. Louis's public economic database. Tradion reads interest rates, Treasury yields, yield spreads, and volatility index observations from it. FRED itself publishes roughly once per business day, so intraday refreshing would return the same values.
+
+## Filings — SEC EDGAR
+
+EDGAR is the SEC's public filing archive: every document a US listed company is legally required to submit. Tradion reads company filings, 8-K event disclosures (the form used to announce something material between quarterly reports), 13F reports (the quarterly list of US stock holdings that large institutions must publish), corporate actions such as dividends and stock splits, and **Form 4** filings.
+
+A Form 4 is the disclosure a company insider — an officer, director, or large shareholder — must file within two business days of buying or selling their own company's stock. It is the closest thing to a public record of what the people running a company are doing with their own money, and it powers the insider-transaction automation trigger.
+
+## Your positions — SnapTrade
+
+If you [connect a brokerage](/portfolio/connect-brokerage), SnapTrade is the intermediary that reads your accounts. It supplies holdings, balances, and trade history across 30-plus brokerages. It is read-only — Tradion cannot place, modify, or cancel an order through it.
+
+Your positions sync when you connect an account and when you refresh the portfolio, not on a background timer.
+
+## Refresh and caching
+
+Repeated identical requests are served from a short-lived cache rather than hitting the provider again. That keeps things fast and keeps you inside rate limits.
+
+| Data | Cached for |
+| --- | --- |
+| Live quotes and snapshots | 60 seconds |
+| Historical bars for indicators | 5 minutes |
+| Options and other real-time provider calls | 60 seconds |
+| Company overview | 1 hour |
+| Economic data | 1 hour |
+| Earnings history and historical series | 4 hours |
+| Earnings calendar | 6 hours |
+
+[Automations](/automations/overview) evaluate their conditions on a 60-second cycle. A price-level trigger will not fire the instant a tick prints; it fires on the next check after the condition is true.
+
+## Extended hours, halts, and auctions
+
+Bars covering **extended hours** — pre-market and after-hours trading, outside the 9:30am–4:00pm Eastern regular session — are available when analysis asks for them. They are excluded by default, because thin overnight volume distorts most indicators.
+
+**Auction** data is available separately: the opening and closing auction prints, which are the single large batched trades that set the official open and close. These are usually the highest-volume events of the day.
+
+<Warning>
+  Tradion does not display a **trading halt** banner. If a symbol is halted, quotes stop updating and the last price stays on screen looking normal. Check your broker before acting on a price that has not moved in a while.
+</Warning>
+
+## What Tradion does not have
+
+- **No order execution.** Tradion never places, changes, or cancels a trade. Brokerage access is read-only.
+- **No futures, bonds, or non-US listed equities.** Coverage is US stocks and ETFs, crypto, forex, and US options.
+- **No depth-of-book on stocks.** You see the trades that happened and the best bid and ask on offer. You do not see the queue behind them — the full list of buy and sell orders waiting at every other price, which is what "depth of book" means. Crypto is the exception; there you get the order book.
+- **No real-time view of off-exchange trading.** A large share of US stock volume is matched away from the public exchanges, in private venues often called **dark pools**. Those trades are reported, but Tradion does not break out how much of a stock's volume came from them.
+- **No halt or short-sale-restriction status.** A **halt** is a temporary stop on trading in one symbol; a **short-sale restriction** is a rule that kicks in after a sharp fall and limits betting against the stock. Neither is shown in the interface.
+- **No guarantee of provider uptime.** When a provider degrades, Tradion falls back where it can and shows stale-data indicators where it cannot.
+
+<CardGroup cols={2}>
+  <Card title="Supported assets" icon="coins" href="/reference/supported-assets">
+    Which asset types work with which features.
+  </Card>
+  <Card title="Connect a brokerage" icon="link" href="/portfolio/connect-brokerage">
+    How the read-only connection is set up.
+  </Card>
+</CardGroup>

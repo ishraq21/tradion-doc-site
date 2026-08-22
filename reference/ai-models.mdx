@@ -1,0 +1,90 @@
+---
+title: "AI models"
+description: "Which model powers which feature, why the agent model differs by plan, and what is sent to model providers."
+icon: "microchip"
+---
+
+Tradion does not run one model behind everything. Different jobs go to different models, chosen for what that job needs — depth of reasoning, the ability to read an image, or speed.
+
+A **model** here means the AI system that reads a prompt and writes the response. Tradion calls them over an API; none of them run on your machine.
+
+## Which model runs which feature
+
+| Feature | Model | Why this one |
+| --- | --- | --- |
+| AI Quant Research — generating the Python for a cell | Claude Opus 4.8 | The hardest job on the platform. Code that has to run first time against real data |
+| AI Agent node in automations | Claude Sonnet 4.6 on Trader, Claude Opus 4.8 on Quant. Not available on Starter | See below |
+| Chart Analyzer | Claude Sonnet 4.6 | Reads the chart image and returns levels and a verdict |
+| Lens | Claude Sonnet 4.6 | Same vision capability, applied to a screenshot you capture |
+| Earnings Spider | Claude Sonnet 4.6 | Reads long PDFs and image-based press releases |
+| Trade Autopsy | Claude Sonnet 4.6 | Pulls structured trade details out of text you paste, then writes the report |
+| AI Asset Manager | Claude Sonnet 4.6 | Conversational, with tools for live market data and your positions |
+| Tradion Memory — trader profile and psychological profile | Claude Sonnet 4.6 | Long structured output built from many inputs |
+| Terminal follow-up chat | Claude Haiku 4.5 | Short answers about work already on screen. Speed matters more than depth |
+| Pattern explanations, report summaries, briefings | Claude Haiku 4.5 | Short, high-volume text |
+| News sentiment scoring | Gemini Flash | High request volume across many headlines at once |
+| Repairing a quant cell that failed twice | Gemini | A different model family gives a genuinely different attempt |
+| Search inside your own history | OpenAI `text-embedding-3-large` | Turns text into numbers so past trades and notes can be matched by meaning |
+
+## Why the agent model differs by plan
+
+The **AI Agent node** — the step in an automation that researches a triggered symbol before you are notified — runs on **Claude Sonnet 4.6 on Trader** and **Claude Opus 4.8 on Quant**.
+
+**Starter has no agent model**, because Starter has no automations. There is nothing to configure and nothing to compare.
+
+This is the only model difference between plans. Every other feature in the table above uses the same model on every plan, including on Starter.
+
+The reason is cost. An agent run is expensive, and Opus costs several times what Sonnet costs for the same work. Quant includes 500 agent runs a month against Trader's 50, so the higher price supports the more capable model.
+
+**What you get for it:** Opus reasons further through multi-step questions and holds more context before writing its answer. On a straightforward "RSI crossed 30, tell me why" run, the two produce similar work. The gap widens when the agent has to chase several tools and reconcile what they return.
+
+## Vision models
+
+Chart Analyzer, Lens, and Earnings Spider all send an image to the model rather than text. Sonnet 4.6 reads the image directly — the candles, the axis labels, the drawn lines, the table in a PDF.
+
+Two things follow from that, and both are worth knowing before you blame the analysis:
+
+- **Resolution matters.** A blurry or heavily compressed screenshot gives the model less to read. A crisp capture of a smaller region beats a fuzzy capture of a whole screen.
+- **It reads what is on the chart.** If your indicators are hidden, the model cannot factor them in. Tradion adds live market data alongside the image, but the visual read comes from the pixels you send.
+
+## Structured outputs
+
+Most Tradion features do not ask a model for prose. They ask for a fixed shape — a direction, a conviction number, a set of named sections, a list of risks — and the request declares that shape up front so the response has to match it.
+
+That is why verdicts look consistent from one run to the next, and why the automation webhook has a payload you can write code against instead of a paragraph you would have to parse. It also means a model that cannot answer returns an empty or refusing structure rather than an invented one.
+
+## What is and is not sent to model providers
+
+Sent, when the feature needs it:
+
+- The text of your question or the automation's instruction
+- The market data Tradion fetched for that request — prices, indicator values, filings, headlines
+- Images and documents you upload to Chart Analyzer, Lens, or Earnings Spider
+- The trade details you log, when you generate an autopsy
+- Your Tradion Memory profile — a behavioural summary derived from your own trades — where personalisation is switched on
+
+Not sent, because Tradion never holds it:
+
+- **Your brokerage login.** Brokerage connections are held by SnapTrade. Tradion receives positions and transactions, never credentials.
+- **Your card details.** Payment information is held by Stripe.
+
+<Note>
+  Automation notifications sent to shared destinations — Discord, Telegram, and your own webhook — have behavioural personalisation removed by default before delivery, so your scores and patterns do not land in a channel other people read. In-app and email notifications keep it.
+</Note>
+
+Model providers process this data under their API terms. Tradion's own handling is set out in the [privacy policy](https://tradionlabs.com/privacy).
+
+<CardGroup cols={2}>
+  <Card title="Tradion Memory" icon="brain" href="/concepts/tradion-memory">
+    What goes into your trader profile and how it reaches each prompt.
+  </Card>
+  <Card title="Plan comparison" icon="table-columns" href="/reference/plan-comparison">
+    Where the Sonnet-to-Opus switch sits, and what else changes.
+  </Card>
+  <Card title="Reading a verdict" icon="gavel" href="/concepts/reading-a-verdict">
+    What the confidence number does and does not mean.
+  </Card>
+  <Card title="Data sources" icon="database" href="/concepts/data-sources">
+    Where the market data in every prompt comes from.
+  </Card>
+</CardGroup>

@@ -1,0 +1,150 @@
+---
+title: "Building your first automation"
+sidebarTitle: "Your first automation"
+description: "A guided walkthrough: alert me when NVDA's RSI drops below 30 on rising volume."
+icon: "wand-magic-sparkles"
+---
+
+<Info>
+  Automations require the **Trader** plan or above. See [plans](/reference/plan-comparison).
+</Info>
+
+We'll build a real one end to end: *notify me on Discord when NVDA is oversold on above-average volume.* Ten minutes, and the pattern generalises to anything else you want to watch.
+
+Every automation is a left-to-right flow on the canvas. Only the ends are compulsory:
+
+```
+Asset  →  Signal(s)  →  [Logic]  →  [Agent]  →  Action
+```
+
+What each node does is set out in [the five node types](/automations/overview).
+
+## 1. Create it
+
+Open **Automations** in the sidebar and click **New automation**. You get two options: **Start from scratch**, or **Use a template**. Pick *start from scratch* — there are 45 templates and they're worth browsing later, but building one yourself is how the pieces make sense.
+
+Either way you land on the same canvas.
+
+<Frame caption="The canvas builder. Drag from a node's handle to connect it to the next one.">
+  <img src="/images/diagrams/canvas-anatomy.svg" alt="The automation canvas, showing a node palette on the left and a connected graph of asset, condition, logic, agent, and action nodes" />
+</Frame>
+
+## 2. Set the asset
+
+Click the asset node and search `NVDA`. Tradion shows the live price as you type so you can confirm you've got the right instrument.
+
+<Tip>
+  The signal types available downstream depend on asset type. Earnings and Options Flow are stocks-only; Price, Volume, and Change % work for everything.
+</Tip>
+
+## 3. Add the first signal — RSI
+
+Click the condition node and configure:
+
+<CodeGroup>
+```yaml Signal 1
+type: Technical indicator
+indicator: RSI
+period: 14
+timeframe: 1 day
+operator: Crosses Below (one-shot)
+value: 30
+```
+</CodeGroup>
+
+**RSI** is the Relative Strength Index — a 0 to 100 score measuring how hard a stock has been pushed in one direction recently. Below 30 is conventionally called **oversold**, meaning sold down far enough that some traders expect a bounce. That convention breaks down in a strong downtrend.
+
+The dropdown offers *Crosses Below (one-shot)* and *Goes Below (continuous)*. Pick the crossing one: it fires on the single check where RSI passed through 30, while the continuous one stays true for as long as RSI sits under 30 — eighty alerts about the same afternoon. Full explanation: [operators](/automations/operators).
+
+## 4. Add the second signal — volume
+
+Click **+ Add condition**. A logic node appears automatically between your signals.
+
+<CodeGroup>
+```yaml Signal 2
+type: Volume
+value: 2        # twice the symbol's normal volume
+```
+</CodeGroup>
+
+The number you type is a **multiple of normal**, not a share count. `2` means twice the average, `1.5` means half again as busy as usual. Tradion works out "normal" from the 20 bars before the current one, so today's own trading doesn't get counted into the average it's being measured against.
+
+<Note>
+  Volume has no operator dropdown — the check is always *above*. You're asking "is it busier than `N` times normal right now?"
+</Note>
+
+### Picking the number
+
+Start at `2` and adjust. Below about `1.5` you'll catch ordinary busy mornings; above `3` you'll only see genuine events, and on a quiet symbol you may see nothing for months.
+
+<Warning>
+  A symbol needs at least 11 bars of history for the average to mean anything. Newly listed tickers and young option contracts report *no average volume available* and the condition won't fire until enough history exists.
+</Warning>
+
+Set the logic node to **AND** — you want both true at once, not either.
+
+## 5. Choose where the alert goes
+
+Click the action node and turn on a channel. For this one, pick **Discord**: paste a webhook URL from your server (**Server Settings → Integrations → Webhooks**). Email, Telegram, in-app, and your own webhook endpoint all work too, and you can turn on several at once — setup for each is in [notification channels](/automations/notifications).
+
+<Warning>
+  Telegram is the one with a hidden step. There is no Telegram panel in Settings: you message the bot first, then paste a numeric chat ID into this node. [Notification channels](/automations/notifications) has the procedure.
+</Warning>
+
+Then write the message. Template variables use **single** braces:
+
+```
+{symbol} oversold — price {price}, {signal}
+```
+
+A name that isn't a real variable is printed literally rather than replaced, so check your spelling against the list in [notification channels](/automations/notifications).
+
+## 6. Sanity-check the threshold
+
+Tradion has no built-in frequency estimator, so do this by eye before you switch the automation on. Ask [AI Quant Research](/research/quant-research) how many times in the past year NVDA's daily RSI crossed below 30, then decide whether that many messages is something you would still read in month three.
+
+<Check>
+  A handful of alerts a month gets acted on. Forty a day gets muted, and a muted alert is worth nothing.
+</Check>
+
+Too frequent? Tighten the threshold, lengthen the timeframe, or switch a *Goes* operator to a *Crosses* one.
+
+## 7. Activate
+
+Toggle **Active**. Tradion picks the automation up within 60 seconds and re-checks it every 60 seconds after that.
+
+Some automations get checked faster. If every signal on the canvas is a price or volume check on a US stock, Tradion also watches the live trade feed between 9:30 AM and 4:00 PM ET and reacts within about a second of the trade that makes your condition true. Our NVDA example has an RSI signal on it, so it runs on the 60-second cycle.
+
+<Note>
+  Automations run around the clock, not only during market hours. Outside regular trading the last available values are what get checked, so a condition that was true at the close can stay true overnight. A cooldown is what stops that turning into a stream of alerts.
+</Note>
+
+### In plain English
+
+The 60-second cycle is a heartbeat. Once a minute Tradion asks: are all the conditions on this automation true right now? If they are, and no cooldown is running, it fires. If a condition went true and false again between two checks, nobody sees it — which is why conditions built around levels that hold for minutes work better than ones that hold for seconds.
+
+## Adding an AI agent (optional)
+
+Drop an **Agent** node between the logic and action nodes and the message arrives as a short research brief — news, filings, insider activity — instead of a bare price alert. Agent nodes spend from a monthly allowance, 50 runs on Trader and 500 on Quant, so keep them off high-frequency triggers. Details: [the AI Agent node](/automations/ai-agent-node).
+
+## The two mistakes people make here
+
+<AccordionGroup>
+  <Accordion title="It fires constantly">
+    You picked *Goes Above (continuous)* or *Goes Below (continuous)* where you wanted the *Crosses* version. Fix the operator first, then add a cooldown. See [operators](/automations/operators).
+  </Accordion>
+  <Accordion title="It never fires">
+    Usually the volume number is too high, or RSI never actually reached 30 — check a chart rather than assuming. [Runs and history](/automations/runs-and-history) has the full check-in-order list.
+  </Accordion>
+</AccordionGroup>
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="All 9 signal types" icon="list" href="/automations/signal-types">
+    Including options flow, insider filings, and corporate actions.
+  </Card>
+  <Card title="Runs & history" icon="clock-rotate-left" href="/automations/runs-and-history">
+    Debug what fired, when, and why.
+  </Card>
+</CardGroup>

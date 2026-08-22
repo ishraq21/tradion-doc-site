@@ -1,0 +1,176 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Tradion Docs",
+  "description": "Learn how to use Tradion — the AI analyst built for how you trade.",
+  "colors": {
+    "primary": "#459e6b",
+    "light": "#5cb883",
+    "dark": "#3a8459"
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": false
+  },
+  "fonts": {
+    "heading": {
+      "family": "Space Grotesk",
+      "weight": 600
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/tradion-light.svg",
+    "dark": "/logo/tradion-dark.svg",
+    "href": "https://tradionlabs.com"
+  },
+  "navbar": {
+    "links": [
+      { "label": "Support", "href": "mailto:support@tradionlabs.com" },
+      { "label": "Status", "href": "https://status.tradionlabs.com" }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Open Tradion",
+      "href": "https://app.tradionlabs.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/tradionlabs",
+      "website": "https://tradionlabs.com"
+    },
+    "links": [
+      {
+        "header": "Product",
+        "items": [
+          { "label": "Pricing", "href": "https://tradionlabs.com/#pricing" },
+          { "label": "About", "href": "https://tradionlabs.com/about" }
+        ]
+      },
+      {
+        "header": "Legal",
+        "items": [
+          { "label": "Terms of Service", "href": "https://tradionlabs.com/terms" },
+          { "label": "Privacy Policy", "href": "https://tradionlabs.com/privacy" },
+          { "label": "Risk Disclosure", "href": "https://tradionlabs.com/risk-disclosure" }
+        ]
+      }
+    ]
+  },
+  "search": {
+    "prompt": "Search the Tradion docs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude"]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "get-started/welcome",
+              "get-started/quickstart",
+              "get-started/creating-your-account",
+              "get-started/onboarding",
+              "get-started/choosing-a-plan",
+              "get-started/tour"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/the-loop",
+              "concepts/tradion-memory",
+              "concepts/reading-a-verdict",
+              "concepts/data-sources",
+              "concepts/usage-limits"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "pages": [
+              "portfolio/overview",
+              "portfolio/connect-brokerage",
+              "portfolio/reading-the-dashboard",
+              "portfolio/ai-asset-manager"
+            ]
+          },
+          {
+            "group": "Research & Analysis",
+            "pages": [
+              "research/quant-research",
+              "research/your-first-analysis",
+              "research/the-canvas",
+              "research/templates-and-scenarios",
+              "research/chart-analyzer",
+              "research/lens",
+              "research/earnings-spider"
+            ]
+          },
+          {
+            "group": "Trade Intelligence",
+            "pages": [
+              "trade-intelligence/trade-autopsy",
+              "trade-intelligence/logging-a-trade",
+              "trade-intelligence/importing-broker-trades",
+              "trade-intelligence/reading-an-autopsy",
+              "trade-intelligence/playbook-and-preflight",
+              "trade-intelligence/profile"
+            ]
+          },
+          {
+            "group": "Automations",
+            "pages": [
+              "automations/overview",
+              "automations/first-automation",
+              "automations/operators",
+              "automations/signal-types",
+              "automations/ai-agent-node",
+              "automations/notifications",
+              "automations/runs-and-history"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "pages": [
+              "account/managing-subscription",
+              "account/settings",
+              "account/deleting-your-account"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/troubleshooting",
+              "help/faq",
+              "help/glossary",
+              "help/contact"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "groups": [
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/plan-comparison",
+              "reference/technical-indicators",
+              "reference/supported-assets",
+              "reference/ai-models",
+              "reference/webhook-payloads"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

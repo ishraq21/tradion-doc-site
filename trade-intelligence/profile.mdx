@@ -1,0 +1,95 @@
+---
+title: "Profile"
+description: "What every autopsy and logged trade adds up to."
+icon: "user"
+---
+
+Profile adds up every autopsy, logged trade, and analysis you've run into a picture of how you trade. It's the only screen in Tradion about you rather than a market.
+
+<Frame caption="Three tabs and a permanent header. The header is the summary; the tabs are the evidence.">
+  <img src="/images/diagrams/profile-anatomy.svg" alt="Labelled diagram of the Profile page showing the risk score header, verdict and summary, the personalization toggle, and the Performance, Behavioral, and Goals tabs with their panels" />
+</Frame>
+
+<Info>
+  Profile is included on **Starter** and above. It reads from [Tradion Memory](/concepts/tradion-memory), which explains where the data comes from and how confident it is.
+</Info>
+
+## The header
+
+Always visible, above the tabs.
+
+**Risk Score** is a single 0–100 number: a weighted blend of your three autopsy scores — exit discipline 40%, risk management 35%, entry quality 25%. Exits weigh most because that's where discipline gets tested. If more than 60% of your recent reviewed trades graded poorly, up to 10 points come off the top. There's no arrow beside it — for direction, use the behavioural fingerprint and Performance Trend below.
+
+Next to it sits the **verdict** — Structurally Sound, Underperforming, At Risk, or Breakeven Trap — and a three-sentence **executive summary**: the core problem, what's moving and which way, and the one thing to fix first. A line underneath states how many autopsies and logged trades it rests on.
+
+Below that is the **Personalization** switch. On, your profile is written into every AI request across the product. Off, nothing is sent and every response is generic. The data stays either way.
+
+### In plain English
+
+Nothing on this page is a market view. Every number here comes from trades you logged and autopsies you ran, so Profile has no opinion about a stock — only about your record. A thin record therefore produces thin numbers, and the panels with a minimum say so rather than drawing something misleading.
+
+## Performance tab
+
+<AccordionGroup>
+  <Accordion title="Four metric cards">
+    **Win Rate** (with win and loss counts), **Avg P&L / Trade** as a percentage, **Entry Score** out of 100, and **Risk Score** out of 100. The change badges on the two scores appear only at 20 or more autopsies — below that a single trade moves the average too much for a change to mean anything.
+  </Accordion>
+  <Accordion title="Cumulative P&L, Outcome Split, P&L Distribution">
+    A running curve of your results, a win/loss/breakeven donut with your win rate in the middle, and a **histogram** of your returns — a bar chart that sorts results into size bands and shows how many trades landed in each. The curve needs three trades to draw.
+  </Accordion>
+  <Accordion title="Performance Trend — your autopsy scores over time">
+    Three rows — **Entry Quality**, **Exit Discipline**, **Risk Mgmt** — each with a score, a **sparkline** (a small line chart of recent values, read for shape), and a change badge. Appears at three autopsies. Click a row for the full trend chart, your best and worst graded trades, and the autopsies behind them, so a score you disagree with traces back to specific reports.
+  </Accordion>
+  <Accordion title="Behavioral Fingerprint">
+    A radar chart on three axes — Entry, Exit, Risk. The filled shape is your last 30 days; the dashed outline behind is the 60 days before that. The gap between them is the fastest read on the page for whether anything is improving, and a label top right calls it improving, declining, or stable.
+  </Accordion>
+  <Accordion title="Edge Leaks">
+    Your top recurring mistake patterns from losing trades, ranked, each with a recoverable figure and the number of losing trades it touched. A **Primary leak** line names whether entries or exits are your weaker half. Empty until your autopsies have mistake types tagged.
+  </Accordion>
+  <Accordion title="Estimated Mistake Losses">
+    Your five most expensive behavioural patterns as a ranked list of bars, longest first, with occurrence counts. It totals the loss on trades where you flagged that error — not proof the error caused it, but a reliable ordering of what to fix first.
+  </Accordion>
+</AccordionGroup>
+
+## Behavioral tab
+
+**Daily focus** sits at the top: a headline of at most ten words and one supporting sentence, built from your top pattern and your best and worst sessions. It refreshes daily and is the only line on this page written to be acted on immediately.
+
+**Trader DNA** is your trading profile in one panel — average hold time, **profit factor** (everything your winners made divided by everything your losers cost; above 1 means the wins outweigh the losses), average win and average loss, risk-to-reward ratio, most active session, and largest win and loss. Below that: an instrument mix, a **long/short split** (how much of your activity bet on a rise versus a fall), and per-ticker win rates for any symbol traded at least twice, top eight by volume. If autopsy coverage is thin relative to your trade count, a **Low Confidence** note says how far off 20 reviews you are.
+
+**Mistake Frequency** counts how often each execution mistake and psychology tag appears across your losing trades. **Psychological Profile** unlocks at two completed autopsies: trader archetype, an emotional intelligence score split three ways, cognitive biases with the evidence for each, and how your behaviour shifts after a loss and late in a session.
+
+**Behavioral Patterns** shows your top three recurring mistakes as cards, each with a **severity** label — Tradion's rating of how damaging the pattern is, from low to critical — an occurrence count, and a cost. **Key Findings** and **Prescribed Actions** each give three items with a link to the screen where you'd act on them.
+
+**Win Rate by Session** splits the trading day into four windows — 9:30–11a, 11a–1p, 1p–3p, 3p–4p — and shows your win rate in each over the last 30 days. A window needs five trades before it shows a rate; below that, a dash.
+
+**Trading Activity** is a 365-day calendar heatmap: each square a day, shaded by how many trades you took and tinted by whether that day's win rate was above or below half.
+
+<Note>
+  There's no playbook panel on Profile. Your rules live in **Trade Autopsy → Playbook** — see [Playbook and Pre-Flight](/trade-intelligence/playbook-and-preflight).
+</Note>
+
+## Goals tab
+
+Goals point the coaching at something specific. Set one and the prescribed actions in your summary aim at it.
+
+One goal per metric, across four metrics: Entry Quality, Exit Discipline, Risk Management, and Win Rate. Each takes a target from 1 to 100 and a deadline in days, defaulting to 30. Tradion records your starting value, then shows a progress bar with your current value and whether you're ahead of or behind the pace your deadline implies.
+
+Also here: **Portfolio Holdings**, written into AI prompts, and **Your Tradion Usage**, a count of what you've run across the six main tools.
+
+## Refreshing and resetting
+
+At the foot of the page: when your profile was last computed, a **Refresh** button, and **Reset**.
+
+<Warning>
+  **Reset** clears every learned insight, activity count, performance score, and memory entry. Your trades, autopsies, playbook rules, and portfolio are untouched. It cannot be undone.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Tradion Memory" icon="brain" href="/concepts/tradion-memory">
+    Where this data comes from and how confident it is.
+  </Card>
+  <Card title="Playbook and Pre-Flight" icon="clipboard-check" href="/trade-intelligence/playbook-and-preflight">
+    Turning what you see here into rules.
+  </Card>
+</CardGroup>

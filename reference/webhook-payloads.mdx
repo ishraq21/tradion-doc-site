@@ -1,0 +1,286 @@
+---
+title: "Webhook payloads"
+description: "Receive signed automation alerts at your own HTTPS endpoint — the only way an external system consumes Tradion data."
+icon: "code"
+---
+
+An automation can POST a JSON payload to an endpoint you control each time it fires. This page is the contract: schema, signature, retry rules, and the requirements your endpoint must meet.
+
+<Warning>
+  **There is no Tradion API.** No public REST API, no API keys, no way to query analyses, portfolios, autopsies, or automations from outside the app, and no plan that adds one. The outbound webhook on this page is Tradion's only external integration point, and support cannot issue you an API key because none exist.
+</Warning>
+
+<Info>
+  Automations are **Trader** and above. See [plan comparison](/reference/plan-comparison).
+</Info>
+
+### In plain English
+
+A **webhook** is Tradion phoning your server, not your server phoning Tradion. You give an automation an HTTPS address; when it fires, Tradion sends one JSON message there. Traffic only goes that direction. Three consequences:
+
+- **You need somewhere for it to land** — an address on the public internet that answers HTTPS. Nothing on your laptop, nothing behind a company firewall.
+- **Anyone who learns your address can post to it.** That is what the signature is for: a fingerprint proving Tradion sent the message. Read [verifying the signature](#verifying-the-signature) before trusting anything that arrives.
+- **Answer fast, work later.** Tradion gives up after 8 seconds. Reply `200` first, then act on the message.
+
+<Frame caption="The signature is computed over the exact bytes Tradion sends. Verify before you parse.">
+  <img src="/images/diagrams/webhook-flow.svg" alt="Diagram showing an automation trigger producing a signed HTTPS POST to a customer endpoint, which verifies the signature before acting" />
+</Frame>
+
+## Setting a webhook action
+
+In the automation canvas, open the **Action** node, enable the **Webhook** channel, and paste your endpoint into **Webhook URL**. Save the automation. The URL is checked at save time, and an automation with the webhook channel on and no URL will not save.
+
+One automation can send to a webhook and to Discord, Telegram, email, and in-app at once. The webhook payload is independent of what the other channels render.
+
+## The request
+
+```http
+POST /your/endpoint HTTP/1.1
+Content-Type: application/json
+User-Agent: Tradion-Automations/1.0
+X-Tradion-Signature: sha256=<64 lowercase hex characters>
+Idempotency-Key: <automation id>_webhook_<minute bucket>
+```
+
+## Payload schema
+
+```json
+{
+  "event": "automation.triggered",
+  "automation": {
+    "id": "aut_00000000-0000-0000-0000-000000000000",
+    "name": "NVDA oversold watch",
+    "symbol": "NVDA",
+    "triggerType": "standard"
+  },
+  "trigger": {
+    "price": 100.0,
+    "indicatorValues": {
+      "RSI": 28.4,
+      "SMA:50:{}": 104.2,
+      "BULLISH_ENGULFING": 1
+    },
+    "details": "RSI: 28.40 below 30.00",
+    "timestamp": "2026-01-01T14:32:07.412Z"
+  },
+  "agentResult": {
+    "direction": "bullish",
+    "conviction": 7,
+    "executiveSummary": "One paragraph of plain text.",
+    "sections": [
+      { "heading": "Setup", "content": "..." },
+      { "heading": "Risk", "content": "..." }
+    ],
+    "keyRisks": [
+      "First risk, one sentence.",
+      "Second risk, one sentence.",
+      "Third risk, one sentence."
+    ]
+  }
+}
+```
+
+*(Illustrative values. Prices and indicator readings are whatever the market gave at the moment of the trigger.)*
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `event` | string | Always `automation.triggered`. One event type exists |
+| `automation.id` | string | Stable for the life of the automation |
+| `automation.name` | string | The name you gave it |
+| `automation.symbol` | string | Ticker, crypto pair, or contract symbol. `MARKET` for market-wide automations |
+| `automation.triggerType` | string | The signal type it was saved with. Multi-condition automations report `standard` |
+| `trigger.price` | number | Last price at evaluation. `0` for schedule-only automations with no market data |
+| `trigger.indicatorValues` | object | Indicator code → number. Empty when no indicator conditions were involved |
+| `trigger.details` | string | Human-readable reason the automation fired |
+| `trigger.timestamp` | string | ISO 8601, UTC, generated at dispatch |
+| `agentResult` | object | **Present only when the automation has an AI Agent node.** Absent otherwise |
+
+### Inside `indicatorValues`
+
+Keys are the uppercase indicator code — `RSI`, `MACD`, `ATR`. A condition using a non-default period or parameters adds a second key shaped `CODE:period:{params}` carrying the same value under those settings. Candlestick patterns arrive as `1` when detected and `0` when not. Every value is a finite number; nothing is `null`.
+
+### Inside `agentResult`
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `direction` | string | `bullish`, `bearish`, or `neutral` |
+| `conviction` | integer | 1–10. Higher means the agent found more supporting evidence |
+| `executiveSummary` | string | One paragraph |
+| `sections` | array | Each entry is an object with `heading` and `content`, both strings |
+| `keyRisks` | array of strings | Typically three, one sentence each |
+
+Depending on the agent's instruction, `thesis` (string) and `keyFindings` (array of strings) may also appear. Treat unrecognised keys as optional and ignore them — fields are added without notice, and empty fields are omitted rather than sent as `null`.
+
+<Note>
+  Behavioural personalisation — your risk score, your documented patterns, references to your own trade history — is **removed from webhook payloads by default**, as it is for Discord and Telegram. Turn personalisation on for the channel if you want it included.
+</Note>
+
+## Verifying the signature
+
+A signed request carries `X-Tradion-Signature`. It is an **HMAC** — a scrambled fingerprint of the request body mixed with a secret only you and Tradion hold. Nobody can compute it without the secret, so a matching signature proves the request came from Tradion and the body was not altered in transit.
+
+The value is `sha256=` followed by the HMAC-SHA256 digest of the **raw request body**, in lowercase hexadecimal. Three rules:
+
+1. **Hash the raw bytes**, not a re-serialised object. If your framework parses JSON before you see it, key order and whitespace change and the digest will not match.
+2. **Compare in constant time.** A plain `==` leaks how many leading characters matched, which is enough to forge a signature given enough attempts.
+3. **Reject on mismatch, and reject when the header is missing.** Fail closed.
+
+<CodeGroup>
+
+```js Node.js
+import crypto from 'node:crypto';
+import express from 'express';
+
+const SECRET = process.env.TRADION_SIGNING_SECRET; // '<your signing secret>'
+const app = express();
+
+// express.raw gives you the untouched bytes — required for the digest to match.
+app.post('/tradion', express.raw({ type: 'application/json' }), (req, res) => {
+  const received = req.get('X-Tradion-Signature') || '';
+  const expected =
+    'sha256=' + crypto.createHmac('sha256', SECRET).update(req.body).digest('hex');
+
+  const a = Buffer.from(received);
+  const b = Buffer.from(expected);
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
+    return res.status(401).send('bad signature');
+  }
+
+  const payload = JSON.parse(req.body.toString('utf8'));
+  res.status(200).send('ok');       // acknowledge first
+  handleAsync(payload);             // then do the slow work
+});
+
+app.listen(8080);
+```
+
+```python Python
+import hmac
+import hashlib
+import os
+from flask import Flask, request, abort
+
+SECRET = os.environ["TRADION_SIGNING_SECRET"].encode()  # "<your signing secret>"
+app = Flask(__name__)
+
+@app.post("/tradion")
+def tradion():
+    body = request.get_data()                       # raw bytes, not request.json
+    received = request.headers.get("X-Tradion-Signature", "")
+    expected = "sha256=" + hmac.new(SECRET, body, hashlib.sha256).hexdigest()
+
+    if not hmac.compare_digest(received, expected):
+        abort(401)
+
+    payload = request.get_json()
+    enqueue(payload)                                # do slow work off the request
+    return "", 200
+```
+
+```go Go
+package main
+
+import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"io"
+	"net/http"
+	"os"
+)
+
+var secret = []byte(os.Getenv("TRADION_SIGNING_SECRET")) // "<your signing secret>"
+
+func tradion(w http.ResponseWriter, r *http.Request) {
+	body, err := io.ReadAll(r.Body) // raw bytes
+	if err != nil {
+		http.Error(w, "read error", http.StatusBadRequest)
+		return
+	}
+
+	mac := hmac.New(sha256.New, secret)
+	mac.Write(body)
+	expected := "sha256=" + hex.EncodeToString(mac.Sum(nil))
+
+	if !hmac.Equal([]byte(r.Header.Get("X-Tradion-Signature")), []byte(expected)) {
+		http.Error(w, "bad signature", http.StatusUnauthorized)
+		return
+	}
+
+	var payload map[string]any
+	if err := json.Unmarshal(body, &payload); err != nil {
+		http.Error(w, "bad json", http.StatusBadRequest)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	go handleAsync(payload)
+}
+
+func main() {
+	http.HandleFunc("/tradion", tradion)
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+</CodeGroup>
+
+<Warning>
+  **How the secret works today.** It is one platform-wide setting on Tradion's servers — no per-user secret, no page that shows you one, no self-serve rotation. Two things follow:
+
+  1. **If that setting is empty, the `X-Tradion-Signature` header is omitted entirely.** The request still arrives, unsigned. Reject a request with no signature header — never read an absent header as "signing isn't in use here". That is the failure mode people get wrong.
+  2. **To receive signed webhooks, ask.** Email `support@tradionlabs.com`. Until it is confirmed for your account, treat deliveries as unauthenticated and defend the endpoint another way: a long unguessable path, an allowlist, or both.
+</Warning>
+
+## Not acting on the same alert twice
+
+Every delivery carries an `Idempotency-Key` header — a label that stays identical across retries of one alert, so you can recognise a repeat and ignore it. Its form is `<automation id>_webhook_<minute bucket>`, the minute bucket being the Unix timestamp in milliseconds divided by 60,000 and rounded down.
+
+Store the keys you have handled and drop anything you have seen before. Without that, a retry sent after your endpoint accepted the request but timed out on the reply runs your handler twice. The same key also collapses repeated firings of one automation inside a minute into a single delivery.
+
+## Retry behaviour
+
+Each attempt times out after **8 seconds**. Return a `2xx` quickly and do the real work afterwards; a slow handler reads as a failure and gets retried.
+
+| What happened | What Tradion does |
+| --- | --- |
+| Connection reset, DNS failure, or timeout | Retries once after 1.5 seconds, then up to 3 attempts total with 2s, 4s, 8s backoff |
+| `5xx` response | Retried, up to 3 attempts, same backoff |
+| `4xx` response | Read as your endpoint refusing the request. No further attempts |
+| All attempts failed | Set aside for inspection, recorded in the run history. Nothing is redelivered, and that alert is gone |
+
+A rejected signature should return `401`, which stops the retries — correct, because a retry would fail the same way.
+
+## Requirements
+
+Your endpoint URL must use **HTTPS** (plain `http://` is rejected on save and again at send time), have a dotted hostname (a bare name like `internal` is rejected), stay under 2048 characters, and not resolve to a private or loopback address. `localhost`, `127.0.0.1`, `0.0.0.0`, `::1`, `10.x.x.x`, `192.168.x.x`, `172.16.x.x` through `172.31.x.x`, `169.254.x.x`, and cloud metadata hostnames are all blocked.
+
+### Why private addresses are blocked
+
+This is **SSRF** protection — Server-Side Request Forgery, an attack where someone gets a server to fetch something on their behalf that they could not reach themselves. A webhook URL is an address a user picks and Tradion's servers then call. Without the block, someone could point one at `169.254.169.254`, the cloud metadata address, and have Tradion's own infrastructure read internal credentials and post them onward.
+
+It costs you nothing in production. It does mean you cannot test against `localhost`: use a public tunnel with an HTTPS address, or a request-inspection service.
+
+## When deliveries stop arriving
+
+- **Nothing at all.** Check the automation is active and that its conditions fired — the run history shows every evaluation.
+- **No signature header.** See the warning above: it is omitted when the platform secret is unset.
+- **Signature never matches.** Your framework is parsing the body before you hash it. Use the raw-body option.
+- **Arrives twice.** You are not deduplicating on `Idempotency-Key`.
+- **Stopped after a deploy.** A `4xx` during the deploy window permanently ends the retries for that delivery. Those alerts are gone.
+
+<CardGroup cols={2}>
+  <Card title="Notification channels" icon="paper-plane" href="/automations/notifications">
+    The other four ways an automation can reach you.
+  </Card>
+  <Card title="Runs and history" icon="clock-rotate-left" href="/automations/runs-and-history">
+    Every evaluation, and whether delivery succeeded.
+  </Card>
+  <Card title="The AI Agent node" icon="robot" href="/automations/ai-agent-node">
+    What produces the `agentResult` block.
+  </Card>
+  <Card title="Signal types" icon="signal" href="/automations/signal-types">
+    What can make an automation fire in the first place.
+  </Card>
+</CardGroup>

@@ -1,0 +1,93 @@
+---
+title: "AI Asset Manager"
+description: "Chat with your holdings. Grounded in real positions, not hypotheticals."
+icon: "comments"
+---
+
+The AI Asset Manager is a chat workspace sitting on top of your portfolio. It reads your real positions before answering, so when it says a sector is heavy or one position dominates your risk, it is describing your account and not a generic one.
+
+<Info>
+  Available on Starter, Trader, and Quant. Every message you send counts against your monthly chat allowance — 150 on Starter, 500 on Trader, 1,000 on Quant. See [Usage limits](/concepts/usage-limits).
+</Info>
+
+<Frame caption="Chat on the right, thread history in the left rail, charts rendered inline in the answer.">
+  <img src="/images/diagrams/asset-manager-anatomy.svg" alt="Labelled diagram of the AI Asset Manager workspace showing the session history rail, message thread, an embedded chart, and the composer" />
+</Frame>
+
+## Opening a session
+
+Two ways in. Click **AI Asset Manager** in the Portfolio header to land in your current thread, or a fresh one the first time. Or open it from a row in the holdings table, and the session starts already focused on that ticker, so your first question does not have to name it.
+
+A new thread offers four starter prompts — concentration, top and bottom performers, sector breakdown, macro context — for when you want to see the format first. Messages cap at 4,000 characters.
+
+### In plain English
+
+The assistant is not watching your account. It gets one written briefing about your positions at the moment you press send, and answers from that. So:
+
+- Numbers are as fresh as your last sync, not live to the second. Press **Sync** on Portfolio first if a position has changed.
+- It has no memory of a thread you archived. Reopening that thread is how you get the context back.
+- Nothing it says reaches your broker. It cannot buy, sell, or size anything.
+
+## What it can see
+
+Before each answer, Tradion assembles a briefing from your account:
+
+- Every position, marked **live** if it came from a broker or **manual** if you added it, with shares, **cost basis** (what you paid per share, averaged across your buys), last price, current value, and **unrealised** profit or loss — the paper result on something you still hold, which the price can still take back
+- Cash balance, how many brokerages are connected, and when they last synced
+- Your largest holding and the combined weight of your top three
+- Recent closed trades and their outcomes
+- Your last few trade autopsies: entry, exit, and risk-management grades, and the mistakes tagged in each
+- Your [Tradion Memory](/concepts/tradion-memory) profile — trade count, average grades, recurring mistakes, favoured setups
+
+It can also pull live data mid-answer: quotes, price history, fundamentals, options chains, earnings dates and estimates, insider transactions, news and sentiment, macro indicators, and web search.
+
+### What it cannot do
+
+It cannot place, change, or cancel an order — the brokerage link is read-only. It does not see your personal details, bank links, or tax documents. It reads the last 16 messages of the thread, so a point made much earlier may need restating. With personalisation off, the behavioural half of the briefing is withheld and answers stay purely positional.
+
+## Questions worth asking
+
+Swap your own tickers into these. Each one has a factual answer the assistant can reach for:
+
+- "Which of my positions carry the most risk right now, and why?"
+- "Break my portfolio down by sector and show it as a pie chart."
+- "What percentage of my account is in my top three positions?"
+- "How correlated are {TICKER_A} and {TICKER_B}? Am I holding the same bet twice?" — **correlation** measures how closely two tickers have moved together historically, from +1 (in lockstep) through 0 (unrelated) to −1 (opposite)
+- "Which holdings have earnings in the next two weeks?"
+- "Compare my open winners and losers and chart them."
+- "Given my documented mistakes, which position am I most likely to mishandle?"
+
+Vague questions get vague answers. "How am I doing?" produces a survey; "which position has moved furthest from its cost basis, and what changed" produces something you can act on.
+
+## Running what-ifs
+
+Scenario questions hold your real positions still and move one variable:
+
+- "What happens to my account if {TICKER} drops 20%?"
+- "If technology sold off 10% tomorrow, how much of my portfolio moves?"
+- "If I closed my two largest positions, what would my sector mix look like?"
+
+These are arithmetic on your live weights, not predictions. Nothing in the answer is a recommendation to trade — the assistant produces the analysis and you decide.
+
+## Charts inside the answer
+
+When a visual works better than a sentence, the assistant draws one directly after the text that introduces it. Bar, line, area, pie, and mixed bar-and-line are available, each interactive — hover a segment for its value. Answers stream as they are written, so charts appear mid-response.
+
+## Moving to another feature
+
+Answers point at the feature that goes deeper rather than doing everything in chat: [Earnings Spider](/research/earnings-spider) for an earnings observation, [Trade Autopsy](/trade-intelligence/trade-autopsy) for a pattern in how you exit, [AI Quant Research](/research/quant-research) for anything needing real computation. The ticker travels with you.
+
+## Session history and your allowance
+
+The left rail lists past threads, each titled from its opening message with a date and message count. Click one to reopen it in full, charts included. **New Thread** archives the current conversation and starts clean, stopping old context bleeding into a new topic. Threads can be deleted individually.
+
+Sending a message spends a credit whether the answer proves useful or not, so a thread of one-word follow-ups burns the allowance fast. At zero the composer locks until your billing month rolls over or you move up a plan.
+
+<CardGroup cols={2}>
+  <Card title="Usage limits" icon="gauge" href="/concepts/usage-limits">
+    What each counter measures and when it resets.
+  </Card>
+  <Card title="Plan comparison" icon="table-list" href="/reference/plan-comparison">
+    Message allowances and everything else, side by side.
+  </Card>
+</CardGroup>

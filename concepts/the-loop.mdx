@@ -1,0 +1,111 @@
+---
+title: "The Tradion Loop"
+description: "The mental model that makes the rest of the product obvious."
+icon: "arrows-rotate"
+---
+
+Tradion has a lot of screens. They're easier to hold in your head once you see that they're four stations on a single loop, and that the loop is the product.
+
+```mermaid
+flowchart LR
+    A["🔍 Research<br/>Quant · Chart Analyzer<br/>Lens · Earnings Spider"] --> B["📊 Position<br/>Portfolio<br/>AI Asset Manager"]
+    B --> C["🔔 Automate<br/>Signals · Agents<br/>Notifications"]
+    C --> D["🔬 Autopsy<br/>Trade log · Reports<br/>Playbook"]
+    D --> E(["🧠 Tradion Memory"])
+    E --> A
+    E --> B
+    E --> C
+```
+
+## In plain English
+
+Four stages, in the order a trade passes through them. You **research** an idea, you take a **position**, you **automate** the watching so you are not tied to a screen, and once the trade closes you **autopsy** it. What that last stage produces is fed back into the first, so the tools get more specific to you the longer you use them.
+
+You can enter the loop at any stage. The autopsy stage is the one that makes the others different from a standard chart tool, because it is where Tradion learns anything about you.
+
+## Station 1 — Research
+
+You start with a question or a chart. Four tools answer it, and which one you reach for depends only on what you have in hand:
+
+| You have… | Use | It gives you |
+| --- | --- | --- |
+| A question in words | [AI Quant Research](/research/quant-research) | Python analysis on live data, plus charts you can zoom and hover |
+| A chart on screen | [Lens](/research/lens) | A verdict, price targets, and support and resistance levels |
+| A chart image saved | [Chart Analyzer](/research/chart-analyzer) | A verdict, an entry price, a stop, a target, and the reasoning behind the score |
+| An earnings PDF | [Earnings Spider](/research/earnings-spider) | Beat or miss against expectations, next-quarter guidance, management tone, the case for and against |
+
+**Support** is a price the stock has repeatedly bounced off from below; **resistance** is one it has repeatedly stalled at from beneath. A **stop** is the price where you exit if the trade goes against you.
+
+### What a backtest can and cannot tell you
+
+Ask the quant terminal to test a rule against past prices and you get a **backtest** — the same rule replayed over historical data, with the returns it would have produced. It tells you whether an idea has ever worked, how badly it went wrong at its worst, and how often it traded. It cannot tell you whether it will work next month. A backtest is fitted to prices that already happened, and the more variations you try, the more likely the best-looking one is a coincidence. A good backtest can still lose money in live trading.
+
+## Station 2 — Position
+
+Once a brokerage is connected, [Portfolio](/portfolio/overview) shows what you hold:
+
+- An **equity curve** — a line chart of what the whole account has been worth over time.
+- **Day P&L** and **total P&L** — profit and loss since this morning, and since you bought.
+- **Sector allocation** — how your money splits across industries, so you can see if it is concentrated in one.
+- A **sparkline** on each holding — a thumbnail price chart, small enough to sit inside a table row.
+- Your biggest movers of the day.
+
+The [AI Asset Manager](/portfolio/ai-asset-manager) is a chat window sitting on top of that data. Because it reads your real positions rather than guessing, you can ask concrete things — *"how concentrated am I in tech?"*, or *"what happens to my portfolio if interest rates move half a percentage point?"* — and get numbers that reconcile with your broker statement.
+
+## Station 3 — Automate
+
+Research doesn't scale by staring harder. [Automations](/automations/overview) let you describe a setup once and have Tradion watch for it: price levels, 92 technical readings (61 indicators such as RSI or a moving-average crossover, plus 31 candlestick patterns — shapes drawn by the bars themselves), volume, daily change, news, earnings proximity, unusual options activity, corporate actions, and insider filings — the disclosures company executives must file when they buy or sell their own stock.
+
+Combine up to 10 conditions with AND/OR logic, optionally hand the result to an AI research agent, then send the alert to Discord, email, Telegram, in-app, or your own webhook. Checks run every 60 seconds, around the clock — not only while the US market is open.
+
+<Info>Automations require the **Trader** plan or above.</Info>
+
+## Station 4 — Autopsy
+
+The trade is closed, so the outcome is known. That makes it the only point in the loop where you can check your decision against a result instead of a forecast.
+
+Log the trade manually or let it import automatically from your broker, then run an autopsy. You get:
+
+- **Root-cause analysis** — what drove the result.
+- A **0–100 scorecard** across entry quality, exit discipline, and risk management.
+- A **blame breakdown** — how much of the outcome came from your decisions and how much from the market moving, listed share by share.
+- A **counterfactual** — the same trade replayed with one thing changed, such as the stop honoured or half the size, so you can see what your own stated rules would have returned.
+
+Repeat findings become **patterns**, each with a severity score, a count of how often it has happened, and what it has cost. Patterns you decide to fix become **playbook rules**, and playbook rules go into a checklist you read before your next entry. Tradion assembles it; running it is yours — it never sits between you and an order.
+
+## The centre — Memory
+
+Every station writes to [Tradion Memory](/concepts/tradion-memory), and every station reads from it. A chart analysis in month three is not the analysis you would have got in week one, because by then Tradion knows you cut winners early on this ticker, that your win rate drops after 2pm, and that "high conviction" in your journal has gone with your worst outcomes.
+
+<Tip>
+  **If you only do one thing:** close the loop on ten trades. Ten autopsies is roughly where the behavioural analysis stops being generic and starts being specific to you.
+</Tip>
+
+## Where each screen lives
+
+The sidebar is grouped by loop station, so the menu and the mental model are the same thing:
+
+| Sidebar group | Screens | Loop station |
+| --- | --- | --- |
+| Home | Home | Launchpad |
+| Overview | Portfolio | Position |
+| Research & Analysis | AI Quant Research, Earnings Spider, Chart Analyzer, Lens | Research |
+| Trade Intelligence | Trade Autopsy, Profile, AI Asset Manager | Autopsy + Position |
+| Automate | Automations | Automate |
+
+## Where to start
+
+<CardGroup cols={2}>
+  <Card title="Take the tour" icon="compass" href="/get-started/tour">
+    Every screen in the sidebar, one paragraph each, in the order you meet them.
+  </Card>
+  <Card title="Your first analysis" icon="magnifying-glass-chart" href="/research/your-first-analysis">
+    Station 1, end to end: ask a question and read what comes back.
+  </Card>
+  <Card title="Reading a verdict" icon="gauge" href="/concepts/reading-a-verdict">
+    What BUY at 72% confidence means, and what it does not.
+  </Card>
+  <Card title="Tradion Memory" icon="brain" href="/concepts/tradion-memory">
+    The centre of the loop: what it stores and how to switch it off.
+  </Card>
+</CardGroup>

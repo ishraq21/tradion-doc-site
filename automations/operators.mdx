@@ -1,0 +1,70 @@
+---
+title: "Operators: crosses vs stays"
+sidebarTitle: "Operators"
+description: "Why one automation sends a single alert and another sends eighty."
+icon: "arrow-right-arrow-left"
+---
+
+<Info>
+  Automations need the **Trader** plan or above. See [plans](/reference/plan-comparison).
+</Info>
+
+Every numeric signal — a price level, an indicator reading, today's percentage move — ends with an operator. The operator decides whether you hear about a level once or over and over. Choosing the wrong one is the most common reason a new automation floods you, so it is worth two minutes now.
+
+<Frame caption="Same price path, same level, two operators. One alert against dozens.">
+  <img src="/images/diagrams/crosses-vs-is.svg" alt="A price line crossing a threshold, showing one firing point for a crossing operator and many firing points for a continuous operator" />
+</Frame>
+
+## The five choices
+
+The dropdown labels tell you which is which. The words in brackets are on screen, not something we added here.
+
+| Operator | Fires |
+| --- | --- |
+| **Goes Above (continuous)** | On **every** check while the value sits above your level |
+| **Goes Below (continuous)** | On every check while the value sits below your level |
+| **Crosses Above (one-shot)** | Only on the check where the value moved from below your level to above it |
+| **Crosses Below (one-shot)** | Only on the check where the value moved from above your level to below it |
+| **Equals (exact)** | When the value matches your number, within a hair |
+
+Not all five show up every time. Pick a candlestick pattern — a shape drawn by one or more bars on a chart, such as a hammer or an engulfing bar — and the dropdown collapses to *Equals (exact)*, because a pattern is either detected on the latest bar or it isn't. For everything else, *Equals* is hidden and you get the other four.
+
+The Volume signal has no operator at all: the check is always "above".
+
+## In plain English
+
+A **crossover** is a moment, not a state. It is the instant a value passes through a level. *Crosses Below 30* describes the single check where the reading went from 30-point-something to 29-point-something. One event, one alert.
+
+*Goes Below 30* describes a situation, and a situation can last for days. Active automations are re-checked every 60 seconds. If a reading sits under your level all afternoon, a continuous operator is true on every one of those checks — that is roughly 390 chances to message you between the opening bell and the close.
+
+## Which one you want
+
+**Almost always a crossing operator.** Reach for *Crosses Above* or *Crosses Below* unless you specifically want to be told, repeatedly, that a condition is still holding.
+
+Continuous operators earn their place in two situations:
+
+- **As a filter, not the headline.** RSI *Crosses Below* 30 AND price *Goes Below* the 200-day average: the crossing is the event, the continuous check confirms the backdrop. RSI, the Relative Strength Index, is a 0 to 100 score for how hard a stock has been pushed one way lately.
+- **On a slow timeframe.** A daily reading is evaluated once a day at the close, so *Goes Below* on a daily indicator can fire at most once per trading day.
+
+If you use a continuous operator anywhere, set a **cooldown** to match — the minimum quiet period after a trigger, set on the Action node. The default is one hour.
+
+<Warning>
+  A cooldown mutes repeats; it does not fix a badly chosen operator. If you set a 1-hour cooldown on *Goes Below*, you have turned eighty alerts a day into seven, and every one of them is still telling you the same thing. Change the operator first.
+</Warning>
+
+## The first check after you save
+
+A crossing operator needs a previous reading to compare against, and there isn't one on the very first check after you save. On that check only, a crossing operator behaves like the plain above/below comparison. After that it works as described.
+
+So if the value is **already** past your level when you save, a crossing operator fires on that first check rather than waiting for a fresh crossing. Set *Crosses Below 30* on a symbol already sitting at 24 and you get an alert within the minute. After that first check it behaves as described — it waits for the reading to come back above 30 and go through again.
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Signal types" icon="signal" href="/automations/signal-types">
+    All nine, and the parameters each one takes.
+  </Card>
+  <Card title="Runs and history" icon="clock-rotate-left" href="/automations/runs-and-history">
+    Work out why a signal did or didn't fire.
+  </Card>
+</CardGroup>

@@ -1,0 +1,337 @@
+---
+title: "Troubleshooting"
+description: "The problems people hit, and their fixes."
+icon: "wrench"
+---
+
+This is the full list. Find your symptom, work through the steps in order — they're ordered by how often each one turns out to be the cause, so stopping early is normal. Feature pages link here rather than repeat the steps, so these are the ones to follow.
+
+If nothing here matches, the last section tells you how to report it.
+
+## Signing in
+
+<AccordionGroup>
+  <Accordion title="I can't sign in" icon="key">
+    <Steps>
+      <Step title="Check which method your account uses">
+        Two routes: **Google**, and a **magic link** — a one-time sign-in link emailed to you. There is no password field, because accounts made either way have no password. If you signed up with Google, use Google.
+      </Step>
+      <Step title="If the Google button isn't there at all">
+        It is drawn by a script loaded from Google. An ad blocker, privacy extension, or network filter leaves an empty space and no error. Unblock the app's domain and reload, or use the magic link, which doesn't depend on Google.
+      </Step>
+      <Step title="If you see 'Too many login attempts'">
+        Five failed attempts from one network in 15 minutes triggers a lockout. Wait 15 minutes, then use the magic link.
+      </Step>
+      <Step title="If it says your account is deactivated or scheduled for deletion">
+        Both are deliberate states, not bugs. Email support@tradionlabs.com from the address on the account.
+      </Step>
+      <Step title="If you were signed in yesterday and now you're not">
+        Sessions last 7 days and end without a warning. Sign in again. Clearing cookies for the app's domain does the same thing, and is worth trying if the app is behaving strangely.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="The magic link didn't arrive" icon="envelope">
+    <Steps>
+      <Step title="Wait 60 seconds, then check spam">
+        It comes from a no-reply Tradion address, and first-time senders land in spam often. Mark it "not spam" so the next one doesn't.
+      </Step>
+      <Step title="Check you typed the right address">
+        For privacy the confirmation message is identical whether or not the address exists, so a typo looks exactly like success.
+      </Step>
+      <Step title="Check the link hasn't gone stale">
+        A magic link lasts **15 minutes** and works **once**. An old or used one gives *"Invalid, expired, or already used link."* Request a fresh one.
+      </Step>
+      <Step title="Open the link in the browser you requested it from">
+        It signs you in on whichever browser opens it. If your mail app uses its own in-app browser, copy the link into your normal one.
+      </Step>
+      <Step title="Corporate mail filters">
+        On a work address, a filter is the likely cause. Use a personal address, or ask us at support@tradionlabs.com.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Tradion says it needs a desktop" icon="desktop">
+    That screen appears when your browser window is **narrower than 640 pixels**. It is a width check, not a device check.
+
+    - **On a phone**, expected. Sign-in works there; the terminal does not. Tap **Email me a link for my desktop** and open that link on a computer within 15 minutes.
+    - **On a tablet**, rotate to landscape. Portrait on a small tablet can fall under 640 pixels.
+    - **On a desktop**, widen the window, or press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>0</kbd> to reset zoom. A half-screen split or a heavily zoomed page is usually the cause. The screen clears itself once the window is wide enough.
+  </Accordion>
+</AccordionGroup>
+
+## Portfolio and brokerage
+
+<AccordionGroup>
+  <Accordion title="My brokerage won't connect" icon="link-slash">
+    <Steps>
+      <Step title="Allow pop-ups and relax tracking protection">
+        The connection window comes from our brokerage aggregator, not from Tradion. Pop-up blockers and strict anti-tracking settings — Safari's "Prevent cross-site tracking" especially — leave it blank. Allow both for the app's domain and retry.
+      </Step>
+      <Step title="Finish the login on your broker's own page">
+        You sign in to your broker, not to Tradion. Some brokers add a **2FA** challenge — two-factor authentication, the code from your phone — and the window waits for it.
+      </Step>
+      <Step title="Approve read-only access explicitly">
+        Close the window before approving the scope and no connection is created; nothing appears in Settings.
+      </Step>
+      <Step title="If the connection shows Expired">
+        Brokers expire authorisations periodically, and always after a password change or 2FA reset. **Settings → Connected Brokerages → Reconnect**. Your imported history is preserved.
+      </Step>
+      <Step title="If your broker isn't in the list">
+        Log trades by hand meanwhile — [logging a trade](/trade-intelligence/logging-a-trade) — and tell us which broker at [contact](/help/contact).
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Positions are missing or stale" icon="rotate">
+    <Steps>
+      <Step title="Sync manually">
+        Nothing refreshes on a background timer. Click **Sync Trades** on the connection in **Settings → Connected Brokerages**, or **Sync** on the Portfolio page.
+      </Step>
+      <Step title="Wait if you synced a moment ago">
+        Brokers rate-limit these calls. Syncing repeatedly inside a few minutes achieves nothing.
+      </Step>
+      <Step title="Check the account holds settled positions">
+        A trade is **settled** once the cash and shares have changed hands, a day or two after you trade. Not every broker reports unsettled activity, so a fresh position can be invisible until then.
+      </Step>
+      <Step title="Check the connection status dot">
+        An expired connection stops syncing silently apart from the status badge. Reconnect it.
+      </Step>
+      <Step title="If values differ from your broker's statement">
+        Positions are valued on the last consolidated trade, which drifts from a broker's mark outside regular hours, and multi-currency accounts convert at the aggregator's rate. Both are covered in [reading the dashboard](/portfolio/reading-the-dashboard). A persistent, material gap is worth reporting.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="The net worth chart is empty or full of gaps" icon="chart-line">
+    Working as built, not broken. Tradion writes one snapshot of your account value on each calendar day you **open** the Portfolio page, and the chart draws only those snapshots.
+
+    <Steps>
+      <Step title="On day one, expect nothing">
+        One point is not a line. There is no backfill of history from before you joined.
+      </Step>
+      <Step title="A gap means a stretch of days you didn't open the page">
+        Nothing runs in the background to fill them in later, and syncing now will not recover them.
+      </Step>
+      <Step title="To get a continuous line, open Portfolio on the days you care about">
+        That is the whole mechanism. See [reading the dashboard](/portfolio/reading-the-dashboard).
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Most of my allocation says 'Other'" icon="chart-pie">
+    Sector labels come from a fixed list of 16 mega-cap tickers. Everything else — small caps, ETFs, most of the S&P 500 — falls to **Other**. That is the lookup being thin, not your account being concentrated. Use the holdings table for the real picture.
+  </Accordion>
+</AccordionGroup>
+
+## Research
+
+<AccordionGroup>
+  <Accordion title="An analysis is stuck or spinning" icon="spinner">
+    <Steps>
+      <Step title="Give it the full time budget">
+        A quant cell can run for up to 5 minutes, and can wait longer in the queue while the sandbox — the isolated cloud container your Python runs in — starts up. Two to three minutes of silence on a heavy analysis is normal.
+      </Step>
+      <Step title="Look for an error in the cell rather than a spinner">
+        A step that genuinely fails shows a red error in the cell, not an endless spinner. If you see an error, jump to the next section.
+      </Step>
+      <Step title="If it's still spinning after roughly 12 minutes, reload the page">
+        The live connection streaming progress to your browser can be cut by a proxy or a sleeping laptop, and the spinner has no way to know. Reloading recovers the session; completed work is saved.
+      </Step>
+      <Step title="Check your connection and any VPN">
+        A VPN that drops long-lived connections is the most common cause of a spinner that never resolves.
+      </Step>
+      <Step title="Retry with a narrower question">
+        Ten years of daily data across twenty tickers is a different job from one year across three.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="A quant cell keeps failing" icon="code">
+    Tradion already retries for you: a failing cell is re-run with a repaired version up to twice, then regenerated from scratch once. By the time you see a failure, four attempts have been made.
+
+    <Steps>
+      <Step title="Read the error text at the bottom of the cell">
+        A missing symbol, an empty date range, and a genuine code fault look completely different.
+      </Step>
+      <Step title="Check the asset is supported">
+        US stocks and ETFs, crypto, forex, and US options. Futures, bonds, and non-US listings are not available — see [supported assets](/reference/supported-assets).
+      </Step>
+      <Step title="Shorten the lookback and narrow the scope">
+        Long histories over many symbols hit the 5-minute per-cell ceiling. Ask for less and the cell finishes.
+      </Step>
+      <Step title="Rephrase the question rather than editing the code">
+        The generator responds better to a clearer question than to a patched prompt. Say what you want computed and what you want to see.
+      </Step>
+      <Step title="Start a fresh session if the whole canvas is failing">
+        A new session spends a quant session from your monthly allowance. There is no way to re-run a single cell — see [the canvas](/research/the-canvas).
+      </Step>
+    </Steps>
+
+    See [the canvas](/research/the-canvas) for how cells work.
+  </Accordion>
+
+  <Accordion title="Lens can't capture the screen" icon="camera">
+    Lens takes a picture of your browser tab using a browser screen-capture feature, then reads the chart in it.
+
+    <Steps>
+      <Step title="Use Chrome or Edge, on a desktop">
+        Only those implement the capture path Lens uses. Safari and Firefox either hide the button or fail at the moment of capture. A button reading **Desktop Only** means your browser cannot do it.
+      </Step>
+      <Step title="Approve the share prompt and choose the current tab">
+        Dismissing that prompt gives *"Screenshot capture was cancelled or failed"* — the same message every capture failure produces, so it is not always a permission problem.
+      </Step>
+      <Step title="Re-grant the permission if you blocked it once">
+        Click the padlock or camera icon in the address bar, reset the screen-share permission for the site, and reload.
+      </Step>
+      <Step title="Make sure the chart is visible on screen">
+        Lens captures what is displayed. A chart still loading, or scrolled out of view, gives a blank or unreadable frame.
+      </Step>
+      <Step title="If it says it can't read the ticker">
+        Type the symbol into the box it offers and submit again. The screenshot is kept and re-analysed with the ticker you gave it.
+      </Step>
+      <Step title="Very large captures">
+        A capture over 10 MB is rejected. Reduce your browser zoom or use a smaller window.
+      </Step>
+    </Steps>
+
+    See [Lens](/research/lens).
+  </Accordion>
+
+  <Accordion title="Charts aren't loading" icon="chart-line">
+    Price charts are drawn by an embedded third-party charting widget.
+
+    <Steps>
+      <Step title="Turn off ad and script blockers for the app's domain">
+        The cause the vast majority of the time. A blocked widget script leaves the chart area blank with no error, and Tradion has no way to detect it.
+      </Step>
+      <Step title="Check a network-level filter">
+        A DNS blocker, corporate proxy, or filtering VPN can block the widget even with browser extensions off. Test on a different network.
+      </Step>
+      <Step title="If the chart loads but says the symbol is invalid">
+        That message comes from the widget. Uncommon, over-the-counter, and non-US listings often will not resolve. Try the primary listing's ticker.
+      </Step>
+      <Step title="If the price hasn't moved in a long time">
+        Tradion shows no trading-halt banner, so a halted symbol looks like a normal static quote. Check your broker before acting on it.
+      </Step>
+      <Step title="Hard-reload the page">
+        <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>, to clear a half-loaded widget script.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## Automations and alerts
+
+<AccordionGroup>
+  <Accordion title="My automation never fires" icon="bolt-slash">
+    <Steps>
+      <Step title="Check it's switched on">
+        Automations have an active toggle. Anything paused is skipped.
+      </Step>
+      <Step title="Check your subscription is current">
+        When a subscription ends, **every automation on the account is switched off**. Resubscribing does not switch them back on — you do that yourself, one at a time.
+      </Step>
+      <Step title="Give it a full check cycle">
+        Conditions are evaluated every **60 seconds**. A trigger fires on the next check after the condition becomes true, not on the tick itself.
+      </Step>
+      <Step title="Check the condition is reachable">
+        Compare the threshold with the live value. A level set the wrong side of the current price never becomes true.
+      </Step>
+      <Step title="Check the cooldown">
+        The default is **60 minutes**. A recent fire is deliberately suppressed until it expires.
+      </Step>
+      <Step title="Check the run history">
+        **Automations → Runs** shows every evaluation and delivery attempt. An automation checking but never matching looks very different from one that never ran. See [runs and history](/automations/runs-and-history).
+      </Step>
+      <Step title="For scheduled automations, check the time zone">
+        Schedules run in the automation's own time zone, which defaults to US Eastern, not your local one.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="My automation fires constantly" icon="bell">
+    Almost always one cause: the wrong kind of condition.
+
+    <Steps>
+      <Step title="Check whether you chose 'goes above' or 'crosses above'">
+        **Goes above** and **goes below** stay true on every 60-second check for as long as the condition holds. **Crosses above** and **crosses below** are true only on the check where the value moves through the level. For an alert you want once, use crosses.
+      </Step>
+      <Step title="Raise the cooldown">
+        The cooldown is what stops a continuous condition repeating. Five minutes on a price level is a firehose; an hour is usually right.
+      </Step>
+      <Step title="Expect one extra fire the first time you save a crossing condition">
+        With no previous reading stored, the first check falls back to a plain comparison. A condition already true when you save fires once immediately, then behaves as a crossing.
+      </Step>
+      <Step title="Narrow the symbol list">
+        One automation watching twenty symbols is twenty chances to fire per cycle.
+      </Step>
+    </Steps>
+
+    See [operators](/automations/operators) and [signal types](/automations/signal-types).
+  </Accordion>
+
+  <Accordion title="I can't create another automation" icon="lock">
+    You have hit your plan's automation cap: **10 on Trader, 50 on Quant**. Starter has none.
+
+    The cap counts **every automation you own**, not the ones currently running. Pausing one does not free a slot — the only ways to make room are to delete an automation you no longer need, or to move up a plan. See [plan comparison](/reference/plan-comparison).
+  </Accordion>
+
+  <Accordion title="Discord alerts stopped" icon="discord">
+    <Steps>
+      <Step title="Open Automations → Runs and read the delivery status">
+        Each run lists every channel it tried and the exact error returned. That separates "never fired" from "fired and failed to deliver".
+      </Step>
+      <Step title="If the error mentions 404, the webhook was deleted">
+        Deleting a Discord webhook, or the channel it posts to, breaks it permanently. This error is not retried and nothing switches the channel off for you — the automation keeps firing and keeps failing until you fix the address.
+      </Step>
+      <Step title="Create a fresh webhook and paste the new address in">
+        In Discord: **Channel Settings → Integrations → Webhooks → New Webhook → Copy Webhook URL**. Paste it into the automation's Discord channel settings.
+      </Step>
+      <Step title="Check the address is a real Discord one, over HTTPS">
+        Only `https://` addresses on Discord's own domains are accepted. A shortened link or a proxy address is rejected before sending.
+      </Step>
+      <Step title="Check your server's permissions">
+        A webhook posting into a since-restricted channel fails on Discord's side, not ours.
+      </Step>
+      <Step title="Add a second channel as a backstop">
+        Email or in-app alerts on the same automation mean a broken Discord webhook never costs you the alert. See [notifications](/automations/notifications).
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="I hit a usage limit unexpectedly" icon="gauge-high">
+    <Steps>
+      <Step title="Check Settings → Monthly Usage first">
+        It names which of the three meters is empty and when they reset.
+      </Step>
+      <Step title="Know what consumes each meter">
+        A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger — an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, earnings reports, autopsies, and portfolio syncs cost nothing.
+      </Step>
+      <Step title="Find the automation that's eating them">
+        Agent runs are almost always the culprit, and almost always an agent on a high-frequency trigger. **Automations → Runs** shows which automation consumed what. Move the agent onto a daily or crossing trigger.
+      </Step>
+      <Step title="If agents stopped mid-month but your meter isn't empty">
+        A separate short-term ceiling caps agent activity at roughly 20 runs an hour and 100 a day. When it is reached the automation still fires and still sends the alert; only the AI step is skipped. It clears on its own.
+      </Step>
+      <Step title="Note that failed agent runs are credited back">
+        An agent that errors returns the run to your balance. A run spent on a successful-but-unhelpful answer is not refunded.
+      </Step>
+    </Steps>
+
+    Full breakdown: [usage limits](/concepts/usage-limits).
+  </Accordion>
+</AccordionGroup>
+
+## Reporting something not listed here
+
+Use the **Feedback** button in the left sidebar — it attaches your plan, page, browser, and a timestamp for you. Say what you expected, what happened instead, when, and which automation, analysis, or connection was involved. Full guidance on [contact and feedback](/help/contact).
+
+<CardGroup cols={2}>
+  <Card title="Contact and feedback" icon="envelope" href="/help/contact">
+    How to report a bug so it gets fixed quickly.
+  </Card>
+  <Card title="FAQ" icon="circle-question" href="/help/faq">
+    Short answers to the questions we get most.
+  </Card>
+</CardGroup>

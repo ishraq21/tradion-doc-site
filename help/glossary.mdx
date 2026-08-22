@@ -1,0 +1,191 @@
+---
+title: "Glossary"
+description: "Plain-English definitions for every term used across Tradion."
+icon: "book-open"
+---
+
+No definition here uses a word that isn't also defined here. If you hit one that does, that's a bug — [tell us](/help/contact).
+
+## Trading basics
+
+<AccordionGroup>
+  <Accordion title="Backtest">
+    Running a trading rule over past prices to see what it would have returned. It tells you whether an idea has ever worked and how bad its worst stretch was. It cannot tell you whether it will work next month — the rule is being tested on prices that already happened.
+  </Accordion>
+  <Accordion title="Bid and ask">
+    The **bid** is the highest price anyone is currently offering to buy at. The **ask** is the lowest price anyone is offering to sell at. The gap between them is the spread, and it's roughly what it costs you to get in and straight back out.
+  </Accordion>
+  <Accordion title="Correlation">
+    How closely two things move together, on a scale from −1 to +1. At +1 they rise and fall in lockstep; at 0 there's no relationship; at −1 one rises whenever the other falls. Two holdings with high correlation aren't really two bets.
+  </Accordion>
+  <Accordion title="Cost basis">
+    What you originally paid for a position, including fees. Your profit or loss is the current value minus this.
+  </Accordion>
+  <Accordion title="Drawdown">
+    How far something has fallen from its highest point before recovering. A 30% drawdown means it lost 30% from a peak. This is usually a better measure of whether you could actually have held a strategy than its total return.
+  </Accordion>
+  <Accordion title="Equity curve">
+    A line chart of what an account has been worth over time. A smooth rising line means steady gains; a jagged one means the same end result arrived through much bigger swings.
+  </Accordion>
+  <Accordion title="Gap">
+    When a price opens well away from where it closed the day before, leaving a blank space on the chart. Usually caused by news released while the market was shut.
+  </Accordion>
+  <Accordion title="Indicator">
+    A number calculated from price or volume that's meant to tell you something a raw chart doesn't. RSI and moving averages are indicators. They're arithmetic on past prices, not predictions.
+  </Accordion>
+  <Accordion title="Liquidity">
+    How easily you can buy or sell without moving the price. A heavily traded stock is liquid — your order disappears into the crowd. A thinly traded one isn't, and getting out can cost you more than getting in did.
+  </Accordion>
+  <Accordion title="Long and short">
+    **Long** means you own it and profit if it rises. **Short** means you've borrowed and sold it, and profit if it falls.
+  </Accordion>
+  <Accordion title="Moving average">
+    The average closing price over the last N days, recalculated each day and drawn as a line. A 50-day moving average smooths out daily noise so the underlying direction is easier to see. When a shorter average crosses above a longer one it's called a **golden cross**, often read as a trend turning up.
+  </Accordion>
+  <Accordion title="Oscillator">
+    An indicator that moves back and forth inside a fixed range instead of tracking price. RSI is one — it can only ever sit between 0 and 100.
+  </Accordion>
+  <Accordion title="Oversold and overbought">
+    Conventional labels for an oscillator sitting near the bottom or top of its range — RSI under 30 or over 70. They describe how far price has been pushed, not what it will do next. In a strong trend a stock can stay "oversold" for weeks while continuing to fall.
+  </Accordion>
+  <Accordion title="Position sizing">
+    How much money you put into a single trade. The main lever you control: a good idea sized too large and a bad idea sized small can produce the same loss.
+  </Accordion>
+  <Accordion title="R:R — risk/reward ratio">
+    The distance from your entry to your target, divided by the distance from your entry to your stop. A 3:1 setup risks one unit to make three. It says nothing about how likely either outcome is.
+  </Accordion>
+  <Accordion title="RSI — Relative Strength Index">
+    A 0–100 score measuring how hard a price has been pushed in one direction recently. Below 30 is conventionally called oversold, above 70 overbought — conventions that break down in strong trends.
+  </Accordion>
+  <Accordion title="Sparkline">
+    A thumbnail price chart, small enough to sit inside a table row. It shows shape and direction, not exact values.
+  </Accordion>
+  <Accordion title="Standard deviation">
+    A measure of how spread out a set of numbers is. Applied to daily returns it's a measure of volatility: a small standard deviation means most days look alike, a large one means wild swings in both directions.
+  </Accordion>
+  <Accordion title="Stop-loss">
+    The price at which you exit a losing trade. Deciding it before you enter converts an open-ended loss into a known one.
+  </Accordion>
+  <Accordion title="Support and resistance">
+    **Support** is a price a stock has repeatedly bounced off from below. **Resistance** is one it has repeatedly stalled at from beneath. Both are observations about where buyers and sellers have shown up before, not guarantees they will again.
+  </Accordion>
+  <Accordion title="Volatility">
+    How much a price moves around, in either direction. High volatility means big daily swings. It measures the size of moves, not whether they're up or down — a stock can be volatile while going nowhere.
+  </Accordion>
+  <Accordion title="VWAP — volume-weighted average price">
+    The average price paid across the whole session, with bigger trades counting for more. Traders use it to judge whether they got a better or worse fill than the market average that day.
+  </Accordion>
+</AccordionGroup>
+
+## Options terms
+
+Only needed if you trade options or use the options-based signals.
+
+<AccordionGroup>
+  <Accordion title="ATR — Average True Range">
+    The average distance between a day's high and low, over the last N days. It answers "how far does this normally move in a day?" — useful for setting a stop far enough away that ordinary movement doesn't trigger it.
+  </Accordion>
+  <Accordion title="Call and put">
+    A **call** is the right to buy at a set price before a set date; it gains value as the stock rises. A **put** is the right to sell at a set price; it gains value as the stock falls.
+  </Accordion>
+  <Accordion title="Delta">
+    How much an option's price moves for a $1 move in the stock. A delta of 0.5 means the option gains about 50 cents per dollar. It's also read loosely as the market's rough odds of the option being worth exercising at expiry.
+  </Accordion>
+  <Accordion title="DTE — days to expiration">
+    Calendar days until an option expires. After that date it's worth either its exercise value or nothing.
+  </Accordion>
+  <Accordion title="Implied move">
+    How big a move the options market is pricing in before an event like earnings. Worked out from what it costs to buy a call and a put together at the same strike — that price reflects how much movement traders are collectively paying to be covered for.
+  </Accordion>
+  <Accordion title="IV — implied volatility">
+    How much movement option prices imply traders expect, going forward. Contrast with historical volatility, which measures movement that already happened. High IV means options are expensive because a big move is anticipated.
+  </Accordion>
+  <Accordion title="Open interest">
+    The number of option contracts currently outstanding on a given strike and expiry. Volume counts today's trading; open interest counts positions still held.
+  </Accordion>
+  <Accordion title="OCC symbol">
+    The standard identifier for an option contract: underlying, expiry date, C or P, strike. `NVDA260116C00200000` is a NVDA call expiring 16 January 2026 at a $200 strike.
+  </Accordion>
+  <Accordion title="OPRA">
+    The consolidated feed carrying every US options quote and trade from all exchanges. Tradion's options prices come from it, so you see the whole market rather than one exchange's slice.
+  </Accordion>
+  <Accordion title="Premium">
+    What an option costs to buy. Large premium on a single trade is one of the things Tradion looks at when flagging unusual activity.
+  </Accordion>
+  <Accordion title="Strike">
+    The fixed price written into an option contract — the price at which you'd buy (call) or sell (put) if you exercised it.
+  </Accordion>
+  <Accordion title="Underlying">
+    The stock an option is written on. NVDA is the underlying for every NVDA option.
+  </Accordion>
+  <Accordion title="Unusual options activity">
+    Far more contracts trading than there are positions outstanding, with a lot of money behind them — read as a sign someone is positioning with conviction. It's a signal to go look, not a reason to follow.
+  </Accordion>
+</AccordionGroup>
+
+## Tradion terms
+
+<AccordionGroup>
+  <Accordion title="Agent run">
+    One execution of an AI Agent node inside an automation. Counted against your monthly allowance — 50 on Trader, 500 on Quant. See [usage limits](/concepts/usage-limits).
+  </Accordion>
+  <Accordion title="Autopsy">
+    A structured post-mortem of a closed trade: what drove the result, a 0–100 scorecard, an attribution breakdown, a counterfactual, and one lesson. See [reading an autopsy](/trade-intelligence/reading-an-autopsy).
+  </Accordion>
+  <Accordion title="Behavioural fingerprint">
+    A radar chart comparing your last 30 days against the 60 before them, across entry quality, exit discipline, and risk management.
+  </Accordion>
+  <Accordion title="Canvas">
+    Two different screens share this name. The **quant canvas** is the right-hand pane of AI Quant Research, holding the cells your question produced. The **automation canvas** is the node-graph builder where you wire up an alert.
+  </Accordion>
+  <Accordion title="Cell">
+    One unit of quant analysis: the generated Python, its output, its chart, and a written summary. Tradion decides how many cells your question needs.
+  </Accordion>
+  <Accordion title="Confidence score">
+    A 0–100 number attached to a verdict, broken into named contributing factors. It measures how much the evidence agrees with itself — not the probability of making money. See [reading a verdict](/concepts/reading-a-verdict).
+  </Accordion>
+  <Accordion title="Counterfactual">
+    The same trade replayed with one thing changed — the stop honoured, or half the size — showing what your own stated rules would have returned. The gap between that and what happened is the cost of the deviation.
+  </Accordion>
+  <Accordion title="FIFO matching">
+    First in, first out. When your broker sends a list of buys and sells with no record of which sell closed which buy, Tradion pairs the oldest open buy with the next sell. It's the standard convention, and it's what lets a raw transaction list become a list of trades.
+  </Accordion>
+  <Accordion title="Operators">
+    How a signal compares a value to your threshold. **Crosses** fires once, at the moment the value passes through. **Goes** stays true for as long as the value sits past it. See [operators](/automations/operators).
+  </Accordion>
+  <Accordion title="Pattern">
+    A recurring mistake detected across your trades, carrying a severity score, a count of how often it has happened, and what it has cost.
+  </Accordion>
+  <Accordion title="Playbook rule">
+    A trading rule you've written down, usually after an autopsy showed you the same mistake twice.
+  </Accordion>
+  <Accordion title="Quant session">
+    One message sent in **Analysis** mode in AI Quant Research — the mode that writes and runs new code. Counted against your monthly allowance. Follow-up questions in **Ask** mode are free and unlimited.
+  </Accordion>
+  <Accordion title="Risk score">
+    A 0–100 summary of how safely you have been trading recently. Higher is safer. Shown on Home and Profile.
+  </Accordion>
+  <Accordion title="Signal">
+    Two meanings. In **automations**, one condition inside a rule — a price level, an indicator reading, a volume threshold. In **analysis**, a saved chart result with its verdict and trade plan.
+  </Accordion>
+  <Accordion title="Tradion Memory">
+    The layer that builds a profile of how you trade from everything you do in the app, and attaches it to every AI answer you get. See [Tradion Memory](/concepts/tradion-memory).
+  </Accordion>
+  <Accordion title="Trader archetype">
+    One of five behavioural classifications assigned by the Psychological Profile, which unlocks after two completed autopsies.
+  </Accordion>
+  <Accordion title="Verdict">
+    A directional call. Charts return BUY, SELL, WAIT, or NO TRADE — WAIT appears on the card as HOLD. Lens and Earnings Spider return BULLISH, BEARISH, or NEUTRAL.
+  </Accordion>
+</AccordionGroup>
+
+## Where next
+
+<CardGroup cols={2}>
+  <Card title="Reading a verdict" icon="gauge" href="/concepts/reading-a-verdict">
+    What a confidence score measures, and what it doesn't.
+  </Card>
+  <Card title="FAQ" icon="circle-question" href="/help/faq">
+    Short answers to the questions we get most.
+  </Card>
+</CardGroup>

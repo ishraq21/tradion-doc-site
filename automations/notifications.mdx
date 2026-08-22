@@ -1,0 +1,129 @@
+---
+title: "Notification channels"
+sidebarTitle: "Notifications"
+description: "Discord, email, Telegram, in-app, and your own webhook."
+icon: "paper-plane"
+---
+
+<Info>
+  Automations need the **Trader** plan or above. See [plans](/reference/plan-comparison).
+</Info>
+
+Every automation ends at an Action node, and that node decides where the alert goes. You pick the channels there, write the message, and set the cooldown. New automations start with **In-App** selected and nothing else.
+
+<Frame caption="One trigger, one message, delivered independently to each channel you turned on.">
+  <img src="/images/diagrams/notification-fanout.svg" alt="A single automation trigger branching to five delivery channels: in-app, Discord, email, Telegram, and an outbound webhook" />
+</Frame>
+
+## The five channels
+
+<Tabs>
+  <Tab title="Discord">
+    Alerts arrive as embedded cards in a channel of your choice. You need a **webhook URL** — a private address Discord gives you that lets an outside service post into one specific channel. Anyone holding that URL can post to that channel, so treat it like a password.
+
+    In Discord, go to **Server Settings → Integrations → Webhooks** (you need Manage Webhooks permission), click **New Webhook**, pick the channel alerts should land in, and click **Copy Webhook URL**. It looks like `https://discord.com/api/webhooks/000000000000/PLACEHOLDER-TOKEN`. Turn on **Discord** on the Action node and paste it in.
+
+    Tradion only accepts HTTPS URLs on Discord's own domains. A long agent brief is split across up to three messages, sent in order.
+  </Tab>
+  <Tab title="Email">
+    Turn on **Email** and leave the address field blank to use your account email, or type a different one. Best for anything that fires daily or slower — an inbox is a poor place for an alert you need to act on within the hour.
+  </Tab>
+  <Tab title="Telegram">
+    Alerts are sent by `@TradionBot`. There is no Telegram panel in Settings and nothing to connect — you do both steps yourself, and the second is where people get stuck.
+
+    <Steps>
+      <Step title="Start the conversation">
+        Telegram will not let a bot message anyone who hasn't spoken first. Open Telegram, search for `@TradionBot`, open it, and press **Start**. Skip this and no alert will ever arrive, however correct the rest of your setup is.
+      </Step>
+      <Step title="Find your numeric chat ID">
+        A chat ID is a plain number, not your `@username`. Message `@userinfobot` on Telegram and it replies with yours — the Action node points you at the same bot.
+
+        For a group, open [web.telegram.org](https://web.telegram.org), click the group, and read the number after `#` in the address bar. A group ID starts with a minus sign, and that sign is part of the ID.
+      </Step>
+      <Step title="Paste it into the Action node">
+        Turn on **Telegram** and put the number in the **Telegram Chat ID** field. Digits and a leading minus only — no `@`, no spaces.
+      </Step>
+    </Steps>
+
+    Tradion cannot look this number up for you, and a wrong one fails silently. Long output is split across up to three messages.
+  </Tab>
+  <Tab title="In-app">
+    A live toast inside Tradion plus a permanent entry in your notification list. No configuration, nothing to break, and it is the only channel that cannot silently stop working. Keep it on while you are testing a new automation.
+  </Tab>
+  <Tab title="Webhook">
+    An HTTPS POST of the alert as JSON to an endpoint you control, so you can put alerts into your own tooling. The request carries an **HMAC** signature — a fingerprint of the message body computed with a shared secret, which lets your server confirm the request came from Tradion and wasn't altered on the way — plus a key you can use to discard duplicates.
+
+    Payload shape, signature header, and verification code: [webhook payloads](/reference/webhook-payloads). Tradion refuses non-HTTPS URLs and any address resolving to a private network.
+  </Tab>
+</Tabs>
+
+## Writing the message
+
+The Action node has a template editor. Click a variable chip to insert it, and the preview underneath shows roughly what will be sent. Three variables are always available:
+
+| Variable | Resolves to |
+| --- | --- |
+| `{symbol}` | The ticker being watched |
+| `{price}` | The price at the moment the automation fired |
+| `{signal}` | A readable description of what became true |
+
+If you have Agent nodes on the canvas, one variable per agent appears too — `{research_agent}`, `{fundamental_agent}`, `{sentiment_agent}`, `{chart_agent}`, `{market_brief_agent}`, and `{report_agent}`. These use single braces, not double.
+
+```
+{symbol}: {signal}
+Price: {price}
+
+{report_agent}
+```
+
+An agent variable only works when that agent is on the canvas; type one that isn't and the editor warns you which agent it needs. If an agent is present but produced nothing, the whole line containing its variable is dropped rather than left as a gap.
+
+There is also a **Footer** field, shown at the bottom of Discord and email alerts. Leave it blank to hide it.
+
+<Tip>
+  Each channel has a **Personal Insights** toggle. On, the AI output draws on patterns from your own trading history — right for a private inbox. Discord, Telegram, and webhook default to off, because those channels usually have other people reading them.
+</Tip>
+
+## Several channels at once
+
+Turn on as many as you like. Each is delivered independently, so one failing does not hold up the others, and each gets its own row in the run's notification timeline. Every channel renders the same template.
+
+## Delivery, retries, and failure
+
+Sending is queued, which is what makes retries possible. A timeout or dropped connection is retried up to three times with a growing gap — roughly two seconds, then four, then eight. Configuration errors, such as a webhook URL Discord has revoked, are not retried, because retrying would change nothing.
+
+### In plain English
+
+Tradion tries, tries again for about fifteen seconds, then gives up and writes down why. The run's notification row reads **Failed** with the attempt count and the error text. That message is never sent again and there is no retry button.
+
+<Warning>
+  A failing channel does not pause the automation. A revoked Discord webhook or a bouncing email address goes on failing quietly while the automation goes on firing. **Automations → Runs** is the only place this shows up, so check it if alerts stop arriving.
+</Warning>
+
+Common causes, in the order worth checking:
+
+<AccordionGroup>
+  <Accordion title="Discord alerts stopped">
+    Webhook URLs are revoked when the target channel is deleted, when someone resets the server's integrations, or when the webhook itself is deleted. Create a new one and paste the new URL.
+  </Accordion>
+  <Accordion title="Telegram alerts never started">
+    You have not pressed Start on `@TradionBot`, or the chat ID is wrong — a group ID missing its leading minus sign is the usual version. Telegram blocks bots from messaging first, and there is nothing Tradion can do about that from its side.
+  </Accordion>
+  <Accordion title="Email is missing">
+    Check spam, then check the address on the Action node — a typed-in address overrides your account email.
+  </Accordion>
+  <Accordion title="Webhook returns an error">
+    Your endpoint must be HTTPS and reachable from the public internet. Private addresses, local addresses, and plain HTTP are rejected before the request is made.
+  </Accordion>
+</AccordionGroup>
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Webhook payloads" icon="code" href="/reference/webhook-payloads">
+    The JSON shape and how to verify the signature.
+  </Card>
+  <Card title="Runs and history" icon="clock-rotate-left" href="/automations/runs-and-history">
+    See exactly which deliveries succeeded and which didn't.
+  </Card>
+</CardGroup>

@@ -1,0 +1,113 @@
+---
+title: "Signal types"
+description: "All nine, with the parameters each one takes."
+icon: "signal"
+---
+
+<Info>
+  Automations need the **Trader** plan or above. See [plans](/reference/plan-comparison).
+</Info>
+
+A signal is one condition on one instrument. There are nine kinds, an automation holds up to ten, and a Logic node joins them with AND or OR. No nesting: `(A AND B) OR C` means two automations.
+
+<Frame caption="Stocks get all nine; everything else a subset. Check before picking a ticker.">
+  <img src="/images/diagrams/signal-matrix.svg" alt="Grid of the nine signal types against stocks, crypto, forex, and options, showing which combinations exist" />
+</Frame>
+
+Every numeric signal ends in an operator, and picking *Crosses Below (one-shot)* over *Goes Below (continuous)* separates one alert from eighty. Read [operators](/automations/operators) first.
+
+## In plain English
+
+A signal is a question Tradion asks once a minute: *is RSI under 30 right now?* Every signal has to answer yes at the same moment for a message to go out. Signals are independent, so Price AND RSI AND Insider Tx is a normal build — and mixing categories that way beats stacking two indicators that move together.
+
+## 1. Price level
+
+Watches the last traded price, with an operator and your level. **Use it when** you already care about a number: a breakout point, a prior high, where your thesis stops being true. Every asset type.
+
+## 2. Technical indicator
+
+Watches a calculated reading rather than raw price. The picker holds **92 entries across eight groups**: 61 indicators and 31 candlestick patterns. Full list in [technical indicators](/reference/technical-indicators).
+
+```yaml
+type: Technical
+indicator: RSI
+period: 14
+timeframe: 1Min | 5Min | 15Min | 30Min | 1Hour | 1Day
+operator: Crosses Below (one-shot)
+value: 30
+```
+
+**Period** is how many bars feed the calculation. A **moving average** with period 50 is the average closing price of the last 50 bars, smoothing day-to-day noise so a trend is easier to see. The field disappears for indicators without one.
+
+A few take extra settings. **MACD**, a momentum reading built by comparing two moving averages, takes fast, slow, and signal periods — 12, 26, 9 by default. **Bollinger Bands** takes a standard deviation multiplier, default 2, drawing its bands where price has historically spent most of its time. SuperTrend, Keltner Channels, and Ichimoku have their own fields.
+
+**Timeframe** sets the bar size: daily is checked once a day at the close, intraday every 60 seconds.
+
+**Use it when** the setup is a reading rather than a level:
+
+- A **golden cross** — the 50-day average price crossing above the 200-day, widely read as a trend turning up.
+- **RSI** (Relative Strength Index) below 30. RSI scores how hard a stock has been pushed one way lately, 0 to 100, and below 30 is called **oversold** — sold down far enough that some traders expect a bounce. It fails in a strong downtrend.
+- **ATR** (Average True Range) rising. ATR is how far a stock typically travels in a day, so a rising ATR means bigger swings: rising **volatility**.
+
+Pick a candlestick pattern and the operator locks to *Equals (exact)*, firing when it appears on the latest bar.
+
+## 3. Volume
+
+Watches how busy the symbol is compared with its own normal. The number you type is a **multiple of the average**, not a share count — `2` means twice as busy as usual. No operator; the check is always "above".
+
+The average is taken from the 20 bars before the current one, so a live session is never counted into the baseline it's being judged against. **Use it when** you want to know something is happening before you know what it is — unusual volume tends to arrive ahead of the news that explains it.
+
+<Warning>
+  A symbol needs at least 11 bars of history before the average means anything. Below that the condition reports *no average volume available* and does not fire, which is what you want from a newly listed ticker or a young option contract.
+</Warning>
+
+## 4. Daily change %
+
+Watches today's percentage move from the previous close, with an operator and a percentage. **Use it when** you want outsized moves without caring about the absolute price — including a **gap**, where a stock opens well away from its previous close.
+
+## 5. News
+
+Fires when a new article is published for the symbol. **No parameters at all** — no keyword, sentiment, or source filter. The first check records a starting point, so it never fires on an article already published.
+
+**Use it when** you hold a position and want to know the moment anything is written about it. Add an Agent node to get the article summarised rather than announced.
+
+## 6. Earnings
+
+Fires in the run-up to a scheduled earnings report. One parameter: how many days before, 1 to 90, default 7. **Use it when** you want a reminder to close, hedge, or re-check a position before a company reports.
+
+## 7. Options flow — unusual activity
+
+Fires when large options trades are reported on the **underlying** stock, the ordinary share the contracts are written on. Tradion scans every five minutes. Set a direction — calls, puts, either — and a premium threshold: default 100,000, floor 10,000.
+
+An options contract gives its holder the right to buy (a call) or sell (a put) 100 shares at a set price before a set date. Every completed trade is reported publicly — traders say a trade **prints** when that report appears. **Premium** is the cash changing hands on one trade, so a very large premium means somebody sized a bet big enough to stand out. That is a fact about order flow, not a prediction: the buyer may be hedging.
+
+## 8. Insider transactions
+
+Fires when a new SEC **Form 4** appears — the disclosure US directors, officers, and holders of more than 10% of a company's shares must file within two business days of trading their own stock. Filter to buys, sells, or either.
+
+The default, **Buys Only**, is doing real work. Insiders sell for a hundred ordinary reasons: vesting, selling plans, a tax bill. They buy for one. Only new filings fire.
+
+## 9. Corporate actions
+
+Fires when the company announces a structural event: cash or stock dividend, forward or reverse split, cash or stock merger, spin-off, or name change. Pick one type or `any`. Tradion reads the last 30 days and fires on announcements it hasn't reported.
+
+**Use it when** an event would change what your position is: a split changes your share count and price, a merger can end the ticker, a spin-off hands you shares you never bought.
+
+## Asset-type notes
+
+Stocks get all nine. Crypto gets price, technical, volume, change %, and news. Forex gets price and change % only. Options get price, volume, and change %. Change the asset type on a saved automation and any unsupported signal resets to Price.
+
+**Forex** has no volume in its data feed, so volume and indicator signals are unavailable and the timeframe locks to daily.
+
+**Options** contracts come from a live chain picker: expiry, then call or put, then strike. Each row shows the **bid** (highest price a buyer is offering), the **ask** (lowest a seller will take), and the **delta** (roughly how much the contract moves per one-dollar move in the underlying, on a 0 to 1 scale). The picker writes an **OCC symbol** — the code packing underlying, expiry, call or put, and strike into one string. Expired contracts never fire again.
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Operators" icon="arrow-right-arrow-left" href="/automations/operators">
+    Crosses vs stays, and which you want.
+  </Card>
+  <Card title="The AI Agent node" icon="robot" href="/automations/ai-agent-node">
+    Turn a signal into a research brief.
+  </Card>
+</CardGroup>

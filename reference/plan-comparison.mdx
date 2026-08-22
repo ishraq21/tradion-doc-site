@@ -1,0 +1,118 @@
+---
+title: "Plan comparison"
+description: "Exactly what differs between Starter, Trader, and Quant."
+icon: "table-columns"
+---
+
+<CardGroup cols={3}>
+  <Card title="Starter" icon="seedling">
+    **$25/mo** · 7-day free trial
+
+    All AI analysis tools, unlimited. No automations.
+  </Card>
+  <Card title="Trader" icon="bolt">
+    **$100/mo** · 7-day free trial
+
+    Adds the quant terminal, automations, and alerting.
+  </Card>
+  <Card title="Quant" icon="crown">
+    **$200/mo** · no trial
+
+    10× the limits and a more capable agent model.
+  </Card>
+</CardGroup>
+
+## Features
+
+| | Starter | Trader | Quant |
+| --- | :---: | :---: | :---: |
+| Chart Analyzer | ✅ | ✅ | ✅ |
+| Lens | ✅ | ✅ | ✅ |
+| Earnings Spider | ✅ | ✅ | ✅ |
+| Trade Autopsy | ✅ | ✅ | ✅ |
+| Tradion Memory | ✅ | ✅ | ✅ |
+| Portfolio dashboard | ✅ | ✅ | ✅ |
+| AI Asset Manager | ✅ | ✅ | ✅ |
+| AI Quant Research | ❌ | ✅ | ✅ |
+| Automations & alerting | ❌ | ✅ | ✅ |
+| AI agent nodes | ❌ | ✅ | ✅ |
+
+## Limits
+
+| | Starter | Trader | Quant |
+| --- | :---: | :---: | :---: |
+| Chat messages / month | 150 | 500 | 1,000 |
+| Quant sessions / month | — | 30 | 300 |
+| Agent runs / month | — | 50 | 500 |
+| Automations you can own, in total | — | 10 | 50 |
+| Alerts | — | Unlimited | Unlimited |
+| Agent model | — | Sonnet | **Opus** |
+
+Reading that table:
+
+- **Chat messages** are messages to the AI Asset Manager. A **quant session** is one message in Analysis mode in the quant terminal; Ask mode is free. An **agent run** is one AI agent step firing inside an automation.
+- **The automation number is a total, not a running-at-once count.** On Trader you can own ten automations, full stop. Pausing one does not free the slot — delete it or upgrade.
+- **Agent model** is the AI model behind the agent step in an automation. Starter has no automations, so it has no agent model.
+
+Everything not in this table is unlimited on every paid plan — chart analyses, Lens captures, earnings reports, trade logging, autopsy generation, portfolio syncs.
+
+<Info>
+  Detail on what each meter counts and when it resets: [usage limits](/concepts/usage-limits).
+</Info>
+
+## Free trial
+
+Starter and Trader include a **7-day free trial**. You enter card details up front and are not charged until day 8; cancel any time before then at no cost.
+
+<Warning>
+  **Quant has no trial.** The compute cost of 300 quant sessions and 500 Opus agent runs makes a free week unviable. If you want to evaluate Tradion before committing at that level, trial Trader first and upgrade — the upgrade grants Quant's full allowance immediately.
+</Warning>
+
+The trial is once per account, not once per plan.
+
+## Which one
+
+<AccordionGroup>
+  <Accordion title="Choose Starter if…" icon="seedling">
+    You want the analysis and behavioural tools and you're comfortable watching the market yourself. Every research and autopsy tool is unlimited here — what you give up is automation and the Python quant terminal.
+
+    This is the right starting point for most people.
+  </Accordion>
+  <Accordion title="Choose Trader if…" icon="bolt">
+    You're tracking more setups than you can watch, or you want the quant research terminal. This is the first tier where Tradion works while you're away from the screen, and it's where most active traders land.
+  </Accordion>
+  <Accordion title="Choose Quant if…" icon="crown">
+    You're running research daily and 30 sessions a month is the binding constraint, or you want Opus driving your agents. The jump is a 10× multiplier on every meter plus the model change, not a feature unlock — if you aren't hitting Trader's ceilings, you don't need it yet.
+  </Accordion>
+</AccordionGroup>
+
+## Changing plans
+
+From **Settings → Subscription**:
+
+- **Upgrades** apply immediately, and the new tier's full monthly allowance is granted right away rather than pro-rated.
+- **Downgrades** reduce your allowances to the new tier's caps. The confirmation screen tells you when the change takes effect and what, if anything, you are charged — read it before confirming.
+- **Cancellation** keeps access until the period ends, then the account moves to unsubscribed. Your data is retained, but every automation you have is switched off.
+
+<Warning>
+  Cancelling deactivates every automation you own. They are not deleted, but they stop running and stay off until you resubscribe and switch them back on one at a time. Nothing turns them back on for you.
+</Warning>
+
+## There is no free plan
+
+Three plans, all paid. Starter and Trader come with a 7-day free trial; there is no permanently free tier, and an account with no subscription cannot run analyses. If you see a "Free" plan mentioned anywhere, it is out of date.
+
+<CardGroup cols={2}>
+  <Card title="Managing your subscription" icon="receipt" href="/account/managing-subscription">
+    Upgrades, downgrades, failed payments, and cancellation.
+  </Card>
+  <Card title="Usage limits" icon="gauge-high" href="/concepts/usage-limits">
+    What each meter counts and when it resets.
+  </Card>
+  <Card title="AI models" icon="microchip" href="/reference/ai-models">
+    Where the Sonnet-to-Opus switch sits, and what it changes.
+  </Card>
+  <Card title="Automations" icon="bolt" href="/automations/overview">
+    What the Trader tier unlocks and how it is built.
+  </Card>
+</CardGroup>

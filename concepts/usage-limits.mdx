@@ -1,0 +1,91 @@
+---
+title: "Usage limits explained"
+sidebarTitle: "Usage limits"
+description: "What each meter counts, when it resets, and what happens when you hit zero."
+icon: "gauge-high"
+---
+
+Tradion meters three things. Everything else on your plan is unlimited.
+
+<CardGroup cols={3}>
+  <Card title="Chat messages" icon="message">
+    Messages to the **AI Asset Manager** — your portfolio chat.
+  </Card>
+  <Card title="Quant sessions" icon="terminal">
+    Analyses started in **AI Quant Research**, where Python runs in a sandbox.
+  </Card>
+  <Card title="Agent runs" icon="robot">
+    Executions of an **AI Agent node** inside an automation.
+  </Card>
+</CardGroup>
+
+## Monthly allowances
+
+| Meter | Starter | Trader | Quant |
+| --- | --- | --- | --- |
+| Chat messages | 150 | 500 | 1,000 |
+| Quant sessions | — | 30 | 300 |
+| Agent runs | — | 50 | 500 |
+| Automations you can own, in total | — | 10 | 50 |
+
+<Note>
+  Starter has no quant sessions or agent runs because it doesn't include the quant terminal or automations at all. It's the analysis-tools tier: Chart Analyzer, Lens, Earnings Spider, and Trade Autopsy, all unlimited.
+</Note>
+
+## What is *not* metered
+
+These run as often as you like on any paid plan:
+
+- Chart Analyzer analyses
+- Lens captures
+- Earnings Spider reports
+- Trade logging and autopsy generation
+- Portfolio dashboard refreshes and brokerage syncs
+- Automation *checks* — only the AI agent step inside an automation is metered, not the condition check itself. An automation watching RSI (a 0–100 score for how hard a stock has been pushed one way recently) every 60 seconds, around the clock, costs you nothing.
+
+## When they reset
+
+All three counters reset on your **billing cycle date** — the day of the month you subscribed, not the 1st. You can see your next reset date and current balances in **Settings → Monthly Usage**.
+
+<Frame caption="Settings → Monthly Usage shows live balances and the reset date.">
+  <img src="/images/diagrams/usage-meters.svg" alt="Three meter rows — chat messages, quant sessions, and agent runs — each with a progress bar showing how much of the monthly allowance is used" />
+</Frame>
+
+<Warning>
+  Unused credits **do not roll over**. A month where you used 4 of 50 agent runs still resets to 50, not 96.
+</Warning>
+
+## What happens at zero
+
+You get a clear block, not a silent failure. An upgrade prompt appears naming the specific meter you exhausted and the tier that would cover it.
+
+| Meter exhausted | What still works |
+| --- | --- |
+| Chat messages | Everything except new AI Asset Manager messages. Existing sessions stay readable. |
+| Quant sessions | Existing analyses stay open and readable; you can't start a new one. |
+| Agent runs | Automations keep firing and notifying — only the AI agent step is skipped. |
+
+Your options are to wait for the reset, or upgrade — which grants the new tier's full allowance immediately rather than pro-rating it.
+
+## What each meter really counts
+
+A quant session is one message sent in **Analysis** mode — the mode that writes and runs new code. That one message usually produces several cells, each with its own chart, so a session is closer to a small research project than a single question.
+
+Follow-ups asked in **Ask** mode read the results already on screen. They cost nothing and there is no limit on them. Use Ask hard before spending another Analysis message.
+
+Agent runs are the expensive one — a single run can read SEC filings, pull earnings transcripts, score news sentiment, and search the web across 24 tools. If you are burning through them, the usual cause is an agent attached to a condition that is true most of the time, so it fires on check after check. Attach it to a condition that becomes true at a moment instead — a price crossing a level, or a once-a-day check.
+
+<Tip>
+  Check **Automations → Runs** to see which automation is consuming your agent runs. The run detail view shows every agent step and its cost in time.
+</Tip>
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Compare the plans" icon="table-columns" href="/reference/plan-comparison">
+    What each tier includes, and which limit is likely to bind first.
+  </Card>
+  <Card title="Manage your subscription" icon="receipt" href="/account/managing-subscription">
+    Upgrade, downgrade, or change your payment method.
+  </Card>
+</CardGroup>

@@ -1,0 +1,108 @@
+---
+title: "Lens"
+description: "Analyse a live chart inside Tradion, with the read backed by real market data, not pixels alone."
+icon: "crosshairs"
+---
+
+Lens opens a live chart **inside Tradion**. Set the symbol, timeframe, and indicators on it, click **Capture**, and a panel slides in from the right with a directional read, price targets, and the market data behind them.
+
+<Info>
+  Included on **Starter** and every plan above it, with no monthly cap. See the [plan comparison](/reference/plan-comparison).
+</Info>
+
+<Warning>
+  **Lens reads Tradion's own chart, not your other tabs.** It cannot capture a TradingView tab, a desktop platform, or anything else on your screen. If the chart you want is elsewhere, screenshot it and use [Chart Analyzer](/research/chart-analyzer).
+</Warning>
+
+<Frame caption="The deciding question: is the chart inside Tradion, or already a file?">
+  <img src="/images/diagrams/lens-vs-analyzer.svg" alt="Side-by-side comparison of the inputs and outputs of Lens and Chart Analyzer" />
+</Frame>
+
+## Lens or Chart Analyzer
+
+| | **Lens** | **Chart Analyzer** |
+| --- | --- | --- |
+| The chart | A live one you drive inside Tradion | An image file you already have |
+| What it reads | The chart **plus** live prices, indicators, analyst data, and events | The image only |
+| What it returns | BULLISH / BEARISH / NEUTRAL | BUY / SELL / HOLD / NO TRADE, in a mode you pick |
+| Follow-up questions | Yes, in the panel | No |
+| Needs | A desktop Chromium browser | Nothing beyond the file |
+
+**Use Lens** for a listed symbol you want read with real data behind it. **Use [Chart Analyzer](/research/chart-analyzer)** for a chart Lens can't draw — a screenshot from a friend, an unsupported platform, an old capture.
+
+## Capturing
+
+<Steps>
+  <Step title="Open Lens and click New Analysis">
+    A full-screen chart opens. Change its symbol, timeframe, and indicators as you would anywhere else.
+  </Step>
+  <Step title="Click Capture in the floating toolbar">
+    Your browser raises its own sharing prompt, already scoped to the Tradion tab. Approve it and Lens grabs one frame; dismiss it and nothing is sent anywhere. The permission covers that one capture only.
+  </Step>
+  <Step title="Read the panel">
+    It opens on the right in a loading state, then fills in. **Show** and **Hide** in the toolbar collapse it when you want the chart back.
+  </Step>
+</Steps>
+
+Lens waits for a fully painted frame, retrying up to five times if the first comes back blank. There is no cropping step: it sends the whole frame, and separately enlarges the top-left corner holding the symbol label, because at full-frame resolution one four-letter ticker looks much like another. If the symbol still can't be read you get a text box — type the ticker and click **Retry**.
+
+<Warning>
+  Screen capture is desktop-only: on phones and tablets the button reads **Desktop Only** and is disabled. Use **Chrome or Edge** — the frame-grabbing feature Lens needs exists only in Chromium browsers. The in-app tooltip also names Firefox, where the capture fails.
+</Warning>
+
+## Reading the Lens verdict
+
+The panel header shows **BULLISH**, **BEARISH**, or **NEUTRAL**, a **Probability** percentage, and the capture time. Probability means the strength of the read, not the odds of a payout — [Reading a verdict](/concepts/reading-a-verdict) covers what that number does and doesn't tell you.
+
+Below the header the panel always runs in the same order:
+
+- **Executive summary** — the read in one paragraph.
+- **Forecast cone** — a fan of possible prices that widens the further out it reaches, ending in bull, base, and bear targets.
+- **Trade Setup** — entry, stop, and target. Shown only when a live setup exists; a NEUTRAL read has none.
+- **Critical levels** — a **pivot point** (the previous session's high, low, and close averaged), resistance above and support below (where selling and buying have tended to appear), and **ATR** (Average True Range), the typical distance the symbol travels in one period.
+- **Signals & Anomalies** — five observations, below.
+- **Analyst consensus** and **upcoming events**, for listed stocks.
+- **Ask a Question** — a box that answers against the analysis on screen ("what invalidates this?", "how does this compare to the last capture?") in two to four sentences, with specific levels.
+
+### The five signals
+
+| Slot | What it covers |
+| --- | --- |
+| Volume | Volume against its 20-day average, plus **on-balance volume** — a running total that adds volume on up days and subtracts it on down days, so a rising line means buyers are pushing |
+| Moving averages | The 50-day and 200-day average closing price, and whether they crossed |
+| Fibonacci or Bollinger | **Fibonacci retracement** marks fractions of a past move (38.2%, 50%, 61.8%) where a pullback often stalls. **Bollinger Bands** draw a channel either side of a moving average — price at the upper band is stretched high against its own recent range |
+| Sector context | How the symbol is behaving against the wider market, measured against SPY |
+| You | Personalised feedback, below |
+
+## Live market data behind the read
+
+Before the model writes anything, Tradion pulls real bars for the ticker from Alpaca and computes RSI (a 0–100 score for how hard price has been pushed one way recently), MACD, Bollinger Bands, moving averages, on-balance volume, Fibonacci levels, and ATR, plus sector context and scheduled events. The model is told to use those values rather than estimate them from the picture.
+
+### In plain English
+
+An indicator reading in a Lens result is calculated from market data, not read off your chart. If your chart shows no RSI panel at all, Lens can still tell you the RSI. Fibonacci levels are skipped and labelled as such when the price range is too narrow — under about 2% across the last 60 bars — to mean anything.
+
+When a source is unavailable a banner says so: *some sources unavailable*, or *analysis based on chart vision only*. Treat the second as a Chart Analyzer result in the Lens panel — see [Data sources](/concepts/data-sources) for who supplies what.
+
+## Personalised feedback
+
+With personalisation on, the fifth signal is written about you rather than the ticker. It draws on your [Tradion Memory](/concepts/tradion-memory) — the tickers you analyse most, your logged trades and their autopsy scores, and the mistake patterns those autopsies found.
+
+With little history it has almost nothing to say and reads generically. It sharpens the more trades you log. Turn personalisation off in [Settings](/account/settings).
+
+## History and the overwrite prompt
+
+Nothing is stored until you click **Save to History**. Saved analyses appear on the Lens landing page, searchable by ticker, and reopen with the panel and screenshot intact.
+
+Capture again after saving and Lens asks first: the new capture replaces what's on screen, the saved copy stays in history. Capture again *without* having saved and the current result is gone.
+
+A reopened analysis carries a dated banner: the chart behind it has moved on since. The verdict was true about a moment that has passed.
+
+<CardGroup cols={2}>
+  <Card title="Chart Analyzer" icon="chart-line" href="/research/chart-analyzer">
+    For charts that arrive as files.
+  </Card>
+  <Card title="Troubleshooting" icon="wrench" href="/help/troubleshooting">
+    Capture prompts, blank frames, and wrong tickers.
+  </Card>
+</CardGroup>

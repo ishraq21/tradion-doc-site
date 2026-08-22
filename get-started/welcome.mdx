@@ -1,0 +1,81 @@
+---
+title: "Welcome to Tradion"
+sidebarTitle: "Welcome"
+description: "What Tradion does, who it's for, and how the pieces fit together."
+icon: "hand-wave"
+---
+
+Tradion is an AI analyst. You ask in plain English and it runs quantitative research — analysis built on numbers and price history rather than opinion. It reads your charts and earnings reports, watches the market while you are away, and studies your own trading history to tell you *why* you lose money.
+
+<Frame caption="The app: a sidebar grouped by what you're trying to do, and the screen you picked filling the rest.">
+  <img src="/images/diagrams/app-anatomy.svg" alt="The Tradion interface, with a sidebar grouped into Overview, Research and Analysis, Trade Intelligence, and Automate, alongside the Portfolio screen" />
+</Frame>
+
+## Who this is for
+
+<CardGroup cols={2}>
+  <Card title="Active retail traders" icon="chart-candlestick">
+    You place trades regularly and suspect your P&L is limited more by your behaviour than by your ideas.
+  </Card>
+  <Card title="Self-directed investors" icon="briefcase">
+    You manage your own portfolio and want real analysis on it — allocation, risk, performance — without a Bloomberg terminal.
+  </Card>
+  <Card title="Quant-curious traders" icon="function">
+    You want to test ideas against past prices and run real statistics, without writing the code yourself.
+  </Card>
+  <Card title="Anyone rebuilding discipline" icon="clipboard-check">
+    You know your mistakes are repeating. You want them named, counted, and priced.
+  </Card>
+</CardGroup>
+
+<Note>
+  **Backtest** — running a trading rule over past price data to see what it would have returned. **Indicator** — a calculation on price and volume, like RSI or a 50-day average price, that turns a chart into a number you can compare. Tradion writes and runs the Python for both; you supply the question. [The Tradion Loop](/concepts/the-loop) covers what a backtest can and cannot tell you.
+</Note>
+
+## The four things Tradion does
+
+<Steps>
+  <Step title="Research the market" icon="magnifying-glass-chart">
+    Ask a question in plain English and get back live-data analysis with interactive charts — in the [AI Quant Research](/research/quant-research) terminal, or by dropping a chart screenshot into [Chart Analyzer](/research/chart-analyzer) or [Lens](/research/lens).
+  </Step>
+  <Step title="Understand your portfolio" icon="chart-pie">
+    Connect a brokerage and Tradion pulls in your live holdings, P&L, and sector exposure. Then [chat with your portfolio](/portfolio/ai-asset-manager) like you'd talk to an analyst.
+  </Step>
+  <Step title="Automate the watching" icon="bell">
+    Build [automations](/automations/overview) that combine price, indicators, news, earnings, unusual options activity, and insider filings — the disclosures executives must make when they trade their own company's stock. Alerts go to Discord, email, Telegram, or your own webhook.
+  </Step>
+  <Step title="Learn from every trade" icon="microscope">
+    Log or import your trades and Tradion runs a [post-trade autopsy](/trade-intelligence/trade-autopsy): root cause, a scorecard, and a counterfactual — the same trade replayed with one thing changed, so you can see what following your own rules would have returned. Those findings feed back into every future analysis.
+  </Step>
+</Steps>
+
+## What makes it different
+
+Most trading tools start every analysis from zero. They read a chart the same way for you as for everyone else, because they have no record of how you have traded. Tradion keeps that record. Every analysis, autopsy, and alert adds to a profile of *how you trade*, and that profile is attached to every AI answer you get afterwards.
+
+<Info>
+  This is called **Tradion Memory**. It builds itself in the background, and you can switch it off from the status bar at any time. Read [how it works](/concepts/tradion-memory).
+</Info>
+
+The practical effect: after a handful of trades, Tradion stops giving you generic technical analysis and starts saying things like *"this setup matches a pattern that has shown up in seven of your trades, and your average hold time on those is far shorter than on the ones that worked."*
+
+## Where to go next
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/get-started/quickstart">
+    Get from signup to your first analysis in about ten minutes.
+  </Card>
+  <Card title="Take the tour" icon="compass" href="/get-started/tour">
+    A screenshot walkthrough of every screen in the sidebar.
+  </Card>
+  <Card title="Choose a plan" icon="credit-card" href="/get-started/choosing-a-plan">
+    Starter, Trader, or Quant — and the one question that separates them.
+  </Card>
+  <Card title="Core concepts" icon="lightbulb" href="/concepts/the-loop">
+    The mental model that makes the rest of the product obvious.
+  </Card>
+</CardGroup>
+
+<Warning>
+  Tradion provides research and analysis tools. It is not investment advice, and Tradion does not execute trades on your behalf. See the [Risk Disclosure](https://tradionlabs.com/risk-disclosure).
+</Warning>
