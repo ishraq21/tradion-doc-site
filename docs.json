@@ -41,14 +41,25 @@
   "footer": {
     "socials": {
       "x": "https://x.com/tradionlabs",
-      "website": "https://tradionlabs.com"
+      "discord": "https://discord.gg/6zvFp9rd",
+      "linkedin": "https://www.linkedin.com/company/tradion-labs"
     },
     "links": [
       {
-        "header": "Product",
+        "header": "Navigation",
         "items": [
+          { "label": "Start Free Trial", "href": "https://app.tradionlabs.com" },
+          { "label": "Products", "href": "https://tradionlabs.com/#features" },
           { "label": "Pricing", "href": "https://tradionlabs.com/#pricing" },
-          { "label": "About", "href": "https://tradionlabs.com/about" }
+          { "label": "Docs", "href": "https://docs.tradionlabs.com" }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          { "label": "About", "href": "https://tradionlabs.com/about" },
+          { "label": "Careers", "href": "https://tradionlabs.com/careers" },
+          { "label": "Contact", "href": "https://tradionlabs.com/contact" }
         ]
       },
       {
