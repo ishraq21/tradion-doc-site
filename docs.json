@@ -21,10 +21,10 @@
       "family": "Inter"
     }
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "logo": {
-    "light": "/logo/tradion.png",
-    "dark": "/logo/tradion.png",
+    "light": "/logo/tradion-wordmark.svg",
+    "dark": "/logo/tradion-wordmark.svg",
     "href": "https://tradionlabs.com"
   },
   "navbar": {
