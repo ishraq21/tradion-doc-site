@@ -1,131 +1,62 @@
 # Launch posts
 
-Angle: what writing the documentation exposed. LinkedIn for founders and engineers, X for traders.
-
-No em dashes anywhere in this file, per request.
+docs.tradionlabs.com. No em dashes.
 
 ---
 
 ## LinkedIn (company page)
 
-> We wrote documentation for our trading platform last week and found 10 bugs doing it.
+> Tradion now has documentation. docs.tradionlabs.com
 >
-> Not from testing. From trying to write down what the product actually does.
+> 47 pages covering every screen in the product.
 >
-> Writing a docs page forces a specific question: what happens when someone clicks this? You cannot answer that from the README. You have to read the code. And when you read the code with that question in your head, the gaps are obvious in a way they never are during review.
+> We wrote it for one specific person: someone who trades their own money, learned what RSI is by using it rather than studying it, and has never opened a statistics textbook.
 >
-> Three of the things we found:
+> That decision shaped every page. Volatility, drawdown, backtest, delta, standard deviation, counterfactual. Every one of them gets explained in plain English the first time it appears, on every page it appears. You should not have to already speak the language to read documentation about a product you are paying for.
 >
-> A volume alert let you set a threshold. The helper text under the field said "2x the 20-day average". The code compared the raw number of shares traded. So anyone who typed 2, following our own hint, built an alert that fired on every check from the opening bell. It had been live for months.
+> Most financial software documentation is written the other way around. It assumes the vocabulary and explains the buttons. We think that has it backwards. The buttons are obvious. The vocabulary is the part that stops people.
 >
-> One feature captured screenshots. Our README said it could read a chart from any tab, any platform. The code called getDisplayMedia with preferCurrentTab set to true. It could only ever see our own tab.
+> What is in there:
 >
-> A panel on the profile page showed how much a recurring mistake had cost you. The field it reads is written nowhere in the codebase. It had been empty for every user since the day it shipped.
+> A ten minute quickstart, from signup to your first analysis.
+> Guides for every feature, with the failure modes named rather than hidden.
+> A glossary where no definition uses a word that is not also defined.
+> Reference tables for indicators, supported assets, and plan limits.
 >
-> None of these were caught by tests, because tests check that code does what the code says. Nothing was checking that the code did what we said.
->
-> So we built that. A script reads our automation worker, our constants file, and our pricing config, then asserts the published docs against them. If someone changes what a volume threshold means, the docs fail to build and name the page to fix.
->
-> It caught a regression the same week. We split the docs into their own repo, the path to the app source stopped resolving, every check silently skipped, and the script still printed a green tick. A guard that passes without checking anything is worse than no guard, because you stop looking. Now it exits with an error and names every path it tried.
->
-> Documentation is a test suite for the claims you make. We were shipping without one.
->
-> docs.tradionlabs.com
+> Read it at docs.tradionlabs.com
 
-**Length:** ~330 words. Long for LinkedIn, but build-story posts hold attention when every paragraph carries a concrete fact. Cut the third example if you want it tighter.
+**~230 words.** Trim the "most financial software" paragraph if you want it shorter. That one is the opinion, so it is also the part most likely to get a comment.
 
 ---
 
-## X (single tweet)
+## X
 
-> we wrote docs for our trading app and found 10 bugs doing it
->
-> not from testing. from trying to write down what the product actually does
->
-> the worst one: our volume alert said "2x the 20-day average" under the input box. the code compared raw share count
->
-> anyone who typed 2, following our own hint, got an alert that fired every 60 seconds from the opening bell
->
-> tests check that code does what the code says. nothing was checking that the code did what we said
+### Single post
 
-**Length:** fits in one post on X Premium. For the 280 character limit, use the short version below.
+> tradion docs are live: docs.tradionlabs.com
+>
+> 47 pages, written for someone who trades their own money and has never read a stats textbook
+>
+> every term explained in plain english the first time it shows up. volatility, drawdown, delta, backtest. no assumed vocabulary
+>
+> most fintech docs explain the buttons and assume the words. we did it the other way round
 
-### Short version (fits the 280 character limit, 270 used)
+### Short version (fits 280)
 
-> we found 10 bugs writing our own docs
+> tradion docs are live
 >
-> our volume alert said "2x the 20-day average" on screen. the code compared raw share count, so anyone following our own hint built an alert that fired every minute
+> 47 pages, written for someone who trades their own money and never read a stats textbook
 >
-> tests check code against code. nothing checked code against claims
-
----
-
-## X (thread, if you want more reach)
-
-**1/**
-> we wrote documentation for our trading platform and found 10 bugs doing it
+> every term explained in plain english the first time it appears. no assumed vocabulary
 >
-> not from testing. from trying to write down what the thing actually does
->
-> here are the three worst
-
-**2/**
-> our volume alert had a hint under the input: "2x the 20-day average"
->
-> the code compared the raw number of shares traded today
->
-> so if you typed 2, following our own instruction, you built an alert that fired on every check from the opening bell. live for months
-
-**3/**
-> our screenshot tool was documented as reading a chart from any tab or platform
->
-> the code called getDisplayMedia with preferCurrentTab: true
->
-> it could only ever see its own tab. it never could do the thing the README sold
-
-**4/**
-> a panel showed what a recurring mistake had cost you
->
-> the field it reads is written nowhere in the codebase
->
-> empty for every user since launch. nobody reported it, because an empty panel looks like you just have no data yet
-
-**5/**
-> none of this was caught by tests
->
-> tests check that code does what the code says
->
-> nothing was checking that the code did what WE said, in the README, in the UI copy, on the pricing page
-
-**6/**
-> so we wrote that check
->
-> a script reads the worker, the constants, and the pricing config, then asserts the docs against them
->
-> change what a volume threshold means and the docs fail to build, naming the page to fix
-
-**7/**
-> it caught itself the same week
->
-> we split the docs into their own repo. the path to the app stopped resolving. every check skipped and it still printed a green tick
->
-> a guard that passes without checking is worse than no guard. you stop looking
-
-**8/**
-> documentation is a test suite for the claims you make
->
-> we were shipping without one
+> most fintech docs explain the buttons and assume the words. we flipped it
 >
 > docs.tradionlabs.com
 
 ---
 
-## Notes before you post
+## Notes
 
-**Check these are still true.** The volume bug is fixed and migrated, the Lens copy is corrected, and the dead components are deleted. Posting about bugs you have already fixed is the right move, but say so if anyone asks in the replies.
+Post the LinkedIn one first, then the X one a few hours later so the link is not competing with itself in previews.
 
-**The Recoverable P&L example has an open question.** `FINDINGS.md` #9 says the field is never written, but `server/index.js:2625` has a live enrichment path with a comment saying otherwise. One of the two is stale. Verify before you publish that third example, or drop it and keep the two you are certain of.
-
-**Do not name the AI.** The story is stronger as an engineering practice than as a tool demo, and this audience is allergic to the latter.
-
-**Expect the obvious reply:** "so your docs were wrong too". The honest answer is yes, twice, and both times the checker caught it. That is a better story than claiming otherwise.
+The line worth keeping in both is the one about vocabulary. It is the only claim in here that a competitor cannot copy by writing more pages, and it is the reason the site took as long as it did.
