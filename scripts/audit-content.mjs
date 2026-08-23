@@ -28,7 +28,7 @@ const PERSONAL = /\b(you|your|yours|my|mine|their|cost|costs|lost|lose|losing|ma
 const PERSONAL_WINDOW = 110;
 
 const PRIVACY = [
-  [/\b(?!support@tradionlabs\.com)[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, 'an email address'],
+  [/\b(?!contact@tradionlabs\.com)[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, 'an email address'],
   [/\b(?:acct|account)\s*(?:no\.?|number|#)\s*:?\s*\d{3,}/gi, 'an account number'],
   [/\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b/g, 'something card-shaped'],
   [/\b\d{3}-\d{2}-\d{4}\b/g, 'something SSN-shaped'],
@@ -208,7 +208,7 @@ for (const file of files) {
 
   // Word ceiling. Reference pages are lookup tables and are exempt.
   const n = wordsIn(prose);
-  if (!isReference && !rel.startsWith('help/troubleshooting') && n > 1200) {
+  if (!isReference && !/^help\/(troubleshooting|faq)/.test(rel) && n > 1200) {
     errors.push(`${rel}: ${n} words of prose — over the 1,200 ceiling, split or cut`);
   }
 

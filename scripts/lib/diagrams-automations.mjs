@@ -1,4 +1,4 @@
-import { C, F, svg, rect, text, label, line, path, chip, pin, leader, bar, redact, spark, flowArrow } from './svg.mjs';
+import { C, F, svg, rect, text, label, line, path, chip, pin, leader, bar, redact, spark, meter, flowArrow, setNamespace } from './svg.mjs';
 
 /* ── automation-flow ─────────────────────────────────────────────────────── */
 export function automationFlow() {
@@ -14,12 +14,12 @@ export function automationFlow() {
   const bw = 162, gap = 26;
   nodes.forEach(([t, d, req], i) => {
     const x = 28 + i * (bw + gap);
-    s += rect(x, 62, bw, 108, { fill: req ? C.panel : C.panelAlt, r: 8, stroke: req ? C.accentLine : C.border, dash: req ? '' : '4 3' });
+    s += rect(x, 62, bw, 108, { fill: req ? C.panel : C.panelAlt, r: 8, stroke: req ? C.accentDim : C.border, dash: req ? '' : '4 3' });
     s += text(x + 16, 92, t, { size: 13.5, weight: 600, font: F.head, fill: req ? C.accent : C.dim });
     const mid = d.lastIndexOf(' ', 20);
     s += text(x + 16, 114, mid > 0 ? d.slice(0, mid) : d, { size: 10.5, fill: C.faint });
     if (mid > 0) s += text(x + 16, 129, d.slice(mid + 1), { size: 10.5, fill: C.faint });
-    s += chip(x + 16, 142, req ? 'required' : 'optional', { w: 62, h: 18, fill: req ? C.accentSoft : C.panel, stroke: req ? C.accentLine : C.border, text: req ? C.accent : C.faint });
+    s += chip(x + 16, 142, req ? 'required' : 'optional', { w: 62, h: 18, fill: req ? C.accentWash : C.panel, stroke: req ? C.accentDim : C.border, text: req ? C.accent : C.faint });
     if (i < nodes.length - 1) s += flowArrow(x + bw + 4, x + bw + gap - 4, 116);
   });
   s += rect(28, 194, W - 56, 76, { fill: C.panelAlt, r: 8 });
@@ -58,12 +58,12 @@ export function canvasAnatomy() {
     return o;
   };
   s += node(248, 96, 130, 58, 'NVDA', 'stock', C.accent);
-  s += node(248, 200, 130, 58, 'RSI', 'crosses below 30', C.warn);
-  s += node(248, 288, 130, 58, 'Volume', 'above threshold', C.warn);
-  s += node(430, 200, 96, 58, 'AND', 'both true', C.borderStrong);
+  s += node(248, 200, 130, 58, 'RSI', 'crosses below 30', C.faint);
+  s += node(248, 288, 130, 58, 'Volume', 'above threshold', C.faint);
+  s += node(430, 200, 96, 58, 'AND', 'both true', C.mark);
   s += node(570, 200, 120, 58, 'Agent', 'research brief', C.accent);
   s += node(740, 200, 140, 58, 'Discord', 'send message', C.accent);
-  const link = (x1, y1, x2, y2) => path(`M${x1},${y1} C${x1 + 34},${y1} ${x2 - 34},${y2} ${x2},${y2}`, { stroke: C.borderStrong, sw: 1.4 });
+  const link = (x1, y1, x2, y2) => path(`M${x1},${y1} C${x1 + 34},${y1} ${x2 - 34},${y2} ${x2},${y2}`, { stroke: C.mark, sw: 1.4 });
   s += link(378, 125, 430, 214) + link(378, 229, 430, 229) + link(378, 317, 430, 244);
   s += link(526, 229, 570, 229) + link(690, 229, 740, 229);
   s += pin(238, 80, '1');
@@ -105,10 +105,10 @@ export function crossesVsIs() {
   s += panelChart(28, 52, 420, 240, 'crosses', C.accent);
   s += text(52, 82, 'crosses below 30', { size: 13, weight: 600, font: F.head, fill: C.accent });
   s += text(52, 278, 'Fires once, on the way through.', { size: 11, fill: C.dim });
-  s += panelChart(480, 52, 392, 240, 'is', C.danger);
-  s += text(504, 82, 'is below 30', { size: 13, weight: 600, font: F.head, fill: C.danger });
+  s += panelChart(480, 52, 392, 240, 'is', C.dim);
+  s += text(504, 82, 'is below 30', { size: 13, weight: 600, font: F.head, fill: C.dim });
   s += text(504, 278, 'Fires on every check while it stays there.', { size: 11, fill: C.dim });
-  s += rect(28, 308, W - 56, 50, { fill: C.panelAlt, r: 8, stroke: C.accentLine, dash: '4 3' });
+  s += rect(28, 308, W - 56, 50, { fill: C.panelAlt, r: 8, stroke: C.accentDim, dash: '4 3' });
   s += text(48, 330, 'Conditions are checked about once a minute.', { size: 11.5, weight: 600, font: F.head });
   s += text(48, 348, '"Is below" on a condition that stays true for an hour is roughly sixty alerts. Use "crosses" unless you want that.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
@@ -143,14 +143,14 @@ export function signalMatrix() {
     for (let c = 0; c < 4; c++) {
       const cx = x0 + c * cw + cw / 2;
       if (r[c + 1]) {
-        s += `<circle cx="${cx}" cy="${y + 1}" r="8" fill="${C.accentSoft}" stroke="${C.accent}" stroke-width="1"/>`;
+        s += `<circle cx="${cx}" cy="${y + 1}" r="8" fill="${C.accentWash}" stroke="${C.accent}" stroke-width="1"/>`;
         s += `<path d="M${cx - 3.5},${y + 1} l2.6,2.8 l4.6,-5.4" fill="none" stroke="${C.accent}" stroke-width="1.6" stroke-linecap="round"/>`;
       } else {
         s += line(cx - 4, y + 1, cx + 4, y + 1, { stroke: C.faint, sw: 1.4 });
       }
     }
   });
-  s += text(28, 388, 'Earnings, options flow, insider filings, and corporate actions only exist for individual companies — so they are stocks only.', { size: 10.5, fill: C.faint });
+  s += text(28, 388, 'Earnings, options flow, insider filings, and corporate actions only exist for individual companies, so they are stocks only.', { size: 10.5, fill: C.faint });
   return svg(W, H, s, {
     title: 'Signal types by asset type',
     desc: 'A grid of nine signal types against four asset types. Price and technical indicators work everywhere; volume and daily change work for stocks, crypto and options; news covers stocks and crypto; earnings, options flow, insider filings and corporate actions are stocks only.',
@@ -168,13 +168,13 @@ export function notificationFanout() {
     ['Webhook', 'Signed POST to your own endpoint'],
   ];
   let s = label(28, 32, 'One trigger, as many channels as you want');
-  s += rect(28, 130, 190, 100, { fill: C.panel, r: 8, stroke: C.accentLine });
+  s += rect(28, 130, 190, 100, { fill: C.panel, r: 8, stroke: C.accentDim });
   s += text(48, 164, 'Trigger fires', { size: 13.5, weight: 600, font: F.head, fill: C.accent });
   s += text(48, 186, 'Conditions all met', { size: 10.5, fill: C.faint });
   s += text(48, 204, 'and cooldown has passed', { size: 10.5, fill: C.faint });
   chans.forEach(([n, d], i) => {
     const y = 52 + i * 60;
-    s += path(`M222,180 C290,180 300,${y + 22} 356,${y + 22}`, { stroke: C.borderStrong, marker: 'a' });
+    s += path(`M222,180 C290,180 300,${y + 22} 356,${y + 22}`, { stroke: C.mark, arrow: true });
     s += rect(366, y, 300, 46, { fill: C.panel, r: 7 });
     s += text(386, y + 20, n, { size: 12, weight: 600, font: F.head });
     s += text(386, y + 36, d, { size: 10, fill: C.faint });
@@ -187,7 +187,7 @@ export function notificationFanout() {
     s += text(722, 104 + i * 34, mid > 0 && t.length > 22 ? t.slice(0, mid) : t, { size: 10.5, fill: C.dim });
     if (mid > 0 && t.length > 22) s += text(722, 118 + i * 34, t.slice(mid + 1), { size: 10.5, fill: C.dim });
   });
-  s += text(28, 344, 'A revoked Discord webhook keeps failing until you replace the URL. Nothing turns itself off.', { size: 10.5, fill: C.warn });
+  s += text(28, 344, 'A revoked Discord webhook keeps failing until you replace the URL. Nothing turns itself off.', { size: 10.5, fill: C.faint });
   return svg(W, H, s, {
     title: 'One trigger dispatching to five channels',
     desc: 'A trigger on the left fans out to five notification channels: Discord, email, Telegram, in-app, and an outbound webhook. A side panel describes the retry behaviour when a delivery fails.',
@@ -208,8 +208,8 @@ export function webhookFlow() {
   const bw = 168, gap = 24;
   steps.forEach(([t, d], i) => {
     const x = 28 + i * (bw + gap);
-    s += rect(x, 60, bw, 104, { fill: C.panel, r: 8, stroke: i === 3 ? C.accentLine : C.border });
-    s += chip(x + 14, 74, String(i + 1), { w: 22, h: 20, fill: C.accentSoft, stroke: C.accentLine, text: C.accent });
+    s += rect(x, 60, bw, 104, { fill: C.panel, r: 8, stroke: i === 3 ? C.accentDim : C.border });
+    s += chip(x + 14, 74, String(i + 1), { w: 22, h: 20, fill: C.accentWash, stroke: C.accentDim, text: C.accent });
     s += text(x + 14, 116, t, { size: 12, weight: 600, font: F.head, fill: i === 3 ? C.accent : C.text });
     const mid = d.lastIndexOf(' ', 24);
     s += text(x + 14, 134, mid > 0 ? d.slice(0, mid) : d, { size: 9.5, fill: C.faint });
@@ -218,8 +218,8 @@ export function webhookFlow() {
   });
   s += rect(28, 186, W - 56, 62, { fill: C.bg, r: 8, stroke: C.border });
   s += text(48, 210, 'X-Tradion-Signature: sha256=<hex digest>', { size: 11.5, font: F.mono, fill: C.accent });
-  s += text(48, 232, 'Idempotency-Key: <unique per delivery — use it to drop duplicates>', { size: 11.5, font: F.mono, fill: C.dim });
-  s += rect(28, 262, W - 56, 40, { fill: C.panelAlt, r: 8, stroke: C.warn, dash: '4 3' });
+  s += text(48, 232, 'Idempotency-Key: <unique per delivery, use it to drop duplicates>', { size: 11.5, font: F.mono, fill: C.dim });
+  s += rect(28, 262, W - 56, 40, { fill: C.panelAlt, r: 8, stroke: C.faint, dash: '4 3' });
   s += text(48, 287, 'Treat an unsigned or mismatched request as hostile. Anyone can POST to a public URL.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
     title: 'The outbound webhook flow',

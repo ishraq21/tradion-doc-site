@@ -76,7 +76,7 @@ Specifically banned:
 
 - ❌ Real or plausible account balances, portfolio values, or net worth figures
 - ❌ Real or plausible P&L amounts in dollars — "you lost $2,140 on this pattern"
-- ❌ Any person's name, username, handle, or email other than `support@tradionlabs.com`
+- ❌ Any person's name, username, handle, or email other than `contact@tradionlabs.com`
 - ❌ Broker account numbers, order IDs, or anything shaped like one
 - ❌ Screenshots or diagrams containing any of the above
 

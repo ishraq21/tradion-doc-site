@@ -230,7 +230,7 @@ func main() {
   **How the secret works today.** It is one platform-wide setting on Tradion's servers — no per-user secret, no page that shows you one, no self-serve rotation. Two things follow:
 
   1. **If that setting is empty, the `X-Tradion-Signature` header is omitted entirely.** The request still arrives, unsigned. Reject a request with no signature header — never read an absent header as "signing isn't in use here". That is the failure mode people get wrong.
-  2. **To receive signed webhooks, ask.** Email `support@tradionlabs.com`. Until it is confirmed for your account, treat deliveries as unauthenticated and defend the endpoint another way: a long unguessable path, an allowlist, or both.
+  2. **To receive signed webhooks, ask.** Email `contact@tradionlabs.com`. Until it is confirmed for your account, treat deliveries as unauthenticated and defend the endpoint another way: a long unguessable path, an allowlist, or both.
 </Warning>
 
 ## Not acting on the same alert twice

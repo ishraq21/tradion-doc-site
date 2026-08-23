@@ -6,45 +6,107 @@ icon: "circle-question"
 
 The questions people ask before they subscribe, and the ones they ask in week one. Each answer links to the page that covers it properly.
 
-## Trading and safety
+## What Tradion does
 
 <AccordionGroup>
   <Accordion title="Does Tradion place trades?" icon="ban">
-    No. Never, on any plan, under any setting. There is no order-entry path in the product at all — nothing in Tradion can buy, sell, size, or close a position for you. Every output is analysis that you act on yourself, through your own broker.
-  </Accordion>
-
-  <Accordion title="Is my brokerage connection read-only?" icon="lock">
-    Yes. The link is established through a regulated aggregator and the access granted is read-only: positions, balances, and trade history in, nothing out. Tradion cannot place, change, or cancel an order, and cannot move money. You can revoke the connection from **Settings → Connected Brokerages** and again from inside your broker's own security settings — see [connecting a brokerage](/portfolio/connect-brokerage).
+    No. Never, on any plan, under any setting. There is no order-entry path in the product: nothing in Tradion can buy, sell, size, or close a position for you. Every output is analysis that you act on yourself, through your own broker.
   </Accordion>
 
   <Accordion title="Is this investment advice?" icon="scale-balanced">
-    No. Tradion Labs is not a registered investment adviser, a broker-dealer, or a financial institution, and nothing in the product is a personalised recommendation to buy or sell anything. Tradion produces analysis — a rating, a level, a pattern in your own history — and the decision is entirely yours. Trading involves risk of loss.
+    No. Tradion Labs is not a registered investment adviser, a broker-dealer, or a financial institution, and nothing in the product is a personalised recommendation to buy or sell anything. Tradion produces analysis (a rating, a level, a pattern in your own history) and the decision is entirely yours. Trading involves risk of loss.
   </Accordion>
 
-  <Accordion title="Which brokers are supported?" icon="building-columns">
-    More than 30, through our brokerage aggregator. Commonly used ones include Interactive Brokers, Charles Schwab, Fidelity, E*TRADE, Robinhood, Webull, Tradier, Alpaca, and Coinbase. Search the full list inside the connection window; if yours isn't there, log trades by hand and [tell us which one](/help/contact).
+  <Accordion title="Do I need to connect a brokerage?" icon="link-slash">
+    No. A connection saves typing: your positions and closed trades arrive on their own. Without one you enter positions and trades by hand, and every other part of the product behaves the same way. See [portfolio overview](/portfolio/overview).
+  </Accordion>
+
+  <Accordion title="Do I need to know Python?" icon="code">
+    No. **Python** is the programming language most quantitative analysis is written in. You type a question in English, Tradion writes the Python, runs it against live market data, and shows you the charts and numbers it produced. The code sits beside each result so you can check the working, but it is read-only. See [quant research](/research/quant-research).
+  </Accordion>
+
+  <Accordion title="What is the difference between Lens and Chart Analyzer?" icon="crosshairs">
+    Lens reads a live chart inside Tradion. You open a chart in the app, start a capture, and Lens combines what it sees with current prices, indicators, and upcoming events, then takes follow-up questions. It needs Chrome or Edge on a desktop, and it reads Tradion's own chart only: it cannot capture a TradingView tab or anything else on your screen.
+
+    [Chart Analyzer](/research/chart-analyzer) takes a chart image you already have and reads the image, nothing else. It returns BUY, SELL, HOLD, or NO TRADE in a timeframe you pick, with no follow-up questions. Both are on every plan with no monthly cap. Full comparison: [Lens](/research/lens).
   </Accordion>
 </AccordionGroup>
 
-## Plans and limits
+## Your brokerage connection
+
+<AccordionGroup>
+  <Accordion title="What can Tradion see, and can it move my money?" icon="lock">
+    The link runs through SnapTrade, a regulated aggregator (a service that holds the connection to your broker on your behalf). The access granted is read-only: balances, positions, and transaction history come in, and nothing goes out. Tradion cannot place, change, or cancel an order, and cannot move money. It does not receive your personal details, your bank links, or your tax documents, and it never sees your broker password. Revoke the connection at **Settings → Connected Brokerages**, and again inside your broker's own security settings. See [connecting a brokerage](/portfolio/connect-brokerage).
+  </Accordion>
+
+  <Accordion title="Which brokers are supported?" icon="building-columns">
+    More than 30. Commonly used ones include Interactive Brokers, Charles Schwab, Fidelity, E*TRADE, Robinhood, Webull, Tradier, Alpaca, and Coinbase. Search the full list inside the connection window. If yours is not there, log trades by hand and [tell us which one](/help/contact).
+  </Accordion>
+</AccordionGroup>
+
+## Plans, limits, and billing
 
 <AccordionGroup>
   <Accordion title="Is there a free plan?" icon="tag">
-    No. There are three plans — Starter $25, Trader $100, Quant $200 a month. Starter and Trader include a 7-day free trial, once per account. An account with no subscription cannot run analyses. See [plan comparison](/reference/plan-comparison).
+    No. Three plans, all paid: Starter $25, Trader $100, Quant $200 a month. Starter and Trader include a 7-day free trial, once per account. An account with no subscription cannot run analyses. See [plan comparison](/reference/plan-comparison).
+  </Accordion>
+
+  <Accordion title="What happens when I hit a limit?" icon="gauge-high">
+    You get a clear block naming the meter you ran out of, not a silent failure. Three things are metered: chat messages, quant sessions, and agent runs (one run of the AI step inside an automation).
+
+    Out of chat messages, your existing sessions still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
+  </Accordion>
+
+  <Accordion title="Do unused credits roll over?" icon="rotate-left">
+    No. All three meters reset to the full monthly allowance on your billing cycle date, which is the day of the month you subscribed rather than the 1st. Whatever you did not use is gone. A month where you used 4 of 50 agent runs resets to 50, not 96.
   </Accordion>
 
   <Accordion title="How many automations can I have?" icon="bolt">
     Ten on Trader, fifty on Quant. Starter has no automations.
 
-    That number is a **total**, not a running-at-once count. Pausing an automation does not free a slot — to make room, delete one you no longer need or move up a plan.
+    That number is a **total**, not a running-at-once count. Pausing an automation does not free a slot. To make room, delete one you no longer need or move up a plan. See [automations overview](/automations/overview).
   </Accordion>
 
-  <Accordion title="Do unused credits roll over?" icon="rotate-left">
-    No. All three meters reset to their full monthly allowance on your billing cycle date, and whatever you didn't use is gone. A month where you used 4 of 50 agent runs resets to 50, not 96. See [usage limits](/concepts/usage-limits).
+  <Accordion title="Can I get a refund?" icon="receipt">
+    Subscription fees are non-refundable, including for the unused part of a period, and there is no credit for a mid-cycle downgrade or for unused allowances. If you think you have been billed in error, email contact@tradionlabs.com within 30 days of the charge and we will look at it.
+  </Accordion>
+</AccordionGroup>
+
+## Your data
+
+<AccordionGroup>
+  <Accordion title="Do you train AI models on my trading data?" icon="database">
+    Yes, in one specific way.
+
+    Every time you save a **trade autopsy**, which is Tradion's written breakdown of one closed trade, two labelled training examples are derived from it and stored automatically. One pairs the trade's context with the behavioural mistake the autopsy found. The other pairs the same context with the quality scores it gave. This happens on save, there is no separate opt-in, and it cannot be switched off while your account is active.
+
+    If those examples are used to fine-tune a model, your user ID and other identifying information are stripped first. Anonymised data that has already gone into a training batch cannot be pulled back out afterwards.
+
+    The examples are not sold, not used for advertising, and not shared with third parties for their own purposes. The AI providers that generate your analyses (Anthropic, Google, and OpenAI) state in their own API terms that they do not train on data sent through their APIs.
+
+    Email contact@tradionlabs.com to have your training examples exported, deleted, or flagged so they are left out of any future fine-tuning. Full detail is in the [Privacy Policy](https://tradionlabs.com/privacy).
   </Accordion>
 
-  <Accordion title="What happens to my automations if I cancel?" icon="power-off">
-    Every one is switched off at the end of your paid period. They are not deleted. Resubscribing does not switch them back on — you do that yourself, one at a time.
+  <Accordion title="Can I turn personalisation off?" icon="toggle-off">
+    Yes. A **Personalization On / Off** switch sits in the status bar at the top of the app, and the same switch is on your [Profile](/trade-intelligence/profile). Turned off, none of your history is written into AI requests and answers come back generic. It applies everywhere, immediately.
+
+    It stops your profile being sent into prompts. It does not stop Tradion building and updating that profile. The data is collected either way.
+  </Accordion>
+
+  <Accordion title="Do you sell my trading data?" icon="shield-halved">
+    No. Tradion does not sell, rent, lease, or trade your personal information, and that includes your trades, your positions, and your behavioural profile. Your data goes only to the service providers needed to run the product, such as the payment processor and the AI providers that generate your analyses. The full list is in the [Privacy Policy](https://tradionlabs.com/privacy).
+  </Accordion>
+
+  <Accordion title="Can I export my data?" icon="download">
+    There is no one-click account export in the app yet. You can export a quant session yourself as a Jupyter notebook, a file that holds the code and its results together, from [the canvas](/research/the-canvas). For everything else, email contact@tradionlabs.com and ask for a copy of your data in a machine-readable format. Do this *before* deleting an account, not after.
+  </Accordion>
+
+  <Accordion title="What happens to my data if I cancel?" icon="box-archive">
+    It stays. Cancelling ends the billing and drops you to an unsubscribed account at the end of the period you have paid for. Your trades, autopsies, analyses, memory, and playbook rules are all still there when you come back.
+
+    One thing does change. Every automation is switched off at the end of the paid period. They are not deleted, and resubscribing does not switch them back on. You do that yourself, one at a time.
+
+    Deleting your account is the separate, permanent action. [That page explains the difference](/account/deleting-your-account).
   </Accordion>
 </AccordionGroup>
 
@@ -52,43 +114,27 @@ The questions people ask before they subscribe, and the ones they ask in week on
 
 <AccordionGroup>
   <Accordion title="Can I use Tradion on my phone?" icon="mobile">
-    Not for the main product. Signing in works on a phone, but any browser window narrower than 640 pixels gets a screen asking you to move to a desktop. That's deliberate — the terminal, the canvas, and the automation builder need the width to be usable rather than merely visible. The phone screen offers to email you a sign-in link for your computer.
+    Not for the main product. Signing in works on a phone, but any browser window narrower than 640 pixels gets a screen asking you to move to a desktop, and that screen offers to email you a sign-in link for your computer. It is a width check rather than a device check, so a tablet in landscape usually passes and the same tablet in portrait may not.
+
+    The quant terminal, the canvas, and the automation builder are wide multi-panel screens. A phone can display them without giving you room to work in them.
   </Accordion>
 
   <Accordion title="How current is the market data?" icon="clock">
-    Live quotes and snapshots refresh on a 60-second cache, and the historical bars behind indicators on a 5-minute one. Slower-moving data is cached for longer: company overviews and economic series hourly, earnings history for several hours. Automations evaluate their conditions on a 60-second cycle, so a price trigger fires on the next check after a level is crossed, not on the tick itself — see [data sources](/concepts/data-sources).
+    Live quotes and snapshots refresh on a 60-second cache, and the historical bars behind indicators on a 5-minute one. Slower-moving data is held longer: company overviews and economic series for an hour, earnings history for four. Automations check their conditions on a 60-second cycle, so a price trigger fires on the next check after a level is crossed, not on the tick itself. See [data sources](/concepts/data-sources).
+  </Accordion>
+
+  <Accordion title="How many trades before the behavioural analysis is useful?" icon="chart-line">
+    About ten reviewed trades. Patterns are found by comparing autopsies against each other, so below roughly ten the reports are about individual trades, and above it they start being about you. A short psychological profile unlocks at two completed autopsies, and trend arrows and score changes appear at twenty.
+
+    Logging a trade and reviewing it are not the same thing. A hundred logged trades with three autopsies still reads as thin. See [trade autopsy](/trade-intelligence/trade-autopsy).
   </Accordion>
 
   <Accordion title="What AI models do you use?" icon="microchip">
-    Anthropic's Claude does the bulk of the work: Opus for quant code generation and for agent runs on Quant, Sonnet for chart and document analysis, chat, and agent runs on Trader, Haiku for short follow-ups and summaries. Google's Gemini is a fallback when a generation fails, and scores news sentiment. OpenAI is used only to turn text into search vectors — never for chat or analysis. The only model difference between plans is the automation agent. Details: [AI models](/reference/ai-models).
+    Anthropic's Claude does the bulk of the work: Opus for quant code generation and for automation agent runs on Quant, Sonnet for chart and document analysis, chat, and agent runs on Trader, Haiku for short follow-ups and summaries. Google's Gemini reads uploaded files and rewrites quant code cells that fail. OpenAI is used only to turn text into the numeric form that powers search, never for chat or analysis. The one model difference between plans is the automation agent. See [the AI agent node](/automations/ai-agent-node).
   </Accordion>
 
   <Accordion title="Is there an API?" icon="plug">
-    No. There is no public API, there are no API keys, and support cannot issue you one. The only way Tradion talks to a system you control is outbound: an automation can send a **webhook** — one JSON message posted to an address you specify when a trigger matches. Traffic never goes the other way. See [webhook payloads](/reference/webhook-payloads), including the section on when the signature header is present and when it is not.
-  </Accordion>
-
-  <Accordion title="Do you have a Chrome extension?" icon="puzzle-piece">
-    No. Everything runs in the web app, including Lens — it captures your screen using a feature built into Chrome and Edge, with no extension to install. If you're offered a Tradion browser extension anywhere, it isn't from us.
-  </Accordion>
-</AccordionGroup>
-
-## Your data
-
-<AccordionGroup>
-  <Accordion title="Do you sell my trading data?" icon="shield-halved">
-    No. Tradion does not sell, rent, lease, or trade your personal information — that includes your trades, your positions, your behavioural profile, and everything derived from them. Your data is shared only with the service providers needed to run the product, such as the payment processor and the AI providers that generate your analyses. The full list is in the [Privacy Policy](https://tradionlabs.com/privacy).
-  </Accordion>
-
-  <Accordion title="Can I export my data?" icon="download">
-    There's no one-click account export in the app yet. You can export code and results from a quant session yourself — see [the canvas](/research/the-canvas) — and for everything else, email support@tradionlabs.com and request a copy of your data in a machine-readable format. Do this *before* deleting an account, not after.
-  </Accordion>
-
-  <Accordion title="What happens to my data if I cancel?" icon="box-archive">
-    It stays. Cancelling ends the billing and drops you to an unsubscribed account at the end of the period you've paid for; your trades, autopsies, analyses, memory, and playbook rules are all still there when you come back. Deleting your account is the separate, permanent action — [that page explains the difference](/account/deleting-your-account).
-  </Accordion>
-
-  <Accordion title="Can I get a refund?" icon="receipt">
-    Subscription fees are non-refundable, including for the unused part of a period, and there's no credit for a mid-cycle downgrade or for unused allowances. If you think you've been billed in error, email support@tradionlabs.com within 30 days of the charge and we'll look at it.
+    No. There is no public API, there are no API keys, and support cannot issue you one. The only way Tradion talks to a system you control is outbound: an automation can send a **webhook**, one JSON message posted to an address you specify when a trigger matches. Traffic never goes the other way. See [webhook payloads](/reference/webhook-payloads), including the section on when the signature header is present and when it is not.
   </Accordion>
 </AccordionGroup>
 
@@ -96,7 +142,13 @@ The questions people ask before they subscribe, and the ones they ask in week on
   <Card title="Troubleshooting" icon="wrench" href="/help/troubleshooting">
     Full diagnostic steps for every problem people report.
   </Card>
+  <Card title="Glossary" icon="book" href="/help/glossary">
+    Plain-English definitions for every term used across the docs.
+  </Card>
+  <Card title="Plan comparison" icon="table" href="/reference/plan-comparison">
+    What each plan includes, side by side.
+  </Card>
   <Card title="Contact and feedback" icon="envelope" href="/help/contact">
-    Ask us something that isn't answered here.
+    Ask us something that is not answered here.
   </Card>
 </CardGroup>

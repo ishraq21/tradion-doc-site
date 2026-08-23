@@ -10,6 +10,10 @@ icon: "signal"
 
 A signal is one condition on one instrument. There are nine kinds, an automation holds up to ten, and a Logic node joins them with AND or OR. No nesting: `(A AND B) OR C` means two automations.
 
+<Frame caption="All nine signal types, on the condition node. The operator below changes with the type you pick.">
+  <img src="/images/screens/automation-signal-types.jpg" alt="The signal panel showing chips for price, technical, volume, change percent, news, earnings, options flow, insider transactions, and corporate actions, with an operator dropdown underneath" />
+</Frame>
+
 <Frame caption="Stocks get all nine; everything else a subset. Check before picking a ticker.">
   <img src="/images/diagrams/signal-matrix.svg" alt="Grid of the nine signal types against stocks, crypto, forex, and options, showing which combinations exist" />
 </Frame>
@@ -27,6 +31,10 @@ Watches the last traded price, with an operator and your level. **Use it when** 
 ## 2. Technical indicator
 
 Watches a calculated reading rather than raw price. The picker holds **92 entries across eight groups**: 61 indicators and 31 candlestick patterns. Full list in [technical indicators](/reference/technical-indicators).
+
+<Frame caption="The indicator picker. Each entry carries a one-line description, so you can choose without looking anything up.">
+  <img src="/images/screens/automation-indicator-picker.jpg" alt="The indicator dropdown open on the momentum group, listing RSI, MACD, STOCH, STOCHRSI, and ADX, each with a short plain-English description" />
+</Frame>
 
 ```yaml
 type: Technical

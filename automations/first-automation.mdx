@@ -25,13 +25,17 @@ Open **Automations** in the sidebar and click **New automation**. You get two op
 
 Either way you land on the same canvas.
 
-<Frame caption="The canvas builder. Drag from a node's handle to connect it to the next one.">
-  <img src="/images/diagrams/canvas-anatomy.svg" alt="The automation canvas, showing a node palette on the left and a connected graph of asset, condition, logic, agent, and action nodes" />
+<Frame caption="The finished automation. Asset on the left, two signals joined by AND, the action on the right.">
+  <img src="/images/screens/automation-canvas.jpg" alt="The automation canvas showing an NVDA stocks asset node, a volume spike signal, an RSI crosses below 30 signal, an AND logic node, and a notifications action node with In-App, Discord, and Email channels" />
 </Frame>
 
 ## 2. Set the asset
 
 Click the asset node and search `NVDA`. Tradion shows the live price as you type so you can confirm you've got the right instrument.
+
+<Frame caption="Choosing the asset. Type a few letters and the matching instruments appear, live price attached.">
+  <img src="/images/screens/automation-asset.jpg" alt="The asset panel with a name field, asset type chips for stocks, crypto, forex, options, and market, and a symbol search showing NVDA and related tickers" />
+</Frame>
 
 <Tip>
   The signal types available downstream depend on asset type. Earnings and Options Flow are stocks-only; Price, Volume, and Change % work for everything.

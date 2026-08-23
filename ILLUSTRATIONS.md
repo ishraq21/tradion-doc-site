@@ -14,7 +14,6 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 
 | Slug | Shows | Intended page |
 | --- | --- | --- |
-| `diagrams/app-anatomy` | The whole app shell: sidebar groups, main area, status bar, all labelled | `get-started/tour` |
 | `diagrams/onboarding-steps` | The five onboarding steps as a labelled progression | `get-started/onboarding` |
 | `diagrams/plan-ladder` | Starter / Trader / Quant with what each adds | `get-started/choosing-a-plan` |
 | `diagrams/usage-meters` | The three metered counters and what each one counts | `concepts/usage-limits` |
@@ -28,13 +27,11 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | `diagrams/quant-anatomy` | The quant terminal's split pane: chat left, canvas right | `research/quant-research` |
 | `diagrams/cell-anatomy` | One canvas cell: question, generated code, output, chart, summary | `research/the-canvas` |
 | `diagrams/lens-vs-analyzer` | Side-by-side of when to use Lens vs Chart Analyzer | `research/lens` |
-| `diagrams/earnings-anatomy` | An earnings report broken into the sections Tradion extracts | `research/earnings-spider` |
 | `diagrams/autopsy-anatomy` | An autopsy report's sections, labelled | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/scorecard` | The three grades and what each measures | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/autopsy-loop` | Trade → autopsy → pattern → playbook rule → pre-flight check | `trade-intelligence/playbook-and-preflight` |
 | `diagrams/profile-anatomy` | The Profile page's panels, labelled | `trade-intelligence/profile` |
 | `diagrams/automation-flow` | The five node types in order, with which are optional | `automations/overview` |
-| `diagrams/canvas-anatomy` | The automation canvas UI, labelled | `automations/overview` |
 | `diagrams/crosses-vs-is` | Why "crosses below" fires once and "is below" fires constantly | `automations/signal-types` |
 | `diagrams/signal-matrix` | Which of the nine signal types work with which asset types | `automations/signal-types` |
 | `diagrams/notification-fanout` | One trigger dispatching to five channel types | `automations/notifications` |

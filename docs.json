@@ -29,7 +29,7 @@
   },
   "navbar": {
     "links": [
-      { "label": "Support", "href": "mailto:support@tradionlabs.com" },
+      { "label": "Support", "href": "mailto:contact@tradionlabs.com" },
       { "label": "Status", "href": "https://status.tradionlabs.com" }
     ],
     "primary": {

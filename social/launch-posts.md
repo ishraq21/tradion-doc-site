@@ -41,17 +41,19 @@ docs.tradionlabs.com. No em dashes.
 >
 > most fintech docs explain the buttons and assume the words. we did it the other way round
 
-### Short version (fits 280)
+### Short version (276 of 280, counting the link as X does)
 
 > tradion docs are live
 >
 > 47 pages, written for someone who trades their own money and never read a stats textbook
 >
-> every term explained in plain english the first time it appears. no assumed vocabulary
+> every term explained in plain english the first time it appears
 >
 > most fintech docs explain the buttons and assume the words. we flipped it
 >
 > docs.tradionlabs.com
+
+X counts any link as 23 characters whatever its real length, so the URL costs 23 here, not 20. That is why this looks like it should fit with more room than it does.
 
 ---
 

@@ -11,6 +11,7 @@ import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { setNamespace, N, ACCENT } from './lib/svg.mjs';
 import * as core from './lib/diagrams-core.mjs';
 import * as feat from './lib/diagrams-features.mjs';
 import * as trade from './lib/diagrams-trade.mjs';
@@ -20,7 +21,6 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'images', 'diagrams');
 
 const BUILDERS = {
-  'app-anatomy': core.appAnatomy,
   'onboarding-steps': core.onboardingSteps,
   'plan-ladder': core.planLadder,
   'usage-meters': core.usageMeters,
@@ -35,7 +35,6 @@ const BUILDERS = {
   'quant-anatomy': feat.quantAnatomy,
   'cell-anatomy': feat.cellAnatomy,
   'lens-vs-analyzer': feat.lensVsAnalyzer,
-  'earnings-anatomy': feat.earningsAnatomy,
 
   'autopsy-anatomy': trade.autopsyAnatomy,
   'scorecard': trade.scorecard,
@@ -43,7 +42,6 @@ const BUILDERS = {
   'profile-anatomy': trade.profileAnatomy,
 
   'automation-flow': auto.automationFlow,
-  'canvas-anatomy': auto.canvasAnatomy,
   'crosses-vs-is': auto.crossesVsIs,
   'signal-matrix': auto.signalMatrix,
   'notification-fanout': auto.notificationFanout,
@@ -83,6 +81,7 @@ async function main() {
 
   let bytes = 0;
   for (const [slug, build] of Object.entries(BUILDERS)) {
+    setNamespace(slug);   // ids are per-diagram, so two on one page never collide
     const markup = build();
 
     // Scan only what a reader can actually see — text nodes and the
@@ -99,8 +98,40 @@ async function main() {
         process.exit(1);
       }
     }
-    if (!/<title id="t">.+<\/title>/.test(markup) || !/<desc id="d">.+<\/desc>/.test(markup)) {
-      console.error(`✗ ${slug}: missing an accessible title or description`);
+    if (!new RegExp(`<title id="${slug.replace(/[^a-z0-9]/gi, '')}-t">.+</title>`).test(markup)) {
+      console.error(`✗ ${slug}: missing an accessible title`);
+      process.exit(1);
+    }
+
+    // The design contract, enforced rather than trusted.
+    const root = markup.slice(0, markup.indexOf('>') + 1);
+    if (/\swidth=|\sheight=/.test(root)) {
+      console.error(`✗ ${slug}: root carries width/height. It must scale to its column, or it overflows and breaks the lightbox.`);
+      process.exit(1);
+    }
+    if (/style="[^"]*%/.test(root)) {
+      console.error(`✗ ${slug}: percentage size in an inline style on the root renders blank in some engines. Use the viewBox alone.`);
+      process.exit(1);
+    }
+    const hexes = [...markup.matchAll(/#[0-9a-fA-F]{6}\b/g)].map((m) => m[0].toLowerCase());
+    const allowed = new Set([...Object.values(N).map((v) => v.toLowerCase()), ACCENT.toLowerCase()]);
+    const rogue = [...new Set(hexes)].filter((h) => !allowed.has(h));
+    if (rogue.length) {
+      console.error(`✗ ${slug}: colours outside the neutral scale and the single accent: ${rogue.join(', ')}`);
+      process.exit(1);
+    }
+    if (/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(markup)) {
+      console.error(`✗ ${slug}: contains an emoji`);
+      process.exit(1);
+    }
+    // Prose inside a diagram is still prose. The redaction glyph is the one
+    // place a dash is allowed, because it stands in for a withheld number.
+    const prose = [...markup.matchAll(/<(?:text|title|desc)[^>]*>([^<]*)</g)]
+      .map((m) => m[1])
+      .filter((t) => !/^[\s—.\/%•-]*$/.test(t));
+    const dashed = prose.filter((t) => t.includes('\u2014'));
+    if (dashed.length) {
+      console.error(`✗ ${slug}: em dash in diagram text: "${dashed[0].trim()}"`);
       process.exit(1);
     }
 

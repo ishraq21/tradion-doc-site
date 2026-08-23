@@ -1,4 +1,4 @@
-import { C, F, svg, rect, text, label, line, path, chip, pin, leader, bar, redact, spark, flowArrow } from './svg.mjs';
+import { C, F, svg, rect, text, label, line, path, chip, pin, leader, bar, redact, spark, meter, flowArrow, setNamespace } from './svg.mjs';
 
 /* ── portfolio-anatomy ───────────────────────────────────────────────────── */
 export function portfolioAnatomy() {
@@ -14,14 +14,14 @@ export function portfolioAnatomy() {
   s += pin(672, 80, '1') + leader(663, 80, 640, 80);
   s += rect(28, 126, 610, 180, { fill: C.panel, r: 8 });
   s += label(44, 148, 'Value over time');
-  ['1W', '1M', '3M', '1Y', 'All'].forEach((r, i) => s += chip(462 + i * 36, 136, r, { w: 32, h: 18, fill: i === 2 ? C.accentSoft : C.panelAlt, stroke: i === 2 ? C.accentLine : C.border, text: i === 2 ? C.accent : C.faint }));
+  ['1W', '1M', '3M', '1Y', 'All'].forEach((r, i) => s += chip(462 + i * 36, 136, r, { w: 32, h: 18, fill: i === 2 ? C.accentWash : C.panelAlt, stroke: i === 2 ? C.accentDim : C.border, text: i === 2 ? C.accent : C.faint }));
   s += spark(50, 164, 570, 122, [0.28, 0.36, 0.31, 0.44, 0.4, 0.53, 0.48, 0.62, 0.57, 0.7, 0.65, 0.76, 0.72, 0.84]);
   s += pin(672, 200, '2') + leader(663, 200, 646, 200);
   s += rect(658, 126, 254, 180, { fill: C.panel, r: 8 });
   s += label(674, 148, 'Allocation by sector');
-  s += `<circle cx="785" cy="222" r="52" fill="none" stroke="${C.grid}" stroke-width="18"/>`;
+  s += `<circle cx="785" cy="222" r="52" fill="none" stroke="${C.hairline}" stroke-width="18"/>`;
   s += `<circle cx="785" cy="222" r="52" fill="none" stroke="${C.accent}" stroke-width="18" stroke-dasharray="120 207" transform="rotate(-90 785 222)"/>`;
-  s += `<circle cx="785" cy="222" r="52" fill="none" stroke="${C.borderStrong}" stroke-width="18" stroke-dasharray="70 257" transform="rotate(42 785 222)"/>`;
+  s += `<circle cx="785" cy="222" r="52" fill="none" stroke="${C.mark}" stroke-width="18" stroke-dasharray="70 257" transform="rotate(42 785 222)"/>`;
   s += text(785, 292, 'diversification score', { size: 9.5, anchor: 'middle', fill: C.faint });
   s += rect(28, 320, 610, 176, { fill: C.panel, r: 8 });
   s += label(44, 342, 'Holdings');
@@ -29,7 +29,7 @@ export function portfolioAnatomy() {
   ['AAPL', 'NVDA', 'MSFT', 'BTC/USD'].forEach((t, i) => {
     const y = 362 + i * 32;
     s += text(46, y + 14, t, { size: 11, font: F.mono, fill: C.dim });
-    s += spark(120, y + 4, 90, 16, [0.3, 0.5, 0.4, 0.62, 0.55, 0.7], { stroke: i % 2 ? C.danger : C.accent, sw: 1.2 });
+    s += spark(120, y + 4, 90, 16, [0.3, 0.5, 0.4, 0.62, 0.55, 0.7], { stroke: i % 2 ? C.dim : C.accent, sw: 1.2 });
     [0, 1, 2].forEach((c) => s += redact(390 + c * 78, y + 14, { anchor: 'end', s: '——' }));
   });
   s += pin(672, 400, '3') + leader(663, 400, 646, 400);
@@ -55,8 +55,8 @@ export function assetManagerAnatomy() {
   s += label(44, 70, 'Sessions');
   [0, 1, 2].forEach((i) => {
     const y = 82 + i * 42;
-    s += rect(40, y, 156, 34, { fill: i === 0 ? C.accentSoft : C.panelAlt, r: 6, stroke: i === 0 ? C.accentLine : 'none', sw: i === 0 ? 1 : 0 });
-    s += bar(52, y + 12, 100 - i * 14, { fill: i === 0 ? C.accentLine : C.grid });
+    s += rect(40, y, 156, 34, { fill: i === 0 ? C.accentWash : C.panelAlt, r: 6, stroke: i === 0 ? C.accentDim : 'none', sw: i === 0 ? 1 : 0 });
+    s += bar(52, y + 12, 100 - i * 14, { fill: i === 0 ? C.accentDim : C.hairline });
     s += bar(52, y + 22, 66 - i * 8);
   });
   s += rect(224, 48, W - 252, 300, { fill: C.panel, r: 8 });
@@ -67,10 +67,10 @@ export function assetManagerAnatomy() {
   [0.9, 0.72, 0.84].forEach((w, i) => s += bar(340, 150 + i * 14, 480 * w));
   s += rect(340, 202, 492, 104, { fill: C.panelAlt, r: 6 });
   s += label(354, 222, 'Generated chart');
-  [0.4, 0.72, 0.55, 0.86, 0.3].forEach((h, i) => s += rect(370 + i * 92, 296 - h * 64, 46, h * 64, { r: 3, fill: i === 3 ? C.accent : C.borderStrong, stroke: 'none', sw: 0 }));
+  [0.4, 0.72, 0.55, 0.86, 0.3].forEach((h, i) => s += rect(370 + i * 92, 296 - h * 64, 46, h * 64, { r: 3, fill: i === 3 ? C.accent : C.mark, stroke: 'none', sw: 0 }));
   s += rect(224, 360, W - 252, 48, { fill: C.panel, r: 8 });
   s += text(246, 389, 'Ask about your holdings…', { size: 11, fill: C.faint });
-  s += chip(772, 374, 'Send', { w: 74, h: 22, fill: C.accentSoft, stroke: C.accentLine, text: C.accent });
+  s += chip(772, 374, 'Send', { w: 74, h: 22, fill: C.accentWash, stroke: C.accentDim, text: C.accent });
   s += pin(210, 100, '1');
   s += pin(560, 92, '2');
   s += pin(300, 226, '3');
@@ -84,7 +84,7 @@ export function assetManagerAnatomy() {
 /* ── quant-anatomy ───────────────────────────────────────────────────────── */
 export function quantAnatomy() {
   const W = 940, H = 460;
-  let s = label(28, 32, 'AI Quant Research — you describe it on the left, Tradion builds it on the right');
+  let s = label(28, 32, 'AI Quant Research: you describe it on the left, Tradion builds it on the right');
   s += rect(28, 48, 320, 380, { fill: C.panel, r: 8 });
   s += label(44, 70, 'You, in plain English');
   s += rect(44, 84, 288, 62, { fill: C.panelAlt, r: 8 });
@@ -98,17 +98,17 @@ export function quantAnatomy() {
   s += rect(44, 366, 288, 44, { fill: C.panelAlt, r: 8 });
   s += text(58, 393, 'Ask a follow-up…', { size: 11, fill: C.faint });
   s += rect(372, 48, W - 400, 380, { fill: C.panel, r: 8 });
-  s += label(390, 70, 'Canvas — the work it did');
+  s += label(390, 70, 'Canvas: the work it did');
   [0, 1].forEach((i) => {
     const y = 84 + i * 172;
     s += rect(390, y, 520, 158, { fill: C.panelAlt, r: 8 });
-    s += chip(404, y + 12, `Cell ${i + 1}`, { w: 54, h: 20, fill: C.accentSoft, stroke: C.accentLine, text: C.accent });
+    s += chip(404, y + 12, `Cell ${i + 1}`, { w: 54, h: 20, fill: C.accentWash, stroke: C.accentDim, text: C.accent });
     s += chip(466, y + 12, 'Python', { w: 56, h: 20 });
     s += chip(530, y + 12, 'Done', { w: 48, h: 20 });
     s += rect(404, y + 42, 240, 102, { fill: C.bg, r: 6 });
-    [0.8, 0.6, 0.9, 0.45, 0.7].forEach((w, j) => s += bar(416, y + 56 + j * 15, 210 * w, { fill: j === 0 ? C.accentLine : C.grid }));
+    [0.8, 0.6, 0.9, 0.45, 0.7].forEach((w, j) => s += bar(416, y + 56 + j * 15, 210 * w, { fill: j === 0 ? C.accentDim : C.hairline }));
     s += rect(658, y + 42, 238, 102, { fill: C.bg, r: 6 });
-    if (i === 0) [0.5, 0.8, 0.35, 0.65, 0.9].forEach((h, j) => s += rect(676 + j * 44, y + 132 - h * 76, 30, h * 76, { r: 3, fill: j === 2 ? C.danger : C.accent, stroke: 'none', sw: 0 }));
+    if (i === 0) [0.5, 0.8, 0.35, 0.65, 0.9].forEach((h, j) => s += rect(676 + j * 44, y + 132 - h * 76, 30, h * 76, { r: 3, fill: j === 2 ? C.dim : C.accent, stroke: 'none', sw: 0 }));
     else s += spark(676, y + 56, 202, 74, [0.2, 0.5, 0.35, 0.7, 0.55, 0.85, 0.72]);
   });
   s += pin(358, 115, '1');
@@ -126,7 +126,7 @@ export function cellAnatomy() {
   const W = 900, H = 400;
   let s = label(28, 32, 'What one canvas cell contains');
   s += rect(28, 48, 560, 320, { fill: C.panel, r: 8 });
-  s += chip(48, 66, 'Cell 1', { w: 54, h: 20, fill: C.accentSoft, stroke: C.accentLine, text: C.accent });
+  s += chip(48, 66, 'Cell 1', { w: 54, h: 20, fill: C.accentWash, stroke: C.accentDim, text: C.accent });
   s += chip(110, 66, 'Code', { w: 48, h: 20 });
   s += chip(166, 66, 'Output', { w: 56, h: 20 });
   s += chip(530, 66, 'Copy', { w: 44, h: 20 });
@@ -136,7 +136,7 @@ export function cellAnatomy() {
   s += text(62, 156, 'by_day = bars.groupby("dow")["return"].mean()', { size: 10.5, font: F.mono, fill: C.dim });
   s += text(62, 178, 'plot_bar(by_day, title="Average return by weekday")', { size: 10.5, font: F.mono, fill: C.faint });
   s += rect(48, 208, 520, 108, { fill: C.bg, r: 6 });
-  [0.55, 0.8, 0.4, 0.72, 0.28].forEach((h, i) => s += rect(78 + i * 100, 300 - h * 72, 56, h * 72, { r: 3, fill: i === 4 ? C.danger : C.accent, stroke: 'none', sw: 0 }));
+  [0.55, 0.8, 0.4, 0.72, 0.28].forEach((h, i) => s += rect(78 + i * 100, 300 - h * 72, 56, h * 72, { r: 3, fill: i === 4 ? C.dim : C.accent, stroke: 'none', sw: 0 }));
   s += rect(48, 328, 520, 26, { fill: C.panelAlt, r: 6 });
   s += bar(62, 338, 400);
   const notes = [
@@ -176,9 +176,9 @@ export function lensVsAnalyzer() {
       'Reads the ticker for you',
       'One click, no file handling',
       'Follow-up questions after',
-    ], C.warn],
+    ], C.faint],
   ];
-  let s = label(28, 32, 'Same kind of answer — the difference is where the chart is');
+  let s = label(28, 32, 'Same kind of answer. The difference is where the chart is');
   cols.forEach(([t, sub, items, col], i) => {
     const x = 28 + i * 428;
     s += rect(x, 52, 416, 240, { fill: C.panel, r: 8, stroke: C.border });
@@ -192,7 +192,7 @@ export function lensVsAnalyzer() {
       s += text(x + 50, y + 3, it, { size: 11, fill: C.dim });
     });
   });
-  s += rect(28, 306, W - 56, 50, { fill: C.panelAlt, r: 8, stroke: C.accentLine, dash: '4 3' });
+  s += rect(28, 306, W - 56, 50, { fill: C.panelAlt, r: 8, stroke: C.accentDim, dash: '4 3' });
   s += text(48, 328, 'Both return a direction, a confidence score, and price levels.', { size: 11.5, weight: 600, font: F.head });
   s += text(48, 346, 'Neither one places a trade, and neither one is advice.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
@@ -211,7 +211,7 @@ export function earningsAnatomy() {
   [0.9, 0.7, 0.85, 0.5, 0.8, 0.65, 0.9, 0.4, 0.75, 0.6, 0.88, 0.55].forEach((w, i) => s += bar(64, 108 + i * 18, 150 * w));
   s += text(48, 356, 'PDF or transcript', { size: 10.5, fill: C.faint });
   s += text(48, 374, 'Or name a ticker and quarter', { size: 10.5, fill: C.faint });
-  s += flowArrow(256, 292, 226, { marker: 'ag', stroke: C.accent });
+  s += flowArrow(256, 292, 226, { arrow: true, stroke: C.accent });
   const outs = [
     ['Direction & conviction', 'Which way it reads, and how strongly'],
     ['Beat or miss', 'Reported vs what analysts expected'],
@@ -227,9 +227,9 @@ export function earningsAnatomy() {
     s += text(x + 18, y + 30, t, { size: 12.5, weight: 600, font: F.head });
     s += text(x + 18, y + 50, d, { size: 10.5, fill: C.faint });
     if (i === 0) {
-      s += rect(x + 18, y + 66, 88, 24, { r: 5, fill: C.accentSoft, stroke: C.accentLine });
+      s += rect(x + 18, y + 66, 88, 24, { r: 5, fill: C.accentWash, stroke: C.accentDim });
       s += text(x + 62, y + 83, 'BULLISH', { size: 10.5, anchor: 'middle', fill: C.accent, weight: 600 });
-      s += rect(x + 116, y + 74, 170, 8, { r: 4, fill: C.grid, stroke: 'none', sw: 0 });
+      s += rect(x + 116, y + 74, 170, 8, { r: 4, fill: C.hairline, stroke: 'none', sw: 0 });
       s += rect(x + 116, y + 74, 122, 8, { r: 4, fill: C.accent, stroke: 'none', sw: 0 });
     } else {
       [0.85, 0.6].forEach((w, j) => s += bar(x + 18, y + 72 + j * 14, 268 * w));
