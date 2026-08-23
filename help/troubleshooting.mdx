@@ -4,7 +4,7 @@ description: "The problems people hit, and their fixes."
 icon: "wrench"
 ---
 
-This is the full list. Find your symptom, work through the steps in order — they're ordered by how often each one turns out to be the cause, so stopping early is normal. Feature pages link here rather than repeat the steps, so these are the ones to follow.
+This is the full list. Find your symptom, work through the steps in order. They're ordered by how often each one turns out to be the cause, so stopping early is normal. Feature pages link here rather than repeat the steps, so these are the ones to follow.
 
 If nothing here matches, the last section tells you how to report it.
 
@@ -14,7 +14,7 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="I can't sign in" icon="key">
     <Steps>
       <Step title="Check which method your account uses">
-        Two routes: **Google**, and a **magic link** — a one-time sign-in link emailed to you. There is no password field, because accounts made either way have no password. If you signed up with Google, use Google.
+        Two routes: **Google**, and a **magic link**, a one-time sign-in link emailed to you. There is no password field, because accounts made either way have no password. If you signed up with Google, use Google.
       </Step>
       <Step title="If the Google button isn't there at all">
         It is drawn by a script loaded from Google. An ad blocker, privacy extension, or network filter leaves an empty space and no error. Unblock the app's domain and reload, or use the magic link, which doesn't depend on Google.
@@ -66,10 +66,10 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="My brokerage won't connect" icon="link-slash">
     <Steps>
       <Step title="Allow pop-ups and relax tracking protection">
-        The connection window comes from our brokerage aggregator, not from Tradion. Pop-up blockers and strict anti-tracking settings — Safari's "Prevent cross-site tracking" especially — leave it blank. Allow both for the app's domain and retry.
+        The connection window comes from our brokerage aggregator, not from Tradion. Pop-up blockers and strict anti-tracking settings (Safari's "Prevent cross-site tracking" especially) leave it blank. Allow both for the app's domain and retry.
       </Step>
       <Step title="Finish the login on your broker's own page">
-        You sign in to your broker, not to Tradion. Some brokers add a **2FA** challenge — two-factor authentication, the code from your phone — and the window waits for it.
+        You sign in to your broker, not to Tradion. Some brokers add a **2FA** challenge (two-factor authentication, the code from your phone) and the window waits for it.
       </Step>
       <Step title="Approve read-only access explicitly">
         Close the window before approving the scope and no connection is created; nothing appears in Settings.
@@ -78,7 +78,7 @@ If nothing here matches, the last section tells you how to report it.
         Brokers expire authorisations periodically, and always after a password change or 2FA reset. **Settings → Connected Brokerages → Reconnect**. Your imported history is preserved.
       </Step>
       <Step title="If your broker isn't in the list">
-        Log trades by hand meanwhile — [logging a trade](/trade-intelligence/logging-a-trade) — and tell us which broker at [contact](/help/contact).
+        Log trades by hand meanwhile ([logging a trade](/trade-intelligence/logging-a-trade)) and tell us which broker at [contact](/help/contact).
       </Step>
     </Steps>
   </Accordion>
@@ -120,7 +120,7 @@ If nothing here matches, the last section tells you how to report it.
   </Accordion>
 
   <Accordion title="Most of my allocation says 'Other'" icon="chart-pie">
-    Sector labels come from a fixed list of 16 mega-cap tickers. Everything else — small caps, ETFs, most of the S&P 500 — falls to **Other**. That is the lookup being thin, not your account being concentrated. Use the holdings table for the real picture.
+    Sector labels come from a fixed list of 16 mega-cap tickers. Everything else (small caps, ETFs, most of the S&P 500) falls to **Other**. That is the lookup being thin, not your account being concentrated. Use the holdings table for the real picture.
   </Accordion>
 </AccordionGroup>
 
@@ -130,7 +130,7 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="An analysis is stuck or spinning" icon="spinner">
     <Steps>
       <Step title="Give it the full time budget">
-        A quant cell can run for up to 5 minutes, and can wait longer in the queue while the sandbox — the isolated cloud container your Python runs in — starts up. Two to three minutes of silence on a heavy analysis is normal.
+        A quant cell can run for up to 5 minutes, and can wait longer in the queue while the sandbox (the isolated cloud container your Python runs in) starts up. Two to three minutes of silence on a heavy analysis is normal.
       </Step>
       <Step title="Look for an error in the cell rather than a spinner">
         A step that genuinely fails shows a red error in the cell, not an endless spinner. If you see an error, jump to the next section.
@@ -155,7 +155,7 @@ If nothing here matches, the last section tells you how to report it.
         A missing symbol, an empty date range, and a genuine code fault look completely different.
       </Step>
       <Step title="Check the asset is supported">
-        US stocks and ETFs, crypto, forex, and US options. Futures, bonds, and non-US listings are not available — see [supported assets](/reference/supported-assets).
+        US stocks and ETFs, crypto, forex, and US options. Futures, bonds, and non-US listings are not available, see [supported assets](/reference/supported-assets).
       </Step>
       <Step title="Shorten the lookback and narrow the scope">
         Long histories over many symbols hit the 5-minute per-cell ceiling. Ask for less and the cell finishes.
@@ -164,7 +164,7 @@ If nothing here matches, the last section tells you how to report it.
         The generator responds better to a clearer question than to a patched prompt. Say what you want computed and what you want to see.
       </Step>
       <Step title="Start a fresh session if the whole canvas is failing">
-        A new session spends a quant session from your monthly allowance. There is no way to re-run a single cell — see [the canvas](/research/the-canvas).
+        A new session spends a quant session from your monthly allowance. There is no way to re-run a single cell, see [the canvas](/research/the-canvas).
       </Step>
     </Steps>
 
@@ -179,7 +179,7 @@ If nothing here matches, the last section tells you how to report it.
         Only those implement the capture path Lens uses. Safari and Firefox either hide the button or fail at the moment of capture. A button reading **Desktop Only** means your browser cannot do it.
       </Step>
       <Step title="Approve the share prompt and choose the current tab">
-        Dismissing that prompt gives *"Screenshot capture was cancelled or failed"* — the same message every capture failure produces, so it is not always a permission problem.
+        Dismissing that prompt gives *"Screenshot capture was cancelled or failed"*, the same message every capture failure produces, so it is not always a permission problem.
       </Step>
       <Step title="Re-grant the permission if you blocked it once">
         Click the padlock or camera icon in the address bar, reset the screen-share permission for the site, and reload.
@@ -230,7 +230,7 @@ If nothing here matches, the last section tells you how to report it.
         Automations have an active toggle. Anything paused is skipped.
       </Step>
       <Step title="Check your subscription is current">
-        When a subscription ends, **every automation on the account is switched off**. Resubscribing does not switch them back on — you do that yourself, one at a time.
+        When a subscription ends, **every automation on the account is switched off**. Resubscribing does not switch them back on. You do that yourself, one at a time.
       </Step>
       <Step title="Give it a full check cycle">
         Conditions are evaluated every **60 seconds**. A trigger fires on the next check after the condition becomes true, not on the tick itself.
@@ -274,7 +274,7 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="I can't create another automation" icon="lock">
     You have hit your plan's automation cap: **10 on Trader, 50 on Quant**. Starter has none.
 
-    The cap counts **every automation you own**, not the ones currently running. Pausing one does not free a slot — the only ways to make room are to delete an automation you no longer need, or to move up a plan. See [plan comparison](/reference/plan-comparison).
+    The cap counts **every automation you own**, not the ones currently running. Pausing one does not free a slot, the only ways to make room are to delete an automation you no longer need, or to move up a plan. See [plan comparison](/reference/plan-comparison).
   </Accordion>
 
   <Accordion title="Discord alerts stopped" icon="discord">
@@ -283,7 +283,7 @@ If nothing here matches, the last section tells you how to report it.
         Each run lists every channel it tried and the exact error returned. That separates "never fired" from "fired and failed to deliver".
       </Step>
       <Step title="If the error mentions 404, the webhook was deleted">
-        Deleting a Discord webhook, or the channel it posts to, breaks it permanently. This error is not retried and nothing switches the channel off for you — the automation keeps firing and keeps failing until you fix the address.
+        Deleting a Discord webhook, or the channel it posts to, breaks it permanently. This error is not retried and nothing switches the channel off for you, the automation keeps firing and keeps failing until you fix the address.
       </Step>
       <Step title="Create a fresh webhook and paste the new address in">
         In Discord: **Channel Settings → Integrations → Webhooks → New Webhook → Copy Webhook URL**. Paste it into the automation's Discord channel settings.
@@ -306,7 +306,7 @@ If nothing here matches, the last section tells you how to report it.
         It names which of the three meters is empty and when they reset.
       </Step>
       <Step title="Know what consumes each meter">
-        A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger — an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, earnings reports, autopsies, and portfolio syncs cost nothing.
+        A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger, an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, earnings reports, autopsies, and portfolio syncs cost nothing.
       </Step>
       <Step title="Find the automation that's eating them">
         Agent runs are almost always the culprit, and almost always an agent on a high-frequency trigger. **Automations → Runs** shows which automation consumed what. Move the agent onto a daily or crossing trigger.
@@ -325,7 +325,7 @@ If nothing here matches, the last section tells you how to report it.
 
 ## Reporting something not listed here
 
-Use the **Feedback** button in the left sidebar — it attaches your plan, page, browser, and a timestamp for you. Say what you expected, what happened instead, when, and which automation, analysis, or connection was involved. Full guidance on [contact and feedback](/help/contact).
+Use the **Feedback** button in the left sidebar. It attaches your plan, page, browser, and a timestamp for you. Say what you expected, what happened instead, when, and which automation, analysis, or connection was involved. Full guidance on [contact and feedback](/help/contact).
 
 <CardGroup cols={2}>
   <Card title="Contact and feedback" icon="envelope" href="/help/contact">

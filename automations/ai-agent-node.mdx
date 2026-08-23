@@ -1,125 +1,130 @@
 ---
 title: "The AI Agent node"
 sidebarTitle: "AI Agent node"
-description: "Attach a research agent to a trigger and get a brief, not a bare alert."
+description: "Every agent type, what it reads, what it writes, what it costs, and when to use it."
 icon: "robot"
 ---
 
 <Info>
-  Automations need the **Trader** plan or above, and Agent nodes spend from your monthly agent-run allowance — 50 a month on Trader, 500 on Quant. See [usage limits](/concepts/usage-limits).
+  Automations need the **Trader** plan. Agent nodes spend from a monthly allowance: 50 runs on Trader, 500 on Quant. See [usage limits](/concepts/usage-limits).
 </Info>
 
-A price alert tells you a number moved. An Agent node tells you what was going on around it. Drop one between your signals and your Action node: when the automation fires, Tradion researches the ticker first and puts the findings in the same message.
+A price alert tells you a number moved. An Agent node tells you what was going on around it: drop one between your signals and your Action node and Tradion researches the ticker before the message goes out.
 
-## What happens when the trigger fires
+<Frame caption="Six agents on one canvas. The numbered badge on each card is its position in the queue.">
+  <img src="/images/screens/automation-agents.jpg" alt="An automation canvas with an AAPL asset, a weekday schedule node, three signal nodes joined by AND, six agent nodes each with an order badge, and an action panel showing channels, the message template and its variables, an example preview, and cooldown presets" />
+</Frame>
 
-The signals go true, Tradion pulls the data the agent needs, and the agent reads it and writes up what it found. Only then do notifications go out, so every channel carries the finished analysis rather than a bare alert followed by a second message.
+## The six you can add
 
-```mermaid
-flowchart LR
-    A["Signals true"] --> B["Data gathered"]
-    B --> C["Agent writes brief"]
-    C --> D["Message sent to your channels"]
-```
+Click **+ Agent** in the toolbar. Each type can be added once, so six is the ceiling. They run one after another, and the Report Writer is always moved last.
 
-Most agents finish inside five minutes; the Market Brief agent is given up to twelve.
+| Agent | Reads | Writes | Reach for it when | Variable |
+| --- | --- | --- | --- | --- |
+| **Research Agent** | Filings, earnings transcripts, news, the web | Findings plus catalysts (events that could move the price) | You want the story behind an event | `{research_agent}` |
+| **Fundamental Analyst** | Statements, analyst estimates, price history | Valuation, growth, margins, earnings quality, peers | Earnings are close | `{fundamental_agent}` |
+| **Sentiment Analyst** | News tone, Reddit, insider filings, options chain | A positive/negative score, split by source | A name moves on chatter, not numbers | `{sentiment_agent}` |
+| **Chart Analyst** | A chart image rendered on the spot | A BUY / SELL / WAIT read with levels | The setup is technical | `{chart_agent}` |
+| **Market Brief** | Indices, macro, sectors, your holdings | A whole-market digest, not one ticker | You want a briefing on a schedule | `{market_brief_agent}` |
+| **Report Writer** | The agents above | One memo assembled from all of it | Two or more others are on the canvas | `{report_agent}` |
+
+### Two more exist in the code and cannot be added
+
+`quant_analysis` (Quant Engine) has a full settings panel and no entry in the **+ Agent** menu, so it cannot go on a canvas, and `{quant_agent}` never resolves. `full` is an old name treated as another Report Writer.
+
+## How long it takes
+
+Agents are sequential, so the wait is their sum. Market Brief takes about 6 minutes, cut off at 12. Research about 3, Fundamental about 2, and Chart, Sentiment and Report Writer 1 to 2 each, all cut off at 5. The Action node prints the total: **Est. ~15 min · 6 agents, sequential**.
 
 ### In plain English
 
-Attaching an agent buys you context and costs you speed. The alert now waits for the research, so it lands minutes after the trigger rather than seconds after it. Too slow for a scalp entry. Fine for a swing setup, a news event, or an earnings run-up.
+An agent buys context and costs speed. The alert waits for the research, so it lands minutes after the trigger rather than seconds. Too slow for a scalp. Fine for a swing setup or an earnings run-up.
 
-## The agents you can add
+## Settings, agent by agent
 
-Six types sit behind the **+ Agent** toolbar button, and each can be added once — so six agent nodes is the practical ceiling on one canvas. They run in sequence, analysts first and the Report Writer last, with an order badge on each node.
+Every agent also has an **Instructions** box, free text capped at 500 characters.
 
-| Agent | What it produces |
-| --- | --- |
-| **Research Agent** | Raw findings from filings, earnings calls, news, and the open web |
-| **Fundamental Analyst** | Valuation, growth, margins, earnings quality, and peer comparison |
-| **Sentiment Analyst** | A read on news, social chatter, insider activity, and options flow |
-| **Chart Analyst** | A visual read of the chart, with a BUY / SELL / WAIT call and levels |
-| **Market Brief** | A portfolio and watchlist digest — indices, macro, sectors, movers |
-| **Report Writer** | One synthesised memo built from whatever the agents above produced |
+<AccordionGroup>
+  <Accordion title="Research Agent">
+    **Sources** (five, first three on by default): filings, earnings transcripts, news and sentiment, corporate actions (dividends, splits, mergers), web search.
 
-The Report Writer is the only one that reads other agents' output rather than raw data. Add it when you have two or more analysts on the canvas and want a single coherent note instead of three separate blocks.
+    **Lookback**, how far back it searches: 1Q, 2Q, 1Y (default), or 2Y.
 
-## What the agent can look at
+    **Focus** (optional): Revenue Growth, Debt Analysis, Management Changes, Risk Factors, Competitive Position, Margin Trends. Leave empty for a general read, or pick two or three to pull the brief that way.
+  </Accordion>
+  <Accordion title="Fundamental Analyst">
+    **Depth**: Quick (key ratios), Standard (adds earnings and balance sheet), or Deep Dive (multi-quarter trends plus the wider economy). Standard is the default.
 
-There are 24 research tools, and **every one of them is read-only**. No tool can place, change, or cancel an order. What the agent can reach:
+    **Style**, which decides what the write-up leads with: Full Synthesis (default), Value Focus, Growth Focus, or Quality Focus.
 
-- **Filings** — company reports filed with the SEC: annual (10-K), quarterly (10-Q), and event (8-K), searchable down to individual sections
-- **Earnings call transcripts** — what management said, and how it read
-- **News and news sentiment** — the article feed plus a scored read of its tone
-- **Fundamentals** — revenue, margins, cash flow, balance sheet, analyst estimates
-- **Insider activity** — Form 4 filings, the disclosures company insiders must make within two business days of trading their own stock
-- **Corporate actions** — dividends, splits, mergers, spin-offs
-- **Social sentiment** — Reddit trading communities, read for the bullish/bearish balance
-- **Web search** — press releases, analyst commentary, anything public not in the feeds above
-- **Options chain** — the live contracts on the name, including **open interest**, the number of contracts currently held open by somebody
-- **Technical indicators and price history** — bars, snapshots, and the readings calculated on top of them
+    **Peers** (optional): comma-separated tickers to compare against. Fill this in if you want the Report Writer's Peer Comparison section populated.
+  </Accordion>
+  <Accordion title="Sentiment Analyst">
+    **Channels**, all four on by default: news tone, Reddit trading communities, insider activity (Form 4 filings, which a company insider must file within two business days of trading their own stock), and options flow. You cannot turn all four off.
 
-Each agent type gets the subset that fits its job. The tools an individual run used are listed on its detail page.
+    **Depth**: Quick (headlines only), Standard (default), or Deep (full social scan, insider timeline, options analysis).
+  </Accordion>
+  <Accordion title="Chart Analyst">
+    **Trading Mode**, which sets what the read looks for: Swing (days to weeks, default), Day Trade, or Scalp. **Timeframe**: Daily (default), 1H, 4H, Weekly. **Lookback Bars**: how much history is drawn, 20 to 200, default 60.
 
-## Configuring a Research Agent
+    **Indicators** drawn on the chart: RSI(14), MACD, Bollinger, EMA(20), Volume. All but Bollinger are on by default.
+  </Accordion>
+  <Accordion title="Market Brief">
+    **Sections**, eleven available, five on by default: Portfolio Status, Watchlist Scan, Market Context, Catalysts, Top Idea. The rest are Crypto Analysis, Sector Rotation, Forex Monitor, Latest News, Macro Calendar, Earnings Radar. One must stay on.
 
-```yaml
-sources:  sec_filings, earnings_transcripts, news_sentiment   # default
-          + corporate_actions, web_search                     # optional
-lookback: 1Q | 2Q | 1Y | 2Y      # default 1Y
-focus:    Revenue Growth, Debt Analysis, Management Changes,
-          Risk Factors, Competitive Position, Margin Trends   # optional
-```
+    **Depth**: Concise, Standard (default), Detailed. **Watchlist** (optional): extra tickers to scan.
 
-**Lookback** is how far back the agent searches filings, transcripts, and news. **Focus areas** are optional: leave them empty for a general read, or pick two or three to pull the whole brief toward those subjects. Every agent also has a free-text instruction box capped at 500 characters — use it for the specific question you have.
+    This is the one agent needing no ticker. Set the asset type to Market and add a Schedule node.
+  </Accordion>
+  <Accordion title="Report Writer">
+    **Sections**, grouped by what supplies them. Six always work: Executive Summary, Technical Analysis, Trade Plan, Position Sizing, Action Items, Scenario Analysis. The first four are pre-selected.
+
+    The rest stay greyed out until the agent feeding them is on the canvas. Fundamental Analyst unlocks Fundamental Analysis, Earnings Outlook, Cash Flow Analysis, Peer Comparison. Research Agent unlocks Catalyst Calendar. Sentiment Analyst unlocks Options Strategy. Any one of the three unlocks Key Findings and Risk Assessment. Quantitative Metrics needs the Quant Engine, so it is never selectable.
+
+    Selections survive removing the agent that unlocked them, and the group header counts them.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  A "Trade Plan" section is generated analysis, not instruction. Tradion cannot place trades and does not know your account.
+</Warning>
 
 ## What comes back
 
-Every agent returns the same shape, whatever its type:
+Whatever the type: a direction (bullish, bearish, neutral), a conviction score from 1 to 10, a summary under 25 words, bullet-point sections, and exactly three key risks.
 
-- A **direction** — bullish, bearish, or neutral
-- A **conviction** score from 1 to 10
-- A one-sentence summary, under 25 words
-- **Sections** of dense bullet points, each bullet one fact
-- **Exactly three key risks**
+## What the agents can look at
 
-You choose the Report Writer's sections. Six are always available — Executive Summary, Technical Analysis, Trade Plan, Position Sizing, Action Items, Scenario Analysis — and others unlock only when the agent that supplies them is on the canvas: Peer Comparison needs the Fundamental Analyst, Catalyst Calendar the Research Agent, Options Strategy the Sentiment Analyst. The picker greys out the rest.
+There are 24 research tools and **every one is read-only**. None can place, change, or cancel an order. Each agent gets the subset fitting its job.
 
-<Warning>
-  A section called "Trade Plan" is generated analysis, not instruction. Tradion cannot place trades and does not know your account. Entry, stop, and target numbers in an automated brief are one model's reading of one moment, produced without you in the room.
-</Warning>
+| Agent | Tools | Which ones |
+| --- | --- | --- |
+| Research | 7 | Filing search and retrieval, transcripts, news, corporate actions, web search, page fetch |
+| Fundamental | 7 | Statements, estimates, analytics, economic data, price, history, ETF profiles |
+| Sentiment | 6 | News tone, Reddit, web search, page fetch, insider filings, options chain (with open interest, the contracts held open by somebody) |
+| Market Brief | 20 | All but the filings and transcript tools, so crypto, forex, movers, market news |
+| Report Writer | 2 | Price and history, to check a number handed to it |
+| Chart Analyst | none | Reads a rendered chart image |
 
-## What it costs, and how to not waste it
+## What it costs
 
-**One agent run per agent, per fire.** Three analysts on a canvas is three runs every time that automation triggers. The Report Writer is the exception — it synthesises what is already there and consumes nothing.
-
-Runs are refunded when an agent fails or times out. There are also burst limits of 20 runs an hour and 100 a day across your whole account.
+**One agent run per worker agent, per fire.** Three analysts is three runs per trigger. The Report Writer is the exception and costs nothing. Runs are refunded when an agent fails or times out. An account can also trigger only 20 agent-carrying automations an hour and 100 a day.
 
 <Tip>
-  The reliable way to burn an allowance is to attach an agent to a high-frequency trigger. Before you add one, look at what the signal alone does for a week in the [Runs tab](/automations/runs-and-history). A signal that fires twice a month can carry three agents on Trader. A signal that fires twice a day cannot carry one.
+  The reliable way to burn an allowance is putting an agent on a high-frequency trigger. Watch the signal alone for a week in the [Runs tab](/automations/runs-and-history) first.
 </Tip>
 
-If the allowance runs out mid-month, the automation keeps firing and keeps notifying you — the alert arrives without the analysis, and the run is marked **degraded** or **failed** in the Runs tab. Allowances reset at your billing date.
+If the allowance runs out mid-month the automation keeps firing and messaging you, but the alert arrives without analysis and the run reads **degraded** or **failed**. Allowances reset on your billing date.
 
-## Reading the results
-
-Agent output arrives in two places: inside the notification, and on the run's detail page under **Automations → Runs**. The detail page is the fuller version — see [runs and history](/automations/runs-and-history).
-
-## Which model runs
-
-| Plan | Model |
-| --- | --- |
-| Trader | Claude Sonnet |
-| Quant | Claude Opus |
-
-The Chart Analyst always runs on Sonnet, whatever your plan, because it is the model that reads images. Model detail: AI models.
+Trader accounts run Claude Sonnet, Quant accounts Claude Opus. The Chart Analyst is always Sonnet, because that is the model reading the image.
 
 ## Next
 
 <CardGroup cols={2}>
-  <Card title="Notification channels" icon="paper-plane" href="/automations/notifications">
-    Where the brief gets delivered, and how to word it.
+  <Card title="The Action node" icon="paper-plane" href="/automations/notifications">
+    Where the brief lands, and what Personal Insights changes.
   </Card>
   <Card title="Runs and history" icon="clock-rotate-left" href="/automations/runs-and-history">
-    Read what each agent did, step by step.
+    What each agent did, step by step.
   </Card>
 </CardGroup>

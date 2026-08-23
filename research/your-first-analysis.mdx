@@ -4,7 +4,7 @@ description: "A worked example, start to finish."
 icon: "play"
 ---
 
-One real analysis, end to end: *does NVDA move more violently than AMD, and is the gap widening?* About ten minutes, and the same pattern answers everything after it. You write no code — you'll see some, because that's how you learn what an answer is built from.
+One real analysis, end to end: *does NVDA move more violently than AMD, and is the gap widening?* About ten minutes, and the same pattern answers everything after it. You write no code. You'll see some, because that's how you learn what an answer is built from.
 
 <Info>
   AI Quant Research needs the **Trader** plan or above. See [plan comparison](/reference/plan-comparison).
@@ -12,9 +12,9 @@ One real analysis, end to end: *does NVDA move more violently than AMD, and is t
 
 ## Five questions that work as they are
 
-A question needs three ingredients: a **symbol**, a **time window**, and **something measurable**. Type them the way you'd say them — Tradion reads plain English.
+A question needs three ingredients: a **symbol**, a **time window**, and **something measurable**. Type them the way you'd say them, Tradion reads plain English.
 
-- *"Which one moves harder day to day, NVDA or AMD? Last six months. And which had the worse drawdown — the deeper fall from a high before it climbed back?"*
+- *"Which one moves harder day to day, NVDA or AMD? Last six months. And which had the worse drawdown, the deeper fall from a high before it climbed back?"*
 - *"If I'd bought SPY every time its 50-day average price crossed above its 200-day, and sold on the cross back down, would I have beaten holding it? Test 10 years."*
 - *"What's TSLA's worst day of the week over the past two years?"*
 - *"Do AAPL, MSFT, and BTC/USD move together right now, and has that changed in the last 30 days?"*
@@ -24,7 +24,7 @@ Three terms from that list. A **backtest** runs a set of rules over past prices 
 
 ## In plain English: measurements, not opinions
 
-Questions about *why* the market did something are guesswork dressed as analysis. Questions about *what* and *how much* are measurements — and measurement is the only thing running code can do.
+Questions about *why* the market did something are guesswork dressed as analysis. Questions about *what* and *how much* are measurements, and measurement is the only thing running code can do.
 
 Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, and how that ranks against every other selloff in five years. Ask "is NVDA a good buy?" and it has to guess what you meant; ask the first question in that list and it has a job.
 
@@ -32,7 +32,7 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
 
 <Steps>
   <Step title="Open a session">
-    Click **AI Quant Research** in the sidebar, then **New Session**. No form to fill in — a chat panel on the left, an empty canvas on the right, and a cursor in the composer.
+    Click **AI Quant Research** in the sidebar, then **New Session**. No form to fill in, a chat panel on the left, an empty canvas on the right, and a cursor in the composer.
   </Step>
 
   <Step title="Ask the question">
@@ -42,17 +42,17 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
 
     Press Enter. A **quant session** is one message sent in Analysis mode. Ask mode is free and unlimited.
 
-    You can attach files too — up to 5, 10 MB each: CSV, Excel, PDF, JSON, text, images.
+    You can attach files too, up to 5, 10 MB each: CSV, Excel, PDF, JSON, text, images.
   </Step>
 
   <Step title="Watch the cells run">
-    The chat panel counts through its steps — choosing functions, pulling live prices, writing the code, running it. On the right, cells appear one at a time: **Queued**, then **Running · 4.2s**, then **Done · 11.8s**.
+    The chat panel counts through its steps, choosing functions, pulling live prices, writing the code, running it. On the right, cells appear one at a time: **Queued**, then **Running · 4.2s**, then **Done · 11.8s**.
 
-    Tradion decides how many cells your question needs — roughly three to five for a quick lookup, eight to twelve for a full analysis with charts. There's no cap and no add-cell control. This one takes one to three minutes.
+    Tradion decides how many cells your question needs, roughly three to five for a quick lookup, eight to twelve for a full analysis with charts. There's no cap and no add-cell control. This one takes one to three minutes.
   </Step>
 
   <Step title="Read the result">
-    **The chart** is interactive — hover for values, drag to zoom, double-click to reset.
+    **The chart** is interactive, hover for values, drag to zoom, double-click to reset.
 
     **The AI Insight** underneath reads what the cell found, in two or three sentences: *"NVDA's daily moves have averaged roughly 1.8× AMD's since March, with the gap widening after the April earnings gap."*
 
@@ -65,7 +65,7 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
     Every cell has a **Code** / **Output** toggle. Flip it and the generated Python appears:
 
     ```python
-    # Cell 2 — Daily volatility, NVDA vs AMD
+    # Cell 2: daily volatility, NVDA vs AMD
     nvda = fetch_bars("NVDA", timeframe="daily", years=0.5)
     amd  = fetch_bars("AMD",  timeframe="daily", years=0.5)
 
@@ -80,8 +80,8 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
 
     - `fetch_bars` pulls six months of daily price bars.
     - `.pct_change()` turns each close into the percentage it moved from the day before.
-    - `.std()` measures how spread out those daily percentages are. That spread is **standard deviation**, and it's what people mean by **volatility** — how much a price bounces around, whichever way.
-    - `* (252 ** 0.5)` **annualises** it — 252 is the number of trading days in a year, and this restates a daily-sized number as "how much it would move over a year", the form everyone quotes.
+    - `.std()` measures how spread out those daily percentages are. That spread is **standard deviation**, and it's what people mean by **volatility**, how much a price bounces around, whichever way.
+    - `* (252 ** 0.5)` **annualises** it, 252 is the number of trading days in a year, and this restates a daily-sized number as "how much it would move over a year", the form everyone quotes.
 
     The code is read-only here. The copy button in the cell header puts it on your clipboard.
   </Step>
@@ -89,7 +89,7 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
   <Step title="Ask a follow-up">
     When the analysis finishes, a toggle appears above the composer: **Analysis** and **Ask**.
 
-    Switch to **Ask** and type *"which of those two had the deeper drawdown, and when?"*. Tradion answers from what's on screen — nothing re-runs and nothing is charged. Use Ask hard before spending another session.
+    Switch to **Ask** and type *"which of those two had the deeper drawdown, and when?"*. Tradion answers from what's on screen. Nothing re-runs and nothing is charged. Use Ask hard before spending another session.
   </Step>
 
   <Step title="Go deeper with a second analysis">
@@ -101,7 +101,7 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
   </Step>
 
   <Step title="Export the code">
-    Once every cell finishes, an **Export** button appears above the canvas offering **Code — Jupyter notebook (.ipynb)**: every completed cell's Python, in order, with its output. Open it in Jupyter, VS Code, or Google Colab and change what you like — swap the tickers, stretch the window, add an indicator. Code that already works is the best place to start learning Python.
+    Once every cell finishes, an **Export** button appears above the canvas offering **Code, Jupyter notebook (.ipynb)**: every completed cell's Python, in order, with its output. Open it in Jupyter, VS Code, or Google Colab and change what you like, swap the tickers, stretch the window, add an indicator. Code that already works is the best place to start learning Python.
   </Step>
 </Steps>
 
@@ -109,13 +109,13 @@ Tradion cannot tell you why NVDA sold off. It can tell you how far, how fast, an
 
 <AccordionGroup>
   <Accordion title="A cell came back red with an Execution Error">
-    Tradion repairs failures silently, so red means every repair layer ran out — usually because the data doesn't exist. [The canvas](/research/the-canvas) covers the causes and the fixes.
+    Tradion repairs failures silently, so red means every repair layer ran out, usually because the data doesn't exist. [The canvas](/research/the-canvas) covers the causes and the fixes.
   </Accordion>
   <Accordion title="It analysed the wrong ticker">
-    Ordinary words in capitals can be mistaken for symbols. Write it with a dollar sign — `$NVDA` — to remove the ambiguity.
+    Ordinary words in capitals can be mistaken for symbols. Write it with a dollar sign (`$NVDA`) to remove the ambiguity.
   </Accordion>
   <Accordion title="The answer was shallower than expected">
-    Almost always a vague question. Add the missing ingredient — a window, a benchmark, or a measure — and ask again.
+    Almost always a vague question. Add the missing ingredient (a window, a benchmark, or a measure) and ask again.
   </Accordion>
   <Accordion title="It says I'm out of quant sessions">
     Analysis-mode messages consume one each. See [usage limits](/concepts/usage-limits) for what each plan includes and when it resets.

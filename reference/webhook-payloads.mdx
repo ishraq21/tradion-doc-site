@@ -1,6 +1,6 @@
 ---
 title: "Webhook payloads"
-description: "Receive signed automation alerts at your own HTTPS endpoint — the only way an external system consumes Tradion data."
+description: "Receive signed automation alerts at your own HTTPS endpoint, the only way an external system consumes Tradion data."
 icon: "code"
 ---
 
@@ -18,12 +18,12 @@ An automation can POST a JSON payload to an endpoint you control each time it fi
 
 A **webhook** is Tradion phoning your server, not your server phoning Tradion. You give an automation an HTTPS address; when it fires, Tradion sends one JSON message there. Traffic only goes that direction. Three consequences:
 
-- **You need somewhere for it to land** — an address on the public internet that answers HTTPS. Nothing on your laptop, nothing behind a company firewall.
+- **You need somewhere for it to land**, an address on the public internet that answers HTTPS. Nothing on your laptop, nothing behind a company firewall.
 - **Anyone who learns your address can post to it.** That is what the signature is for: a fingerprint proving Tradion sent the message. Read [verifying the signature](#verifying-the-signature) before trusting anything that arrives.
 - **Answer fast, work later.** Tradion gives up after 8 seconds. Reply `200` first, then act on the message.
 
 <Frame caption="The signature is computed over the exact bytes Tradion sends. Verify before you parse.">
-  <img src="/images/diagrams/webhook-flow.svg" alt="Diagram showing an automation trigger producing a signed HTTPS POST to a customer endpoint, which verifies the signature before acting" />
+  <img src="/images/diagrams/webhook-flow.svg" alt="Diagram showing an automation trigger producing a signed HTTPS POST to a customer endpoint, which verifies the signature before acting" noZoom />
 </Frame>
 
 ## Setting a webhook action
@@ -97,7 +97,7 @@ Idempotency-Key: <automation id>_webhook_<minute bucket>
 
 ### Inside `indicatorValues`
 
-Keys are the uppercase indicator code — `RSI`, `MACD`, `ATR`. A condition using a non-default period or parameters adds a second key shaped `CODE:period:{params}` carrying the same value under those settings. Candlestick patterns arrive as `1` when detected and `0` when not. Every value is a finite number; nothing is `null`.
+Keys are the uppercase indicator code, `RSI`, `MACD`, `ATR`. A condition using a non-default period or parameters adds a second key shaped `CODE:period:{params}` carrying the same value under those settings. Candlestick patterns arrive as `1` when detected and `0` when not. Every value is a finite number; nothing is `null`.
 
 ### Inside `agentResult`
 
@@ -109,15 +109,15 @@ Keys are the uppercase indicator code — `RSI`, `MACD`, `ATR`. A condition usin
 | `sections` | array | Each entry is an object with `heading` and `content`, both strings |
 | `keyRisks` | array of strings | Typically three, one sentence each |
 
-Depending on the agent's instruction, `thesis` (string) and `keyFindings` (array of strings) may also appear. Treat unrecognised keys as optional and ignore them — fields are added without notice, and empty fields are omitted rather than sent as `null`.
+Depending on the agent's instruction, `thesis` (string) and `keyFindings` (array of strings) may also appear. Treat unrecognised keys as optional and ignore them, fields are added without notice, and empty fields are omitted rather than sent as `null`.
 
 <Note>
-  Behavioural personalisation — your risk score, your documented patterns, references to your own trade history — is **removed from webhook payloads by default**, as it is for Discord and Telegram. Turn personalisation on for the channel if you want it included.
+  Behavioural personalisation (your risk score, your documented patterns, references to your own trade history) is **removed from webhook payloads by default**, as it is for Discord and Telegram. Turn personalisation on for the channel if you want it included.
 </Note>
 
 ## Verifying the signature
 
-A signed request carries `X-Tradion-Signature`. It is an **HMAC** — a scrambled fingerprint of the request body mixed with a secret only you and Tradion hold. Nobody can compute it without the secret, so a matching signature proves the request came from Tradion and the body was not altered in transit.
+A signed request carries `X-Tradion-Signature`. It is an **HMAC**, a scrambled fingerprint of the request body mixed with a secret only you and Tradion hold. Nobody can compute it without the secret, so a matching signature proves the request came from Tradion and the body was not altered in transit.
 
 The value is `sha256=` followed by the HMAC-SHA256 digest of the **raw request body**, in lowercase hexadecimal. Three rules:
 
@@ -134,7 +134,7 @@ import express from 'express';
 const SECRET = process.env.TRADION_SIGNING_SECRET; // '<your signing secret>'
 const app = express();
 
-// express.raw gives you the untouched bytes — required for the digest to match.
+// express.raw gives you the untouched bytes, required for the digest to match.
 app.post('/tradion', express.raw({ type: 'application/json' }), (req, res) => {
   const received = req.get('X-Tradion-Signature') || '';
   const expected =
@@ -227,15 +227,15 @@ func main() {
 </CodeGroup>
 
 <Warning>
-  **How the secret works today.** It is one platform-wide setting on Tradion's servers — no per-user secret, no page that shows you one, no self-serve rotation. Two things follow:
+  **How the secret works today.** It is one platform-wide setting on Tradion's servers, no per-user secret, no page that shows you one, no self-serve rotation. Two things follow:
 
-  1. **If that setting is empty, the `X-Tradion-Signature` header is omitted entirely.** The request still arrives, unsigned. Reject a request with no signature header — never read an absent header as "signing isn't in use here". That is the failure mode people get wrong.
+  1. **If that setting is empty, the `X-Tradion-Signature` header is omitted entirely.** The request still arrives, unsigned. Reject a request with no signature header, never read an absent header as "signing isn't in use here". That is the failure mode people get wrong.
   2. **To receive signed webhooks, ask.** Email `contact@tradionlabs.com`. Until it is confirmed for your account, treat deliveries as unauthenticated and defend the endpoint another way: a long unguessable path, an allowlist, or both.
 </Warning>
 
 ## Not acting on the same alert twice
 
-Every delivery carries an `Idempotency-Key` header — a label that stays identical across retries of one alert, so you can recognise a repeat and ignore it. Its form is `<automation id>_webhook_<minute bucket>`, the minute bucket being the Unix timestamp in milliseconds divided by 60,000 and rounded down.
+Every delivery carries an `Idempotency-Key` header, a label that stays identical across retries of one alert, so you can recognise a repeat and ignore it. Its form is `<automation id>_webhook_<minute bucket>`, the minute bucket being the Unix timestamp in milliseconds divided by 60,000 and rounded down.
 
 Store the keys you have handled and drop anything you have seen before. Without that, a retry sent after your endpoint accepted the request but timed out on the reply runs your handler twice. The same key also collapses repeated firings of one automation inside a minute into a single delivery.
 
@@ -250,7 +250,7 @@ Each attempt times out after **8 seconds**. Return a `2xx` quickly and do the re
 | `4xx` response | Read as your endpoint refusing the request. No further attempts |
 | All attempts failed | Set aside for inspection, recorded in the run history. Nothing is redelivered, and that alert is gone |
 
-A rejected signature should return `401`, which stops the retries — correct, because a retry would fail the same way.
+A rejected signature should return `401`, which stops the retries, correct, because a retry would fail the same way.
 
 ## Requirements
 
@@ -258,13 +258,13 @@ Your endpoint URL must use **HTTPS** (plain `http://` is rejected on save and ag
 
 ### Why private addresses are blocked
 
-This is **SSRF** protection — Server-Side Request Forgery, an attack where someone gets a server to fetch something on their behalf that they could not reach themselves. A webhook URL is an address a user picks and Tradion's servers then call. Without the block, someone could point one at `169.254.169.254`, the cloud metadata address, and have Tradion's own infrastructure read internal credentials and post them onward.
+This is **SSRF** protection, Server-Side Request Forgery, an attack where someone gets a server to fetch something on their behalf that they could not reach themselves. A webhook URL is an address a user picks and Tradion's servers then call. Without the block, someone could point one at `169.254.169.254`, the cloud metadata address, and have Tradion's own infrastructure read internal credentials and post them onward.
 
 It costs you nothing in production. It does mean you cannot test against `localhost`: use a public tunnel with an HTTPS address, or a request-inspection service.
 
 ## When deliveries stop arriving
 
-- **Nothing at all.** Check the automation is active and that its conditions fired — the run history shows every evaluation.
+- **Nothing at all.** Check the automation is active and that its conditions fired, the run history shows every evaluation.
 - **No signature header.** See the warning above: it is omitted when the platform secret is unset.
 - **Signature never matches.** Your framework is parsing the body before you hash it. Use the raw-body option.
 - **Arrives twice.** You are not deduplicating on `Idempotency-Key`.

@@ -10,9 +10,17 @@ A blank prompt is the hardest part of any research tool. Tradion ships 365 quest
   AI Quant Research needs the **Trader** plan or above. See [plan comparison](/reference/plan-comparison).
 </Info>
 
+<Frame caption="The template library. Categories across the top, and every template says what it does before you run it.">
+  <img src="/images/screens/quant-templates.jpg" alt="The Quant Agent start screen with category chips for featured, technical, backtest, options, risk, screener, fundamental, crypto, portfolio, forex, AI and ML, SMC and ICT, scanner, similarity and SEC EDGAR, above template cards" />
+</Frame>
+
+<Frame caption="The full library. Category counts on the chips, and every template says what it does before you run it.">
+  <img src="/images/screens/quant-template-library.jpg" alt="The template library modal with a search box, category chips carrying counts for featured, technical, backtest, options, risk, screener, fundamental, crypto, portfolio, forex, AI and ML, SMC and ICT, scanner, similarity and SEC EDGAR, above cards describing each template" />
+</Frame>
+
 ## In plain English: a template is a written question
 
-A template is not a program and not a locked setting. It's a paragraph of English somebody already wrote for you — the same box you'd type into yourself, filled in.
+A template is not a program and not a locked setting. It's a paragraph of English somebody already wrote for you, the same box you'd type into yourself, filled in.
 
 Clicking one drops that paragraph into the composer. Nothing runs. You can change every word, point it at your own tickers, or close the library and forget it. So a template also works as a free description of what a kind of analysis involves.
 
@@ -20,36 +28,36 @@ Clicking one drops that paragraph into the composer. Nothing runs. You can chang
 
 Two ways in: the **Templates** button in the session header, or the **View all 365 templates** link on an empty session.
 
-The library opens with a search box — type `momentum`, `dividend`, or `RSI` and it matches titles, descriptions, and tags. Below it, a row of category pills, each showing how many templates it holds. **Featured** is selected by default and holds 34 hand-picked starting points.
+The library opens with a search box, type `momentum`, `dividend`, or `RSI` and it matches titles, descriptions, and tags. Below it, a row of category pills, each showing how many templates it holds. **Featured** is selected by default and holds 34 hand-picked starting points.
 
 ## What's in there
 
-Read the right-hand column, not the category name — it says what that shelf does for you.
+Read the right-hand column, not the category name. It says what that shelf does for you.
 
 | Category | Count | What these do |
 | --- | --- | --- |
 | **Backtest** | 97 | Run a set of buy and sell rules over years of past prices and report what would have happened. One buys SPY when its 50-day average price rises above its 200-day, and sells on the cross back down. |
-| **Technical** | 74 | Measures worked out from price and volume, drawn on a chart — average price lines, momentum scores, the levels a price keeps stalling at. |
+| **Technical** | 74 | Measures worked out from price and volume, drawn on a chart, average price lines, momentum scores, the levels a price keeps stalling at. |
 | **Options** | 28 | Options are contracts to buy or sell at a fixed price by a fixed date. These price them, compare standard combinations, and show whether a ticker's options look expensive against their own history. |
-| **Screener** | 22 | Search a whole index for names meeting a condition today — heavily sold off, breaking to new highs, unusually busy. |
+| **Screener** | 22 | Search a whole index for names meeting a condition today, heavily sold off, breaking to new highs, unusually busy. |
 | **Portfolio** | 22 | How to split money across holdings: how much of each, how often to reset to those targets, which position carries most of the risk. |
 | **SMC / ICT** | 21 | Smart Money Concepts and Inner Circle Trader: a chart-reading style built around where large orders are thought to sit, and the gaps price leaves when it moves too fast. |
-| **Risk** | 19 | How bad it could plausibly get — deepest fall from a peak, thousands of simulated futures, behaviour through past crises. |
+| **Risk** | 19 | How bad it could plausibly get, deepest fall from a peak, thousands of simulated futures, behaviour through past crises. |
 | **Fundamental** | 19 | The company rather than the chart: earnings history, revenue and margins, dividends, how it compares against rivals. |
-| **AI / ML** | 19 | Models that learn from history — which measures predicted the next day's direction best, which past moves were out of character. |
+| **AI / ML** | 19 | Models that learn from history, which measures predicted the next day's direction best, which past moves were out of character. |
 | **Crypto** | 15 | The same measures on BTC, ETH, and the other majors, plus how closely they track each other and the stock market. |
-| **Forex** | 11 | Currency pairs — which currencies are strongest now, and how differences in interest rates push them around. |
+| **Forex** | 11 | Currency pairs, which currencies are strongest now, and how differences in interest rates push them around. |
 | **SEC EDGAR** | 8 | Company filings: who inside a company has been buying or selling its own stock, and what large funds disclosed holding last quarter. |
-| **Scanner** | 5 | Rule-based pattern spotting on one symbol — candle shapes, price zones that held before, which phase the chart is in. |
+| **Scanner** | 5 | Rule-based pattern spotting on one symbol, candle shapes, price zones that held before, which phase the chart is in. |
 | **Similarity** | 5 | Find stretches of past price history that look like the last few weeks, and show what happened next. |
 
 Five terms from that table, defined once:
 
-- **Backtest** — running rules over historical prices to see what would have happened if you'd followed them. Not a prediction; a record of a rule against the past.
-- **Moving average** — the average closing price over the last N days, redrawn daily so the direction shows through the noise. The 50-day average above is one.
-- **Volatility** — how much a price bounces around, whichever direction it goes.
-- **Drawdown** — the fall from a peak to the low that follows, as a percentage. How much pain you'd have sat through while holding.
-- **Correlation** — whether two things move together. 1.0 is in step, 0 unrelated, −1.0 opposed.
+- **Backtest**, running rules over historical prices to see what would have happened if you'd followed them. Not a prediction; a record of a rule against the past.
+- **Moving average**, the average closing price over the last N days, redrawn daily so the direction shows through the noise. The 50-day average above is one.
+- **Volatility**, how much a price bounces around, whichever direction it goes.
+- **Drawdown**, the fall from a peak to the low that follows, as a percentage. How much pain you'd have sat through while holding.
+- **Correlation**, whether two things move together. 1.0 is in step, 0 unrelated, −1.0 opposed.
 
 ## Running one against your own symbols
 
@@ -57,24 +65,24 @@ Clicking a card drops its wording into the composer and closes the library. **No
 
 > Backtest an RSI mean-reversion strategy on ~~SPY~~ **QQQ** over the last ~~5~~ **3** years...
 
-Change the ticker, stretch the window, add a benchmark, delete the parts you don't want. Terms you don't recognise are fair game too — *mean reversion*, in that one, is the idea that a price stretched far from its average tends to snap back.
+Change the ticker, stretch the window, add a benchmark, delete the parts you don't want. Terms you don't recognise are fair game too, *mean reversion*, in that one, is the idea that a price stretched far from its average tends to snap back.
 
 <Note>
-  A **quant session** is one message sent in Analysis mode. Ask mode is free and unlimited. Pressing Enter on a template spends one session, however lightly you edited it — see [usage limits](/concepts/usage-limits).
+  A **quant session** is one message sent in Analysis mode. Ask mode is free and unlimited. Pressing Enter on a template spends one session, however lightly you edited it, see [usage limits](/concepts/usage-limits).
 </Note>
 
 ## The scenario library
 
-Separate from the templates, Tradion carries 18 named market shocks for **stress-testing** — asking *what would this do to what I hold?* rather than *what happened historically?*
+Separate from the templates, Tradion carries 18 named market shocks for **stress-testing**, asking *what would this do to what I hold?* rather than *what happened historically?*
 
 They sit in six groups of three: **Macroeconomic** (hard landing, stagflation, reflation), **Monetary and sovereign** (debt downgrade, carry-trade unwind, eurozone break-up), **Geopolitics** (energy crisis, trade war, open conflict), **Market structure** (flash crash, exchange failure, clearing house default), **Tech and crypto** (AI bubble burst, regulatory crackdown, cyber outage), and **Biological and natural** (pandemic, climate event, solar event).
 
-Each spells out its conditions — *Hard Landing* means unemployment above 6%, emergency rate cuts, GDP contracting 2%, rising corporate defaults. Browse them from the command palette (**⌘K** or **Ctrl+K** → **Run Scenario Analysis**), then put the conditions you care about into the composer:
+Each spells out its conditions, *Hard Landing* means unemployment above 6%, emergency rate cuts, GDP contracting 2%, rising corporate defaults. Browse them from the command palette (**⌘K** or **Ctrl+K** → **Run Scenario Analysis**), then put the conditions you care about into the composer:
 
-> Act as a risk manager. Stress test SPY, QQQ, and TLT against a hard landing — unemployment above 6%, emergency rate cuts, GDP contracting 2%. Show the likely drawdown for each and how their correlations shift.
+> Act as a risk manager. Stress test SPY, QQQ, and TLT against a hard landing, unemployment above 6%, emergency rate cuts, GDP contracting 2%. Show the likely drawdown, the deepest fall from a high before recovery, for each and how their correlations shift.
 
 <Note>
-  Two or three scenarios in one question works well. Beyond that the answer gets thin — run them separately.
+  Two or three scenarios in one question works well. Beyond that the answer gets thin, run them separately.
 </Note>
 
 ## Saving your own

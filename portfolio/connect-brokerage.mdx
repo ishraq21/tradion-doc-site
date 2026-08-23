@@ -4,7 +4,7 @@ description: "Link your broker so Tradion can read your live positions and trade
 icon: "link"
 ---
 
-Tradion connects to 30+ brokerages through **SnapTrade**, a regulated aggregator. The connection is **read-only** — Tradion can see your positions and past trades, and cannot place, modify, or cancel an order.
+Tradion connects to 30+ brokerages through **SnapTrade**, a regulated aggregator. The connection is **read-only**, Tradion can see your positions and past trades, and cannot place, modify, or cancel an order.
 
 ```mermaid
 flowchart LR
@@ -33,10 +33,10 @@ flowchart LR
 
 The words on that dashboard, in plain English:
 
-- **Equity curve** — the line of your total account value over time.
-- **Day P&L** and **Total P&L** — P&L is profit and loss. Day is what today did to a position; Total is where it stands against what you paid for it.
-- **Sector allocation** — what share of your money sits in each industry: technology, healthcare, energy, and so on.
-- **Sparkline** — the small line beside each holding showing its price shape over the last ten trading days. No axes, no labels; direction only.
+- **Equity curve**, the line of your total account value over time.
+- **Day P&L** and **Total P&L**, P&L is profit and loss. Day is what today did to a position; Total is where it stands against what you paid for it.
+- **Sector allocation**, what share of your money sits in each industry: technology, healthcare, energy, and so on.
+- **Sparkline**, the small line beside each holding showing its price shape over the last ten trading days. No axes, no labels; direction only.
 
 ## Connect
 
@@ -51,7 +51,7 @@ The words on that dashboard, in plain English:
     The login form is served by your broker, not by Tradion. Your credentials never touch Tradion's servers.
   </Step>
   <Step title="Approve read-only access">
-    Confirm the scope. Some brokers add a **2FA** challenge here — two-factor authentication, the second code from your phone or authenticator app.
+    Confirm the scope. Some brokers add a **2FA** challenge here, two-factor authentication, the second code from your phone or authenticator app.
   </Step>
   <Step title="Wait for the first sync">
     Positions usually appear within 30 seconds. Full trade history can take a few minutes on accounts with a long record.
@@ -69,7 +69,7 @@ The words on that dashboard, in plain English:
     No. The connection is read-only at the aggregator level. There is no order-entry code path in Tradion at all.
   </Accordion>
   <Accordion title="Does Tradion store my broker password?" icon="key">
-    No. You sign in directly with your broker. Tradion holds only an **access token** — a revocable key that grants read access without carrying your password. SnapTrade issues it, Tradion keeps it on its own servers, and it is never sent to your browser.
+    No. You sign in directly with your broker. Tradion holds only an **access token**, a revocable key that grants read access without carrying your password. SnapTrade issues it, Tradion keeps it on its own servers, and it is never sent to your browser.
   </Accordion>
   <Accordion title="How do I revoke access?" icon="ban">
     **Settings → Brokerage sync → Disconnect**, which removes the connection and its cached data. You can additionally revoke the authorisation from inside your broker's own security settings.
@@ -81,19 +81,19 @@ The words on that dashboard, in plain English:
 
 ## When it goes wrong
 
-The full diagnostic steps for all of these live on one page — [troubleshooting](/help/troubleshooting). The short version:
+The full diagnostic steps for all of these live on one page, [troubleshooting](/help/troubleshooting). The short version:
 
 | Symptom | First thing to try |
 | --- | --- |
 | The connection window opens blank | Allow pop-ups for `app.tradionlabs.com` and turn off strict tracking protection for the tab. Safari's "Prevent cross-site tracking" is the usual cause |
-| Positions are missing or stale | Press **Sync** on the Portfolio page, then wait a few minutes before trying again — brokers rate-limit repeat calls |
+| Positions are missing or stale | Press **Sync** on the Portfolio page, then wait a few minutes before trying again, brokers rate-limit repeat calls |
 | A "connection broken" banner | **Settings → Brokerage sync → Reconnect**. Your imported history is preserved |
 | Your broker isn't in the list | Log trades by hand for now, and [tell us which broker](/help/contact) |
-| Numbers differ from your broker statement | Extended-hours pricing and currency conversion cover most of it — see [reading the dashboard](/portfolio/reading-the-dashboard) |
+| Numbers differ from your broker statement | Extended-hours pricing and currency conversion cover most of it, see [reading the dashboard](/portfolio/reading-the-dashboard) |
 
 ## Prefer not to connect?
 
-Everything behavioural still works — you enter trades by hand instead. You can describe a trade in plain English, or upload a screenshot or PDF of a broker confirmation, and Tradion pulls out the structured fields for you.
+Everything behavioural still works. You enter trades by hand instead. You can describe a trade in plain English, or upload a screenshot or PDF of a broker confirmation, and Tradion pulls out the structured fields for you.
 
 <CardGroup cols={2}>
   <Card title="Read the dashboard" icon="table-cells" href="/portfolio/reading-the-dashboard">

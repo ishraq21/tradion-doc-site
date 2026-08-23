@@ -1,13 +1,13 @@
 ---
 title: "Reading a verdict"
-description: "What BUY at 72% confidence means — and what it doesn't."
+description: "What BUY at 72% confidence means, and what it doesn't."
 icon: "gauge"
 ---
 
 A verdict is the one-word answer at the top of a Chart Analyzer, Lens, or Earnings result, with a confidence percentage under it. Here is what each means, and how both get misread.
 
 <Frame caption="The direction word is the smallest part of the card. Everything under it is the reasoning.">
-  <img src="/images/diagrams/verdict-anatomy.svg" alt="A verdict card with its direction word, setup quality, risk/reward, confidence percentage, and analysis labelled" />
+  <img src="/images/diagrams/verdict-anatomy.svg" alt="A verdict card with its direction word, setup quality, risk/reward, confidence percentage, and analysis labelled" noZoom />
 </Frame>
 
 ## The four chart verdicts
@@ -25,12 +25,12 @@ WAIT and NO TRADE are common, and they are not failures. Not every chart contain
 
 ## BULLISH, BEARISH, NEUTRAL
 
-[Lens](/research/lens) and [Earnings Spider](/research/earnings-spider) use a three-point scale instead. Chart Analyzer answers "is there a trade here" and speaks in actions; these two answer "which way does this lean" and speak in direction only. Lens labels its number **Probability** — read it as strength of the read, not odds of a payout.
+[Lens](/research/lens) and [Earnings Spider](/research/earnings-spider) use a three-point scale instead. Chart Analyzer answers "is there a trade here" and speaks in actions; these two answer "which way does this lean" and speak in direction only. Lens labels its number **Probability**, read it as strength of the read, not odds of a payout.
 
 ## What confidence measures
 
 <Frame caption="Two cards can both read 70% and mean completely different things.">
-  <img src="/images/diagrams/confidence-anatomy.svg" alt="A confidence score broken into five weighted factors, each with its own score and reason" />
+  <img src="/images/diagrams/confidence-anatomy.svg" alt="A confidence score broken into five weighted factors, each with its own score and reason" noZoom />
 </Frame>
 
 Confidence is the weighted average of five factors, each scored 0–100:
@@ -38,7 +38,7 @@ Confidence is the weighted average of five factors, each scored 0–100:
 | Factor | Weight | What it scores |
 | --- | --- | --- |
 | Trend clarity | 30% | How cleanly price is moving one way. Choppy sideways action scores low. |
-| Pattern quality | 25% | How well-defined the formation is — a clean flag beats a vague one. |
+| Pattern quality | 25% | How well-defined the formation is, a clean flag beats a vague one. |
 | Volume | 20% | Whether volume (shares changing hands) backs the move. A breakout on thin volume scores low. |
 | Risk/reward | 15% | What you stand to gain against what you stand to lose. |
 | Market context | 10% | Sector behaviour and conditions around the ticker. |
@@ -56,36 +56,36 @@ It ignores your position size, your holding period, and news that breaks tomorro
 ## Entry, stop, target, and the ratio between them
 
 <Frame caption="Risk is the gap from entry to stop. Reward is the gap from entry to target.">
-  <img src="/images/diagrams/trade-levels.svg" alt="Price axis showing entry, a stop below it, and a target above it, with the risk and reward distances marked" />
+  <img src="/images/diagrams/trade-levels.svg" alt="Price axis showing entry, a stop below it, and a target above it, with the risk and reward distances marked" noZoom />
 </Frame>
 
 A chart verdict comes with three prices: **entry**, where the setup makes sense; **stop**, where you exit if it goes against you; **target**, where the move is expected to run out.
 
 **Risk/reward** is the distance from entry to target divided by the distance from entry to stop, written like `3:1`. At 3:1 you gain three times what you risk, so you can be right well under half the time and still come out ahead. Tradion flags anything below **1.5:1** in red.
 
-The ratio is arithmetic on those three prices, not a separate judgement. Move the stop further away and the ratio falls — which is how a good-looking setup quietly becomes mediocre.
+The ratio is arithmetic on those three prices, not a separate judgement. Move the stop further away and the ratio falls, which is how a good-looking setup quietly becomes mediocre.
 
 <Note>
-  A card titled *Conditional Levels*, marked "not actionable — waiting for trigger", means price has not yet reached the zone the analysis describes. The ratio shown is what you would get at that entry, not from here.
+  A card titled *Conditional Levels*, marked "not actionable, waiting for trigger", means price has not yet reached the zone the analysis describes. The ratio shown is what you would get at that entry, not from here.
 </Note>
 
 ## The levels above and below the price
 
 Chart Analyzer also returns three reference prices for a stated time window:
 
-- **Pivot point** — a neutral reference: the previous session's high, low, and close averaged.
-- **R1 (resistance)** — a price above, where selling has tended to appear and the move stalls.
-- **S1 (support)** — a price below, where buying has tended to appear and the fall stops.
+- **Pivot point**, a neutral reference: the previous session's high, low, and close averaged.
+- **R1 (resistance)**, a price above, where selling has tended to appear and the move stalls.
+- **S1 (support)**, a price below, where buying has tended to appear and the fall stops.
 
 R1 and S1 each carry a **break probability**: the estimated chance price pushes all the way through inside that window. The model reads it off the shape of the chart, not from counting past occurrences, so treat 55% and 45% as "roughly a coin flip either way".
 
-The card also shows **ATR** (Average True Range) — how far a symbol typically travels in one period, in dollars. If your stop is tighter than the ATR, ordinary movement takes you out before the idea gets a chance.
+The card also shows **ATR** (Average True Range), how far a symbol typically travels in one period, in dollars. If your stop is tighter than the ATR, ordinary movement takes you out before the idea gets a chance.
 
 ## In plain English
 
 Read the card in this order:
 
-1. **The word** — a reading of the chart, not an instruction.
+1. **The word**, a reading of the chart, not an instruction.
 2. **The five factors**, not the headline percentage. Two very different setups can average to the same number.
 3. **The three prices.** If entry-to-stop is smaller than the ATR, the stop is too tight for this symbol.
 4. **The ratio.** Anything red needs you to be right most of the time.

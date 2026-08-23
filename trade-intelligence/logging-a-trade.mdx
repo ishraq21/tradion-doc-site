@@ -23,7 +23,7 @@ flowchart LR
 
 A single text box. Write what happened in your own words. Tradion pulls out the ticker, instrument, direction, times, prices, quantity, and outcome, then asks about whatever it couldn't determine.
 
-If you only use one mode, use this one. The numbers matter, but the reasoning is what produces a report worth reading, and this is the only mode where reasoning is the main input. Four worked examples sit under the box — click one to see the shape of a usable narrative.
+If you only use one mode, use this one. The numbers matter, but the reasoning is what produces a report worth reading, and this is the only mode where reasoning is the main input. Four worked examples sit under the box, click one to see the shape of a usable narrative.
 
 ### Quick Facts
 
@@ -40,12 +40,12 @@ Drop in a screenshot or a PDF of a broker confirmation, order fills, or a daily 
 Images and PDFs only, **10 MB maximum**. One trade takes you straight into the report flow; several give you a table to pick from, with a box on each row for adding context. Use that box.
 
 <Warning>
-  Upload is reading pixels. Check the extracted numbers first — a misread strike or a transposed price produces a confident report about a trade that didn't happen.
+  Upload is reading pixels. Check the extracted numbers first, a misread strike or a transposed price produces a confident report about a trade that didn't happen.
 </Warning>
 
 ### In plain English
 
-All three modes end in the same place: a set of fields describing one closed trade. They differ only in who fills the fields in — Tradion reads them out of your writing, you type them, or Tradion reads them off an image.
+All three modes end in the same place: a set of fields describing one closed trade. They differ only in who fills the fields in, Tradion reads them out of your writing, you type them, or Tradion reads them off an image.
 
 Anything still blank becomes one of the 3–5 multiple-choice questions before the report runs, so nothing is left out quietly.
 
@@ -59,12 +59,12 @@ Compare these two descriptions of the same trade.
 
 **Enough to work with:**
 
-> NVDA long, Tuesday morning. Bought the break of the opening range around 10:05 because volume was expanding and I'd been watching it since the bell. Plan was a stop under the opening low and a target near the prior day's high — about 3:1 reward to risk. I was already red on the day from a SPY trade, so I sized roughly double what I normally take. It stalled, came back through my entry, and I held it past my stop because I wanted the day back. Closed it manually about 40 minutes later, down around 6% on the position. Felt rushed the whole way through.
+> NVDA long, Tuesday morning. Bought the break of the opening range around 10:05 because volume was expanding and I'd been watching it since the bell. Plan was a stop under the opening low and a target near the prior day's high, about 3:1 reward to risk. I was already red on the day from a SPY trade, so I sized roughly double what I normally take. It stalled, came back through my entry, and I held it past my stop because I wanted the day back. Closed it manually about 40 minutes later, down around 6% on the position. Felt rushed the whole way through.
 
 The second version is around ninety seconds of typing. It carries the setup, the plan, the deviation from it, the sizing decision and the reason behind it, and the emotional state. That's the material a root-cause analysis is made of.
 
 <Note>
-  Percentages and ratios are enough — you never need to type an account balance for the analysis to work. **R:R** (risk to reward, the ratio between what you stood to lose and what you stood to gain) and percentage moves carry the same information.
+  Percentages and ratios are enough. You never need to type an account balance for the analysis to work. **R:R** (risk to reward, the ratio between what you stood to lose and what you stood to gain) and percentage moves carry the same information.
 </Note>
 
 ## Required, optional, and inferred
@@ -72,7 +72,7 @@ The second version is around ninety seconds of typing. It carries the setup, the
 | Field | Status | If you leave it out |
 | --- | --- | --- |
 | Ticker | Required | You can't continue |
-| Instrument, direction, prices, times, quantity, outcome | Needed for the report | Tradion asks, or marks it inferred — worked out from something else you said |
+| Instrument, direction, prices, times, quantity, outcome | Needed for the report | Tradion asks, or marks it inferred, worked out from something else you said |
 | Entry reason, exit reason, emotional state | Optional in the database, decisive in practice | The report leans on inference and its confidence drops |
 | Fees, notes, chart screenshot | Optional | No effect on the analysis |
 
@@ -86,7 +86,7 @@ If the loss came from the option losing value while the stock went your way, say
 
 ## What the state-of-mind field adds
 
-Prices tell Tradion what happened. They cannot tell it **why**. "Held past my stop" and "held past my stop because I was down on the day and wanted it back" are the same row of numbers and two different problems — one is a rule you don't trust, the other is a state you trade badly in.
+Prices tell Tradion what happened. They cannot tell it **why**. "Held past my stop" and "held past my stop because I was down on the day and wanted it back" are the same row of numbers and two different problems, one is a rule you don't trust, the other is a state you trade badly in.
 
 Your recorded states are also one of the five inputs behind the Psychological Profile in [Tradion Memory](/concepts/tradion-memory), which is what lets Tradion note that a setup resembles one you've historically handled badly.
 

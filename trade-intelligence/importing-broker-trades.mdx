@@ -31,7 +31,7 @@ flowchart LR
 
 ## What a transaction tape is, and why matching is needed
 
-A **transaction tape** is the running list of individual fills your broker keeps for your account. Brokers do not store "trades" — they store a buy here, a sell there, each with a date, a price, a size, and a fee. A round trip you think of as one trade might be four rows on the tape.
+A **transaction tape** is the running list of individual fills your broker keeps for your account. Brokers do not store "trades". They store a buy here, a sell there, each with a date, a price, a size, and a fee. A round trip you think of as one trade might be four rows on the tape.
 
 Tradion turns that list back into trades using **FIFO**, first in, first out.
 
@@ -39,18 +39,18 @@ Tradion turns that list back into trades using **FIFO**, first in, first out.
 
 Line your purchases of a symbol up in a queue, in the order you made them. A sale closes the oldest purchase at the front. If the sale is bigger, the leftover moves on to the next one. If the purchase is bigger, the remainder stays at the front for the next sale.
 
-It's the rule most brokers and tax authorities use to work out **cost basis** — what a holding is treated as having cost you — so the trades Tradion rebuilds generally line up with your statement.
+It's the rule most brokers and tax authorities use to work out **cost basis** (what a holding is treated as having cost you) so the trades Tradion rebuilds generally line up with your statement.
 
 ## Partial fills and scaled exits
 
 Two things that break naive matching, and how FIFO handles them:
 
 - A **partial fill** is one order your broker executes in several pieces at slightly different prices. It arrives as several transactions. FIFO stacks them in order, so the rebuilt entry price comes from the pieces your exit consumed.
-- A **scaled exit** is closing a position in more than one sale — a third off here, a third there. Each sale eats forward through the queue, producing one closed trade per matched pair.
+- A **scaled exit** is closing a position in more than one sale, a third off here, a third there. Each sale eats forward through the queue, producing one closed trade per matched pair.
 
 If a sale is larger than everything left in the queue, the excess is treated as opening a new position in the opposite direction, which is what it is.
 
-Only completed round trips appear. A position you still hold has no closing transaction to match against, so its gain or loss is still **unrealised** — on paper, not banked — and it lives in [Portfolio](/portfolio/overview) instead.
+Only completed round trips appear. A position you still hold has no closing transaction to match against, so its gain or loss is still **unrealised** (on paper, not banked) and it lives in [Portfolio](/portfolio/overview) instead.
 
 ## Options matching
 
@@ -59,7 +59,7 @@ Options are grouped by the full contract, not by the underlying ticker. The unde
 Profit and loss applies the contract multiplier: 100 shares per contract for standard options, 10 for mini options.
 
 <Note>
-  Tradion checks the contract identifier before the description, so that options-strategy ETFs — funds that sell options as a strategy — don't get misfiled as options trades. They're shares, and they import as shares.
+  Tradion checks the contract identifier before the description, so that options-strategy ETFs (funds that sell options as a strategy) don't get misfiled as options trades. They're shares, and they import as shares.
 </Note>
 
 ## Duplicates
@@ -74,7 +74,7 @@ Your broker knows what you did. It does not know why. Import gives you accurate 
 
 - What setup you thought you were taking.
 - Where your stop was, and whether you moved it.
-- Your **position sizing** decision — how large a position you took relative to what you were willing to lose — and what drove it.
+- Your **position sizing** decision (how large a position you took relative to what you were willing to lose) and what drove it.
 - Whether you followed your plan.
 - What state you were in.
 
@@ -104,7 +104,7 @@ So import is half the job. The other half is a minute of typing.
 | **No Brokerage Connected** | Connect one under **Settings → Connected Brokerages** |
 | **No Broker Trades Yet** with a broker connected | Nothing has synced. Press refresh on the connection |
 | A trade you made is missing | The position is still open, or the closing transaction hasn't settled at your broker |
-| Prices look slightly off | Some brokers report only the total cash amount, with no per-unit price. Tradion derives the price from that total — check it against your statement before autopsying |
+| Prices look slightly off | Some brokers report only the total cash amount, with no per-unit price. Tradion derives the price from that total, check it against your statement before autopsying |
 
 <CardGroup cols={2}>
   <Card title="Connect a brokerage" icon="link" href="/portfolio/connect-brokerage">

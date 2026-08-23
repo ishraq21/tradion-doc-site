@@ -8,15 +8,15 @@ The Portfolio page packs a lot of numbers into one screen. This page takes each 
 
 Terms used throughout: **P&L** is profit and loss. **Cost basis** is what you paid per share, averaged across your buys. **Equity curve** is the line of your total account value over time.
 
-<Frame caption="The panels sit in a fixed order — value and chart first, exposure second, holdings third, accounts last.">
-  <img src="/images/diagrams/portfolio-anatomy.svg" alt="Labelled diagram of the Portfolio dashboard showing the net worth panel, range selector, allocation and diversification panel, holdings table, top movers, and account breakdown" />
+<Frame caption="The panels sit in a fixed order, value and chart first, exposure second, holdings third, accounts last.">
+  <img src="/images/diagrams/portfolio-anatomy.svg" alt="Labelled diagram of the Portfolio dashboard showing the net worth panel, range selector, allocation and diversification panel, holdings table, top movers, and account breakdown" noZoom />
 </Frame>
 
 ## Total net worth and the range selector
 
 The large figure at the top is every account added together: the market value of your positions plus uninvested cash.
 
-The line chart below plots that figure day by day — your **equity curve**. The buttons — **1W · 1M · 3M · 1Y · All** — set the window to the last 7, 30, 90, or 365 days, or everything on record. The page opens on 3M. Hover a point to read the value on that date.
+The line chart below plots that figure day by day: your **equity curve**. The buttons **1W · 1M · 3M · 1Y · All** set the window to the last 7, 30, 90, or 365 days, or everything on record. The page opens on 3M. Hover a point to read the value on that date.
 
 ### In plain English
 
@@ -33,20 +33,20 @@ If you want a continuous curve, open the page on days you care about. This is th
 Tradion reports two profit-and-loss figures, and they answer different questions.
 
 - **Day P&L** compares each holding's current price to yesterday's closing price, multiplied by the shares you hold. It answers "what has today done to me".
-- **Total P&L** (labelled **Net P&L**) compares the current price to your **cost basis** — what you paid per share, averaged across your buys. It answers "am I up or down since I bought this".
+- **Total P&L** (labelled **Net P&L**) compares the current price to your **cost basis**, what you paid per share, averaged across your buys. It answers "am I up or down since I bought this".
 
 A position can be deep in profit overall and still be your worst holding today. Day P&L resets every session; Total P&L accumulates from your entry price and only stops moving when you sell. Both appear in currency and as a percentage.
 
 ## Sector allocation and the diversification score
 
-**Sector allocation** groups your holdings by the industry each company operates in — technology, healthcare, energy — and shows what share of your money sits in each. Cash gets its own slice.
+**Sector allocation** groups your holdings by the industry each company operates in (technology, healthcare, energy) and shows what share of your money sits in each. Cash gets its own slice.
 
 The **diversification score** (0–100) answers a narrower question than its name suggests: how spread out your money is across positions, weighted by size. Ten holdings where one is 90% of the account scores low, because that one position drives the outcome. Roughly eight positions of similar size score near 100. A single position scores 0.
 
-A high score is not the same as a safe portfolio — eight equally sized positions in one sector score well and still move together. Read the score alongside the sector slices, not instead of them.
+A high score is not the same as a safe portfolio, eight equally sized positions in one sector score well and still move together. Read the score alongside the sector slices, not instead of them.
 
 <Warning>
-  **Sector data is a fixed list of 16 mega-cap tickers.** Anything outside it — every small cap, every ETF, most of the S&P 500 — lands in **Other**. A portfolio of anything but the largest US names will show one enormous Other slice, and that is the lookup being thin rather than your account being concentrated. Read the holdings table for the real picture.
+  **Sector data is a fixed list of 16 mega-cap tickers.** Anything outside it (every small cap, every ETF, most of the S&P 500) lands in **Other**. A portfolio of anything but the largest US names will show one enormous Other slice, and that is the lookup being thin rather than your account being concentrated. Read the holdings table for the real picture.
 </Warning>
 
 ## The holdings table
@@ -55,13 +55,13 @@ One row per ticker, largest position first, with the same ticker held in two acc
 
 **Three** column headers sort the table: **Day** (percent change today), **P&L** (percent change since purchase), and **Value** (market value). Click a header to sort by it, click again to flip between highest-first and lowest-first. Four rows show by default, with a control to show the rest.
 
-There is no fourth sort column. Weight — a position's share of your account — is calculated and shown elsewhere, but the holdings table has no header for it and cannot be sorted by it.
+There is no fourth sort column. Weight (a position's share of your account) is calculated and shown elsewhere, but the holdings table has no header for it and cannot be sorted by it.
 
-Each row carries a **sparkline** — a small line chart with no axes or labels, drawn from that ticker's last **ten** trading sessions of closing prices. It is there for shape rather than precision: has this position been drifting up, down, or sideways going into today.
+Each row carries a **sparkline**, a small line chart with no axes or labels, drawn from that ticker's last **ten** trading sessions of closing prices. It is there for shape rather than precision: has this position been drifting up, down, or sideways going into today.
 
 ## Top movers
 
-The five positions with the largest change in value today, ranked by size of move rather than direction, so a sharp loser can outrank a modest winner. Each shows the move in currency and percent plus that position's **weight** — its share of your total account value. Weight is what tells you whether a big percentage move matters to your account at all.
+The five positions with the largest change in value today, ranked by size of move rather than direction, so a sharp loser can outrank a modest winner. Each shows the move in currency and percent plus that position's **weight**, its share of your total account value. Weight is what tells you whether a big percentage move matters to your account at all.
 
 ## Realised and unrealised profit
 
@@ -69,22 +69,22 @@ This trips up more people than any other number on the page.
 
 | | What it means | When it changes |
 | --- | --- | --- |
-| **Unrealised** | Profit or loss on a position you still hold. Paper money — the price can take it back | Every time the price moves |
+| **Unrealised** | Profit or loss on a position you still hold. Paper money, the price can take it back | Every time the price moves |
 | **Realised** | Profit or loss locked in by closing a position. Booked and final | Only when you sell |
 
 **Realized 30D** sums the realised result of every trade you closed in the last 30 days, with the closed-trade count beside it. Net P&L is the unrealised side.
 
-The gap between them says something. Large unrealised gains next to a thin realised figure means you are holding winners without booking them — either patience or an exit problem, and [Trade Autopsy](/trade-intelligence/trade-autopsy) is where you find out which.
+The gap between them says something. Large unrealised gains next to a thin realised figure means you are holding winners without booking them. Either patience or an exit problem, and [Trade Autopsy](/trade-intelligence/trade-autopsy) is where you find out which.
 
 ## Account breakdown
 
-One row per connected account, largest first: broker name, account type, total value, cash balance, currency, and last sync time. Open this panel when the headline total looks wrong — it shows which account is stale or has stopped reporting.
+One row per connected account, largest first: broker name, account type, total value, cash balance, currency, and last sync time. Open this panel when the headline total looks wrong. It shows which account is stale or has stopped reporting.
 
 ## Why your numbers differ from your broker statement
 
 <AccordionGroup>
   <Accordion title="Extended-hours prices" icon="clock">
-    Tradion prices holdings from the last trade it can see. Outside the main session that differs from the **mark** your broker uses — the reference price it applies to value a position while the market is closed. The two converge at the next open.
+    Tradion prices holdings from the last trade it can see. Outside the main session that differs from the **mark** your broker uses, the reference price it applies to value a position while the market is closed. The two converge at the next open.
   </Accordion>
   <Accordion title="Currency conversion" icon="money-bill-transfer">
     Multi-currency accounts convert at the aggregator's rate, not your broker's. Small persistent differences on non-USD holdings are usually this.

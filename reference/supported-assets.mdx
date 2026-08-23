@@ -1,22 +1,23 @@
 ---
 title: "Supported assets"
-description: "What you can analyse, chart, and automate against — and what falls outside coverage."
+description: "What you can analyse, chart, and automate against, and what falls outside coverage."
 icon: "coins"
+mode: "wide"
 ---
 
 Four asset types reach every part of Tradion: US stocks and ETFs, crypto pairs, forex pairs, and US options. Coverage is not identical across them, and the gaps matter most when you are building an automation.
 
 ## US stocks and ETFs
 
-Every equity listed on **NYSE, NASDAQ, and AMEX** — roughly 13,000 tickers, including **ADRs** (US-listed shares in a foreign company) and recently listed names. All US-listed **ETFs** are covered on the same footing; an ETF is a fund that trades like a single stock.
+Every equity listed on **NYSE, NASDAQ, and AMEX**, roughly 13,000 tickers, including **ADRs** (US-listed shares in a foreign company) and recently listed names. All US-listed **ETFs** are covered on the same footing; an ETF is a fund that trades like a single stock.
 
-Price data comes from the **SIP** feed — the consolidated tape that merges quotes from every US exchange, so you are seeing the national best bid and offer rather than one venue's view.
+Price data comes from the **SIP** feed, the consolidated tape that merges quotes from every US exchange, so you are seeing the national best bid and offer rather than one venue's view.
 
 Bars are available at 1, 5, 15, and 30 minutes, 1 hour, and daily, weekly, and monthly. Automation conditions accept 1Min, 5Min, 15Min, 30Min, 1Hour, and 1Day.
 
 ## Crypto pairs
 
-Around 40 pairs, all quoted against the US dollar — BTC/USD, ETH/USD, SOL/USD and so on down through the mid-caps. Crypto markets run **24/7**, so a crypto automation has no closed hours to wait through.
+Around 40 pairs, all quoted against the US dollar, BTC/USD, ETH/USD, SOL/USD and so on down through the mid-caps. Crypto markets run **24/7**, so a crypto automation has no closed hours to wait through.
 
 The available list changes as the data provider adds and removes pairs. If a pair does not appear in the symbol search, Tradion cannot reach it.
 
@@ -28,9 +29,9 @@ Forex trades **24/5**, from Sunday evening to Friday evening US Eastern time, an
 
 ## Options
 
-All **OPRA**-listed US equity and ETF options. OPRA is the consolidated feed that carries every US listed options quote, so anything with a listed contract is reachable — weekly and monthly expirations alike.
+All **OPRA**-listed US equity and ETF options. OPRA is the consolidated feed that carries every US listed options quote, so anything with a listed contract is reachable, weekly and monthly expirations alike.
 
-Each contract in a chain carries strike, expiry, call or put, bid and ask, volume, **open interest** (contracts currently held open), **implied volatility** (the size of move the option's price implies, rather than movement measured from history), and the five **greeks** — standard numbers describing how an option's price reacts to a move in the stock, to time passing, and to volatility changing. Historical options bars start from February 2024; before that, analysis falls back to theoretical pricing.
+Each contract in a chain carries strike, expiry, call or put, bid and ask, volume, **open interest** (contracts currently held open), **implied volatility** (the size of move the option's price implies, rather than movement measured from history), and the five **greeks**, standard numbers describing how an option's price reacts to a move in the stock, to time passing, and to volatility changing. Historical options bars start from February 2024; before that, analysis falls back to theoretical pricing.
 
 ## Which features support which asset types
 
@@ -68,12 +69,12 @@ The automation builder hides signals your chosen asset type does not support, an
 </Warning>
 
 <Note>
-  An automation on the **Options** asset type tracks the specific contract you pick from the chain — a given strike and expiry, not the underlying company. If you want a rule about the stock itself, set the asset type to Stocks and use the plain ticker. If an options automation reports no data on its runs, rebuild it against the underlying.
+  An automation on the **Options** asset type tracks the specific contract you pick from the chain, a given strike and expiry, not the underlying company. If you want a rule about the stock itself, set the asset type to Stocks and use the plain ticker. If an options automation reports no data on its runs, rebuild it against the underlying.
 </Note>
 
 ## Extended hours and overnight
 
-Automations poll **around the clock** — there is no market-hours switch to set. Outside regular trading hours the price feed returns the last known price, which is the official close once the session ends.
+Automations poll **around the clock**. There is no market-hours switch to set. Outside regular trading hours the price feed returns the last known price, which is the official close once the session ends.
 
 For US stocks the feed includes **pre-market and after-hours** prints, so a price condition can fire on an extended-hours move. That is a feature during an earnings gap and a nuisance on a thin ticker where a single odd print moves the last price. Set price thresholds with that in mind.
 
@@ -89,7 +90,7 @@ Named plainly, so you do not go looking:
 - **Futures.** No futures contracts, and no continuous futures series.
 - **Bonds and commodities directly.** Reachable only through US-listed ETFs that hold them.
 - **Crypto pairs that do not quote in USD.** Everything is priced against the dollar.
-- **Forex volume and forex indicators.** Covered above — no consolidated volume exists to compute them from.
+- **Forex volume and forex indicators.** Covered above, no consolidated volume exists to compute them from.
 - **Fundamentals, earnings, insider filings, and corporate actions for anything other than stocks and ETFs.** Crypto and forex have no filings to read.
 - **Order placement.** Tradion reads your brokerage and produces analysis. It never sends an order, cancels one, or moves money.
 

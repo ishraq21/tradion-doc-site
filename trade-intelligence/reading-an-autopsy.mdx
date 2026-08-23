@@ -8,7 +8,7 @@ icon: "file-magnifying-glass"
 A report carries the same sections in the same order every time. This page goes through each one and says what it measures.
 
 <Frame caption="The order the sections appear in, and where each one sits on the page.">
-  <img src="/images/diagrams/autopsy-anatomy.svg" alt="Labelled diagram of an autopsy report showing the header, timeline, three score cards, risk metrics, attribution breakdown, what-if analysis, lesson, setup classification, coaching recommendations, and data confidence panel" />
+  <img src="/images/diagrams/autopsy-anatomy.svg" alt="Labelled diagram of an autopsy report showing the header, timeline, three score cards, risk metrics, attribution breakdown, what-if analysis, lesson, setup classification, coaching recommendations, and data confidence panel" noZoom />
 </Frame>
 
 ## Header and verdict
@@ -34,7 +34,7 @@ When the two grades differ by two letters or more, the attribution section below
 
 Five to eight events between entry and exit, in order, each with a time and a label. Entry and exit get a filled dot; warnings and decision points sit between them.
 
-You already remember the entry and the exit. The middle is what this section is for — it names the moments where the trade stopped being the trade you planned. The first event that isn't part of your original plan is usually earlier than the point where the loss showed up.
+You already remember the entry and the exit. The middle is what this section is for. It names the moments where the trade stopped being the trade you planned. The first event that isn't part of your original plan is usually earlier than the point where the loss showed up.
 
 ## Risk metrics
 
@@ -48,8 +48,8 @@ Losses that regularly come in worse than `-1.0R` mean the stop isn't being held.
 
 Three scores, 0–100, on every report.
 
-<Frame caption="What each of the three grades is measuring — they are not three views of the same thing.">
-  <img src="/images/diagrams/scorecard.svg" alt="Diagram of the three autopsy scores — entry quality, exit discipline, and risk management — with the question each one answers" />
+<Frame caption="What each of the three grades is measuring. They are not three views of the same thing.">
+  <img src="/images/diagrams/scorecard.svg" alt="Diagram of the three autopsy scores (entry quality, exit discipline, and risk management) with the question each one answers" noZoom />
 </Frame>
 
 | Score | The question it answers |
@@ -58,7 +58,7 @@ Three scores, 0–100, on every report.
 | **Exit Discipline** | Did you follow your exit plan? |
 | **Risk Management** | Was the stop placed, the size appropriate, and the reward worth the risk? |
 
-Above 70 shows green, 50–70 neutral, below 50 red. Each score comes with a **why** — the reasoning behind it, collected into the analysis section — and a **fix**, collected into Coaching Recommendations on the right.
+Above 70 shows green, 50–70 neutral, below 50 red. Each score comes with a **why** (the reasoning behind it, collected into the analysis section) and a **fix**, collected into Coaching Recommendations on the right.
 
 The three are not interchangeable. High entry quality with low exit discipline is a different problem from the reverse, and the fixes have nothing in common.
 
@@ -66,7 +66,7 @@ The three are not interchangeable. High entry quality with low exit discipline i
 
 ## The attribution breakdown
 
-Headed **Mistake Classification** on a loss and **Edge Attribution** on a win. Directly above it sits **Root Cause Analysis** — **Trade Analysis** on a win — which is the written reasoning behind each score.
+Headed **Mistake Classification** on a loss and **Edge Attribution** on a win. Directly above it sits **Root Cause Analysis** (**Trade Analysis** on a win) which is the written reasoning behind each score.
 
 The attribution list splits the result into contributing factors that add up to 100%, each with a share and an impact label: critical, high, medium, or low on a loss; primary, significant, supporting, or minor on a win.
 
@@ -76,17 +76,17 @@ On a loss it separates the part that was your decision from the part that was th
 
 Headed **What-If Analysis**, usually two or three of them.
 
-A **counterfactual** is a version of events that didn't happen — the same trade run again with one thing changed. Each names the change, states its impact, and explains what would have followed. Typical shapes: the stop held, the trade carried to your original target, half the size, or the trade not taken.
+A **counterfactual** is a version of events that didn't happen, the same trade run again with one thing changed. Each names the change, states its impact, and explains what would have followed. Typical shapes: the stop held, the trade carried to your original target, half the size, or the trade not taken.
 
 ### What this actually means
 
-A counterfactual measures the size of one specific habit. It is not the market telling you that you should have known better — hindsight makes every alternative look obvious. If "exited at my stated target instead of closing early" turns this trade around, and the next four as well, you now know in percentage terms what that habit is worth.
+A counterfactual measures the size of one specific habit. It is not the market telling you that you should have known better, hindsight makes every alternative look obvious. If "exited at my stated target instead of closing early" turns this trade around, and the next four as well, you now know in percentage terms what that habit is worth.
 
 A single counterfactual is thin evidence. The one that recurs across reports is the one worth a rule.
 
 ## The lesson
 
-Every report ends with one rule, in quotes, plus a short pre-trade checklist and a **trigger** — the specific situation in which the rule applies.
+Every report ends with one rule, in quotes, plus a short pre-trade checklist and a **trigger**, the specific situation in which the rule applies.
 
 One rule per report, deliberately. A list of fifteen things to do better is a list nobody follows.
 
@@ -96,7 +96,7 @@ Bottom right, under **Data Confidence**: a percentage, and counts of how many fi
 
 This is the report grading its own evidence. Known means you told Tradion. Inferred means it worked the value out from something you did say. Assumed means it filled a gap with a default and is saying so.
 
-A report built mostly on assumptions is a hypothesis rather than a finding. If the number is low and the conclusion matters, log the trade again with more detail — there's no way to edit a logged trade in place, so that means deleting it and re-running.
+A report built mostly on assumptions is a hypothesis rather than a finding. If the number is low and the conclusion matters, log the trade again with more detail. There's no way to edit a logged trade in place, so that means deleting it and re-running.
 
 ## Turning a finding into a playbook rule
 
@@ -105,7 +105,7 @@ A report built mostly on assumptions is a hypothesis rather than a finding. If t
     The button under the lesson. The rule goes into your [Playbook](/trade-intelligence/playbook-and-preflight).
   </Step>
   <Step title="Open Playbook and sharpen it">
-    The generated rule is a starting point. Edit it until it's something you could tick a box against — that page has good and bad examples side by side.
+    The generated rule is a starting point. Edit it until it's something you could tick a box against. That page has good and bad examples side by side.
   </Step>
   <Step title="Add the trigger and the checklist steps">
     A rule without a trigger never fires, because you'll never remember to look for it.
@@ -113,7 +113,7 @@ A report built mostly on assumptions is a hypothesis rather than a finding. If t
 </Steps>
 
 <Tip>
-  The other two panels on the right are worth a glance. **Setup Classification** names the kind of trade this was, with a confidence percentage — over time that's what produces your per-setup win rates. **Coaching Recommendations** is the numbered list of fixes, one per score.
+  The other two panels on the right are worth a glance. **Setup Classification** names the kind of trade this was, with a confidence percentage, over time that's what produces your per-setup win rates. **Coaching Recommendations** is the numbered list of fixes, one per score.
 </Tip>
 
 <CardGroup cols={2}>

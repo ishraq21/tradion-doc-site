@@ -22,7 +22,7 @@ Runs is one feed of every execution across all your automations, newest first, 2
 | **Degraded** | Some agents finished, some didn't. The output is real but incomplete |
 | **Failed** | Every agent failed, or the run never completed |
 
-A run stuck on **Running** for more than 20 minutes is automatically marked Failed. Seeing that repeatedly on one automation means the agents are timing out rather than erroring — usually too many agents on one canvas.
+A run stuck on **Running** for more than 20 minutes is automatically marked Failed. Seeing that repeatedly on one automation means the agents are timing out rather than erroring, usually too many agents on one canvas. Six agents are estimated at about 15 minutes, so a full canvas has little room before the 20-minute cut-off. The Action node prints that estimate: see [the AI Agent node](/automations/ai-agent-node).
 
 ## Reading a single run
 
@@ -30,8 +30,8 @@ Click a run and you get a timeline in three parts.
 
 ```mermaid
 flowchart TB
-    A["Triggered — timestamp, price, the readings that made it true"] --> B["Agent steps — one card per agent, in execution order"]
-    B --> C["Notifications — one row per channel, delivered or failed"]
+    A["Triggered: timestamp, price, the readings that made it true"] --> B["Agent steps: one card per agent, in order"]
+    B --> C["Notifications: one row per channel, delivered or failed"]
 ```
 
 **Triggered** shows the exact conditions that became true and the readings behind them. If the trigger reads as something you didn't intend, the problem is in the signal, not downstream.
@@ -52,7 +52,7 @@ Work through these in order; each rules out a whole class of cause.
 
 <Steps>
   <Step title="Is there a run for it?">
-    **If a run exists, it did fire** — your problem is delivery, so skip to the next section. If no run exists, carry on.
+    **If a run exists, it did fire**, so your problem is delivery. Skip to the next section. If no run exists, carry on.
   </Step>
   <Step title="Is the toggle on Active?">
     Paused automations are never evaluated. Check your subscription too: a lapsed one stops the checks, and a cancelled one pauses the automations outright.
@@ -61,7 +61,7 @@ Work through these in order; each rules out a whole class of cause.
     The card shows when it last triggered. If that was less than the cooldown ago, the next trigger is suppressed. Default cooldown on a new automation is one hour.
   </Step>
   <Step title="Did the value ever transition through the level?">
-    After its first check, a crossing operator only fires on a transition. If the reading has sat on one side of your level the whole time, there has been no crossing to catch — confirm on a chart that the value actually moved through it. See [operators](/automations/operators).
+    After its first check, a crossing operator only fires on a transition. If the reading has sat on one side of your level the whole time, there has been no crossing to catch. Confirm on a chart that the value actually moved through it. See [operators](/automations/operators).
   </Step>
   <Step title="Is it an event signal on its first check?">
     News, insider transactions, and corporate actions record a starting point on their first check and fire only on items newer than that. They never fire on something already published when you built the automation.
@@ -79,7 +79,7 @@ Work through these in order; each rules out a whole class of cause.
     Options contracts expire, and an automation pointed at an expired one has nothing left to watch. Re-select a live contract from the chain picker.
   </Step>
   <Step title="Is a Schedule node gating it?">
-    A Schedule node placed alongside signals restricts checking to that window. Conditions that go true outside it are not seen.
+    A Schedule node alongside signals restricts checking to roughly 90 seconds around each scheduled time. Anything that goes true outside that window is never seen. See [the Schedule node](/automations/overview).
   </Step>
 </Steps>
 
@@ -87,11 +87,11 @@ Work through these in order; each rules out a whole class of cause.
 
 If a run exists, open it and read the Notifications section. It names the channel that failed and why, and that is usually the whole answer.
 
-- **Delivered, but you didn't see it** — check the right Discord channel, check spam, confirm the email on the Action node is the one you read.
-- **Failed with attempts listed** — Tradion retried and gave up. Revoked Discord webhooks and unreachable endpoints look like this.
-- **No notification rows at all** — no channel was enabled on the Action node.
+- **Delivered, but you didn't see it**. Check the right Discord channel, check spam, confirm the email on the Action node is the one you read.
+- **Failed with attempts listed**. Tradion retried and gave up. Revoked Discord webhooks and unreachable endpoints look like this.
+- **No notification rows at all**. No channel was enabled on the Action node.
 
-A failing channel is never disabled automatically, so make the Runs tab your first stop when alerts go quiet. Channel-by-channel fixes: [notification channels](/automations/notifications).
+A failing channel is never disabled automatically, so make the Runs tab your first stop when alerts go quiet. Channel-by-channel fixes: [the Action node](/automations/notifications).
 
 ## Finding out how often a trigger fires
 
@@ -119,7 +119,7 @@ Tradion has no frequency preview in the canvas builder, so measure it on live da
   <Card title="Operators" icon="arrow-right-arrow-left" href="/automations/operators">
     The setting behind most "it never fired" and "it fired constantly" reports.
   </Card>
-  <Card title="Notification channels" icon="paper-plane" href="/automations/notifications">
+  <Card title="The Action node" icon="paper-plane" href="/automations/notifications">
     Fixing a channel that stopped delivering.
   </Card>
 </CardGroup>

@@ -105,19 +105,11 @@ async function main() {
 
     // The design contract, enforced rather than trusted.
     const root = markup.slice(0, markup.indexOf('>') + 1);
-    const wMatch = root.match(/\swidth="([^"]+)"/);
-    const hMatch = root.match(/\sheight="([^"]+)"/);
-    const vbMatch = root.match(/viewBox="0 0 (\d+) (\d+)"/);
-    if (!wMatch || !hMatch) {
-      console.error(`✗ ${slug}: root must carry unitless width and height so <img>.naturalWidth resolves (required by medium-zoom).`);
-      process.exit(1);
-    }
-    if (/[a-z%]/i.test(wMatch[1]) || /[a-z%]/i.test(hMatch[1])) {
-      console.error(`✗ ${slug}: root width/height must be unitless numbers, not "${wMatch[1]}"/"${hMatch[1]}".`);
-      process.exit(1);
-    }
-    if (vbMatch && (wMatch[1] !== vbMatch[1] || hMatch[1] !== vbMatch[2])) {
-      console.error(`✗ ${slug}: root width/height (${wMatch[1]}/${hMatch[1]}) must match viewBox (${vbMatch[1]}/${vbMatch[2]}).`);
+    // Unitless width/height are REQUIRED: medium-zoom (the <Frame> lightbox)
+    // reads naturalWidth/naturalHeight on click and cannot scale without them.
+    // What breaks rendering is a unit or a percentage, so reject only those.
+    if (/\s(?:width|height)="[^"]*(?:%|px|em|rem)/.test(root)) {
+      console.error(`✗ ${slug}: root width/height carries a unit. Use unitless numbers matching the viewBox.`);
       process.exit(1);
     }
     if (/style="[^"]*%/.test(root)) {

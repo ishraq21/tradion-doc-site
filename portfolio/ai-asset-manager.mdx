@@ -7,18 +7,18 @@ icon: "comments"
 The AI Asset Manager is a chat workspace sitting on top of your portfolio. It reads your real positions before answering, so when it says a sector is heavy or one position dominates your risk, it is describing your account and not a generic one.
 
 <Info>
-  Available on Starter, Trader, and Quant. Every message you send counts against your monthly chat allowance — 150 on Starter, 500 on Trader, 1,000 on Quant. See [Usage limits](/concepts/usage-limits).
+  Available on Starter, Trader, and Quant. Every message you send counts against your monthly chat allowance, 150 on Starter, 500 on Trader, 1,000 on Quant. See [Usage limits](/concepts/usage-limits).
 </Info>
 
-<Frame caption="Chat on the right, thread history in the left rail, charts rendered inline in the answer.">
-  <img src="/images/diagrams/asset-manager-anatomy.svg" alt="Labelled diagram of the AI Asset Manager workspace showing the session history rail, message thread, an embedded chart, and the composer" />
+<Frame caption="The Asset Manager opens with four starting questions and a composer that tells you how many positions it can see.">
+  <img src="/images/screens/asset-manager.jpg" alt="The AI Asset Manager landing screen with a greeting, four suggestion buttons for concentration analysis, top and bottom performers, sector breakdown and macro analysis, and a composer showing position count, live connections and message allowance" />
 </Frame>
 
 ## Opening a session
 
 Two ways in. Click **AI Asset Manager** in the Portfolio header to land in your current thread, or a fresh one the first time. Or open it from a row in the holdings table, and the session starts already focused on that ticker, so your first question does not have to name it.
 
-A new thread offers four starter prompts — concentration, top and bottom performers, sector breakdown, macro context — for when you want to see the format first. Messages cap at 4,000 characters.
+A new thread offers four starter prompts (concentration, top and bottom performers, sector breakdown, macro context) for when you want to see the format first. Messages cap at 4,000 characters.
 
 ### In plain English
 
@@ -32,18 +32,18 @@ The assistant is not watching your account. It gets one written briefing about y
 
 Before each answer, Tradion assembles a briefing from your account:
 
-- Every position, marked **live** if it came from a broker or **manual** if you added it, with shares, **cost basis** (what you paid per share, averaged across your buys), last price, current value, and **unrealised** profit or loss — the paper result on something you still hold, which the price can still take back
+- Every position, marked **live** if it came from a broker or **manual** if you added it, with shares, **cost basis** (what you paid per share, averaged across your buys), last price, current value, and **unrealised** profit or loss, the paper result on something you still hold, which the price can still take back
 - Cash balance, how many brokerages are connected, and when they last synced
 - Your largest holding and the combined weight of your top three
 - Recent closed trades and their outcomes
 - Your last few trade autopsies: entry, exit, and risk-management grades, and the mistakes tagged in each
-- Your [Tradion Memory](/concepts/tradion-memory) profile — trade count, average grades, recurring mistakes, favoured setups
+- Your [Tradion Memory](/concepts/tradion-memory) profile, trade count, average grades, recurring mistakes, favoured setups
 
 It can also pull live data mid-answer: quotes, price history, fundamentals, options chains, earnings dates and estimates, insider transactions, news and sentiment, macro indicators, and web search.
 
 ### What it cannot do
 
-It cannot place, change, or cancel an order — the brokerage link is read-only. It does not see your personal details, bank links, or tax documents. It reads the last 16 messages of the thread, so a point made much earlier may need restating. With personalisation off, the behavioural half of the briefing is withheld and answers stay purely positional.
+It cannot place, change, or cancel an order, the brokerage link is read-only. It does not see your personal details, bank links, or tax documents. It reads the last 16 messages of the thread, so a point made much earlier may need restating. With personalisation off, the behavioural half of the briefing is withheld and answers stay purely positional.
 
 ## Questions worth asking
 
@@ -52,7 +52,7 @@ Swap your own tickers into these. Each one has a factual answer the assistant ca
 - "Which of my positions carry the most risk right now, and why?"
 - "Break my portfolio down by sector and show it as a pie chart."
 - "What percentage of my account is in my top three positions?"
-- "How correlated are {TICKER_A} and {TICKER_B}? Am I holding the same bet twice?" — **correlation** measures how closely two tickers have moved together historically, from +1 (in lockstep) through 0 (unrelated) to −1 (opposite)
+- "How correlated are {TICKER_A} and {TICKER_B}? Am I holding the same bet twice?", **correlation** measures how closely two tickers have moved together historically, from +1 (in lockstep) through 0 (unrelated) to −1 (opposite)
 - "Which holdings have earnings in the next two weeks?"
 - "Compare my open winners and losers and chart them."
 - "Given my documented mistakes, which position am I most likely to mishandle?"
@@ -67,11 +67,11 @@ Scenario questions hold your real positions still and move one variable:
 - "If technology sold off 10% tomorrow, how much of my portfolio moves?"
 - "If I closed my two largest positions, what would my sector mix look like?"
 
-These are arithmetic on your live weights, not predictions. Nothing in the answer is a recommendation to trade — the assistant produces the analysis and you decide.
+These are arithmetic on your live weights, not predictions. Nothing in the answer is a recommendation to trade, the assistant produces the analysis and you decide.
 
 ## Charts inside the answer
 
-When a visual works better than a sentence, the assistant draws one directly after the text that introduces it. Bar, line, area, pie, and mixed bar-and-line are available, each interactive — hover a segment for its value. Answers stream as they are written, so charts appear mid-response.
+When a visual works better than a sentence, the assistant draws one directly after the text that introduces it. Bar, line, area, pie, and mixed bar-and-line are available, each interactive, hover a segment for its value. Answers stream as they are written, so charts appear mid-response.
 
 ## Moving to another feature
 

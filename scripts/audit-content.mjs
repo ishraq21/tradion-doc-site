@@ -85,7 +85,7 @@ const NEEDS_GLOSS = [
   'implied volatility', 'open interest', 'counterfactual', 'FIFO', 'OPRA',
   'HMAC', 'SSRF', 'drawdown', 'Sharpe', 'straddle', 'Form 4',
 ];
-const GLOSS_MARKERS = /—\s|\bmeans\b|\bthat is\b|\bin other words\b|\bwhich is\b|\bi\.e\.|\bshort for\b|\bstands for\b|\bactually is\b|\brefers to\b|\bis when\b|\bis the\b|\(/i;
+const GLOSS_MARKERS = /,\s(?:the|a|an|how|what|when|which|where)\b|\bmeans\b|\bthat is\b|\bin other words\b|\bwhich is\b|\bi\.e\.|\bshort for\b|\bstands for\b|\bactually is\b|\brefers to\b|\bis when\b|\bis the\b|\(/i;
 
 /* ── walk ──────────────────────────────────────────────────────────────── */
 
@@ -210,6 +210,16 @@ for (const file of files) {
   const n = wordsIn(prose);
   if (!isReference && !/^help\/(troubleshooting|faq)/.test(rel) && n > 1200) {
     errors.push(`${rel}: ${n} words of prose — over the 1,200 ceiling, split or cut`);
+  }
+
+  // Mirza asked for no em dashes anywhere. The redaction glyph is exempt:
+  // it stands in for a withheld number rather than punctuating a sentence.
+  for (const m of body.matchAll(/\u2014/g)) {
+    const at = m.index ?? 0;
+    const around = body.slice(Math.max(0, at - 3), at + 4);
+    if (/^[\s\u2014.\/%-]+$/.test(around)) continue;
+    const line = body.slice(0, at).split('\n').length;
+    errors.push(`${rel}:${line}: em dash in prose. Use a comma, a colon, parentheses, or two sentences.`);
   }
 
   // Claims the code contradicts. These were each shipped once.
