@@ -28,10 +28,6 @@ Click **+ Agent** in the toolbar. Each type can be added once, so six is the cei
 | **Market Brief** | Indices, macro, sectors, your holdings | A whole-market digest, not one ticker | You want a briefing on a schedule | `{market_brief_agent}` |
 | **Report Writer** | The agents above | One memo assembled from all of it | Two or more others are on the canvas | `{report_agent}` |
 
-### Two more exist in the code and cannot be added
-
-`quant_analysis` (Quant Engine) has a full settings panel and no entry in the **+ Agent** menu, so it cannot go on a canvas, and `{quant_agent}` never resolves. `full` is an old name treated as another Report Writer.
-
 ## How long it takes
 
 Agents are sequential, so the wait is their sum. Market Brief takes about 6 minutes, cut off at 12. Research about 3, Fundamental about 2, and Chart, Sentiment and Report Writer 1 to 2 each, all cut off at 5. The Action node prints the total: **Est. ~15 min · 6 agents, sequential**.
@@ -79,7 +75,7 @@ Every agent also has an **Instructions** box, free text capped at 500 characters
   <Accordion title="Report Writer">
     **Sections**, grouped by what supplies them. Six always work: Executive Summary, Technical Analysis, Trade Plan, Position Sizing, Action Items, Scenario Analysis. The first four are pre-selected.
 
-    The rest stay greyed out until the agent feeding them is on the canvas. Fundamental Analyst unlocks Fundamental Analysis, Earnings Outlook, Cash Flow Analysis, Peer Comparison. Research Agent unlocks Catalyst Calendar. Sentiment Analyst unlocks Options Strategy. Any one of the three unlocks Key Findings and Risk Assessment. Quantitative Metrics needs the Quant Engine, so it is never selectable.
+    The rest stay greyed out until the agent feeding them is on the canvas. Fundamental Analyst unlocks Fundamental Analysis, Earnings Outlook, Cash Flow Analysis, Peer Comparison. Research Agent unlocks Catalyst Calendar. Sentiment Analyst unlocks Options Strategy. Any one of the three unlocks Key Findings and Risk Assessment.
 
     Selections survive removing the agent that unlocked them, and the group header counts them.
   </Accordion>
