@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" role="img" aria-labelledby="autopsyloop-t autopsyloop-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="300" viewBox="0 0 940 300" role="img" aria-labelledby="autopsyloop-t autopsyloop-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="autopsyloop-t">From a closed trade to a pre-flight check</title><desc id="autopsyloop-d">Five stages in a loop: a closed trade becomes an autopsy, repeated findings become a pattern, the pattern becomes a playbook rule, and the rule becomes a pre-flight check before your next entry, which feeds back to the start.</desc>
 <defs>
   <marker id="autopsyloop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

@@ -105,12 +105,23 @@ async function main() {
 
     // The design contract, enforced rather than trusted.
     const root = markup.slice(0, markup.indexOf('>') + 1);
-    if (/\swidth=|\sheight=/.test(root)) {
-      console.error(`✗ ${slug}: root carries width/height. It must scale to its column, or it overflows and breaks the lightbox.`);
+    const wMatch = root.match(/\swidth="([^"]+)"/);
+    const hMatch = root.match(/\sheight="([^"]+)"/);
+    const vbMatch = root.match(/viewBox="0 0 (\d+) (\d+)"/);
+    if (!wMatch || !hMatch) {
+      console.error(`✗ ${slug}: root must carry unitless width and height so <img>.naturalWidth resolves (required by medium-zoom).`);
+      process.exit(1);
+    }
+    if (/[a-z%]/i.test(wMatch[1]) || /[a-z%]/i.test(hMatch[1])) {
+      console.error(`✗ ${slug}: root width/height must be unitless numbers, not "${wMatch[1]}"/"${hMatch[1]}".`);
+      process.exit(1);
+    }
+    if (vbMatch && (wMatch[1] !== vbMatch[1] || hMatch[1] !== vbMatch[2])) {
+      console.error(`✗ ${slug}: root width/height (${wMatch[1]}/${hMatch[1]}) must match viewBox (${vbMatch[1]}/${vbMatch[2]}).`);
       process.exit(1);
     }
     if (/style="[^"]*%/.test(root)) {
-      console.error(`✗ ${slug}: percentage size in an inline style on the root renders blank in some engines. Use the viewBox alone.`);
+      console.error(`✗ ${slug}: percentage size in an inline style on the root renders blank in some engines.`);
       process.exit(1);
     }
     const hexes = [...markup.matchAll(/#[0-9a-fA-F]{6}\b/g)].map((m) => m[0].toLowerCase());

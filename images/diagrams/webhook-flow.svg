@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 320" role="img" aria-labelledby="webhookflow-t webhookflow-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="320" viewBox="0 0 940 320" role="img" aria-labelledby="webhookflow-t webhookflow-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="webhookflow-t">The outbound webhook flow</title><desc id="webhookflow-d">Five steps: a trigger fires, Tradion signs the payload with HMAC-SHA256, posts it to your HTTPS endpoint, you recompute and compare the signature in constant time, and only then act on it.</desc>
 <defs>
   <marker id="webhookflow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

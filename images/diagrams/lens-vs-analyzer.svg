@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-labelledby="lensvsanalyzer-t lensvsanalyzer-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380" role="img" aria-labelledby="lensvsanalyzer-t lensvsanalyzer-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="lensvsanalyzer-t">Chart Analyzer compared with Lens</title><desc id="lensvsanalyzer-d">Two side-by-side columns. Chart Analyzer is for a chart image you upload. Lens works from the chart already open in Tradion. Both return a direction, a confidence score, and price levels.</desc>
 <defs>
   <marker id="lensvsanalyzer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

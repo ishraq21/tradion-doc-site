@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 460" role="img" aria-labelledby="memorysources-t memorysources-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="460" viewBox="0 0 940 460" role="img" aria-labelledby="memorysources-t memorysources-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="memorysources-t">How Tradion Memory works</title><desc id="memorysources-d">Ten activity sources on the left feed into a single trader profile in the centre, which then shapes five kinds of AI output on the right.</desc>
 <defs>
   <marker id="memorysources-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" role="img" aria-labelledby="autopsyanatomy-t autopsyanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="520" viewBox="0 0 940 520" role="img" aria-labelledby="autopsyanatomy-t autopsyanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="autopsyanatomy-t">Anatomy of an autopsy report</title><desc id="autopsyanatomy-d">An autopsy report broken into seven numbered sections: verdict, data coverage, timeline, attribution, scorecard, counterfactual, and lesson, each with a note explaining what to take from it.</desc>
 <defs>
   <marker id="autopsyanatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

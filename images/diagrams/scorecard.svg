@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img" aria-labelledby="scorecard-t scorecard-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-labelledby="scorecard-t scorecard-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="scorecard-t">The autopsy scorecard</title><desc id="scorecard-d">Three ring gauges scoring entry quality, exit discipline, and risk management. A footer notes that the score measures the decision, not the outcome.</desc>
 <defs>
   <marker id="scorecard-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

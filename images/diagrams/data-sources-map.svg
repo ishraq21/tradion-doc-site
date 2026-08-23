@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" role="img" aria-labelledby="datasourcesmap-t datasourcesmap-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="400" viewBox="0 0 940 400" role="img" aria-labelledby="datasourcesmap-t datasourcesmap-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="datasourcesmap-t">Which provider supplies which data</title><desc id="datasourcesmap-d">Five data providers on the left (Alpaca, Alpha Vantage, FRED, SEC EDGAR, and your connected brokerage), each listing what it supplies, feeding a four-step pipeline on the right.</desc>
 <defs>
   <marker id="datasourcesmap-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

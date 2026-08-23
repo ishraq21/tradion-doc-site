@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-labelledby="crossesvsis-t crossesvsis-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380" role="img" aria-labelledby="crossesvsis-t crossesvsis-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="crossesvsis-t">Crosses below compared with is below</title><desc id="crossesvsis-d">Two charts of the same indicator dipping under a threshold. The left, using crosses below, fires one alert at the moment it passes through. The right, using is below, fires an alert on every check while the value stays under the line.</desc>
 <defs>
   <marker id="crossesvsis-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

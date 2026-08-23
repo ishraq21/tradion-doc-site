@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img" aria-labelledby="confidenceanatomy-t confidenceanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-labelledby="confidenceanatomy-t confidenceanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="confidenceanatomy-t">How a confidence score breaks down</title><desc id="confidenceanatomy-d">Five contributing factors (trend agreement, pattern quality, volume confirmation, risk and reward, and market context), each shown as a bar labelled weak, fair, or strong.</desc>
 <defs>
   <marker id="confidenceanatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

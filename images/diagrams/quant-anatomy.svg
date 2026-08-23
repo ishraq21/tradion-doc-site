@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 460" role="img" aria-labelledby="quantanatomy-t quantanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="460" viewBox="0 0 940 460" role="img" aria-labelledby="quantanatomy-t quantanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="quantanatomy-t">Anatomy of the quant research terminal</title><desc id="quantanatomy-d">A split screen. On the left, a conversation where you ask a question in ordinary language and get a written answer. On the right, a canvas of cells, each showing generated code beside the chart it produced.</desc>
 <defs>
   <marker id="quantanatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

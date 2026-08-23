@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" role="img" aria-labelledby="portfolioanatomy-t portfolioanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="520" viewBox="0 0 940 520" role="img" aria-labelledby="portfolioanatomy-t portfolioanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="portfolioanatomy-t">Anatomy of the Portfolio dashboard</title><desc id="portfolioanatomy-d">A dashboard with summary tiles across the top, a value-over-time chart and a sector allocation donut in the middle, and a holdings table with per-row sparklines beside a connected-accounts panel. All figures are redacted.</desc>
 <defs>
   <marker id="portfolioanatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

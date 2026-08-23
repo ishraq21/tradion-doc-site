@@ -59,14 +59,18 @@ export const ref = (name) => `${NS}-${name}`;
 /**
  * Root wrapper.
  *
- * viewBox and nothing else. No width, no height, and no inline percentage
- * style either: `width:100%` on the root resolves against a zero-width
- * containing block in several renderers and yields a blank image. With a
- * viewBox alone the file has an intrinsic ratio but no intrinsic size, so an
- * <img> scales it to whatever column it lands in. That is the whole recipe.
+ * width and height as unitless numbers (matching viewBox), plus viewBox for
+ * scaling. Unitless attributes give the file an intrinsic pixel size so
+ * <img>.naturalWidth/naturalHeight resolve correctly — required by medium-zoom
+ * (Mintlify's <Frame> lightbox) which reads those on click to compute scale.
+ * viewBox still lets CSS (max-width:100%; height:auto) scale the element to
+ * its column without overflow.
+ *
+ * Do NOT use style="width:100%" on the root: percentage resolves against a
+ * zero-width containing block in some renderers and renders blank.
  */
 export function svg(w, h, body, { title, desc } = {}) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="${ref('t')} ${ref('d')}" font-family="${F.body}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="${ref('t')} ${ref('d')}" font-family="${F.body}">
 <title id="${ref('t')}">${esc(title ?? '')}</title><desc id="${ref('d')}">${esc(desc ?? '')}</desc>
 <defs>
   <marker id="${ref('arrow')}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

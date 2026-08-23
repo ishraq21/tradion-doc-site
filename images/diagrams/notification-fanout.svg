@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="notificationfanout-t notificationfanout-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-labelledby="notificationfanout-t notificationfanout-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="notificationfanout-t">One trigger dispatching to five channels</title><desc id="notificationfanout-d">A trigger on the left fans out to five notification channels: Discord, email, Telegram, in-app, and an outbound webhook. A side panel describes the retry behaviour when a delivery fails.</desc>
 <defs>
   <marker id="notificationfanout-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 500" role="img" aria-labelledby="profileanatomy-t profileanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="500" viewBox="0 0 940 500" role="img" aria-labelledby="profileanatomy-t profileanatomy-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="profileanatomy-t">Anatomy of the Profile page</title><desc id="profileanatomy-d">Panels showing a risk score ring, an AI verdict, a behavioural fingerprint radar, a list of repeating patterns with frequency bars, a win-rate heatmap by weekday and hour, and a year-long activity heatmap.</desc>
 <defs>
   <marker id="profileanatomy-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" role="img" aria-labelledby="signalmatrix-t signalmatrix-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-labelledby="signalmatrix-t signalmatrix-d" font-family="'Inter', system-ui, -apple-system, sans-serif">
 <title id="signalmatrix-t">Signal types by asset type</title><desc id="signalmatrix-d">A grid of nine signal types against four asset types. Price and technical indicators work everywhere; volume and daily change work for stocks, crypto and options; news covers stocks and crypto; earnings, options flow, insider filings and corporate actions are stocks only.</desc>
 <defs>
   <marker id="signalmatrix-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
