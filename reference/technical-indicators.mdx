@@ -62,9 +62,9 @@ Trend indicators answer one question: which way has price been drifting, and how
 | Aroon Oscillator | `AROON_OSC` | Aroon Up minus Aroon Down, positive when the recent highs are fresher than the recent lows. An **oscillator** is any indicator that moves inside a fixed range, so an extreme reading means the same thing on any ticker | `period` | Both |
 | Midpoint | `MIDPOINT` | The middle of the highest and lowest close over N bars | `period` | Quant research |
 | Midprice | `MIDPRICE` | The middle of the highest high and the lowest low over N bars | `period` | Quant research |
-| Median price | `MEDIAN_PRICE` | The middle of the current bar's high and low | , | Automations |
-| Typical price | `TYPICAL_PRICE` | High, low, and close of the current bar, averaged | , | Automations |
-| Weighted close | `WEIGHTED_CLOSE` | The same average with the close counted twice, so it leans toward where the bar finished | , | Automations |
+| Median price | `MEDIAN_PRICE` | The middle of the current bar's high and low | None | Automations |
+| Typical price | `TYPICAL_PRICE` | High, low, and close of the current bar, averaged | None | Automations |
+| Weighted close | `WEIGHTED_CLOSE` | The same average with the close counted twice, so it leans toward where the bar finished | None | Automations |
 
 <Tip>
   In quant research, `AROON` returns up, down, and oscillator together in one call. In automations you pick one of the three as your condition.
@@ -85,20 +85,20 @@ Momentum indicators measure how hard price has been pushed and whether that push
 | Rate of Change | `ROC` | The percentage price change over the last N bars | `period` | Both |
 | Momentum | `MOM` | The raw price change over the last N bars, in currency rather than percent | `period` | Both |
 | Williams %R | `WILLR` | Where the close sits in the recent range, written as −100 to 0. A mirror of Stochastic | `period` | Both |
-| Balance of Power | `BOP` | Where the bar closed relative to where it opened, scaled by the bar's range. \+1 means buyers took it wall to wall | , | Both |
+| Balance of Power | `BOP` | Where the bar closed relative to where it opened, scaled by the bar's range. \+1 means buyers took it wall to wall | None | Both |
 | Chande Momentum Oscillator | `CMO` | The balance of total up-moves against total down-moves over N bars, −100 to \+100 | `period` | Both |
-| Absolute Price Oscillator | `APO` | The gap between a 12-bar and a 26-bar EMA, in price units | , | Both |
-| Percentage Price Oscillator | `PPO` | The same gap expressed as a percentage, so a low-priced stock and a high-priced one become comparable | , | Both |
-| Know Sure Thing | `KST` | Four rate-of-change readings over four different lookbacks, smoothed and added together | , | Both |
+| Absolute Price Oscillator | `APO` | The gap between a 12-bar and a 26-bar EMA, in price units | None | Both |
+| Percentage Price Oscillator | `PPO` | The same gap expressed as a percentage, so a low-priced stock and a high-priced one become comparable | None | Both |
+| Know Sure Thing | `KST` | Four rate-of-change readings over four different lookbacks, smoothed and added together | None | Both |
 | True Strength Index | `TSI` | Momentum smoothed twice, slower and cleaner than RSI, with fewer false turns | `fast`, `slow` | Both |
-| Ultimate Oscillator | `UO` | Momentum blended across 7, 14, and 28 bars so no single lookback dominates the reading | , | Both |
-| Awesome Oscillator | `AO` | The difference between a 5-bar and a 34-bar average of each bar's midpoint | , | Both |
+| Ultimate Oscillator | `UO` | Momentum blended across 7, 14, and 28 bars so no single lookback dominates the reading | None | Both |
+| Awesome Oscillator | `AO` | The difference between a 5-bar and a 34-bar average of each bar's midpoint | None | Both |
 | Fisher Transform | `FISHER` | Price position in the recent range, stretched mathematically so extremes stand out sharply | `period` | Both |
 | TRIX | `TRIX` | The percentage rate of change of a triple-smoothed EMA, short-term noise removed before momentum is measured | `period` | Automations |
-| Coppock Curve | `COPPOCK` | Long-horizon momentum, originally built to spot the end of major declines | , | Automations |
+| Coppock Curve | `COPPOCK` | Long-horizon momentum, originally built to spot the end of major declines | None | Automations |
 | Detrended Price Oscillator | `DPO` | Price with the longer trend subtracted out, so the shorter cycle underneath is visible | `period` | Automations |
 | Elder Bull Power | `BULL_POWER` | How far the bar's high reached above a 13-bar EMA (how much buyers extended the bar | ) | Automations |
-| Elder Bear Power | `BEAR_POWER` | How far the bar's low reached below that same EMA | , | Automations |
+| Elder Bear Power | `BEAR_POWER` | How far the bar's low reached below that same EMA | None | Automations |
 | Squeeze Momentum | `SQZMI` | Flags when the Bollinger Bands have contracted inside the Keltner Channels (a sign volatility has compressed and may expand | ) | Quant research |
 
 ## Volatility
@@ -109,7 +109,7 @@ Momentum indicators measure how hard price has been pushed and whether that push
 | --- | --- | --- | --- | --- |
 | Average True Range | `ATR` | The average distance from a bar's high to its low over N bars, in currency, the size of a normal bar for this ticker right now | `period` | Both |
 | Normalized ATR | `NATR` | The same figure as a percentage of price, so a normal bar in NVDA and a normal bar in a penny-priced ticker become comparable | `period` | Both |
-| True Range | `TR` | The size of the most recent bar alone, including any gap from the previous close | , | Both |
+| True Range | `TR` | The size of the most recent bar alone, including any gap from the previous close | None | Both |
 | Bollinger Bands | `BBANDS` | A moving average with a band above and below at a set number of standard deviations. **Standard deviation** is a measure of how spread out recent prices have been, so the bands widen when the market gets jumpy | `period`, `stdDev` (2) | Both |
 | Bollinger %B | `PERCENT_B` | Where price sits between the two bands. 0 is on the lower band, 1 is on the upper, above 1 is outside | `period`, `stdDev` (2) | Automations |
 | Bollinger Bandwidth | `BANDWIDTH` | How far apart the bands are, as a percentage of the middle band. A low reading means the market has gone quiet | `period`, `stdDev` (2) | Automations |
@@ -118,7 +118,7 @@ Momentum indicators measure how hard price has been pushed and whether that push
 | Standard deviation | `SD` / `STDDEV` | How widely closing prices have scattered around their own average over N bars | `period` | Automations |
 | Choppiness Index | `CHOP` | A 0–100 score of whether the market is trending or grinding sideways. High means choppy | `period` | Automations |
 | Ulcer Index | `UI` / `ULCER_INDEX` | How deep and how long the **drawdowns** have been, a drawdown is the fall from a recent high to the low that follows it. Higher means a rougher ride | `period` | Both |
-| Mass Index | `MASS_INDEX` | Watches the high-to-low range widening over a run of bars, used to anticipate a reversal | , | Automations |
+| Mass Index | `MASS_INDEX` | Watches the high-to-low range widening over a run of bars, used to anticipate a reversal | None | Automations |
 
 ## Volume
 
@@ -126,16 +126,16 @@ Momentum indicators measure how hard price has been pushed and whether that push
 
 | Indicator | Code | What it tells you | Parameters | Where |
 | --- | --- | --- | --- | --- |
-| On-Balance Volume | `OBV` | A running total that adds the bar's volume when price closes up and subtracts it when price closes down | , | Both |
+| On-Balance Volume | `OBV` | A running total that adds the bar's volume when price closes up and subtracts it when price closes down | None | Both |
 | Accumulation/Distribution Line | `ADL` | A running total weighted by where in its range each bar closed (closing near the high adds more | ) | Both |
 | Chaikin A/D Oscillator | `ADOSC` | The gap between a fast and a slow average of the A/D line, so you can see it turning | `fast`, `slow` | Quant research |
 | Chaikin Money Flow | `CMF` | That same close-position weighting averaged over N bars, −1 to \+1. Positive means bars have been closing in the upper half on volume | `period` | Both |
 | Elder Force Index | `EFI` | The size of the price change multiplied by the volume behind it, move and participation in one number | `period` | Both |
 | Money Flow Index | `MFI` | RSI computed on price times volume, so heavy-volume moves count for more. 0–100 | `period` | Both |
 | Ease of Movement | `EOM` | How much volume it took to move price a given distance. High means price moved on little effort | `period` | Quant research |
-| Negative Volume Index | `NVI` | Tracks price only on bars where volume fell against the previous bar | , | Quant research |
-| Positive Volume Index | `PVI` | Tracks price only on bars where volume rose | , | Quant research |
-| Price Volume Trend | `PVT` | A running total of each bar's percentage price change multiplied by its volume | , | Both |
+| Negative Volume Index | `NVI` | Tracks price only on bars where volume fell against the previous bar | None | Quant research |
+| Positive Volume Index | `PVI` | Tracks price only on bars where volume rose | None | Quant research |
+| Price Volume Trend | `PVT` | A running total of each bar's percentage price change multiplied by its volume | None | Both |
 | VWAP | `VWAP` | The average price paid across the session, weighted by volume (the common intraday reference for whether you got a good fill | ) | Automations · quant research (see note) |
 
 <Note>

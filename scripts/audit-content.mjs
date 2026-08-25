@@ -249,6 +249,28 @@ for (const file of files) {
     errors.push(`${rel}:${line}: em dash in prose. Use a comma, a colon, parentheses, or two sentences.`);
   }
 
+  // Table cells holding nothing but punctuation.
+  //
+  // The em-dash sweep above was run as a blind find-and-replace of " — " with
+  // ", ". In a table an em dash is often the whole cell, meaning "none", so
+  // twenty-two cells across three pages silently became a bare comma and
+  // shipped that way. An empty cell is fine and deliberate (the blank corner
+  // of a comparison table); a cell containing only punctuation never is.
+  // Runs on `raw`, not `body`. `body` has inline code spans stripped, which
+  // turns the perfectly good cell `` `fast`, `slow` `` into ", " and reports it
+  // as broken. Using raw also means the line number is the real one.
+  let inFence = false;
+  for (const [i, ln] of raw.split('\n').entries()) {
+    if (ln.trim().startsWith('```')) { inFence = !inFence; continue; }
+    if (inFence || !/^\s*\|/.test(ln)) continue;
+    if (/^\s*\|[\s|:-]*\|?\s*$/.test(ln)) continue;   // the header separator row
+    for (const cell of ln.split('|').slice(1, -1)) {
+      if (/^\s*[,.;:]+\s*$/.test(cell)) {
+        errors.push(`${rel}:${i + 1}: table cell contains only "${cell.trim()}". Write the value, or "None".`);
+      }
+    }
+  }
+
   // Claims the code contradicts. These were each shipped once.
   for (const [re, why] of FORBIDDEN_CLAIMS) {
     const m = body.match(re);
