@@ -5,17 +5,38 @@ description: "Every section of the report, and what each one measures."
 icon: "file-magnifying-glass"
 ---
 
-A report carries the same sections in the same order every time. This page goes through each one and says what it measures.
+Every report carries the same sections in the same order.
 
-<Frame caption="The order the sections appear in, and where each one sits on the page.">
-  <img src="/images/diagrams/autopsy-anatomy.svg" alt="Labelled diagram of an autopsy report showing the header, timeline, three score cards, risk metrics, attribution breakdown, what-if analysis, lesson, setup classification, coaching recommendations, and data confidence panel" noZoom />
-</Frame>
+## What's in a report
+
+One scrolling page, top to bottom:
+
+| # | Section | What it gives you |
+| --- | --- | --- |
+| 1 | Header and verdict | Ticker, date, result, and two grades rather than one |
+| 2 | Timeline reconstruction | Five to eight events between entry and exit, in order |
+| 3 | Risk metrics | Entry, exit, duration, R-multiple |
+| 4 | The scorecard | Three scores, 0 to 100 |
+| 5 | Root Cause Analysis | The reasoning behind those scores. *Trade Analysis* on a win |
+| 6 | Mistake Classification | The result split into factors adding to 100%. *Edge Attribution* on a win |
+| 7 | What-If Analysis | The same trade with one thing changed |
+| 8 | The lesson | One rule, its trigger, and a short checklist |
+
+Three panels sit down the right-hand side alongside all of that:
+
+| Panel | What it gives you |
+| --- | --- |
+| **Setup Classification** | The kind of trade this was, with a confidence percentage. Over time this is what produces your per-setup win rates |
+| **Coaching Recommendations** | A numbered fix, one per score |
+| **Data Confidence** | How much of the report rests on what you told Tradion |
+
+The rest of this page takes them in order, and says what each one measures.
 
 ## Header and verdict
 
 The top line is the ticker, the instrument, and the date, followed by the result and a grade.
 
-The grade is two letters, not one: **Process** and **Outcome**. Process grades the quality of the decisions. Outcome grades what the market paid you. Hover the grade for Tradion's note on the gap between them.
+The grade is two letters, not one. **Process** grades the quality of the decisions, **Outcome** grades what the market paid you. Hover the grade for Tradion's note on the gap between them.
 
 ### What this actually means
 
@@ -25,16 +46,16 @@ Four combinations, and the two in the middle carry the information.
 | --- | --- | --- |
 | High | High | Repeat this |
 | High | Low | Right idea, no payout. Normal on a single trade |
-| **Low** | **High** | You got away with it. This is the combination most likely to teach a habit that costs you later |
+| **Low** | **High** | You got away with it. The combination most likely to teach a habit that costs you later |
 | Low | Low | Working as designed. Read the rest of the report |
 
-When the two grades differ by two letters or more, the attribution section below is where the explanation sits.
+When the two grades differ by two letters or more, the attribution section explains why.
 
 ## Timeline reconstruction
 
 Five to eight events between entry and exit, in order, each with a time and a label. Entry and exit get a filled dot; warnings and decision points sit between them.
 
-You already remember the entry and the exit. The middle is what this section is for. It names the moments where the trade stopped being the trade you planned. The first event that isn't part of your original plan is usually earlier than the point where the loss showed up.
+You already remember the entry and the exit. The middle is what this section is for: it names the moments where the trade stopped being the one you planned. The first event that was not part of your plan is usually earlier than the point where the loss showed up.
 
 ## Risk metrics
 
@@ -58,7 +79,7 @@ Three scores, 0–100, on every report.
 | **Exit Discipline** | Did you follow your exit plan? |
 | **Risk Management** | Was the stop placed, the size appropriate, and the reward worth the risk? |
 
-Above 70 shows green, 50–70 neutral, below 50 red. Each score comes with a **why** (the reasoning behind it, collected into the analysis section) and a **fix**, collected into Coaching Recommendations on the right.
+Above 70 shows green, 50–70 neutral, below 50 red. Each score comes with a **why** (collected into the analysis section) and a **fix** (collected into Coaching Recommendations).
 
 The three are not interchangeable. High entry quality with low exit discipline is a different problem from the reverse, and the fixes have nothing in common.
 
@@ -68,9 +89,9 @@ The three are not interchangeable. High entry quality with low exit discipline i
 
 Headed **Mistake Classification** on a loss and **Edge Attribution** on a win. Directly above it sits **Root Cause Analysis** (**Trade Analysis** on a win) which is the written reasoning behind each score.
 
-The attribution list splits the result into contributing factors that add up to 100%, each with a share and an impact label: critical, high, medium, or low on a loss; primary, significant, supporting, or minor on a win.
+The list splits the result into contributing factors that add up to 100%, each with a share and an impact label: critical, high, medium, or low on a loss; primary, significant, supporting, or minor on a win.
 
-On a loss it separates the part that was your decision from the part that was the market. On a win it says how much of the result came from your setup and how much came from the tape moving your way. If the largest share names something you control, it belongs in your playbook. If it names market conditions, there is nothing here to fix.
+What it separates is the part that was your decision from the part that was the market. If the largest share names something you control, it belongs in your playbook. If it names market conditions, there is nothing here to fix.
 
 ## Counterfactuals
 
@@ -80,7 +101,7 @@ A **counterfactual** is a version of events that didn't happen, the same trade r
 
 ### What this actually means
 
-A counterfactual measures the size of one specific habit. It is not the market telling you that you should have known better, hindsight makes every alternative look obvious. If "exited at my stated target instead of closing early" turns this trade around, and the next four as well, you now know in percentage terms what that habit is worth.
+A counterfactual measures the size of one habit, and it is not hindsight scolding you. If "exited at my stated target instead of closing early" turns this trade around, and the next four as well, you know in percentage terms what that habit is worth.
 
 A single counterfactual is thin evidence. The one that recurs across reports is the one worth a rule.
 
@@ -96,25 +117,11 @@ Bottom right, under **Data Confidence**: a percentage, and counts of how many fi
 
 This is the report grading its own evidence. Known means you told Tradion. Inferred means it worked the value out from something you did say. Assumed means it filled a gap with a default and is saying so.
 
-A report built mostly on assumptions is a hypothesis rather than a finding. If the number is low and the conclusion matters, log the trade again with more detail. There's no way to edit a logged trade in place, so that means deleting it and re-running.
+A report built mostly on assumptions is a hypothesis rather than a finding. If the number is low and the conclusion matters, log the trade again with more detail. A logged trade cannot be edited in place, so that means deleting it and re-running.
 
 ## Turning a finding into a playbook rule
 
-<Steps>
-  <Step title="Press Save to Playbook">
-    The button under the lesson. The rule goes into your [Playbook](/trade-intelligence/playbook-and-preflight).
-  </Step>
-  <Step title="Open Playbook and sharpen it">
-    The generated rule is a starting point. Edit it until it's something you could tick a box against. That page has good and bad examples side by side.
-  </Step>
-  <Step title="Add the trigger and the checklist steps">
-    A rule without a trigger never fires, because you'll never remember to look for it.
-  </Step>
-</Steps>
-
-<Tip>
-  The other two panels on the right are worth a glance. **Setup Classification** names the kind of trade this was, with a confidence percentage, over time that's what produces your per-setup win rates. **Coaching Recommendations** is the numbered list of fixes, one per score.
-</Tip>
+**Save to Playbook** sits under the lesson. The generated rule is a starting point: open [Playbook](/trade-intelligence/playbook-and-preflight) and sharpen it into something you could tick a box against, then give it a trigger. A rule without a trigger never fires, because you never remember to look for it.
 
 <CardGroup cols={2}>
   <Card title="Playbook and Pre-Flight" icon="clipboard-check" href="/trade-intelligence/playbook-and-preflight">

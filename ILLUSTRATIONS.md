@@ -21,7 +21,6 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |
 | `diagrams/trade-levels` | Entry, stop, and target on a price axis, with the risk/reward ratio derived | `concepts/reading-a-verdict` |
 | `diagrams/data-sources-map` | Which provider supplies which kind of data | `concepts/data-sources` |
-| `diagrams/autopsy-anatomy` | An autopsy report's sections, labelled | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/scorecard` | The three grades and what each measures | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/autopsy-loop` | Trade → autopsy → pattern → playbook rule → pre-flight check | `trade-intelligence/playbook-and-preflight` |
 | `diagrams/profile-anatomy` | The Profile page's panels, labelled | `trade-intelligence/profile` |

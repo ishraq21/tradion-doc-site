@@ -29,7 +29,6 @@ const BUILDERS = {
   'trade-levels': core.tradeLevels,
   'data-sources-map': core.dataSourcesMap,
 
-  'autopsy-anatomy': trade.autopsyAnatomy,
   'scorecard': trade.scorecard,
   'autopsy-loop': trade.autopsyLoop,
   'profile-anatomy': trade.profileAnatomy,
