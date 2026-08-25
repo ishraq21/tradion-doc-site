@@ -239,31 +239,85 @@ export function confidenceAnatomy() {
 }
 
 /* ── trade-levels ────────────────────────────────────────────────────────── */
+/**
+ * The geometry on the left, the consequence of it on the right.
+ *
+ * The previous version drew a sparkline, three labelled lines, and "3 : 1" in
+ * large type. Every one of those restated the caption underneath it. Worse, it
+ * left the ratio feeling like a grade the model awards, which is the exact
+ * misreading the page spends a paragraph correcting.
+ *
+ * So: no invented prices, because we never show numbers that look like account
+ * data. What the picture adds instead is the part prose is bad at. On the left,
+ * the ATR band, so a beginner can see what "your stop is inside the noise"
+ * looks like rather than being told. On the right, the break-even win rate each
+ * ratio demands, which turns an abstract ratio into a number about you, plus
+ * the 1.5 line the interface flags at (VerdictCard.tsx) and the per-mode
+ * minimums the analysis is actually graded against (chartAnalysis.js).
+ */
 export function tradeLevels() {
-  const W = 900, H = 380;
-  const yT = 80, yE = 200, yS = 300;
-  let s = label(28, 34, 'Three levels, and the ratio that follows from them');
-  s += rect(28, 52, 560, 280, { fill: C.panel, r: 8 });
-  s += spark(56, 92, 500, 200, [0.3, 0.42, 0.36, 0.5, 0.44, 0.58, 0.52, 0.66, 0.6, 0.72], { stroke: C.mark, sw: 1.6 });
-  [[yT, 'Target', C.accent, 'where you take profit'], [yE, 'Entry', C.dim, 'where you get in'], [yS, 'Stop', C.dim, 'where you accept you were wrong']].forEach(([y, t, c, d]) => {
-    s += line(56, y, 556, y, { stroke: c, dash: t === 'Entry' ? '' : '5 4', sw: 1.2 });
-    s += rect(56, y - 11, 62, 22, { r: 5, fill: C.bg, stroke: c });
-    s += text(87, y + 4, t, { size: 10.5, anchor: 'middle', fill: c, weight: 600 });
-    s += text(132, y + 4, d, { size: 10, fill: C.faint });
-  });
-  s += path(`M600,${yT} L600,${yE}`, { stroke: C.accent, sw: 1.4 });
-  s += path(`M600,${yE} L600,${yS}`, { stroke: C.dim, sw: 1.4 });
-  s += line(592, yT, 608, yT, { stroke: C.accent }) + line(592, yE, 608, yE, { stroke: C.faint }) + line(592, yS, 608, yS, { stroke: C.dim });
-  s += text(618, (yT + yE) / 2 + 4, 'reward', { size: 11, fill: C.accent, weight: 500 });
-  s += text(618, (yE + yS) / 2 + 4, 'risk', { size: 11, fill: C.dim, weight: 500 });
-  s += rect(700, 130, 172, 120, { fill: C.panelAlt, r: 8, stroke: C.accentDim });
-  s += label(716, 152, 'Risk / reward');
-  s += text(786, 196, '3 : 1', { size: 26, weight: 700, anchor: 'middle', font: F.head, fill: C.accent });
-  s += text(786, 222, 'reward ÷ risk', { size: 10, anchor: 'middle', fill: C.faint });
-  s += text(28, 358, 'Tradion derives the ratio from the levels. It does not decide whether the ratio is good enough for you.', { size: 11, fill: C.faint });
+  const W = 900, H = 372;
+  const AX = 150, AR = 400;               // price axis, and how far levels run
+  const yT = 76, yE = 190, yS = 252;      // target, entry, stop
+  const bandTop = 154, bandBot = 226;     // one ATR either side of entry
+
+  let s = label(40, 40, 'The three prices');
+
+  // One ATR of ordinary movement, drawn first so the levels sit on top of it.
+  s += rect(AX, bandTop, AR - AX, bandBot - bandTop, { fill: C.panelAlt, stroke: C.border, dash: '4 4', r: 6 });
+  s += label(AX + 12, 172, 'One ATR · ordinary movement', { fill: C.faint });
+
+  const level = (y, name) =>
+    line(AX, y, AR, y, { stroke: C.border, sw: 1.2 }) +
+    text(AX - 12, y + 4, name, { size: 11.5, fill: C.text, weight: 600, anchor: 'end' });
+  s += level(yT, 'Target') + level(yE, 'Entry') + level(yS, 'Stop');
+
+  // The part a beginner cannot see for themselves: the stop has to clear the
+  // noise before it is a stop at all. Explicit lines, never a computed slice.
+  s += text(AX + 12, 206, 'a stop in here is taken out by', { size: 10, fill: C.faint });
+  s += text(AX + 12, 219, 'ordinary movement, not by being wrong', { size: 10, fill: C.faint });
+
+  // Reward and risk as spans, not as a score.
+  const span = (y1, y2, name) => {
+    const x = AR + 16;
+    return path(`M${x},${y1} L${x},${y2}`, { stroke: C.mark, sw: 1.2 }) +
+      line(x - 5, y1, x + 5, y1, { stroke: C.mark }) +
+      line(x - 5, y2, x + 5, y2, { stroke: C.mark }) +
+      text(x + 12, (y1 + y2) / 2 + 4, name, { size: 11, fill: C.dim, weight: 500 });
+  };
+  s += span(yT, yE, 'reward');
+  s += span(yE, yS, 'risk');
+
+  /* ── right panel: what the ratio asks of you ──────────────────────────── */
+  const PX = 500, BX = 584, BW = 200;
+  s += label(PX, 40, 'What each ratio asks of you');
+  s += text(PX, 62, 'The win rate you need to break even, before costs', { size: 11, fill: C.faint });
+
+  const rung = (y, ratio, rate) =>
+    text(PX, y + 8, ratio, { size: 12, fill: C.text, font: F.mono }) +
+    meter(BX, y + 1, BW, rate / 100, { fill: C.mark }) +
+    text(BX + BW + 14, y + 8, `${rate}%`, { size: 12, fill: C.dim, font: F.mono });
+
+  s += rung(88, '3 : 1', 25);
+  s += rung(124, '2 : 1', 33);
+  s += rung(160, '1.5 : 1', 40);
+
+  // Anything under this line prints red on the card. Drawn as a floor, because
+  // that is where it sits in the list.
+  s += line(PX, 192, PX + 320, 192, { stroke: C.accentDim, dash: '4 4' });
+  s += text(PX, 208, 'Tradion prints the ratio in red below this line', { size: 10.5, fill: C.accent });
+
+  s += rung(224, '1 : 1', 50);
+
+  s += text(PX, 268, 'The analysis is graded harder than the card is coloured:', { size: 10.5, fill: C.faint });
+  s += text(PX, 283, '2:1 swing, 1.5:1 day trade, 1:1 scalp.', { size: 10.5, fill: C.faint });
+
+  s += line(40, 320, W - 40, 320, { stroke: C.hairline });
+  s += text(44, 344, 'The ratio is arithmetic on the three prices, never a judgement. Widen the stop and it falls with you.', { size: 11.5, fill: C.dim });
+
   return svg(W, H, s, {
-    title: 'Entry, stop, and target on a price axis',
-    desc: 'A price line with three horizontal levels marked: target above, entry in the middle, stop below. The distance above entry is labelled reward, the distance below is labelled risk, and their ratio is shown as three to one.',
+    title: 'Entry, stop and target, and what the ratio between them demands',
+    desc: 'On the left, a price axis with target above, entry in the middle and stop below. A dashed band one ATR either side of entry marks ordinary movement, noting that a stop placed inside it is taken out by noise rather than by being wrong. The spans above and below entry are labelled reward and risk. On the right, four ratios with the break-even win rate each needs: three to one needs twenty-five per cent, two to one needs thirty-three, one and a half to one needs forty, one to one needs fifty. A line marks where Tradion prints the ratio in red, with a note that the analysis itself is graded against two to one for swing, one and a half for day trades and one to one for scalps.',
   });
 }
 

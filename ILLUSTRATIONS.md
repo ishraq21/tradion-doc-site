@@ -19,7 +19,7 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | `diagrams/memory-sources` | Ten data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
 | `diagrams/verdict-decision` | The three checks that produce BUY, SELL, WAIT or NO TRADE, and what each verdict leaves on the card | `concepts/reading-a-verdict` |
 | `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |
-| `diagrams/trade-levels` | Entry, stop, and target on a price axis, with the risk/reward ratio derived | `concepts/reading-a-verdict` |
+| `diagrams/trade-levels` | Entry, stop and target against the ATR band, and the break-even win rate each ratio demands | `concepts/reading-a-verdict` |
 | `diagrams/data-sources-map` | Which provider supplies which kind of data | `concepts/data-sources` |
 | `diagrams/scorecard` | The three grades and what each measures | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/autopsy-loop` | Trade → autopsy → pattern → playbook rule → pre-flight check | `trade-intelligence/playbook-and-preflight` |
