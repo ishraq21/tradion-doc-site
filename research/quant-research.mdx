@@ -10,10 +10,6 @@ AI Quant Research answers questions about market data by writing and running rea
   AI Quant Research needs the **Trader** plan or above. Starter does not include it. See [plan comparison](/reference/plan-comparison).
 </Info>
 
-<Frame caption="The chat panel is where you talk. The canvas is where the work appears. You only ever type in the chat panel.">
-  <img src="/images/diagrams/quant-anatomy.svg" alt="Labelled diagram of the quant terminal showing the chat panel on the left and the multi-cell canvas on the right" noZoom />
-</Frame>
-
 <Frame caption="A finished analysis. The written answer on the left, the synthesised dashboard on the right, live quote and headlines underneath.">
   <img src="/images/screens/quant-dashboard.jpg" alt="The quant terminal showing an NVDA financial statement analysis: an executive summary and live market snapshot on the left, and on the right a signal card with conviction, thesis, margins and next steps, a live quote strip, and a trade plan" />
 </Frame>
@@ -38,9 +34,11 @@ The rule of thumb: if the answer would fit on one chart, use Lens or Chart Analy
 
 ## The two panels
 
-**Left, the chat panel.** Your question, Tradion's reply, and a progress block showing what it's doing right now. After the first analysis a toggle appears: **Analysis** runs fresh work and produces new cells; **Ask** answers questions about results already on screen without running anything.
+The terminal is a split screen, and only one half takes input.
 
-**Right: the canvas.** Your results, broken into numbered cells, one step each: fetch the data, compute the measure, draw the chart. Two tabs sit above it. **Canvas** shows the cells; **Dashboard** unlocks once every cell finishes and pulls the session into one summary card.
+**Left, the chat panel.** The narrow column, and the only place you type. Your question, Tradion's reply, and a progress block showing what it's doing right now. After the first analysis a toggle appears: **Analysis** runs fresh work and produces new cells; **Ask** answers questions about results already on screen without running anything.
+
+**Right, the canvas.** Your results, broken into numbered cells, one step each: fetch the data, compute the measure, draw the chart. There is nothing to type into on this side, no editor and no Run button, so everything you want changed you ask for on the left. Two tabs sit above it. **Canvas** shows the cells; **Dashboard** unlocks once every cell finishes and pulls the session into one summary card.
 
 The header also carries **Templates** (the prebuilt workflow library), **News Wire** (current headlines), and **Personalization** (how much the AI leans on what it knows about how you trade).
 

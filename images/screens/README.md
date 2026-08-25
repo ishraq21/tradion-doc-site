@@ -11,8 +11,16 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `automations-list.jpg` | Automations | `automations/overview` | Nothing needed |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
+| `asset-manager.jpg` | AI Asset Manager | `trade-intelligence/asset-manager` | Nothing needed |
+| `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Lens | `research/lens` | Nothing needed |
+| `quant-dashboard.jpg`, `quant-ml-analysis.jpg`, `quant-templates.jpg`, `quant-template-library.jpg` | AI Quant Research | `research/quant-research` | Nothing needed |
+| `automation-agents.jpg` | Automation canvas with agents | `automations/ai-agent-node` | Nothing needed |
+| `automation-action-panel.jpg` | Action drawer, full | `automations/notifications` | Nothing needed |
+| `automation-canvas-signals.jpg` | Automation canvas, two signals and the AND join | `automations/first-automation` | Nothing needed |
+| `automation-first-action.jpg` | Action node beside its drawer | `automations/first-automation` | Nothing needed |
 
-Captured at 1452×840 in dark mode.
+Captured at 1452×840 in dark mode, except the two `automation-*` captures built for
+`first-automation`, which came from a 1920-wide window and were cropped to the canvas.
 
 ## Screens deliberately NOT captured
 
@@ -20,7 +28,7 @@ Captured at 1452×840 in dark mode.
 
 **The AI verdict block on Home.** Same problem, same reason. `home.jpg` was captured from an account where that block was short; check it every time before reusing this screen.
 
-**Portfolio.** Not a privacy problem — the account it was captured from holds almost nothing, so the screenshot teaches a reader less than `images/diagrams/portfolio-anatomy.svg` does. Recapture it against an account with real positions and it becomes worth including.
+**Portfolio.** Not a privacy problem: the account available for capture holds almost nothing, so a screenshot of it teaches a reader less than the prose does. `portfolio/reading-the-dashboard` runs without an image on purpose. Recapture against an account with real positions and it becomes worth including.
 
 ## Recapturing
 

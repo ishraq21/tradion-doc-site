@@ -10,10 +10,6 @@ The canvas is the right-hand half of AI Quant Research. It's where your question
   AI Quant Research needs the **Trader** plan or above. See [plan comparison](/reference/plan-comparison).
 </Info>
 
-<Frame caption="Every part of a cell, and what each one is telling you. The Code toggle is the one most people never find.">
-  <img src="/images/diagrams/cell-anatomy.svg" alt="Labelled diagram of a single canvas cell showing its number, title, status, code toggle, chart output, and AI summary" noZoom />
-</Frame>
-
 <Frame caption="A cell holds the code that ran, its output, and a written reading of what the numbers mean.">
   <img src="/images/screens/quant-ml-analysis.jpg" alt="A quant canvas showing generated Python that fetches price data, an AI insight paragraph, and a daily bars table, with the left panel explaining classification metrics and a confusion matrix in plain language" />
 </Frame>
@@ -82,17 +78,23 @@ If all three fail, the cell turns red with an **Execution Error** panel and the 
 
 A red cell doesn't invalidate the rest; the other cells still hold real results.
 
-## The Dashboard view
+## Canvas and Dashboard
 
-Two tabs sit above the canvas: **Canvas** and **Dashboard**. Dashboard stays disabled until every cell finishes, then becomes available and, on most runs, opens itself.
+Two tabs sit above your results, and they show the same run two different ways.
 
-It pulls the session into one card, a conviction reading, a time horizon, the thesis, what could go wrong, key risks, key takeaways, suggested next steps. The canvas is the working; the dashboard is the conclusion.
+**Canvas is the working.** Every numbered cell, in the order Tradion ran them: the question that cell answers, the Python it wrote, the table or chart that came back, and a sentence saying what the numbers mean. This is where you go to check something, disagree with a step, or copy a calculation. It is the long version, and nothing in it is hidden behind a summary.
+
+**Dashboard is the conclusion.** One card holding a directional reading with a conviction score, a time horizon, the thesis in a sentence or two, what could go wrong, the key risks, the key takeaways, and suggested next steps. It is assembled from the cells, not from a fresh model run, so it can never say something the working does not support.
+
+The Dashboard tab stays disabled until every cell has finished, then becomes available and usually opens itself. Switch back to Canvas whenever you like, and it switches back on its own the moment a new cell starts running.
+
+### Which one to read
+
+Read the Dashboard first if you want the answer. Read the Canvas when the answer surprises you, when you want to know which step produced a number, or when you plan to reuse the code. Most people live in the Dashboard and drop into the Canvas when something looks off, which is the right way round.
 
 <Warning>
-  The dashboard states a view. It does not tell you to trade. Tradion produces analysis; the decision and the risk are yours.
+  The Dashboard states a view. It does not tell you to trade. Tradion produces analysis; the decision and the risk are yours.
 </Warning>
-
-Switch back to **Canvas** at any time, and it switches back on its own the moment a new cell starts running.
 
 ## Next
 

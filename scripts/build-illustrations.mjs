@@ -22,19 +22,12 @@ const OUT = join(ROOT, 'images', 'diagrams');
 
 const BUILDERS = {
   'onboarding-steps': core.onboardingSteps,
-  'plan-ladder': core.planLadder,
   'usage-meters': core.usageMeters,
   'memory-sources': core.memorySources,
   'verdict-anatomy': core.verdictAnatomy,
   'confidence-anatomy': core.confidenceAnatomy,
   'trade-levels': core.tradeLevels,
   'data-sources-map': core.dataSourcesMap,
-
-  'portfolio-anatomy': feat.portfolioAnatomy,
-  'asset-manager-anatomy': feat.assetManagerAnatomy,
-  'quant-anatomy': feat.quantAnatomy,
-  'cell-anatomy': feat.cellAnatomy,
-  'lens-vs-analyzer': feat.lensVsAnalyzer,
 
   'autopsy-anatomy': trade.autopsyAnatomy,
   'scorecard': trade.scorecard,
@@ -44,7 +37,6 @@ const BUILDERS = {
   'automation-flow': auto.automationFlow,
   'crosses-vs-is': auto.crossesVsIs,
   'signal-matrix': auto.signalMatrix,
-  'notification-fanout': auto.notificationFanout,
   'webhook-flow': auto.webhookFlow,
 };
 

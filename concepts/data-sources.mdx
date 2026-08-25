@@ -17,7 +17,7 @@ Tradion has no market data of its own. It buys each kind from a specialist: pric
 
 Two things follow from that. Nothing on screen is fresher than the cache table below says it is. And when a provider has a gap or an outage, Tradion has the same gap. It shows a stale-data indicator rather than filling in a number.
 
-## Market prices, Alpaca
+## Market prices: Alpaca
 
 Alpaca supplies the live and historical prices behind charts, indicators, automations, and the quant terminal.
 
@@ -34,23 +34,23 @@ An **options chain** is the grid of every strike price and expiry date available
 
 Alpaca also supplies the **real-time news stream**. Headlines arrive over a live connection as they publish, with a REST lookup as backup when the live buffer is thin. Sentiment labels attached to those headlines are assigned by Tradion's own models, not by the publisher.
 
-## Fundamentals and earnings, Alpha Vantage
+## Fundamentals and earnings: Alpha Vantage
 
 Company financials, the earnings calendar, historical earnings results, company overview data, and screener output come from Alpha Vantage. This is what Earnings Spider compares a fresh report against, and what the AI Asset Manager reads when you ask about a company's numbers rather than its chart.
 
-## Economic data, FRED
+## Economic data: FRED
 
 FRED is the Federal Reserve Bank of St. Louis's public economic database. Tradion reads interest rates, Treasury yields, yield spreads, and volatility index observations from it. FRED itself publishes roughly once per business day, so intraday refreshing would return the same values.
 
-## Filings, SEC EDGAR
+## Filings: SEC EDGAR
 
 EDGAR is the SEC's public filing archive: every document a US listed company is legally required to submit. Tradion reads company filings, 8-K event disclosures (the form used to announce something material between quarterly reports), 13F reports (the quarterly list of US stock holdings that large institutions must publish), corporate actions such as dividends and stock splits, and **Form 4** filings.
 
 A Form 4 is the disclosure a company insider (an officer, director, or large shareholder) must file within two business days of buying or selling their own company's stock. It is the closest thing to a public record of what the people running a company are doing with their own money, and it powers the insider-transaction automation trigger.
 
-## Your positions, SnapTrade
+## Your positions: SnapTrade
 
-If you [connect a brokerage](/portfolio/connect-brokerage), SnapTrade is the intermediary that reads your accounts. It supplies holdings, balances, and trade history across 30-plus brokerages. It is read-only, Tradion cannot place, modify, or cancel an order through it.
+If you [connect a brokerage](/portfolio/connect-brokerage), SnapTrade is the intermediary that reads your accounts. It supplies holdings, balances, and trade history across 30-plus brokerages. It is read-only: Tradion cannot place, modify, or cancel an order through it.
 
 Your positions sync when you connect an account and when you refresh the portfolio, not on a background timer.
 

@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 *.log
 .mintlify/
+
+# FUSE leftovers from editing mounted files
+.fuse_hidden*

@@ -11,10 +11,6 @@ mode: "wide"
 
 A signal is one condition on one instrument. There are nine kinds, an automation holds up to ten, and a Logic node joins them with AND or OR. No nesting: `(A AND B) OR C` means two automations.
 
-<Frame caption="All nine signal types, on the condition node. The operator below changes with the type you pick.">
-  <img src="/images/screens/automation-signal-types.jpg" alt="The signal panel showing chips for price, technical, volume, change percent, news, earnings, options flow, insider transactions, and corporate actions, with an operator dropdown underneath" />
-</Frame>
-
 <Frame caption="Stocks get all nine; everything else a subset. Check before picking a ticker.">
   <img src="/images/diagrams/signal-matrix.svg" alt="Grid of the nine signal types against stocks, crypto, forex, and options, showing which combinations exist" noZoom />
 </Frame>
@@ -23,7 +19,7 @@ Every numeric signal ends in an operator, and picking *Crosses Below (one-shot)*
 
 ## In plain English
 
-A signal is a question Tradion asks once a minute: *is RSI under 30 right now?* Every signal has to answer yes at the same moment for a message to go out. Signals are independent, so Price AND RSI AND Insider Tx is a normal build, and mixing categories that way beats stacking two indicators that move together.
+A signal is a question Tradion asks once a minute: *is RSI under 30 right now?* Every signal has to answer yes at the same moment for a message to go out. Mixing categories beats stacking two indicators that move together.
 
 ## 1. Price level
 
@@ -31,11 +27,7 @@ Watches the last traded price, with an operator and your level. **Use it when** 
 
 ## 2. Technical indicator
 
-Watches a calculated reading rather than raw price. The picker holds **92 entries across eight groups**: 61 indicators and 31 candlestick patterns. Full list in [technical indicators](/reference/technical-indicators).
-
-<Frame caption="The indicator picker. Each entry carries a one-line description, so you can choose without looking anything up.">
-  <img src="/images/screens/automation-indicator-picker.jpg" alt="The indicator dropdown open on the momentum group, listing RSI, MACD, STOCH, STOCHRSI, and ADX, each with a short plain-English description" />
-</Frame>
+Watches a calculated reading rather than raw price. The picker holds **92 entries across eight groups**: 61 indicators and 31 candlestick patterns. Every entry carries a one-line description of what it measures, so you can choose without looking anything up first. Full list in [technical indicators](/reference/technical-indicators).
 
 ```yaml
 type: Technical
@@ -88,7 +80,7 @@ Fires in the run-up to a scheduled earnings report. One parameter: how many days
 
 Fires when large options trades are reported on the **underlying** stock, the ordinary share the contracts are written on. Tradion scans every five minutes. Set a direction (calls, puts, or either) and a premium threshold: default 100,000, floor 10,000.
 
-An options contract gives its holder the right to buy (a call) or sell (a put) 100 shares at a set price before a set date. Every completed trade is reported publicly, and traders say a trade **prints** when that report appears. **Premium** is the cash changing hands on one trade, so a very large premium means somebody sized a bet big enough to stand out. That is a fact about order flow, not a prediction: the buyer may be hedging.
+**Premium** is the cash changing hands on a single trade, so a very large one means somebody sized a bet big enough to stand out. Traders say a trade **prints** when it is publicly reported. Treat it as a fact about order flow, not a prediction: the buyer may be hedging. Calls, puts and delta are in the [glossary](/help/glossary).
 
 ## 8. Insider transactions
 
@@ -100,15 +92,19 @@ The default, **Buys Only**, is doing real work. Insiders sell for a hundred ordi
 
 Fires when the company announces a structural event: cash or stock dividend, forward or reverse split, cash or stock merger, spin-off, or name change. Pick one type or `any`. Tradion reads the last 30 days and fires on announcements it hasn't reported.
 
-**Use it when** an event would change what your position is: a split changes your share count and price, a merger can end the ticker, a spin-off hands you shares you never bought.
+**Use it when** an event would change what your position *is*: a split changes your share count and price, a merger can end the ticker, a spin-off hands you shares you never bought.
 
 ## Asset-type notes
 
+The asset node offers five types, and the one you pick decides which signals appear.
+
 Stocks get all nine. Crypto gets price, technical, volume, change %, and news. Forex gets price and change % only. Options get price, volume, and change %. Change the asset type on a saved automation and any unsupported signal resets to Price.
 
-**Forex** has no volume in its data feed, so volume and indicator signals are unavailable and the timeframe locks to daily.
+**Market** is the fifth, and it behaves differently: it takes no ticker and no signals at all. It exists for automations that watch the whole market rather than one instrument, so pair it with a [Schedule](/automations/overview) node and a Market Brief agent. Pick it and the signal list will be empty, which is expected rather than broken.
 
-**Options** contracts come from a live chain picker: expiry, then call or put, then strike. Each row shows the **bid** (highest price a buyer is offering), the **ask** (lowest a seller will take), and the **delta** (roughly how much the contract moves per one-dollar move in the underlying, on a 0 to 1 scale). The picker writes an **OCC symbol**, which is the code packing underlying, expiry, call or put, and strike into one string. Expired contracts never fire again.
+**Forex** carries no volume in its feed, which is why volume and indicator signals are unavailable there and the timeframe locks to daily.
+
+**Options** contracts come from a live chain picker: expiry, then call or put, then strike, with the bid, ask, and delta on each row (all three are in the [glossary](/help/glossary)). The picker writes the contract code for you. Expired contracts never fire again, so a dated automation goes quiet rather than erroring.
 
 ## Next
 
