@@ -24,7 +24,7 @@ const BUILDERS = {
   'onboarding-steps': core.onboardingSteps,
   'usage-meters': core.usageMeters,
   'memory-sources': core.memorySources,
-  'verdict-anatomy': core.verdictAnatomy,
+  'verdict-decision': core.verdictDecision,
   'confidence-anatomy': core.confidenceAnatomy,
   'trade-levels': core.tradeLevels,
   'data-sources-map': core.dataSourcesMap,

@@ -6,7 +6,7 @@ Reference them like this:
 
 ```mdx
 <Frame caption="What the reader should notice.">
-  <img src="/images/diagrams/verdict-anatomy.svg" alt="What is in the image" />
+  <img src="/images/diagrams/verdict-decision.svg" alt="What is in the image" />
 </Frame>
 ```
 
@@ -17,7 +17,7 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | `diagrams/onboarding-steps` | The five onboarding steps as a labelled progression | `get-started/onboarding` |
 | `diagrams/usage-meters` | The three metered counters and what each one counts | `concepts/usage-limits` |
 | `diagrams/memory-sources` | Ten data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
-| `diagrams/verdict-anatomy` | A verdict card with every element labelled | `concepts/reading-a-verdict` |
+| `diagrams/verdict-decision` | The three checks that produce BUY, SELL, WAIT or NO TRADE, and what each verdict leaves on the card | `concepts/reading-a-verdict` |
 | `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |
 | `diagrams/trade-levels` | Entry, stop, and target on a price axis, with the risk/reward ratio derived | `concepts/reading-a-verdict` |
 | `diagrams/data-sources-map` | Which provider supplies which kind of data | `concepts/data-sources` |

@@ -124,45 +124,89 @@ export function memorySources() {
   });
 }
 
-/* ── verdict-anatomy ─────────────────────────────────────────────────────── */
-export function verdictAnatomy() {
-  const W = 900, H = 420;
-  let s = rect(28, 40, 470, 340, { fill: C.panel, r: 10 });
-  s += rect(52, 66, 76, 30, { r: 6, fill: C.accentWash, stroke: C.accentDim });
-  s += text(90, 86, 'BUY', { size: 14, weight: 700, anchor: 'middle', fill: C.accent, font: F.head });
-  s += text(146, 86, 'TICKER · daily', { size: 11, fill: C.faint, font: F.mono });
-  s += label(52, 128, 'Confidence');
-  s += rect(52, 138, 300, 8, { r: 4, fill: C.hairline, stroke: 'none', sw: 0 });
-  s += rect(52, 138, 300 * 0.72, 8, { r: 4, fill: C.accent, stroke: 'none', sw: 0 });
-  s += text(366, 146, '72 / 100', { size: 11, fill: C.dim, font: F.mono });
-  s += label(52, 178, 'Why');
-  [0.92, 0.78, 0.6].forEach((w, i) => s += bar(52, 190 + i * 14, 400 * w));
-  s += label(52, 244, 'Levels');
-  [['Entry', C.dim], ['Stop', C.dim], ['Target', C.accent]].forEach(([t, c], i) => {
-    const y = 262 + i * 30;
-    s += rect(52, y, 400, 22, { fill: C.panelAlt, r: 5 });
-    s += text(64, y + 15, t, { size: 10.5, fill: c, weight: 500 });
-    s += redact(440, y + 15, { anchor: 'end' });
-  });
-  const notes = [
-    ['1', 'The call itself. Four values: BUY, SELL, WAIT, NO TRADE.'],
-    ['2', 'How much the evidence agrees. Not a probability of profit.'],
-    ['3', 'The factors behind the score. Read these before the score.'],
-    ['4', 'Where to get in, where to get out, where to take profit.'],
-  ];
-  notes.forEach(([n, t], i) => {
-    const y = 78 + i * 78;
-    s += pin(534, y, n);
-    s += text(556, y + 4, t.length > 46 ? t.slice(0, t.lastIndexOf(' ', 46)) : t, { size: 11, fill: C.dim });
-    if (t.length > 46) s += text(556, y + 20, t.slice(t.lastIndexOf(' ', 46) + 1), { size: 11, fill: C.dim });
-  });
-  s += leader(508, 82, 525, 78);
-  s += leader(508, 142, 525, 156);
-  s += leader(508, 200, 525, 234);
-  s += leader(508, 290, 525, 312);
+/* ── verdict-decision ────────────────────────────────────────────────────── */
+/**
+ * Why there are four verdict words, and what each one leaves on the card.
+ *
+ * This replaced a labelled mock-up of a verdict card. That version showed a
+ * reader where the confidence bar sits, which they can see for themselves by
+ * looking at the product. It did not answer the question a beginner actually
+ * arrives with: what is the difference between WAIT and NO TRADE, and why does
+ * one of them come back with no prices on it.
+ *
+ * The three checks below are the real ones, from server/prompts/chartAnalysis.js
+ * and server/utils/chartValidators.js. NO TRADE has its levels and game plan
+ * deleted on the way out; WAIT is deliberately left intact. That behaviour is
+ * invisible until someone tells you, which is what makes it worth a diagram.
+ */
+export function verdictDecision() {
+  const W = 900, H = 444;
+  const QX = 40, QW = 336, QCX = QX + QW / 2, QR = QX + QW;
+  const OX = 464, OW = 396;
+
+  let s = label(QX + 4, 40, 'What Tradion checks');
+  s += label(OX + 4, 40, 'What the card gives you');
+
+  const question = (y, l1, l2) =>
+    rect(QX, y, QW, 62, { fill: C.panel, r: 8 }) +
+    text(QX + 18, y + 27, l1, { size: 12.5, fill: C.text, weight: 500 }) +
+    text(QX + 18, y + 45, l2, { size: 12.5, fill: C.text, weight: 500 });
+
+  s += question(56, 'Is there a directional edge', 'on this chart at all?');
+  s += question(178, 'Has price reached the', 'entry level yet?');
+  s += question(300, 'Which way does the', 'setup lean?');
+
+  // The accent traces the one route that ends in a trade you can take now.
+  const yes = (y1, y2) =>
+    line(QCX, y1, QCX, y2, { stroke: C.accent, sw: 1.2 }) +
+    text(QCX + 10, (y1 + y2) / 2 + 4, 'yes', { size: 10.5, fill: C.accent, weight: 500 });
+  s += yes(118, 178);
+  s += yes(240, 300);
+
+  const branch = (y, word) =>
+    flowArrow(QR, OX - 6, y) +
+    (word ? text((QR + OX) / 2 - 6, y - 8, word, { size: 10.5, fill: C.faint, anchor: 'middle' }) : '');
+  s += branch(87, 'no');
+  s += branch(209, 'no');
+
+  const card = (y, h, word, sub, lines) => {
+    let o = rect(OX, y, OW, h, { fill: C.panelAlt, r: 8 });
+    o += text(OX + 18, y + 25, word, { size: 13.5, weight: 700, fill: C.text, font: F.head });
+    // Fixed column rather than a width guess: it lines the note up with the
+    // BUY / SELL text below, and a mis-measured word length collided here once.
+    if (sub) o += text(OX + 108, y + 25, sub, { size: 10, fill: C.faint, font: F.mono });
+    lines.forEach((t, i) => { o += text(OX + 18, y + 46 + i * 16, t, { size: 11, fill: C.dim }); });
+    return o;
+  };
+
+  s += card(52, 70, 'NO TRADE', null, [
+    'No entry, no stop, no target, no game plan.',
+    'Tradion strips them, so nothing reads as actionable.',
+  ]);
+  s += card(174, 70, 'WAIT', 'the card prints HOLD', [
+    'A real setup, levels and all, that has not triggered.',
+    'These are the prices worth setting an alert on.',
+  ]);
+
+  // The last question splits rather than branching off, so it forks.
+  s += flowArrow(QR, 444, 331);
+  s += line(444, 312, 444, 350, { stroke: C.mark, sw: 1.2 });
+  s += flowArrow(444, OX - 6, 312);
+  s += flowArrow(444, OX - 6, 350);
+
+  const row = (y, word, t) =>
+    rect(OX, y, OW, 32, { fill: C.panelAlt, r: 8 }) +
+    text(OX + 18, y + 21, word, { size: 13.5, weight: 700, fill: C.text, font: F.head }) +
+    text(OX + 108, y + 21, t, { size: 11, fill: C.dim });
+  s += row(296, 'BUY', 'Bullish, and price is already at the entry.');
+  s += row(334, 'SELL', 'Bearish, and price is already at the entry.');
+
+  s += line(QX, 396, W - QX, 396, { stroke: C.hairline });
+  s += text(QX + 4, 420, 'Confidence rides on all four. It scores how much the evidence agreed, never the odds of a payout.', { size: 11.5, fill: C.dim });
+
   return svg(W, H, s, {
-    title: 'Anatomy of a verdict card',
-    desc: 'A verdict card with four numbered annotations: the directional call, the confidence score, the factor breakdown behind it, and the entry, stop, and target levels. All numeric values are redacted.',
+    title: 'How Tradion arrives at one of four chart verdicts',
+    desc: 'Three checks in sequence. No directional edge gives NO TRADE, which comes back with no entry, stop, target or game plan. An edge that price has not reached yet gives WAIT, shown on the card as HOLD, which keeps all of its levels. An edge price has reached gives BUY or SELL. Confidence appears on all four and scores agreement in the evidence, not the odds of a payout.',
   });
 }
 
