@@ -27,6 +27,21 @@ const MONEY = /(?:\$\s?\d[\d,]*(?:\.\d+)?)|(?:\b\d[\d,]*(?:\.\d+)?\s*(?:USD|doll
 const PERSONAL = /\b(you|your|yours|my|mine|their|cost|costs|lost|lose|losing|made|gain|gains|earned|profit|loss|losses|P&L|balance|balances|portfolio|holdings|equity|net worth|account value|drawdown of|down by|up by)\b/i;
 const PERSONAL_WINDOW = 110;
 
+/**
+ * Pages granted more than the standard word ceiling, with the reason.
+ *
+ * Deliberately a short, awkward list. When a page outgrows the ceiling the
+ * honest options are "cut it" or "split it"; landing here is the third one and
+ * should have to be argued for, which is why it is not a wildcard.
+ */
+const LONG_FORM = {
+  // Walks four verdict words, five confidence factors, three trade levels and
+  // three reference prices, and now also explains the break-even arithmetic.
+  // Splitting it would put the ratio on a different page from what the ratio
+  // costs you, which is the one pairing a beginner needs to see together.
+  'concepts/reading-a-verdict.mdx': 1800,
+};
+
 const PRIVACY = [
   [/\b(?!contact@tradionlabs\.com)[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, 'an email address'],
   [/\b(?:acct|account)\s*(?:no\.?|number|#)\s*:?\s*\d{3,}/gi, 'an account number'],
@@ -207,6 +222,7 @@ for (const file of files) {
   }
 
   // Word ceiling. Reference pages are lookup tables and are exempt.
+  // Per-page allowances live in LONG_FORM at the top of this file.
   //
   // Raised from 1,200 to 1,500. The ceiling is here to stop a page rambling,
   // and at 1,200 it had started doing the opposite: the two "reading a ..."
@@ -214,9 +230,13 @@ for (const file of files) {
   // meant deleting the sentence that said what a field was *for*. A guard that
   // makes the docs worse is a bad guard. 1,500 still bites well before a page
   // becomes two pages.
+  // Individual pages can be granted more, but only deliberately. Moving the
+  // global bar every time one page outgrows it turns the guard into a
+  // rubber stamp; an explicit list keeps each exception visible in review.
   const n = wordsIn(prose);
-  if (!isReference && !/^help\/(troubleshooting|faq)/.test(rel) && n > 1500) {
-    errors.push(`${rel}: ${n} words of prose — over the 1,500 ceiling, split or cut`);
+  const allowed = LONG_FORM[rel] ?? 1500;
+  if (!isReference && !/^help\/(troubleshooting|faq)/.test(rel) && n > allowed) {
+    errors.push(`${rel}: ${n} words of prose — over its ${allowed.toLocaleString('en-US')} ceiling, split or cut`);
   }
 
   // Mirza asked for no em dashes anywhere. The redaction glyph is exempt:
