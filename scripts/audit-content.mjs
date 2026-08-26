@@ -281,9 +281,24 @@ for (const file of files) {
     if (ln.trim().startsWith('```')) { inFence = !inFence; continue; }
     if (inFence || !/^\s*\|/.test(ln)) continue;
     if (/^\s*\|[\s|:-]*\|?\s*$/.test(ln)) continue;   // the header separator row
-    for (const cell of ln.split('|').slice(1, -1)) {
+    const cells = ln.split('|').slice(1, -1);
+    for (const cell of cells) {
       if (/^\s*[,.;:]+\s*$/.test(cell)) {
         errors.push(`${rel}:${i + 1}: table cell contains only "${cell.trim()}". Write the value, or "None".`);
+      }
+    }
+
+    // Table shape. No page here is wide any more, so a table has roughly the
+    // content column to work with. Five short columns are fine (the asset
+    // matrix is Yes/No); a paragraph in a cell is not, it becomes a dozen
+    // lines of wrapped text per row. The indicators reference had both at once
+    // until it was cut back to four columns and its longest cell halved.
+    if (cells.length > 5) {
+      warnings.push(`${rel}:${i + 1}: table row has ${cells.length} columns. Four is the house shape, five only for short cells.`);
+    }
+    for (const cell of cells) {
+      if (cell.trim().length > 200) {
+        warnings.push(`${rel}:${i + 1}: table cell is ${cell.trim().length} characters. Move the definition to the glossary and link it.`);
       }
     }
   }
