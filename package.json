@@ -14,7 +14,8 @@
     "shots": "tsx scripts/capture.ts",
     "shots:headed": "tsx scripts/capture.ts --headed",
     "check:code": "node scripts/check-against-code.mjs",
-    "check:structure": "node scripts/check-structure.mjs"
+    "check:structure": "node scripts/check-structure.mjs",
+    "check:links": "node scripts/check-links.mjs"
   },
   "devDependencies": {
     "jsonwebtoken": "^9.0.2",
