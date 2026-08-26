@@ -249,6 +249,23 @@ for (const file of files) {
     errors.push(`${rel}:${line}: em dash in prose. Use a comma, a colon, parentheses, or two sentences.`);
   }
 
+  // Emoji.
+  //
+  // The house rule is none, anywhere. It was still being broken in the one
+  // place nobody thinks of as decoration: 68 green ticks and red crosses used
+  // as table cells across three reference pages. They also read badly aloud,
+  // where a screen reader announces "white heavy check mark" for every cell.
+  // Plain words carry the same fact.
+  //
+  // Deliberately narrow: this matches pictographs and the tick/cross family,
+  // not typographic marks the pages use on purpose (→ in flows, ⌘ in a
+  // keyboard shortcut, × in a multiplier, · as a separator).
+  const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2705}\u{274C}\u{2B50}\u{FE0F}\u{2728}\u{1F600}-\u{1F64F}]/gu;
+  for (const m of raw.matchAll(EMOJI)) {
+    const line = raw.slice(0, m.index ?? 0).split('\n').length;
+    errors.push(`${rel}:${line}: emoji "${m[0]}". The house style has none; write the word.`);
+  }
+
   // Table cells holding nothing but punctuation.
   //
   // The em-dash sweep above was run as a blind find-and-replace of " — " with
