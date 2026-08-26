@@ -4,7 +4,7 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
-| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Name, portfolio value, day change, position count |
+| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Name, portfolio value, day change, positions, risk score, active automations |
 | `quant-analysis.jpg` | AI Quant Research, saved session | `research/quant-research` | Nothing needed — public tickers only |
 | `chart-analyzer-history.jpg` | Chart Analyzer history | `research/chart-analyzer` | Nothing needed |
 | `earnings-analysis.jpg` | Earnings Spider report | `research/earnings-spider` | Nothing needed |
@@ -27,7 +27,9 @@ and were cropped to the canvas.
 
 **Profile.** Every panel is personal behavioural analysis, and the AI verdict states real losses and real tickers *inside written sentences* — "AAPL and PLTR alone have erased over $X". Masking prose without wrecking the sentence is not reliably possible. Use `images/diagrams/profile-anatomy.svg`, which labels what each panel measures without showing a single figure.
 
-**A note on `home.jpg`.** The capture account holds almost nothing, so the real tile read a two-figure balance next to zero positions, which teaches a reader nothing and looks broken. The greeting, the portfolio value, the day change and the position count were rewritten in the DOM before capture, so the screenshot is the real interface rendering representative numbers rather than a picture with digits pasted over it. Nothing else on the screen was touched: the risk score, win rate, trade count, automation count and session list are what the account actually shows.
+**A note on `home.jpg`.** The capture account holds almost nothing, so the real tile read a two-figure balance next to zero positions, which teaches a reader nothing and looks broken. The greeting, the portfolio value, the day change and the position count were rewritten in the DOM before capture, so the screenshot is the real interface rendering representative numbers rather than a picture with digits pasted over it. Risk score went the same way, for a different reason: it is a 0–100 figure, so the real 1 read as a failing grade rather than as an empty profile, and the subtitle under it is a trend direction, not a data notice, so "No Data" beside a number contradicted itself. It now reads 68 / Stable, which is a state the app really renders (the trend arrow is null for stable, so nothing is missing from the tile). Active automations went 0 to 3.
+
+Untouched, because they are real and hold up: the 61% win rate over 101 trades, and the session list.
 
 **The AI verdict block on Home.** Same problem, same reason. `home.jpg` was captured from an account where that block was short; check it every time before reusing this screen.
 
