@@ -4,7 +4,7 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
-| `home.jpg` | Home | `get-started/tour` | Name, portfolio value, win rate, trade count |
+| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Name, portfolio value, day change, position count |
 | `quant-analysis.jpg` | AI Quant Research, saved session | `research/quant-research` | Nothing needed — public tickers only |
 | `chart-analyzer-history.jpg` | Chart Analyzer history | `research/chart-analyzer` | Nothing needed |
 | `earnings-analysis.jpg` | Earnings Spider report | `research/earnings-spider` | Nothing needed |
@@ -19,12 +19,15 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 | `automation-canvas-signals.jpg` | Automation canvas, two signals and the AND join | `automations/first-automation` | Nothing needed |
 | `automation-first-action.jpg` | Action node beside its drawer | `automations/first-automation` | Nothing needed |
 
-Captured at 1452×840 in dark mode, except the two `automation-*` captures built for
-`first-automation`, which came from a 1920-wide window and were cropped to the canvas.
+Captured in dark mode. Most are 1452×840; `home.jpg` is 1304×782, and the two
+`automation-*` captures built for `first-automation` came from a 1920-wide window
+and were cropped to the canvas.
 
 ## Screens deliberately NOT captured
 
 **Profile.** Every panel is personal behavioural analysis, and the AI verdict states real losses and real tickers *inside written sentences* — "AAPL and PLTR alone have erased over $X". Masking prose without wrecking the sentence is not reliably possible. Use `images/diagrams/profile-anatomy.svg`, which labels what each panel measures without showing a single figure.
+
+**A note on `home.jpg`.** The capture account holds almost nothing, so the real tile read a two-figure balance next to zero positions, which teaches a reader nothing and looks broken. The greeting, the portfolio value, the day change and the position count were rewritten in the DOM before capture, so the screenshot is the real interface rendering representative numbers rather than a picture with digits pasted over it. Nothing else on the screen was touched: the risk score, win rate, trade count, automation count and session list are what the account actually shows.
 
 **The AI verdict block on Home.** Same problem, same reason. `home.jpg` was captured from an account where that block was short; check it every time before reusing this screen.
 
