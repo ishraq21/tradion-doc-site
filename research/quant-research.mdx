@@ -67,7 +67,9 @@ Before writing any code, Tradion fetches the current quote for your ticker, last
 
 ## Indicators, without looking any of them up
 
-An **indicator** is a number worked out from price or volume that's meant to tell you something, RSI, a 0–100 score for how hard a price has been pushed one way lately; a **moving average**, the average closing price over the last N days, redrawn daily; Bollinger Bands, which draw a channel around that average. Tradion computes them across trend, momentum, volatility, volume, options-derived measures, and machine-learning forecasts. 
+An **indicator** is a number worked out from price or volume that's meant to tell you something, RSI, a 0–100 score for how hard a price has been pushed one way lately; a **moving average**, the average closing price over the last N days, redrawn daily; Bollinger Bands, which draw a channel around that average. Tradion computes them across trend, momentum, volatility, volume, options-derived measures, and machine-learning forecasts.
+
+Options-derived measures include **Gamma Exposure (GEX)**, the net gamma position market makers hold at each strike. A large positive GEX level acts like a gravity well: dealer hedging tends to push price back toward it. A negative GEX level means dealers amplify moves instead. The terminal's Options widget visualises the full GEX profile across the strike range.
 
 You don't pick from a list. Ask for *"the usual momentum indicators on AAPL"* and Tradion chooses; name one directly if you'd rather. Full list: [technical indicators reference](/reference/technical-indicators).
 

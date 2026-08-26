@@ -198,17 +198,70 @@ if (constants) {
 }
 
 /* ── 3. Indicator count in the automation picker ────────────────────────── */
+/**
+ * This used to check only that the docs agreed with THEMSELVES, and it passed
+ * happily while all four pages moved in step from 92 to 93. Agreeing on a wrong
+ * number is the failure mode a docs guard exists to catch, so it now counts the
+ * picker and compares.
+ */
 const condNode = await readIf('components/automations/canvas/nodes/ConditionNode.tsx');
 if (condNode) {
-  const quoted = new Set();
-  for (const [p, body] of pages) {
-    for (const m of body.matchAll(/(\d+)\s+(?:technical\s+)?indicators?/gi)) quoted.add(`${m[1]}|${p}`);
+  const block = condNode.slice(condNode.indexOf('const INDICATOR_GROUPS'));
+  let indicators = 0, patterns = 0;
+  for (const [, name, items] of block.slice(0, block.indexOf('];') + 2)
+    .matchAll(/group:\s*'([^']+)',\s*items:\s*\[([^\]]*)\]/g)) {
+    const n = [...items.matchAll(/'([^']+)'/g)].length;
+    if (/Patterns$/.test(name)) patterns += n; else indicators += n;
   }
-  const values = new Set([...quoted].map((q) => q.split('|')[0]));
-  if (values.size > 1) {
-    errors.push(`docs quote conflicting indicator counts: ${[...quoted].map((q) => q.replace('|', ' in ')).join('; ')}`);
+  const total = indicators + patterns;
+
+  const say = (re, what, expected) => {
+    const wrong = [];
+    for (const [p, body] of pages) {
+      for (const m of body.matchAll(re)) {
+        if (Number(m[1]) !== expected) wrong.push(`${p} says ${m[1]}`);
+      }
+    }
+    if (wrong.length) errors.push(`${what} is ${expected} in ConditionNode.tsx, but ${wrong.join('; ')}`);
+  };
+  say(/(\d+)\s+indicators\b/gi, 'indicator count', indicators);
+  say(/(\d+)\s+candlestick patterns\b/gi, 'candlestick pattern count', patterns);
+  say(/(\d+)\s+(?:entries across|technical readings|technical signals)/gi, 'picker total', total);
+
+  console.log(`  picker entries                     ${total}       ${indicators} indicators + ${patterns} patterns`);
+}
+
+/* ── 4. Agent types you can actually add ────────────────────────────────── */
+/**
+ * VALID_AGENT_GOALS is the server's accept-list and is longer than the menu:
+ * it carries goals reachable only by migrating an older automation. The docs
+ * describe what a reader can click, so the menu is the number that counts.
+ */
+const canvas = await readIf('components/automations/canvas/AutomationCanvas.tsx');
+if (canvas) {
+  const menu = canvas.match(/\{\s*goal:\s*'[^']+',\s*label:[\s\S]*?\}\s*,?\s*\]\.map/);
+  const offered = menu ? [...menu[0].matchAll(/goal:\s*'([^']+)'/g)].map((m) => m[1]) : [];
+  if (offered.length) {
+    const WORD = { 5: 'five', 6: 'six', 7: 'seven', 8: 'eight' };
+    const expected = WORD[offered.length] ?? String(offered.length);
+    // Narrow on purpose. A looser lookahead matched "five node types" and
+    // "five channel chips", which have nothing to do with agents.
+    const CLAIMS = [
+      /\b(five|six|seven|eight)\b(?=\s+(?:you can add|agents?\b|agent types))/gi,
+      /\b(?:one of each of|so)\s+(five|six|seven|eight)\b(?=[^.]{0,20}\b(?:types?|is the ceiling))/gi,
+      /\b(five|six|seven|eight)\s+agent types\b/gi,
+    ];
+    for (const [p, body] of pages) {
+      for (const re of CLAIMS) {
+        for (const m of body.matchAll(re)) {
+          if (m[1].toLowerCase() !== expected) {
+            errors.push(`the + Agent menu offers ${offered.length} (${offered.join(', ')}), but ${p} says "${m[1]}"`);
+          }
+        }
+      }
+    }
+    console.log(`  agent types in the menu            ${offered.length}        ${offered.join(', ')}`);
   }
-  console.log(`  indicator count quoted             ${[...values].join(',') || '—'}       (must be one value)`);
 }
 
 /* ── 4. Plan limits ─────────────────────────────────────────────────────── */

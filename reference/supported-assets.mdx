@@ -32,6 +32,8 @@ All **OPRA**-listed US equity and ETF options. OPRA is the consolidated feed tha
 
 Each contract in a chain carries strike, expiry, call or put, bid and ask, volume, **open interest** (contracts currently held open), **implied volatility** (the size of move the option's price implies, rather than movement measured from history), and the five **greeks**, standard numbers describing how an option's price reacts to a move in the stock, to time passing, and to volatility changing. Historical options bars start from February 2024; before that, analysis falls back to theoretical pricing.
 
+The quant terminal also computes **Gamma Exposure (GEX)** across the full strike range: the net gamma market makers carry at each price level, which shows where dealer hedging flows are likely to create price gravity or resistance. GEX is available through AI Quant Research and the terminal's Options widget.
+
 ## Which features support which asset types
 
 |  | Stocks & ETFs | Crypto | Forex | Options |
