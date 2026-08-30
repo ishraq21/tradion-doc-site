@@ -68,9 +68,9 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="What happens when I hit a limit?" icon="gauge-high">
-    You get a clear block naming the meter you ran out of, not a silent failure. Three things are metered: chat messages, quant sessions, and agent runs (one run of the AI step inside an automation).
+    You get a clear block naming the meter you ran out of, not a silent failure. Three things are metered: AI Asset Manager messages, quant sessions, and agent runs (one run of the AI step inside an automation).
 
-    Out of chat messages, your existing sessions still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
+    Out of AI Asset Manager messages, your existing sessions still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
   </Accordion>
 
   <Accordion title="Do unused credits roll over?" icon="rotate-left">
@@ -94,7 +94,7 @@ The questions people ask before they subscribe, and the ones they ask in week on
   <Accordion title="Do you train AI models on my trading data?" icon="database">
     Yes, in one specific way.
 
-    Every time you save a **trade autopsy**, which is Tradion's written breakdown of one closed trade, two labelled training examples are derived from it and stored automatically. One pairs the trade's context with the behavioural mistake the autopsy found. The other pairs the same context with the quality scores it gave. This happens on save, there is no separate opt-in, and it cannot be switched off while your account is active.
+    Every time you save a **Trade Autopsy**, which is Tradion's written breakdown of one closed trade, two labelled training examples are derived from it and stored automatically. One pairs the trade's context with the behavioural mistake the autopsy found. The other pairs the same context with the quality scores it gave. This happens on save, there is no separate opt-in, and it cannot be switched off while your account is active.
 
     If those examples are used to fine-tune a model, your user ID and other identifying information are stripped first. Anonymised data that has already gone into a training batch cannot be pulled back out afterwards.
 
@@ -138,7 +138,7 @@ The questions people ask before they subscribe, and the ones they ask in week on
   <Accordion title="Can I use Tradion on my phone?" icon="mobile">
     Not for the main product. Signing in works on a phone, but any browser window narrower than 640 pixels gets a screen asking you to move to a desktop, and that screen offers to email you a sign-in link for your computer. It is a width check rather than a device check, so a tablet in landscape usually passes and the same tablet in portrait may not.
 
-    The quant terminal, the canvas, and the automation builder are wide multi-panel screens. A phone can display them without giving you room to work in them.
+    AI Quant Research, the canvas, and the automation builder are wide multi-panel screens. A phone can display them without giving you room to work in them.
   </Accordion>
 
   <Accordion title="How current is the market data?" icon="clock">
@@ -148,7 +148,7 @@ The questions people ask before they subscribe, and the ones they ask in week on
   <Accordion title="How many trades before the behavioural analysis is useful?" icon="chart-line">
     About ten reviewed trades. Patterns are found by comparing autopsies against each other, so below roughly ten the reports are about individual trades, and above it they start being about you. A short psychological profile unlocks at two completed autopsies, and trend arrows and score changes appear at twenty.
 
-    Logging a trade and reviewing it are not the same thing. A hundred logged trades with three autopsies still reads as thin. See [trade autopsy](/trade-intelligence/trade-autopsy).
+    Logging a trade and reviewing it are not the same thing. A hundred logged trades with three autopsies still reads as thin. See [Trade Autopsy](/trade-intelligence/trade-autopsy).
   </Accordion>
 
   <Accordion title="What AI models do you use?" icon="microchip">
