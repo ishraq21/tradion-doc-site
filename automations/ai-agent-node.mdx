@@ -28,6 +28,8 @@ Click **+ Agent** in the toolbar. Each type can be added once, so six is the cei
 | **Market Brief** | Indices, macro, sectors, your holdings | A whole-market digest, not one ticker | You want a briefing on a schedule | `{market_brief_agent}` |
 | **Report Writer** | The agents above | One memo assembled from all of it | Two or more others are on the canvas | `{report_agent}` |
 
+The five agents above are **worker agents**: each does its own research and produces its own findings. The **Report Writer** is the **orchestrator** — it does no research of its own, waits for the workers to finish, and writes the memo from what they returned. That is why it always sits last on the canvas.
+
 ## How long it takes
 
 Agents are sequential, so the wait is their sum. Market Brief takes about 6 minutes, cut off at 12. Research about 3, Fundamental about 2, and Chart, Sentiment and Report Writer 1 to 2 each, all cut off at 5. The Action node prints the total: **Est. ~15 min · 6 agents, sequential**.
