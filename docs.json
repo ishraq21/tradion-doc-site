@@ -139,6 +139,7 @@
             "pages": [
               "automations/overview",
               "automations/first-automation",
+              "automations/templates",
               "automations/operators",
               "automations/signal-types",
               "automations/ai-agent-node",

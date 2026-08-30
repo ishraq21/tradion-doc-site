@@ -1,0 +1,123 @@
+---
+title: "Automation templates"
+sidebarTitle: "Templates"
+description: "45 ready-made automations across seven categories. Pick one, swap the ticker, and you're live."
+icon: "layer-group"
+---
+
+<Info>
+  Automations need the **Trader** plan or above. See [plans](/reference/plan-comparison).
+</Info>
+
+Click **Create Automation → Choose a Template** and you'll see these 45 options grouped into seven categories. Each one drops a fully wired canvas — signals, agents, channels, cooldown, and all. Change the ticker first; everything else is a starting point, not a lock.
+
+The difficulty label reflects how many moving parts are involved, not how hard the concept is.
+
+## Price Action
+
+Conditions that watch raw price movement: breakouts, gaps, and crashes.
+
+| Template | What fires it | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **Gap Detector** | Daily move up 5%+ | Chart Analyst | Beginner |
+| **Breakout Alert** | Price crosses above a level you set | Fundamental Analyst | Beginner |
+| **Crash Alert** | Daily move down 8%+ | Research Agent | Beginner |
+| **Support Bounce** | Price crosses below a level while RSI is under 35 | Chart Analyst | Intermediate |
+| **Volume Breakout** | Daily move up 3%+ with 5× average volume | Fundamental Analyst | Intermediate |
+
+## Technical
+
+Indicator-driven setups: crossovers, extremes, and volatility compression.
+
+| Template | What fires it | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **RSI Oversold Entry** | RSI crosses below 30 | Chart Analyst | Beginner |
+| **RSI Overbought Warning** | RSI crosses above 70 | Sentiment Analyst | Beginner |
+| **MACD Bullish Crossover** | MACD crosses above zero | Chart Analyst | Beginner |
+| **Bollinger Squeeze** | Bollinger Bandwidth drops below 4 | Chart Analyst | Intermediate |
+| **Golden Cross** | 50-day SMA crosses above 200-day | Fundamental Analyst | Intermediate |
+| **Death Cross Warning** | 50-day SMA crosses below 200-day | Research Agent | Intermediate |
+| **Stochastic Reversal** | Stochastic below 20 AND RSI below 40 | Chart Analyst | Intermediate |
+
+## Event-Driven
+
+Corporate events: earnings proximity, news, insider trades, and corporate actions.
+
+| Template | What fires it | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **Earnings Approaching** | Earnings report within 7 days | Research Agent | Beginner |
+| **News Catalyst** | News detected AND price up 2%+ | Sentiment Analyst | Intermediate |
+| **Insider Buying Detected** | SEC Form 4 purchase filed | Research Agent | Intermediate |
+| **Insider Selling Warning** | Insider sale filed AND price down 3%+ | Research Agent + Report Writer | Advanced |
+| **Corporate Action Alert** | Dividend, split, or merger detected | Fundamental Analyst | Beginner |
+
+## Crypto
+
+Momentum, crash, and volatility setups on crypto pairs.
+
+| Template | What fires it | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **Crypto Momentum** | RSI above 50 AND MACD above zero | Chart Analyst | Beginner |
+| **Crypto Crash Alert** | Daily move down 15%+ | Sentiment Analyst | Beginner |
+| **Altcoin Pump Detector** | Daily move up 20%+ | Sentiment Analyst | Beginner |
+| **Crypto Bollinger Squeeze** | Bollinger Bandwidth drops below 3 | Chart Analyst | Intermediate |
+
+## Risk Management
+
+Portfolio protection: drawdown monitoring, volatility spikes, and scheduled reviews.
+
+| Template | What fires it | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **Trailing Stop Monitor** | Daily move down 5%+ | Chart Analyst | Beginner |
+| **Volatility Spike Warning** | ATR crosses above 5 AND price down 3%+ | Fundamental Analyst | Intermediate |
+| **Drawdown Guardian** | Down 8%+ AND RSI below 35 AND MACD below zero | Research Agent + Report Writer | Advanced |
+| **EOD Portfolio Review** | Schedule: weekdays 4:15 PM ET | Fundamental Analyst | Beginner |
+
+## Multi-Agent Strategies
+
+Three-agent pipelines that research, analyse, and synthesise before the message goes out. Each run uses multiple agent credits — see [usage limits](/concepts/usage-limits).
+
+| Template | What fires it | Agents | Difficulty |
+| --- | --- | --- | --- |
+| **Full Due Diligence** | Price up 4%+ | Research + Fundamental + Report Writer | Advanced |
+| **Earnings Deep Dive** | Up 5%+ within 7 days of earnings | Research + Sentiment + Report Writer | Advanced |
+| **Momentum Trifecta** | RSI above 50 AND MACD above zero AND ADX above 25 | Research + Fundamental + Report Writer | Advanced |
+| **Mean Reversion Screen** | RSI below 25 AND MFI below 20 AND price below lower Bollinger band | Research + Sentiment + Report Writer | Advanced |
+| **Smart Money Tracker** | Insider buying AND CMF above 0.05 AND 3× volume | Research + Fundamental + Report Writer | Advanced |
+| **Breakout Confirmation** | Up 3%+ AND RSI above 55 AND ADX above 20 AND 3× volume | Research + Chart Analyst + Report Writer | Advanced |
+| **Risk-Off Protocol** | Down 5%+ AND RSI below 30 AND ATR spike | Research + Sentiment + Report Writer | Advanced |
+| **News Momentum Cascade** | News detected AND up 3%+ AND 3× volume | Sentiment + Research + Report Writer | Advanced |
+
+## Scheduled Briefs
+
+Time-based automations that fire on a clock. Most use a Market asset with no signals — the schedule alone triggers them.
+
+| Template | When it fires | Agent | Difficulty |
+| --- | --- | --- | --- |
+| **Morning Market Brief** | Weekdays 9:25 AM ET | Market Brief | Beginner |
+| **Pre-Market Scanner** | Weekdays 8:00 AM ET | Market Brief | Beginner |
+| **Power Hour Brief** | Weekdays 3:00 PM ET | Market Brief | Beginner |
+| **Post-Close Wrap** | Weekdays 4:15 PM ET | Chart Analyst | Beginner |
+| **Weekly Portfolio Review** | Fridays 4:30 PM ET | Market Brief | Beginner |
+| **Weekend Watchlist Scan** | Sundays 7:00 PM ET | Research Agent | Intermediate |
+| **Crypto Morning Brief** | Daily 8:00 AM ET | Market Brief | Beginner |
+| **Crypto Weekend Brief** | Saturdays 10:00 AM ET | Market Brief | Beginner |
+| **Earnings Week Prep** | Sundays 6:00 PM ET | Research Agent | Intermediate |
+| **Monthly Deep Dive** | First Monday of the month 9:00 AM ET | Research + Fundamental + Report Writer | Advanced |
+| **Morning Gap Check** | Weekdays 9:35 AM ET — only if price up 2%+  | Chart Analyst | Intermediate |
+| **Daily RSI Check** | Weekdays 10:00 AM ET — only if RSI below 30 | Fundamental Analyst | Intermediate |
+
+<Note>
+  Morning Gap Check and Daily RSI Check are scheduled automations with a signal condition. The schedule gates when the check happens, and the signal decides whether it fires. See [the Schedule node](/automations/overview#the-schedule-node).
+</Note>
+
+## Next
+
+<CardGroup cols={2}>
+  <Card title="Build your first automation" icon="wand-magic-sparkles" href="/automations/first-automation">
+    A walkthrough that explains every canvas node.
+  </Card>
+  <Card title="The AI Agent node" icon="robot" href="/automations/ai-agent-node">
+    What each agent reads, writes, and costs.
+  </Card>
+</CardGroup>
