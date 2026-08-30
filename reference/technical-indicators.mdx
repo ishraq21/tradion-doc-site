@@ -97,7 +97,7 @@ Momentum indicators measure how hard price has been pushed and whether that push
 | TRIX `TRIX` | The percentage rate of change of a triple-smoothed EMA, short-term noise removed before momentum is measured | `period` | Automations |
 | Coppock Curve `COPPOCK` | Long-horizon momentum, originally built to spot the end of major declines | None | Automations |
 | Detrended Price Oscillator `DPO` | Price with the longer trend subtracted out, so the shorter cycle underneath is visible | `period` | Automations |
-| Elder Bull Power `BULL_POWER` | How far the bar's high reached above a 13-bar EMA (how much buyers extended the bar | ) | Automations |
+| Elder Bull Power `BULL_POWER` | How far the bar's high reached above a 13-bar EMA (how much buyers extended the bar) | None | Automations |
 | Elder Bear Power `BEAR_POWER` | How far the bar's low reached below that same EMA | None | Automations |
 | Squeeze Momentum `SQZMI` | Flags when the Bollinger Bands have contracted inside the Keltner Channels (a sign volatility has compressed and may expand) | None | Quant research |
 
@@ -127,7 +127,7 @@ Momentum indicators measure how hard price has been pushed and whether that push
 | Indicator | What it tells you | Parameters | Where |
 | --- | --- | --- | --- |
 | On-Balance Volume `OBV` | A running total that adds the bar's volume when price closes up and subtracts it when price closes down | None | Both |
-| Accumulation/Distribution Line `ADL` | A running total weighted by where in its range each bar closed (closing near the high adds more | ) | Both |
+| Accumulation/Distribution Line `ADL` | A running total weighted by where in its range each bar closed (closing near the high adds more) | None | Both |
 | Chaikin A/D Oscillator `ADOSC` | The gap between a fast and a slow average of the A/D line, so you can see it turning | `fast`, `slow` | Quant research |
 | Chaikin Money Flow `CMF` | That same close-position weighting averaged over N bars, −1 to \+1. Positive means bars have been closing in the upper half on volume | `period` | Both |
 | Elder Force Index `EFI` | The size of the price change multiplied by the volume behind it, move and participation in one number | `period` | Both |
