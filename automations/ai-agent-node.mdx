@@ -116,6 +116,24 @@ If the allowance runs out mid-month the automation keeps firing and messaging yo
 
 Trader accounts run Claude Sonnet, Quant accounts Claude Opus. The Chart Analyst is always Sonnet, because that is the model reading the image.
 
+## Timing your agents
+
+Two limits control how often agents run, on top of your monthly allowance.
+
+**Burst cap:** 20 agent runs per hour and 100 per day, per account, across all automations combined. Hitting the hourly cap doesn't stop the alert — conditions are still checked every 60 seconds and the Action node still fires — but the agents are skipped and the run records as **degraded** or **triggered\_only** in history. It resets on the rolling window, not at midnight.
+
+**Cooldown:** The Action node offers five presets — 5m, 15m, 1h (default), 4h, 1d. A cooldown mutes re-alerting, not re-checking: conditions keep being evaluated on the 60-second cycle, and the next match after the cooldown expires fires the full agent sequence again. Think of it as "don't spend an agent run on this more than once per N."
+
+### Quick sizing guide
+
+| Signal timeframe | Recommended cooldown | Why |
+| --- | --- | --- |
+| 1-day bars | 4h–1d | A daily RSI or price condition changes once a day; a shorter cooldown rarely does extra work |
+| 1H bars | 1h–4h | A few alerts before the story has changed is enough |
+| Sub-hour bars | 1d | The Market Brief alone takes ~6 min; a sub-hourly scalp setup has moved on before it lands |
+
+Before attaching any agent, run the automation with signals only for a week and count the matches in the [Runs tab](/automations/runs-and-history). More than four or five matches a day on Trader — or forty on Quant — usually means the threshold needs tightening before agents go on.
+
 ## Next
 
 <CardGroup cols={2}>
