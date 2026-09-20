@@ -118,7 +118,7 @@ Rules:
 - **A visual within the first screen** on any page that describes a UI.
 - **Every page ends by pointing somewhere** — a `<CardGroup>` of next steps, or one clear link.
 - **Length: 400–900 words** for a feature page. Reference pages can run longer. If you're past 1,200 words the page should be two pages.
-- **State the plan requirement** with `<Info>` at the top of any page describing a gated feature (quant terminal and automations are Trader+).
+- **State the plan requirement** with `<Info>` at the top of any page describing a gated feature (AI Quant Research and automations are Trader+).
 
 ---
 

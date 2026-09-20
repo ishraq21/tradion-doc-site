@@ -8,10 +8,10 @@ Live at **[docs.tradionlabs.com](https://docs.tradionlabs.com)**
 
 ```
 get-started/       Onboarding and quick-start guides
-research/          Quant Terminal, Earnings Spider, Tradion Lens
+research/          AI Quant Research, Earnings Spider, Tradion Lens
 trade-intelligence/ Trade Autopsy and behavioral analysis
 automations/       Workflow builder and AI agents
-portfolio/         AI Asset Manager and brokerage connections
+portfolio/         AI Portfolio Analyst and brokerage connections
 account/           Billing, settings, and plan management
 concepts/          Core concepts and terminology
 reference/         API reference and integrations

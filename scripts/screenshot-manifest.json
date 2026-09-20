@@ -132,11 +132,11 @@
   {
     "slug": "portfolio/asset-manager-chart",
     "caption": "An embedded chart in a response",
-    "page": "portfolio/ai-asset-manager"
+    "page": "portfolio/ai-portfolio-analyst"
   },
   {
     "slug": "portfolio/asset-manager-full",
-    "caption": "AI Asset Manager",
+    "caption": "AI Portfolio Analyst",
     "page": "get-started/tour"
   },
   {

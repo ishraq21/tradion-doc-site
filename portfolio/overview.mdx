@@ -11,7 +11,7 @@ flowchart LR
     A["Your brokerage<br/>(read-only link)"] --> C["Portfolio dashboard"]
     B["Positions you<br/>add by hand"] --> C
     C --> D["Daily snapshot<br/>saved for the chart"]
-    C --> E["AI Asset Manager"]
+    C --> E["AI Portfolio Analyst"]
 ```
 
 ## What you need first
@@ -43,7 +43,7 @@ Each panel is explained line by line in [Reading the dashboard](/portfolio/readi
 
 Open the **Manage Positions** tab and add a position with three fields: ticker, number of shares, and average cost, the price you paid per share, averaged across your buys. Tradion prices it live from there.
 
-Hand-entered positions drive the same charts, allocation, and AI Asset Manager context that broker positions do. What you give up is automatic trade import, so closed trades have to be logged yourself, see [Logging a trade](/trade-intelligence/logging-a-trade).
+Hand-entered positions drive the same charts, allocation, and AI Portfolio Analyst context that broker positions do. What you give up is automatic trade import, so closed trades have to be logged yourself, see [Logging a trade](/trade-intelligence/logging-a-trade).
 
 You cannot add a manual position for a ticker a connected broker already reports. Tradion blocks it so the same holding is never counted twice.
 

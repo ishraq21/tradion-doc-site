@@ -76,6 +76,13 @@
   "contextual": {
     "options": ["copy", "view", "chatgpt", "claude"]
   },
+  "redirects": [
+    {
+      "source": "/portfolio/ai-asset-manager",
+      "destination": "/portfolio/ai-portfolio-analyst",
+      "permanent": true
+    }
+  ],
   "navigation": {
     "tabs": [
       {
@@ -108,7 +115,7 @@
               "portfolio/overview",
               "portfolio/connect-brokerage",
               "portfolio/reading-the-dashboard",
-              "portfolio/ai-asset-manager"
+              "portfolio/ai-portfolio-analyst"
             ]
           },
           {

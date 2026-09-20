@@ -11,7 +11,7 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `automations-list.jpg` | Automations | `automations/overview` | Nothing needed |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
-| `asset-manager.jpg` | AI Asset Manager | `trade-intelligence/asset-manager` | Nothing needed |
+| `asset-manager.jpg` | AI Portfolio Analyst | `portfolio/ai-portfolio-analyst` | Nothing needed |
 | `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Lens | `research/lens` | Nothing needed |
 | `quant-dashboard.jpg`, `quant-ml-analysis.jpg`, `quant-templates.jpg`, `quant-template-library.jpg` | AI Quant Research | `research/quant-research` | Nothing needed |
 | `automation-agents.jpg` | Automation canvas with agents | `automations/ai-agent-node` | Nothing needed |
