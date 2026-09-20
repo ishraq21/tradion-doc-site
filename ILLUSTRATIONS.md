@@ -15,7 +15,7 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | Slug | Shows | Intended page |
 | --- | --- | --- |
 | `diagrams/onboarding-steps` | The five onboarding steps as a labelled progression | `get-started/onboarding` |
-| `diagrams/usage-meters` | The three metered counters and what each one counts | `concepts/usage-limits` |
+| `diagrams/usage-meters` | The four metered counters and what each one counts | `concepts/usage-limits` |
 | `diagrams/memory-sources` | Ten data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
 | `diagrams/verdict-decision` | The three checks that produce BUY, SELL, WAIT or NO TRADE, and what each verdict leaves on the card | `concepts/reading-a-verdict` |
 | `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |

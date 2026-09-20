@@ -1,13 +1,16 @@
 # Captured screenshots
 
-Real screens from the live app, captured with `scripts/capture-mask.js` active so no account data survives into a public page.
+Real screens from the live app, captured with `scripts/capture-mask.js` active so no account data survives into a public page. The `earnings-research-*` captures are the exception: they were taken by hand from a test account, and hold only public tickers and role labels (no names).
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
 | `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Name, portfolio value, day change, positions, risk score, active automations |
 | `quant-analysis.jpg` | AI Quant Research, saved session | `research/quant-research` | Nothing needed — public tickers only |
 | `chart-analyzer-history.jpg` | Chart Analyzer history | `research/chart-analyzer` | Nothing needed |
-| `earnings-analysis.jpg` | Earnings Spider report | `research/earnings-spider` | Nothing needed |
+| `earnings-research-thread.jpg`, `earnings-research-overview.jpg`, `earnings-research-what-changed.jpg`, `earnings-research-compare.jpg`, `earnings-research-scenarios.jpg` | AI Earnings Research thread and its four views | `research/ai-earnings-research` | Nothing needed, public tickers only |
+| `earnings-research-working-notes.jpg` | AI Earnings Research, working notes mid-run | `research/ai-earnings-research` | Cropped to the progress area |
+| `earnings-research-sources.jpg`, `earnings-research-estimates.jpg` | AI Earnings Research, Sources panel and estimates table | `research/earnings-evidence` | Nothing needed, public tickers only |
+| `earnings-research-thesis-form.jpg` | Research Notebook, New Thesis form | `research/earnings-notebook` | Cropped to the dialog |
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `automations-list.jpg` | Automations | `automations/overview` | Nothing needed |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |

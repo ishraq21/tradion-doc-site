@@ -15,6 +15,9 @@ No definition here uses a word that isn't also defined here. If you hit one that
   <Accordion title="Bid and ask">
     The **bid** is the highest price anyone is currently offering to buy at. The **ask** is the lowest price anyone is offering to sell at. The gap between them is the spread, and it's roughly what it costs you to get in and straight back out.
   </Accordion>
+  <Accordion title="Consensus estimate">
+    The average of what the analysts covering a stock predicted for a result, such as earnings per share. A company **beats** when it reports above that average and **misses** when it reports below. Neither says the business is good or bad, only that it surprised the people paid to predict it.
+  </Accordion>
   <Accordion title="Correlation">
     How closely two things move together, on a scale from −1 to +1. At +1 they rise and fall in lockstep; at 0 there's no relationship; at −1 one rises whenever the other falls. Two holdings with high correlation aren't really two bets.
   </Accordion>
@@ -26,6 +29,9 @@ No definition here uses a word that isn't also defined here. If you hit one that
   </Accordion>
   <Accordion title="Equity curve">
     A line chart of what an account has been worth over time. A smooth rising line means steady gains; a jagged one means the same end result arrived through much bigger swings.
+  </Accordion>
+  <Accordion title="GAAP">
+    US Generally Accepted Accounting Principles, the standard rules a company's filings follow. A data provider's headline earnings figure often follows its own rules instead, so the two can differ for the same quarter, and Tradion does not subtract one from the other.
   </Accordion>
   <Accordion title="Gap">
     When a price opens well away from where it closed the day before, leaving a blank space on the chart. Usually caused by news released while the market was shut.
@@ -126,6 +132,9 @@ Only needed if you trade options or use the options-based signals.
 ## Tradion terms
 
 <AccordionGroup>
+  <Accordion title="AI Earnings Research">
+    A chat for questions about a company's quarter. It reads the company's SEC filings, its earnings call and the analyst estimates, and answers with every figure tied to its source. Available on Trader and Quant. See [AI Earnings Research](/research/ai-earnings-research).
+  </Accordion>
   <Accordion title="AI Portfolio Analyst message">
     One message you send in the AI Portfolio Analyst panel, your portfolio chat. Counted against your monthly allowance: 150 on Starter, 500 on Trader, 1,000 on Quant. The assistant's reply and any internal tool calls it makes are free. See [usage limits](/concepts/usage-limits).
   </Accordion>
@@ -156,8 +165,8 @@ Only needed if you trade options or use the options-based signals.
   <Accordion title="Counterfactual">
     The same trade replayed with one thing changed (the stop honoured, or half the size) showing what your own stated rules would have returned. The gap between that and what happened is the cost of the deviation.
   </Accordion>
-  <Accordion title="Earnings Spider">
-    Upload an earnings PDF or point it at a ticker and quarter; it returns beat-or-miss against analyst expectations, next-quarter guidance, a BULLISH / BEARISH / NEUTRAL signal, and a tone analysis that flags when management sounds more or less certain than the numbers warrant. Available on every paid plan with no monthly cap. See [Earnings Spider](/research/earnings-spider).
+  <Accordion title="Earnings message">
+    One question you send in [AI Earnings Research](/research/ai-earnings-research). Follow-ups count, and a question naming three companies costs the same as one naming a single company. Trader gets 50 a month and Quant gets 150. A run that fails on Tradion's side gives the message back; pressing **Stop** does not.
   </Accordion>
   <Accordion title="FIFO matching">
     First in, first out. When your broker sends a list of buys and sells with no record of which sell closed which buy, Tradion pairs the oldest open buy with the next sell. It's the standard convention, and it's what lets a raw transaction list become a list of trades.
@@ -190,7 +199,7 @@ Only needed if you trade options or use the options-based signals.
     One of five behavioural classifications assigned by the Psychological Profile, which unlocks after two completed autopsies. The five archetypes are **Momentum Chaser**, **Methodical Planner**, **Contrarian Thinker**, **Reactive Trader**, and **Patient Stalker**.
   </Accordion>
   <Accordion title="Verdict">
-    A directional call. Charts return BUY, SELL, WAIT (shown on the card as HOLD, meaning the setup exists but has not triggered), or NO TRADE (no edge at all, and no levels). Lens and Earnings Spider return BULLISH, BEARISH, or NEUTRAL.
+    A directional call. Charts return BUY, SELL, WAIT (shown on the card as HOLD, meaning the setup exists but has not triggered), or NO TRADE (no edge at all, and no levels). Lens returns BULLISH, BEARISH, or NEUTRAL.
   </Accordion>
 </AccordionGroup>
 

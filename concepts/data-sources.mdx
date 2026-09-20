@@ -5,15 +5,15 @@ description: "Every provider behind the numbers, and how fresh each one is."
 icon: "database"
 ---
 
-Every price, ratio, and filing Tradion shows you came from somewhere specific. This page names each provider, says how often the number is refreshed, and ends with a list of what Tradion does not have.
+Every price, ratio, and filing Tradion shows you came from somewhere specific. This page names each source, says how often the number is refreshed, and ends with a list of what Tradion does not have.
 
-<Frame caption="Six providers, each responsible for a different kind of number.">
-  <img src="/images/diagrams/data-sources-map.svg" alt="Map showing six data providers and the categories of data each one supplies to Tradion" noZoom />
+<Frame caption="Five sources, each responsible for a different kind of number.">
+  <img src="/images/diagrams/data-sources-map.svg" alt="Map showing five data sources and the categories of data each one supplies to Tradion" noZoom />
 </Frame>
 
 ## In plain English
 
-Tradion has no market data of its own. It buys each kind from a specialist: prices from Alpaca, company financials from Alpha Vantage, interest rates from FRED, filings from SEC EDGAR, and your own positions from SnapTrade.
+Tradion has no market data of its own. It buys each kind from a specialist: prices from Alpaca, company fundamentals and earnings data from a licensed financial-data provider, interest rates from FRED, filings from SEC EDGAR, and your own positions from SnapTrade.
 
 Two things follow from that. Nothing on screen is fresher than the cache table below says it is. And when a provider has a gap or an outage, Tradion has the same gap. It shows a stale-data indicator rather than filling in a number.
 
@@ -34,9 +34,11 @@ An **options chain** is the grid of every strike price and expiry date available
 
 Alpaca also supplies the **real-time news stream**. Headlines arrive over a live connection as they publish, with a REST lookup as backup when the live buffer is thin. Sentiment labels attached to those headlines are assigned by Tradion's own models, not by the publisher.
 
-## Fundamentals and earnings: Alpha Vantage
+## Fundamentals and earnings
 
-Company financials, the earnings calendar, historical earnings results, company overview data, and screener output come from Alpha Vantage. This is what Earnings Spider compares a fresh report against, and what the AI Portfolio Analyst reads when you ask about a company's numbers rather than its chart.
+Company fundamentals, the earnings calendar, historical earnings results, company overview data, and screener output come from a licensed financial-data provider. Earnings call transcripts and analyst estimates come from a licensed earnings-data provider. This is what the AI Portfolio Analyst reads when you ask about a company's numbers rather than its chart.
+
+[AI Earnings Research](/research/ai-earnings-research) reads each company's quarterly financials straight from its SEC filings instead, and takes its transcripts and estimates from the financial-data provider. [Where the numbers come from](/research/earnings-evidence) covers how each figure is checked.
 
 ## Economic data: FRED
 

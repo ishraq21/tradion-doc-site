@@ -8,7 +8,7 @@ Live at **[docs.tradionlabs.com](https://docs.tradionlabs.com)**
 
 ```
 get-started/       Onboarding and quick-start guides
-research/          AI Quant Research, Earnings Spider, Tradion Lens
+research/          AI Quant Research, AI Earnings Research, Tradion Lens
 trade-intelligence/ Trade Autopsy and behavioral analysis
 automations/       Workflow builder and AI agents
 portfolio/         AI Portfolio Analyst and brokerage connections

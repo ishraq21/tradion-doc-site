@@ -81,6 +81,11 @@
       "source": "/portfolio/ai-asset-manager",
       "destination": "/portfolio/ai-portfolio-analyst",
       "permanent": true
+    },
+    {
+      "source": "/research/earnings-spider",
+      "destination": "/research/ai-earnings-research",
+      "permanent": true
     }
   ],
   "navigation": {
@@ -127,7 +132,9 @@
               "research/templates-and-scenarios",
               "research/chart-analyzer",
               "research/lens",
-              "research/earnings-spider"
+              "research/ai-earnings-research",
+              "research/earnings-evidence",
+              "research/earnings-notebook"
             ]
           },
           {

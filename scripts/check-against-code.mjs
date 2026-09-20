@@ -283,6 +283,25 @@ if (tiers) {
     }
     console.log(`  ${label.padEnd(34)} ${v.padEnd(8)} tiers.js`);
   }
+
+  // AI Earnings Research messages: match the Trader and Quant CELLS of the row, not just "the number appears somewhere".
+  // A presence check would pass on this table regardless, because 50 and 150 are already other meters' limits.
+  const earnTrader = grab('trader', 'earningsMessagesPerMonth');
+  const earnQuant = grab('quant', 'earningsMessagesPerMonth');
+  if (earnTrader && earnQuant) {
+    for (const [file, re] of [
+      ['concepts/usage-limits.mdx', /\|\s*Earnings messages\s*\|[^|]*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*AI Earnings Research\s*\|[^|]*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ]) {
+      const m = (pages.get(file) ?? '').match(re);
+      if (!m) { errors.push(`${file}: no AI Earnings Research allowance row to check`); continue; }
+      const [t, q] = [m[1], m[2]].map((n) => n.replace(/,/g, ''));
+      if (t !== earnTrader || q !== earnQuant) {
+        errors.push(`tiers.js earningsMessagesPerMonth = ${earnTrader}/${earnQuant}, but ${file} says ${t}/${q}`);
+      }
+    }
+    console.log(`  ${'AI Earnings Research messages'.padEnd(34)} ${`${earnTrader}/${earnQuant}`.padEnd(8)} tiers.js`);
+  }
 }
 
 /* ── report ─────────────────────────────────────────────────────────────── */

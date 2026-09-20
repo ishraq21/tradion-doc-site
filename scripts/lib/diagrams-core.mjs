@@ -39,9 +39,9 @@ export function onboardingSteps() {
 export function planLadder() {
   const W = 900, H = 380;
   const tiers = [
-    ['Starter', 'Analysis tools', ['Chart Analyzer', 'Lens', 'Earnings Spider', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 96, false],
-    ['Trader', 'Adds automation', ['Everything in Starter', 'AI Quant Research', 'Automations & alerts', 'AI agent nodes'], 148, true],
-    ['Quant', 'Adds headroom', ['Everything in Trader', '10× the monthly limits', 'More capable agent model'], 200, false],
+    ['Starter', 'Analysis tools', ['Chart Analyzer', 'Lens', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 140, false],
+    ['Trader', 'Adds research and automation', ['Everything in Starter', 'AI Earnings Research', 'AI Quant Research', 'Automations & alerts', 'AI agent nodes'], 170, true],
+    ['Quant', 'Adds headroom', ['Everything in Trader', 'Much bigger monthly limits', 'More capable agent model'], 200, false],
   ];
   let s = label(28, 34, 'Each tier adds to the one before it');
   tiers.forEach(([name, sub, items, h, hi], i) => {
@@ -60,19 +60,20 @@ export function planLadder() {
   s += text(28, 364, 'The dividing question: do you need Tradion watching the market while you are away?', { size: 11, fill: C.faint });
   return svg(W, H, s, {
     title: 'The three Tradion plans as a ladder',
-    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Quant Research and automations, Quant adds ten times the monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
+    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Earnings Research, AI Quant Research and automations, Quant adds much bigger monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
   });
 }
 
 /* ── usage-meters ────────────────────────────────────────────────────────── */
 export function usageMeters() {
-  const W = 900, H = 330;
+  const W = 900, H = 404;
   const meters = [
     ['Chat messages', 'One message to the AI Portfolio Analyst', 0.62],
     ['Quant sessions', 'One research session in AI Quant Research', 0.3],
     ['Agent runs', 'One AI agent step inside an automation', 0.84],
+    ['Earnings messages', 'One question in AI Earnings Research', 0.45],
   ];
-  let s = label(28, 34, 'Three things are metered. Everything else is unlimited.');
+  let s = label(28, 34, 'Four things are metered. Everything else is unlimited.');
   meters.forEach(([n, d, f], i) => {
     const y = 56 + i * 74;
     s += rect(28, y, W - 56, 60, { fill: C.panel, r: 8 });
@@ -84,11 +85,11 @@ export function usageMeters() {
     s += text(bx, y + 52, 'used this cycle', { size: 9.5, fill: C.faint });
     s += redact(bx + bw, y + 52, { anchor: 'end', s: '— / —' });
   });
-  s += rect(28, 280, W - 56, 30, { fill: C.panelAlt, r: 6 });
-  s += text(48, 300, 'Resets on your billing date, not the 1st. Unused credits do not roll over.', { size: 11, fill: C.dim });
+  s += rect(28, 354, W - 56, 30, { fill: C.panelAlt, r: 6 });
+  s += text(48, 374, 'Resets on your billing date, not the 1st. Unused credits do not roll over.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
-    title: 'The three metered counters',
-    desc: 'Three rows, one per metered item: chat messages, quant sessions, and agent runs. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
+    title: 'The four metered counters',
+    desc: 'Four rows, one per metered item: chat messages, quant sessions, agent runs, and earnings messages. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
   });
 }
 
@@ -326,7 +327,7 @@ export function dataSourcesMap() {
   const W = 940, H = 400;
   const provs = [
     ['Alpaca', ['Stock, crypto & forex prices', 'Options chains (OPRA feed)', 'Real-time news']],
-    ['Alpha Vantage', ['Company fundamentals', 'Earnings history & estimates']],
+    ['Financial data', ['Company fundamentals', 'Earnings calendar and results', 'Transcripts and estimates']],
     ['FRED', ['Interest rates & inflation', 'Other economic series']],
     ['SEC EDGAR', ['Company filings', 'Insider transactions']],
     ['Your brokerage', ['Positions & balances', 'Transaction history']],
@@ -353,6 +354,6 @@ export function dataSourcesMap() {
   });
   return svg(W, H, s, {
     title: 'Which provider supplies which data',
-    desc: 'Five data providers on the left (Alpaca, Alpha Vantage, FRED, SEC EDGAR, and your connected brokerage), each listing what it supplies, feeding a four-step pipeline on the right.',
+    desc: 'Five data providers on the left (Alpaca, a financial data provider, FRED, SEC EDGAR, and your connected brokerage), each listing what it supplies, feeding a four-step pipeline on the right.',
   });
 }

@@ -91,10 +91,6 @@ export const SHOTS: Shot[] = [
   { slug: 'research/lens-capture', view: 'LENS', clip: '[data-doc="lens-capture"]' },
   { slug: 'research/lens-verdict', view: 'LENS', clip: '[data-doc="lens-verdict"]', settle: 2500 },
 
-  { slug: 'research/earnings-full', view: 'EARNINGS_SPIDER', settle: 2500 },
-  { slug: 'research/earnings-verdict', view: 'EARNINGS_SPIDER', clip: '[data-doc="earnings-verdict"]', settle: 2500 },
-  { slug: 'research/earnings-metrics', view: 'EARNINGS_SPIDER', clip: '[data-doc="key-metrics"]', settle: 2500 },
-  { slug: 'research/earnings-straddle', view: 'EARNINGS_SPIDER', clip: '[data-doc="straddle-calculator"]', settle: 2500 },
 
   // ── Trade intelligence ──────────────────────────────────────────────────
   { slug: 'trade/autopsy-overview', view: 'TRADE_AUTOPSY', settle: 2500 },

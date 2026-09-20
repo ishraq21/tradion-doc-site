@@ -306,10 +306,10 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="I hit a usage limit unexpectedly" icon="gauge-high">
     <Steps>
       <Step title="Check Settings → Monthly Usage first">
-        It names which of the three meters is empty and when they reset.
+        It names which of the four meters is empty and when they reset.
       </Step>
       <Step title="Know what consumes each meter">
-        A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger, an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, earnings reports, autopsies, and portfolio syncs cost nothing.
+        An **earnings message** is spent on every question you send in AI Earnings Research, follow-ups included; **Stop** does not give it back, and a run that fails on Tradion's side does. A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger, an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, autopsies, and portfolio syncs cost nothing.
       </Step>
       <Step title="Find the automation that's eating them">
         Agent runs are almost always the culprit, and almost always an agent on a high-frequency trigger. **Automations → Runs** shows which automation consumed what. Move the agent onto a daily or crossing trigger.

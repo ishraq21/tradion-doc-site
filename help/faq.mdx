@@ -68,13 +68,13 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="What happens when I hit a limit?" icon="gauge-high">
-    You get a clear block naming the meter you ran out of, not a silent failure. Three things are metered: AI Portfolio Analyst messages, quant sessions, and agent runs (one run of the AI step inside an automation).
+    You get a clear block naming the meter you ran out of, not a silent failure. Four things are metered: AI Portfolio Analyst messages, AI Earnings Research messages, quant sessions, and agent runs (one run of the AI step inside an automation).
 
-    Out of AI Portfolio Analyst messages, your existing sessions still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
+    Out of AI Portfolio Analyst messages, your existing sessions still open. Out of earnings messages, your earlier research threads and notebook still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
   </Accordion>
 
   <Accordion title="Do unused credits roll over?" icon="rotate-left">
-    No. All three meters reset to the full monthly allowance on your billing cycle date, which is the day of the month you subscribed rather than the 1st. Whatever you did not use is gone. A month where you used 4 of 50 agent runs resets to 50, not 96.
+    No. All four meters reset to the full monthly allowance on your billing cycle date, which is the day of the month you subscribed rather than the 1st. Whatever you did not use is gone. A month where you used 4 of 50 agent runs resets to 50, not 96.
   </Accordion>
 
   <Accordion title="How many automations can I have?" icon="bolt">
@@ -152,7 +152,7 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="What AI models do you use?" icon="microchip">
-    Anthropic's Claude does the bulk of the work: Opus for quant code generation and for automation agent runs on Quant, Sonnet for chart and document analysis, chat, and agent runs on Trader, Haiku for short follow-ups and summaries. Google's Gemini reads uploaded files and rewrites quant code cells that fail. OpenAI is used only to turn text into the numeric form that powers search, never for chat or analysis. The one model difference between plans is the automation agent. See [the AI agent node](/automations/ai-agent-node).
+    Anthropic's Claude does the bulk of the work: Opus for quant code generation and for automation agent runs on Quant, Sonnet for chart and document analysis, chat, AI Earnings Research, and agent runs on Trader, Haiku for short follow-ups and summaries. Google's Gemini reads uploaded files and rewrites quant code cells that fail. OpenAI is used only to turn text into the numeric form that powers search, never for chat or analysis. The one model difference between plans is the automation agent. See [the AI agent node](/automations/ai-agent-node).
   </Accordion>
 
   <Accordion title="Is there an API?" icon="plug">

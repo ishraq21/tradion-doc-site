@@ -190,26 +190,6 @@
     "page": "concepts/reading-a-verdict"
   },
   {
-    "slug": "research/earnings-full",
-    "caption": "Earnings Spider",
-    "page": "get-started/tour"
-  },
-  {
-    "slug": "research/earnings-metrics",
-    "caption": "Key metrics cards",
-    "page": "research/earnings-spider"
-  },
-  {
-    "slug": "research/earnings-straddle",
-    "caption": "Straddle calculator",
-    "page": "research/earnings-spider"
-  },
-  {
-    "slug": "research/earnings-verdict",
-    "caption": "The earnings verdict",
-    "page": "research/earnings-spider"
-  },
-  {
     "slug": "research/forecast-cone",
     "caption": "Forecast cone",
     "page": "research/chart-analyzer"
