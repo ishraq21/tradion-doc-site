@@ -39,7 +39,7 @@ export function onboardingSteps() {
 export function planLadder() {
   const W = 900, H = 380;
   const tiers = [
-    ['Starter', 'Analysis tools', ['Chart Analyzer', 'Lens', 'Earnings Spider', 'Trade Autopsy', 'Portfolio + Asset Manager'], 96, false],
+    ['Starter', 'Analysis tools', ['Chart Analyzer', 'Lens', 'Earnings Spider', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 96, false],
     ['Trader', 'Adds automation', ['Everything in Starter', 'AI Quant Research', 'Automations & alerts', 'AI agent nodes'], 148, true],
     ['Quant', 'Adds headroom', ['Everything in Trader', '10× the monthly limits', 'More capable agent model'], 200, false],
   ];
@@ -60,7 +60,7 @@ export function planLadder() {
   s += text(28, 364, 'The dividing question: do you need Tradion watching the market while you are away?', { size: 11, fill: C.faint });
   return svg(W, H, s, {
     title: 'The three Tradion plans as a ladder',
-    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds the quant terminal and automations, Quant adds ten times the monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
+    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Quant Research and automations, Quant adds ten times the monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
   });
 }
 
@@ -68,8 +68,8 @@ export function planLadder() {
 export function usageMeters() {
   const W = 900, H = 330;
   const meters = [
-    ['Chat messages', 'One message to the AI Asset Manager', 0.62],
-    ['Quant sessions', 'One research session in the quant terminal', 0.3],
+    ['Chat messages', 'One message to the AI Portfolio Analyst', 0.62],
+    ['Quant sessions', 'One research session in AI Quant Research', 0.3],
     ['Agent runs', 'One AI agent step inside an automation', 0.84],
   ];
   let s = label(28, 34, 'Three things are metered. Everything else is unlimited.');
@@ -110,7 +110,7 @@ export function memorySources() {
     s += text(429, 204 + i * 22, t, { size: 10.5, fill: C.dim });
   });
   s += flowArrow(644, 706, 225, { arrow: true, stroke: C.accent });
-  const outs = ['Chart & Lens verdicts', 'Quant research answers', 'Asset Manager replies', 'Automation agent briefs', 'Autopsy coaching'];
+  const outs = ['Chart & Lens verdicts', 'Quant research answers', 'Portfolio Analyst replies', 'Automation agent briefs', 'Autopsy coaching'];
   outs.forEach((n, i) => {
     const y = 128 + i * 40;
     s += rect(712, y, 200, 30, { fill: C.panel, r: 6, stroke: C.mark });

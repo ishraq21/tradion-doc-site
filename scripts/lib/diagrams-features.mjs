@@ -47,10 +47,10 @@ export function portfolioAnatomy() {
   });
 }
 
-/* ── asset-manager-anatomy ───────────────────────────────────────────────── */
+/* ── portfolio-analyst-anatomy ───────────────────────────────────────────────── */
 export function assetManagerAnatomy() {
   const W = 900, H = 440;
-  let s = label(28, 32, 'The AI Asset Manager workspace');
+  let s = label(28, 32, 'The AI Portfolio Analyst workspace');
   s += rect(28, 48, 180, 360, { fill: C.panel, r: 8 });
   s += label(44, 70, 'Sessions');
   [0, 1, 2].forEach((i) => {
@@ -76,7 +76,7 @@ export function assetManagerAnatomy() {
   s += pin(300, 226, '3');
   s += text(28, 428, '1 Saved sessions   ·   2 What you ask   ·   3 The answer, grounded in your actual positions', { size: 10.5, fill: C.faint });
   return svg(W, H, s, {
-    title: 'Anatomy of the AI Asset Manager',
+    title: 'Anatomy of the AI Portfolio Analyst',
     desc: 'A saved-sessions rail on the left, a conversation in the centre with a question and an answer containing a generated chart, and a message composer along the bottom.',
   });
 }
@@ -116,7 +116,7 @@ export function quantAnatomy() {
   s += pin(920, 140, '3');
   s += text(28, 448, '1 Your question   ·   2 The plain-English answer   ·   3 The code it ran and the chart it produced', { size: 10.5, fill: C.faint });
   return svg(W, H, s, {
-    title: 'Anatomy of the quant research terminal',
+    title: 'Anatomy of AI Quant Research',
     desc: 'A split screen. On the left, a conversation where you ask a question in ordinary language and get a written answer. On the right, a canvas of cells, each showing generated code beside the chart it produced.',
   });
 }
