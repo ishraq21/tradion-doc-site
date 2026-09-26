@@ -11,6 +11,7 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 | `earnings-research-thesis-form.jpg` | Research Notebook, New Thesis form | `research/earnings-notebook` | Cropped to the dialog |
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
+| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Nothing needed: a demo account (first name "Jane"), public tickers. Cropped to the content column, so the sidebar is not shown |
 | `asset-manager.jpg` | AI Portfolio Analyst | `portfolio/ai-portfolio-analyst` | Nothing needed |
 | `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Lens | `research/lens` | Nothing needed |
 
