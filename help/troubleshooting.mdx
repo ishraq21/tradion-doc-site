@@ -57,7 +57,7 @@ If nothing here matches, the last section tells you how to report it.
   <Accordion title="Tradion says it needs a desktop" icon="desktop">
     That screen appears when your browser window is **narrower than 640 pixels**. It is a width check, not a device check.
 
-    - **On a phone**, expected. Sign-in works there; the terminal does not. Tap **Email me a link for my desktop** and open that link on a computer within 15 minutes.
+    - **On a phone**, expected. Sign-in works there; the rest of the app does not. Tap **Email me a link for my desktop** and open that link on a computer within 15 minutes.
     - **On a tablet**, rotate to landscape. Portrait on a small tablet can fall under 640 pixels.
     - **On a desktop**, widen the window, or press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>0</kbd> to reset zoom. A half-screen split or a heavily zoomed page is usually the cause. The screen clears itself once the window is wide enough.
   </Accordion>
@@ -130,50 +130,6 @@ If nothing here matches, the last section tells you how to report it.
 ## Research
 
 <AccordionGroup>
-  <Accordion title="An analysis is stuck or spinning" icon="spinner">
-    <Steps>
-      <Step title="Give it the full time budget">
-        A quant cell can run for up to 5 minutes, and can wait longer in the queue while the sandbox (the isolated cloud container your Python runs in) starts up. Two to three minutes of silence on a heavy analysis is normal.
-      </Step>
-      <Step title="Look for an error in the cell rather than a spinner">
-        A step that genuinely fails shows a red error in the cell, not an endless spinner. If you see an error, jump to the next section.
-      </Step>
-      <Step title="If it's still spinning after roughly 12 minutes, reload the page">
-        The live connection streaming progress to your browser can be cut by a proxy or a sleeping laptop, and the spinner has no way to know. Reloading recovers the session; completed work is saved.
-      </Step>
-      <Step title="Check your connection and any VPN">
-        A VPN that drops long-lived connections is the most common cause of a spinner that never resolves.
-      </Step>
-      <Step title="Retry with a narrower question">
-        Ten years of daily data across twenty tickers is a different job from one year across three.
-      </Step>
-    </Steps>
-  </Accordion>
-
-  <Accordion title="A quant cell keeps failing" icon="code">
-    Tradion already retries for you: a failing cell is re-run with a repaired version up to twice, then regenerated from scratch once. By the time you see a failure, four attempts have been made.
-
-    <Steps>
-      <Step title="Read the error text at the bottom of the cell">
-        A missing symbol, an empty date range, and a genuine code fault look completely different.
-      </Step>
-      <Step title="Check the asset is supported">
-        US stocks and ETFs, crypto, forex, and US options. Futures, bonds, and non-US listings are not available, see [supported assets](/reference/supported-assets).
-      </Step>
-      <Step title="Shorten the lookback and narrow the scope">
-        Long histories over many symbols hit the 5-minute per-cell ceiling. Ask for less and the cell finishes.
-      </Step>
-      <Step title="Rephrase the question rather than editing the code">
-        The generator responds better to a clearer question than to a patched prompt. Say what you want computed and what you want to see.
-      </Step>
-      <Step title="Start a fresh session if the whole canvas is failing">
-        A new session spends a quant session from your monthly allowance. There is no way to re-run a single cell, see [the canvas](/research/the-canvas).
-      </Step>
-    </Steps>
-
-    See [the canvas](/research/the-canvas) for how cells work.
-  </Accordion>
-
   <Accordion title="Lens can't capture the screen" icon="camera">
     Lens takes a picture of your browser tab using a browser screen-capture feature, then reads the chart in it.
 
@@ -224,101 +180,19 @@ If nothing here matches, the last section tells you how to report it.
   </Accordion>
 </AccordionGroup>
 
-## Automations and alerts
+## Usage limits
 
 <AccordionGroup>
-  <Accordion title="My automation never fires" icon="bolt-slash">
-    <Steps>
-      <Step title="Check it's switched on">
-        Automations have an active toggle. Anything paused is skipped.
-      </Step>
-      <Step title="Check your subscription is current">
-        When a subscription ends, **every automation on the account is switched off**. Resubscribing does not switch them back on. You do that yourself, one at a time.
-      </Step>
-      <Step title="Give it a full check cycle">
-        Conditions are evaluated every **60 seconds**. A trigger fires on the next check after the condition becomes true, not on the tick itself.
-      </Step>
-      <Step title="Check the condition is reachable">
-        Compare the threshold with the live value. A level set the wrong side of the current price never becomes true.
-      </Step>
-      <Step title="Check the cooldown">
-        The default is **60 minutes**. A recent fire is deliberately suppressed until it expires.
-      </Step>
-      <Step title="Check the run history">
-        **Automations → Runs** shows every evaluation and delivery attempt. An automation checking but never matching looks very different from one that never ran. See [runs and history](/automations/runs-and-history).
-      </Step>
-      <Step title="For scheduled automations, check the time zone">
-        Schedules run in the automation's own time zone, which defaults to US Eastern, not your local one.
-      </Step>
-    </Steps>
-  </Accordion>
-
-  <Accordion title="My automation fires constantly" icon="bell">
-    Almost always one cause: the wrong kind of condition.
-
-    <Steps>
-      <Step title="Check whether you chose 'goes above' or 'crosses above'">
-        **Goes above** and **goes below** stay true on every 60-second check for as long as the condition holds. **Crosses above** and **crosses below** are true only on the check where the value moves through the level. For an alert you want once, use crosses.
-      </Step>
-      <Step title="Raise the cooldown">
-        The cooldown is what stops a continuous condition repeating. Five minutes on a price level is a firehose; an hour is usually right.
-      </Step>
-      <Step title="Expect one extra fire the first time you save a crossing condition">
-        With no previous reading stored, the first check falls back to a plain comparison. A condition already true when you save fires once immediately, then behaves as a crossing.
-      </Step>
-      <Step title="Narrow the symbol list">
-        One automation watching twenty symbols is twenty chances to fire per cycle.
-      </Step>
-    </Steps>
-
-    See [operators](/automations/operators) and [signal types](/automations/signal-types).
-  </Accordion>
-
-  <Accordion title="I can't create another automation" icon="lock">
-    You have hit your plan's automation cap: **10 on Trader, 50 on Quant**. Starter has none.
-
-    The cap counts **every automation you own**, not the ones currently running. Pausing one does not free a slot, the only ways to make room are to delete an automation you no longer need, or to move up a plan. See [plan comparison](/reference/plan-comparison).
-  </Accordion>
-
-  <Accordion title="Discord alerts stopped" icon="discord">
-    <Steps>
-      <Step title="Open Automations → Runs and read the delivery status">
-        Each run lists every channel it tried and the exact error returned. That separates "never fired" from "fired and failed to deliver".
-      </Step>
-      <Step title="If the error mentions 404, the webhook was deleted">
-        Deleting a Discord webhook, or the channel it posts to, breaks it permanently. This error is not retried and nothing switches the channel off for you, the automation keeps firing and keeps failing until you fix the address.
-      </Step>
-      <Step title="Create a fresh webhook and paste the new address in">
-        In Discord: **Channel Settings → Integrations → Webhooks → New Webhook → Copy Webhook URL**. Paste it into the automation's Discord channel settings.
-      </Step>
-      <Step title="Check the address is a real Discord one, over HTTPS">
-        Only `https://` addresses on Discord's own domains are accepted. A shortened link or a proxy address is rejected before sending.
-      </Step>
-      <Step title="Check your server's permissions">
-        A webhook posting into a since-restricted channel fails on Discord's side, not ours.
-      </Step>
-      <Step title="Add a second channel as a backstop">
-        Email or in-app alerts on the same automation mean a broken Discord webhook never costs you the alert. See [notifications](/automations/notifications).
-      </Step>
-    </Steps>
-  </Accordion>
-
   <Accordion title="I hit a usage limit unexpectedly" icon="gauge-high">
     <Steps>
       <Step title="Check Settings → Monthly Usage first">
-        It names which of the four meters is empty and when they reset.
+        It names which of the two meters is empty and when they reset.
       </Step>
       <Step title="Know what consumes each meter">
-        An **earnings message** is spent on every question you send in AI Earnings Research, follow-ups included; **Stop** does not give it back, and a run that fails on Tradion's side does. A **quant session** is spent when you start a new analysis, not per question inside it. An **agent run** is spent per AI agent step per trigger, an automation with two agent steps costs two runs each time it fires. Chart analyses, Lens captures, autopsies, and portfolio syncs cost nothing.
+        An **AI Portfolio Analyst message** is spent on every message you send in the portfolio chat, whatever the answer turns out to be. An **earnings message** is spent on every question you send in AI Earnings Research, follow-ups included; **Stop** does not give it back, and a run that fails on Tradion's side does. Chart analyses, Lens captures, autopsies, and portfolio syncs cost nothing.
       </Step>
-      <Step title="Find the automation that's eating them">
-        Agent runs are almost always the culprit, and almost always an agent on a high-frequency trigger. **Automations → Runs** shows which automation consumed what. Move the agent onto a daily or crossing trigger.
-      </Step>
-      <Step title="If agents stopped mid-month but your meter isn't empty">
-        A separate short-term ceiling caps agent activity at roughly 20 runs an hour and 100 a day. When it is reached the automation still fires and still sends the alert; only the AI step is skipped. It clears on its own.
-      </Step>
-      <Step title="Note that failed agent runs are credited back">
-        An agent that errors returns the run to your balance. A run spent on a successful-but-unhelpful answer is not refunded.
+      <Step title="Watch for one-word follow-ups">
+        A thread of short follow-ups spends a message each. Put the whole question in one message.
       </Step>
     </Steps>
 
@@ -328,7 +202,7 @@ If nothing here matches, the last section tells you how to report it.
 
 ## Reporting something not listed here
 
-Use the **Feedback** button in the left sidebar. It attaches your plan, page, browser, and a timestamp for you. Say what you expected, what happened instead, when, and which automation, analysis, or connection was involved. Full guidance on [contact and feedback](/help/contact).
+Use the **Feedback** button in the left sidebar. It attaches your plan, page, browser, and a timestamp for you. Say what you expected, what happened instead, when, and which analysis, ticker, or connection was involved. Full guidance on [contact and feedback](/help/contact).
 
 <CardGroup cols={2}>
   <Card title="Contact and feedback" icon="envelope" href="/help/contact">

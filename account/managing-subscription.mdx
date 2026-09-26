@@ -22,7 +22,7 @@ Two buttons sit at the top right of that panel:
 
 Click the upgrade link under **Plan includes**, or open **Manage** and change your plan there. Either route lands you on a Stripe confirmation screen showing the new price and what you will be charged now.
 
-The moment Stripe confirms the upgrade, Tradion grants you the **full monthly allowance of the new tier**, not a pro-rated slice of it. If you were on Trader with 3 quant sessions left and upgrade to Quant, you get Quant's full 300, immediately. See [usage limits](/concepts/usage-limits) for what each meter counts.
+The moment Stripe confirms the upgrade, Tradion grants you the **full monthly allowance of the new tier**, not a pro-rated slice of it. If you were on Trader with 3 earnings messages left and upgrade to Quant, you get Quant's full 150, immediately. See [usage limits](/concepts/usage-limits) for what each meter counts.
 
 <Check>
   Your plan should update within a few seconds. If it doesn't, click **Sync**.
@@ -80,15 +80,14 @@ flowchart LR
     A["You cancel"] --> B["Full access continues"]
     B --> C["Billing period ends"]
     C --> D["Plan reverts to unsubscribed"]
-    D --> E["Data kept, automations switched off"]
+    D --> E["Data kept"]
 ```
 
 Until the period ends, nothing changes. The panel shows **Cancels *date*** and a note that all features remain available until then.
 
 When the period ends:
 
-- Your plan reverts to unsubscribed and all four usage meters go to zero.
-- **Every automation you own is switched off.** They are not deleted. They are set inactive, and after resubscribing you switch them back on one at a time. Nothing turns them on for you, and an automation left off is still a paused automation, not a deleted one.
+- Your plan reverts to unsubscribed and both usage meters go to zero.
 - Your data is kept. Trades, autopsies, analyses, memory, and playbook rules are all still there.
 
 ## Reactivating

@@ -72,14 +72,6 @@ export const SHOTS: Shot[] = [
   { slug: 'portfolio/asset-manager-chart', view: 'PORTFOLIO_AGENT', clip: '[data-doc="agent-chart"]', settle: 3000 },
 
   // ── Research ────────────────────────────────────────────────────────────
-  { slug: 'research/quant-full', view: 'TERMINAL', settle: 2500 },
-  { slug: 'research/quant-new-session', view: 'TERMINAL', steps: [{ click: 'button:has-text("New analysis")' }, { wait: 1000 }] },
-  { slug: 'research/quant-cell-running', view: 'TERMINAL', waitFor: '[data-doc="cell-running"]', settle: 1000 },
-  { slug: 'research/quant-result', view: 'TERMINAL', clip: '[data-doc="cell-complete"]', settle: 2500 },
-  { slug: 'research/canvas-multi-cell', view: 'TERMINAL', settle: 3000 },
-  { slug: 'research/canvas-cell-code', view: 'TERMINAL', clip: '[data-doc="cell-code"]', settle: 2000 },
-  { slug: 'research/template-library', view: 'TERMINAL', steps: [{ click: 'button:has-text("Templates")' }, { wait: 1200 }] },
-
   { slug: 'research/chart-analyzer-full', view: 'CHART_ANALYZER', settle: 2500 },
   { slug: 'research/chart-analyzer-upload', view: 'CHART_ANALYZER', clip: '[data-doc="upload-dropzone"]' },
   { slug: 'research/verdict-card', view: 'CHART_ANALYZER', clip: '[data-doc="verdict-card"]', settle: 2500 },
@@ -111,22 +103,6 @@ export const SHOTS: Shot[] = [
   { slug: 'trade/profile-memory-section', view: 'PROFILE', clip: '[data-doc="trader-profile"]', settle: 3000 },
   { slug: 'trade/profile-psych', view: 'PROFILE', clip: '[data-doc="psych-profile"]', settle: 3000 },
   { slug: 'trade/profile-confidence-bar', view: 'PROFILE', clip: '[data-doc="confidence-bar"]', settle: 2000 },
-
-  // ── Automations ─────────────────────────────────────────────────────────
-  { slug: 'automations/automations-list', view: 'AUTOMATIONS', settle: 2000 },
-  { slug: 'automations/canvas-full', view: 'AUTOMATIONS', steps: [{ click: '[data-doc="automation-card"]' }, { wait: 1500 }] },
-  { slug: 'automations/canvas-empty', view: 'AUTOMATIONS', steps: [{ click: 'button:has-text("New automation")' }, { wait: 800 }, { click: 'button:has-text("Canvas")' }, { wait: 1500 }] },
-  { slug: 'automations/canvas-two-conditions', view: 'AUTOMATIONS', steps: [{ click: '[data-doc="automation-card-two-conditions"]' }, { wait: 1800 }] },
-  { slug: 'automations/automation-card-active', view: 'AUTOMATIONS', clip: '[data-doc="automation-card"]', settle: 1500 },
-  { slug: 'automations/condition-node-indicator', view: 'AUTOMATIONS', clip: '[data-doc="config-drawer"]', steps: [{ click: '[data-doc="automation-card"]' }, { wait: 1500 }, { click: '[data-doc="condition-node"]' }, { wait: 800 }] },
-  { slug: 'automations/options-chain-picker', view: 'AUTOMATIONS', clip: '[data-doc="options-picker"]', steps: [{ click: '[data-doc="automation-card-options"]' }, { wait: 1800 }] },
-  { slug: 'automations/indicator-preview', view: 'AUTOMATIONS', clip: '[data-doc="indicator-preview"]', settle: 2500 },
-  { slug: 'automations/agent-node-config', view: 'AUTOMATIONS', clip: '[data-doc="config-drawer"]', steps: [{ click: '[data-doc="automation-card-agent"]' }, { wait: 1500 }, { click: '[data-doc="agent-node"]' }, { wait: 800 }] },
-  { slug: 'automations/agent-results', view: 'AUTOMATIONS', clip: '[data-doc="agent-results"]', settle: 2000 },
-  { slug: 'automations/action-node-channels', view: 'AUTOMATIONS', clip: '[data-doc="config-drawer"]', steps: [{ click: '[data-doc="automation-card"]' }, { wait: 1500 }, { click: '[data-doc="action-node"]' }, { wait: 800 }] },
-  { slug: 'automations/message-template', view: 'AUTOMATIONS', clip: '[data-doc="message-template"]', steps: [{ click: '[data-doc="automation-card"]' }, { wait: 1500 }, { click: '[data-doc="action-node"]' }, { wait: 800 }] },
-  { slug: 'automations/runs-list', view: 'AUTOMATIONS', steps: [{ click: 'button:has-text("Runs")' }, { wait: 1500 }] },
-  { slug: 'automations/run-detail', view: 'AUTOMATIONS', steps: [{ click: 'button:has-text("Runs")' }, { wait: 1200 }, { click: '[data-doc="run-row"]' }, { wait: 1500 }] },
 
   // ── Account ─────────────────────────────────────────────────────────────
   { slug: 'account/settings-full', view: 'ACCOUNT_SETTINGS', settle: 2000 },

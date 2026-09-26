@@ -4,7 +4,7 @@ description: "What BUY at 72% confidence means, and what it doesn't."
 icon: "gauge"
 ---
 
-A verdict is the one-word answer at the top of a Chart Analyzer or Lens result, with a confidence percentage under it. Here is what each means, and how both get misread.
+A verdict is the one-word answer at the top of a Chart Analysis or Lens result, with a confidence percentage under it. Here is what each means, and how both get misread.
 
 <Frame caption="Three checks, in this order. The one that surprises people is the last branch: NO TRADE comes back with its prices removed, WAIT keeps every one of them.">
   <img src="/images/diagrams/verdict-decision.svg" alt="Three checks in sequence. No directional edge gives NO TRADE, returned with no entry, stop, target or game plan. An edge price has not reached yet gives WAIT, shown on the card as HOLD, which keeps all its levels. An edge price has reached gives BUY or SELL. Confidence appears on all four and scores agreement in the evidence, not the odds of a payout." noZoom />
@@ -12,7 +12,7 @@ A verdict is the one-word answer at the top of a Chart Analyzer or Lens result, 
 
 ## The four chart verdicts
 
-[Chart Analyzer](/research/chart-analyzer) returns one of four:
+[Chart Analysis](/research/chart-analyzer) returns one of four:
 
 | Verdict | What Tradion is saying |
 | --- | --- |
@@ -23,7 +23,7 @@ A verdict is the one-word answer at the top of a Chart Analyzer or Lens result, 
 
 WAIT and NO TRADE are common, and neither is a failure. Not every chart holds a trade.
 
-The difference shows up on the card. **NO TRADE** arrives with no entry, no stop, no target and no game plan, stripped so nothing reads as actionable. **WAIT** keeps all of it, because the plan is real and only the trigger is missing. Those are the levels to put an [automation](/automations/first-automation) on.
+The difference shows up on the card. **NO TRADE** arrives with no entry, no stop, no target and no game plan, stripped so nothing reads as actionable. **WAIT** keeps all of it, because the plan is real and only the trigger is missing. Those are the levels to watch for the trigger yourself.
 
 <Note>
   The tooltip on a HOLD card reads *no clear directional edge right now*, which is nearer to NO TRADE's meaning than to WAIT's. The levels are the reliable tell: a WAIT card carries an entry, a stop and a target, a NO TRADE card carries none.
@@ -31,7 +31,7 @@ The difference shows up on the card. **NO TRADE** arrives with no entry, no stop
 
 ## BULLISH, BEARISH, NEUTRAL
 
-[Lens](/research/lens) uses a three-point scale instead. Chart Analyzer answers "is there a trade here" and speaks in actions; Lens answers "which way does this lean". Lens labels its number **Probability**, read it as strength of the read, not odds of a payout.
+[Lens](/research/lens) uses a three-point scale instead. Chart Analysis answers "is there a trade here" and speaks in actions; Lens answers "which way does this lean". Lens labels its number **Probability**, read it as strength of the read, not odds of a payout.
 
 When the two disagree, that is usually not a contradiction. NO TRADE on the chart with BULLISH underneath it reads as *the direction leans up, this chart does not offer a way in*.
 
@@ -41,7 +41,7 @@ When the two disagree, that is usually not a contradiction. NO TRADE on the char
   <img src="/images/diagrams/confidence-anatomy.svg" alt="A confidence score broken into five weighted factors, each with its own score and reason" noZoom />
 </Frame>
 
-On a Chart Analyzer card, confidence is a weighted average of five factors, each scored 0–100:
+On a Chart Analysis card, confidence is a weighted average of five factors, each scored 0–100:
 
 | Factor | Weight | What it scores |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ On a Chart Analyzer card, confidence is a weighted average of five factors, each
 Each factor comes with a one-line reason. **Read the factors, not the headline number.** A 70% built from clarity 95 and volume 20 is a clean pattern nobody is trading. A 70% built from five scores near 70 is a middling setup. Not the same trade.
 
 <Note>
-  Only Chart Analyzer works this way. Lens gives you one number and no breakdown. Same 0–100 scale in both; different amounts of showing the working.
+  Only Chart Analysis works this way. Lens gives you one number and no breakdown. Same 0–100 scale in both; different amounts of showing the working.
 </Note>
 
 ### What confidence is not
@@ -97,7 +97,7 @@ None of it accounts for fees, spread, or slippage, so treat the real floor as a 
 
 ## The levels above and below the price
 
-Chart Analyzer also returns three reference prices for a stated time window:
+Chart Analysis also returns three reference prices for a stated time window:
 
 - **Pivot point**, a neutral reference: the previous session's high, low, and close averaged.
 - **R1 (resistance)**, a price above, where selling has tended to appear and the move stalls.
@@ -124,7 +124,7 @@ Nothing on the card knows your account size, your other positions, or what you w
 
 <AccordionGroup>
   <Accordion title="The chart image is hard to read">
-    Chart Analyzer and Lens read pixels. Heavy indicator overlays, a cropped price axis, or a low-resolution capture all degrade the read. If the analysis describes levels not on your chart, recapture it cleanly.
+    Chart Analysis and Lens read pixels. Heavy indicator overlays, a cropped price axis, or a low-resolution capture all degrade the read. If the analysis describes levels not on your chart, recapture it cleanly.
   </Accordion>
   <Accordion title="The factor scores don't line up">
     Low volume means a pattern nobody is trading, and those resolve badly. A wide spread across the five scores means conflicting evidence. A tight cluster, high or low, is a more reliable read than an average of extremes.
@@ -133,7 +133,7 @@ Nothing on the card knows your account size, your other positions, or what you w
     Earnings, an economic release, or a rate decision can override chart structure entirely. Technical analysis two days before earnings is analysis of a chart, not of the situation.
   </Accordion>
   <Accordion title="You expected it to know your history">
-    Chart Analyzer does not. The verdict comes from the image and nothing else; your optional notes are read as context and cannot move the call, by design. Lens is the personalised one, drawing on [Tradion Memory](/concepts/tradion-memory), so with few autopsies logged that layer has little to say and its read is closer to generic.
+    Chart Analysis does not. The verdict comes from the image and nothing else; your optional notes are read as context and cannot move the call, by design. Lens is the personalised one, drawing on [Tradion Memory](/concepts/tradion-memory), so with few autopsies logged that layer has little to say and its read is closer to generic.
   </Accordion>
 </AccordionGroup>
 
@@ -148,7 +148,7 @@ So keep the score yourself. [Log the trade](/trade-intelligence/logging-a-trade)
 A verdict is one input from a model reading a chart, and it can be wrong in ways the confidence score gives no warning about. The decision is yours every time.
 
 <CardGroup cols={2}>
-  <Card title="Chart Analyzer" icon="chart-line" href="/research/chart-analyzer">
+  <Card title="Chart Analysis" icon="chart-line" href="/research/chart-analyzer">
     Where verdicts come from, and how to feed it a chart it can read.
   </Card>
   <Card title="Glossary" icon="book" href="/help/glossary">

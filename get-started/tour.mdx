@@ -7,77 +7,44 @@ icon: "compass"
 
 Tradion is one page with a fixed sidebar. The sidebar never changes and the main area swaps out under it.
 
-**Home** sits alone at the top, then four labelled groups: **Overview**, **Research & Analysis**, **Trade Intelligence**, and **Automate**. **Settings**, Feedback, and Logout sit below a divider at the bottom, and a status bar follows you across almost every screen. Everything below is in that order.
+**Home** and the **AI Portfolio Analyst** sit at the top, then two labelled groups: **My Trading** and **Research**. **Settings**, Documentation, Feedback, and Logout sit below a divider at the bottom, and a status bar follows you across most screens. Everything below is in that order. On a narrow tablet screen the sidebar becomes a bar along the bottom, with a **More** button that holds the rest.
 
 ## Home
 
 The screen you land on every time you sign in. A launchpad, not a dashboard: nothing here is analysis to act on; everything is a way back into work you started.
 
-<Frame caption="Scores across the top, resumable sessions in the middle, a launcher for everything else.">
-  <img src="/images/screens/home.jpg" alt="The Tradion home screen: a portfolio value tile, risk score, win rate, active automations, a recent sessions list, and feature cards" noZoom />
-</Frame>
-
 Four bands, top to bottom:
 
-**The header.** Your first name, and a pill showing whether the US market is open, in pre-market, or closed. Connect a brokerage and you also get a snapshot, total value and today's change. Without one, that tile prompts you to add it.
+**The header.** Your first name, and a pill showing whether the US market is open, in pre-market, or closed. Connect a brokerage and you also get a snapshot, total value and today's change. Without one, that tile is left out.
 
-**Your numbers.** Three tiles pulled from elsewhere in the product:
+**Your numbers.** Two tiles pulled from elsewhere in the product:
 
 | Tile | What it is | Where it comes from |
 | --- | --- | --- |
-| Risk score | A 0–100 score across your entry quality, exit discipline, and risk management — higher means safer trading | [Profile](/trade-intelligence/profile) |
+| Risk score | A 0–100 score across your entry quality, exit discipline, and risk management. Higher means safer trading | [Profile](/trade-intelligence/profile) |
 | Win rate | The share of your logged trades that closed in profit | Your trade log |
-| Active automations | How many rules are running right now | [Automations](/automations/overview) |
 
-They stay empty until you have logged trades or built automations, expected on day one, not a fault.
+They stay empty until you have logged trades, which is expected on day one and not a fault.
 
-**Recent sessions.** Quant research and AI Portfolio Analyst conversations, newest first. Clicking one reopens it with its charts and answers intact, so last week's question is a starting point, not a retype.
+**Recent sessions.** Your AI Portfolio Analyst conversations, newest first. Clicking one takes you back into the Analyst, so last week's question is a starting point, not a retype.
 
-**The launcher.** A card for every other screen, each with a one-line description, no need to remember which group a tool sits in.
+**The launcher.** A card for four of the tools, each with a one-line description, and under them a **Research** row for the rest. You never need to remember which group a tool sits in.
 
 → [The Tradion Loop](/concepts/the-loop)
 
-## Overview
+## AI Portfolio Analyst
+
+A chat window that can see your real positions. Because it reads live holdings rather than guessing, you can ask concrete things (how concentrated you are in one sector, what a 20% fall in one name would do to the portfolio) and the numbers reconcile with your broker. Sessions are saved; answers come with charts.
+
+→ [AI Portfolio Analyst](/portfolio/ai-portfolio-analyst)
+
+## My Trading
 
 ### Portfolio
 
 Everything you hold: an equity curve (a line chart of the account's value over time) with 1W to All-time ranges, day and total profit and loss, sector allocation with a diversification score, a sortable holdings table with 10-session mini charts, and your biggest movers. It fills in once you connect a brokerage, a read-only link, so Tradion sees positions but places no orders.
 
 → [Portfolio overview](/portfolio/overview) · [Connecting a brokerage](/portfolio/connect-brokerage)
-
-## Research & Analysis
-
-### AI Quant Research
-
-A split screen: chat on the left, a canvas of results on the right. Ask a question in plain English, comparing two stocks' volatility (how much a price swings around, measured from its own history), screening for a setup, testing an idea against past prices, and Tradion writes and runs the Python, returning charts, tables, and a summary. You never see code unless you want to.
-
-<Info>AI Quant Research needs the **Trader** plan or above.</Info>
-
-→ [AI Quant Research](/research/quant-research) · [Your first analysis](/research/your-first-analysis)
-
-### AI Earnings Research
-
-A chat that answers questions about a company's quarter. Ask "Did AMD beat expectations last quarter?" and Tradion reads the company's SEC filings, its earnings call and the analyst estimates, then writes back with every figure tied to its source. Under the answer sit the company's financials, a management tone read, and a notebook for saving a thesis you can check when results arrive.
-
-<Info>AI Earnings Research needs the **Trader** plan or above.</Info>
-
-→ [AI Earnings Research](/research/ai-earnings-research)
-
-### Chart Analyzer
-
-Drop in a saved chart image and get a BUY, SELL, HOLD, or NO TRADE verdict with a 0–100 confidence score, an entry price, a stop-loss (where you'd exit if it goes against you), a target, and the risk/reward ratio. The score breaks into the factors behind it, so you can see what the call rests on.
-
-→ [Chart Analyzer](/research/chart-analyzer) · [Reading a verdict](/concepts/reading-a-verdict)
-
-### Lens
-
-Lens does the same job without the file. It opens a full-screen live chart inside Tradion, set the symbol, timeframe, and indicators, then click **Capture**. Back comes a verdict, a summary, bull/base/bear price targets, and support and resistance levels (prices where buying or selling has tended to show up before). Follow-up questions are allowed.
-
-Lens reads its own chart, not your other tabs. For an image you already have, use Chart Analyzer.
-
-→ [Lens](/research/lens)
-
-## Trade Intelligence
 
 ### Trade Autopsy
 
@@ -91,21 +58,29 @@ Your trading health check, assembled from everything else: a risk score, recurri
 
 → [Profile](/trade-intelligence/profile)
 
-### AI Portfolio Analyst
+## Research
 
-A chat window that can see your real positions. Because it reads live holdings rather than guessing, you can ask concrete things (how concentrated you are in one sector, what a 20% fall in one name would do to the portfolio) and the numbers reconcile with your broker. Sessions are saved; answers come with charts.
+### AI Earnings Research
 
-→ [AI Portfolio Analyst](/portfolio/ai-portfolio-analyst)
+A chat that answers questions about a company's quarter. Ask "Did AMD beat expectations last quarter?" and Tradion reads the company's SEC filings, its earnings call and the analyst estimates, then writes back with every figure tied to its source. Under the answer sit the company's financials, a management tone read, and a notebook for saving a thesis you can check when results arrive.
 
-## Automate
+<Info>AI Earnings Research needs the **Trader** plan or above.</Info>
 
-### Automations
+→ [AI Earnings Research](/research/ai-earnings-research)
 
-A drag-and-drop canvas where you build a rule: pick an asset, add conditions, join them with AND/OR, optionally hand the result to an AI research agent, then choose where the message goes. Conditions can be price levels, one of 92 technical readings, 61 indicators plus 31 candlestick patterns, volume spikes, daily percentage moves, news, earnings proximity, unusual options activity, insider filings, or corporate actions. Every rule is checked once a minute, around the clock (not only during market hours) and alerts reach you through Discord, email, Telegram, in-app, or your own webhook.
+### Chart Analysis
 
-<Info>Automations need the **Trader** plan or above.</Info>
+Drop in a saved chart image and get a BUY, SELL, HOLD, or NO TRADE verdict with a 0–100 confidence score, an entry price, a stop-loss (where you'd exit if it goes against you), a target, and the risk/reward ratio. The score breaks into the factors behind it, so you can see what the call rests on.
 
-→ [Automations overview](/automations/overview) · [Your first automation](/automations/first-automation) · [Operators](/automations/operators)
+→ [Chart Analysis](/research/chart-analyzer) · [Reading a verdict](/concepts/reading-a-verdict)
+
+### Lens
+
+Lens does the same job without the file. It opens a full-screen live chart inside Tradion, set the symbol, timeframe, and indicators, then click **Capture**. Back comes a verdict, a summary, bull/base/bear price targets, and support and resistance levels (prices where buying or selling has tended to show up before). Follow-up questions are allowed.
+
+Lens reads its own chart, not your other tabs. For an image you already have, use Chart Analysis.
+
+→ [Lens](/research/lens)
 
 ## Settings
 
@@ -115,28 +90,19 @@ Pinned at the bottom of the sidebar: display name, subscription and billing, con
 
 ## The status bar
 
-Three controls follow you everywhere except AI Quant Research, which runs edge to edge:
+Three controls follow you across most screens. The AI Portfolio Analyst and AI Earnings Research run edge to edge, so the bar is hidden there:
 
 - **The news wire**, a live headline ticker you can open for the full feed.
 - **Brokerage**. Each connected broker, its accounts, when it last synced, and a sync button.
-- **Personalization**, whether Tradion Memory feeds your history into AI answers. Off means generic analysis. It applies everywhere, immediately. The same switch is mirrored on your Profile and in the AI Quant Research header.
+- **Personalization**, whether Tradion Memory feeds your history into AI answers. Off means generic analysis. It applies everywhere, immediately. The same switch is mirrored on your Profile.
 
 → [Tradion Memory](/concepts/tradion-memory)
 
-## Keyboard shortcuts
-
-Press **⌘K** (Mac) or **Ctrl+K** (Windows) inside **AI Quant Research** to open the command palette. Two actions are available:
-
-- **Run Scenario Analysis** — start a scenario template without navigating to the template library
-- **Analyze Ticker** — jump straight to a new analysis for any symbol you type
-
-The palette is only active inside AI Quant Research; the shortcut has no effect on other screens.
-
 <CardGroup cols={2}>
   <Card title="Quickstart" icon="rocket" href="/get-started/quickstart">
-    Signup to first analysis in about ten minutes.
+    Signup to first answer in about ten minutes.
   </Card>
   <Card title="The Tradion Loop" icon="arrows-rotate" href="/concepts/the-loop">
-    Why these screens are four stations on one circle.
+    Why these screens are stations on one circle.
   </Card>
 </CardGroup>

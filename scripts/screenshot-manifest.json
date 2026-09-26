@@ -55,76 +55,6 @@
     "page": "get-started/choosing-a-plan"
   },
   {
-    "slug": "automations/action-node-channels",
-    "caption": "Channel selection",
-    "page": "automations/notifications"
-  },
-  {
-    "slug": "automations/agent-node-config",
-    "caption": "Agent node configuration",
-    "page": "automations/ai-agent-node"
-  },
-  {
-    "slug": "automations/agent-results",
-    "caption": "Agent results panel",
-    "page": "automations/ai-agent-node"
-  },
-  {
-    "slug": "automations/automation-card-active",
-    "caption": "Active automation card",
-    "page": "automations/first-automation"
-  },
-  {
-    "slug": "automations/automations-list",
-    "caption": "Automations",
-    "page": "get-started/tour"
-  },
-  {
-    "slug": "automations/canvas-empty",
-    "caption": "Empty automation canvas",
-    "page": "automations/first-automation"
-  },
-  {
-    "slug": "automations/canvas-full",
-    "caption": "The canvas builder",
-    "page": "automations/overview"
-  },
-  {
-    "slug": "automations/canvas-two-conditions",
-    "caption": "Two conditions with AND logic",
-    "page": "automations/first-automation"
-  },
-  {
-    "slug": "automations/condition-node-indicator",
-    "caption": "Indicator condition config",
-    "page": "automations/signal-types"
-  },
-  {
-    "slug": "automations/indicator-preview",
-    "caption": "Indicator sparkline preview",
-    "page": "automations/signal-types"
-  },
-  {
-    "slug": "automations/message-template",
-    "caption": "Message template editor",
-    "page": "automations/notifications"
-  },
-  {
-    "slug": "automations/options-chain-picker",
-    "caption": "Live options chain picker",
-    "page": "automations/signal-types"
-  },
-  {
-    "slug": "automations/run-detail",
-    "caption": "Run detail timeline",
-    "page": "automations/runs-and-history"
-  },
-  {
-    "slug": "automations/runs-list",
-    "caption": "Runs list",
-    "page": "automations/runs-and-history"
-  },
-  {
     "slug": "home/home-full",
     "caption": "Home",
     "page": "get-started/tour"
@@ -165,18 +95,8 @@
     "page": "portfolio/reading-the-dashboard"
   },
   {
-    "slug": "research/canvas-cell-code",
-    "caption": "Cell code view",
-    "page": "research/the-canvas"
-  },
-  {
-    "slug": "research/canvas-multi-cell",
-    "caption": "A multi-cell canvas",
-    "page": "research/the-canvas"
-  },
-  {
     "slug": "research/chart-analyzer-full",
-    "caption": "Chart Analyzer",
+    "caption": "Chart Analysis",
     "page": "get-started/tour"
   },
   {
@@ -208,31 +128,6 @@
     "slug": "research/lens-verdict",
     "caption": "A Lens verdict card",
     "page": "research/lens"
-  },
-  {
-    "slug": "research/quant-cell-running",
-    "caption": "A cell executing",
-    "page": "research/your-first-analysis"
-  },
-  {
-    "slug": "research/quant-full",
-    "caption": "AI Quant Research",
-    "page": "get-started/tour"
-  },
-  {
-    "slug": "research/quant-new-session",
-    "caption": "Starting a session",
-    "page": "research/your-first-analysis"
-  },
-  {
-    "slug": "research/quant-result",
-    "caption": "Finished cell with chart",
-    "page": "research/your-first-analysis"
-  },
-  {
-    "slug": "research/template-library",
-    "caption": "The template library",
-    "page": "research/templates-and-scenarios"
   },
   {
     "slug": "research/trade-levels",

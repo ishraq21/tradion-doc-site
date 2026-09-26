@@ -8,9 +8,8 @@ Live at **[docs.tradionlabs.com](https://docs.tradionlabs.com)**
 
 ```
 get-started/       Onboarding and quick-start guides
-research/          AI Quant Research, AI Earnings Research, Tradion Lens
+research/          Chart Analysis, AI Earnings Research, Tradion Lens
 trade-intelligence/ Trade Autopsy and behavioral analysis
-automations/       Workflow builder and AI agents
 portfolio/         AI Portfolio Analyst and brokerage connections
 account/           Billing, settings, and plan management
 concepts/          Core concepts and terminology
@@ -43,10 +42,9 @@ Three guards, all run by `npm run verify`:
 
 ### check:code needs the app repo
 
-It reads `automationWorker.js`, `lib/automationConstants.js`, `ConditionNode.tsx`, and
-`tiers.js` and asserts the docs against them — nothing is hardcoded, so it fails when the
-code moves rather than when someone forgets to update a list. That is what caught the volume
-signal flipping from a raw share count to a multiple of the 20-bar average.
+It reads `server/config/tiers.js` and asserts the monthly allowances in `concepts/usage-limits.mdx`
+and `reference/plan-comparison.mdx` against it — nothing is hardcoded, so it fails when the
+code moves rather than when someone forgets to update a number.
 
 It finds the app automatically when the two repos sit side by side:
 

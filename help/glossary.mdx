@@ -9,9 +9,6 @@ No definition here uses a word that isn't also defined here. If you hit one that
 ## Trading basics
 
 <AccordionGroup>
-  <Accordion title="Backtest">
-    Running a trading rule over past prices to see what it would have returned. It tells you whether an idea has ever worked and how bad its worst stretch was. It cannot tell you whether it will work next month, the rule is being tested on prices that already happened.
-  </Accordion>
   <Accordion title="Bid and ask">
     The **bid** is the highest price anyone is currently offering to buy at. The **ask** is the lowest price anyone is offering to sell at. The gap between them is the spread, and it's roughly what it costs you to get in and straight back out.
   </Accordion>
@@ -85,7 +82,7 @@ No definition here uses a word that isn't also defined here. If you hit one that
 
 ## Options terms
 
-Only needed if you trade options or use the options-based signals.
+Only needed if you trade options.
 
 <AccordionGroup>
   <Accordion title="ATR, Average True Range">
@@ -124,9 +121,6 @@ Only needed if you trade options or use the options-based signals.
   <Accordion title="Underlying">
     The stock an option is written on. NVDA is the underlying for every NVDA option.
   </Accordion>
-  <Accordion title="Unusual options activity">
-    Far more contracts trading than there are positions outstanding, with a lot of money behind them, read as a sign someone is positioning with conviction. It's a signal to go look, not a reason to follow. Also referred to as **options flow** in parts of the app.
-  </Accordion>
 </AccordionGroup>
 
 ## Tradion terms
@@ -138,26 +132,14 @@ Only needed if you trade options or use the options-based signals.
   <Accordion title="AI Portfolio Analyst message">
     One message you send in the AI Portfolio Analyst panel, your portfolio chat. Counted against your monthly allowance: 150 on Starter, 500 on Trader, 1,000 on Quant. The assistant's reply and any internal tool calls it makes are free. See [usage limits](/concepts/usage-limits).
   </Accordion>
-  <Accordion title="Agent run">
-    One execution of an AI Agent node inside an automation. Counted against your monthly allowance, 50 on Trader, 500 on Quant. See [usage limits](/concepts/usage-limits).
-  </Accordion>
-  <Accordion title="AI Quant Research">
-    The terminal where you type a question in plain English and get Python analysis run against live market data. Results appear as charts, tables, and a written summary on the right-hand canvas. Available on Trader and above; metered at 30 or 300 sessions a month depending on plan. See [AI Quant Research](/research/quant-research).
-  </Accordion>
   <Accordion title="Autopsy">
     A structured post-mortem of a closed trade: what drove the result, a 0–100 scorecard, an attribution breakdown, a counterfactual, and one lesson. See [reading an autopsy](/trade-intelligence/reading-an-autopsy).
   </Accordion>
   <Accordion title="Behavioural fingerprint">
     A radar chart comparing your last 30 days against the 60 before them, across entry quality, exit discipline, and risk management.
   </Accordion>
-  <Accordion title="Canvas">
-    Two different screens share this name. The **quant canvas** is the right-hand pane of AI Quant Research, holding the cells your question produced. The **automation canvas** is the node-graph builder where you wire up an alert.
-  </Accordion>
-  <Accordion title="Cell">
-    One unit of quant analysis: the generated Python, its output, its chart, and a written summary. Tradion decides how many cells your question needs.
-  </Accordion>
-  <Accordion title="Chart Analyzer">
-    Drop in a saved chart image and get a directional verdict — BUY, SELL, HOLD, or NO TRADE — with a 0–100 confidence score, an entry price, a stop, a target, and the factors behind the call. Available on every paid plan with no monthly cap. See [Chart Analyzer](/research/chart-analyzer).
+  <Accordion title="Chart Analysis">
+    Drop in a saved chart image and get a directional verdict (BUY, SELL, HOLD, or NO TRADE) with a 0–100 confidence score, an entry price, a stop, a target, and the factors behind the call. Available on every paid plan with no monthly cap. See [Chart Analysis](/research/chart-analyzer).
   </Accordion>
   <Accordion title="Confidence score">
     A 0–100 number attached to a verdict, broken into named contributing factors. It measures how much the evidence agrees with itself, not the probability of making money. See [reading a verdict](/concepts/reading-a-verdict).
@@ -172,25 +154,19 @@ Only needed if you trade options or use the options-based signals.
     First in, first out. When your broker sends a list of buys and sells with no record of which sell closed which buy, Tradion pairs the oldest open buy with the next sell. It's the standard convention, and it's what lets a raw transaction list become a list of trades.
   </Accordion>
   <Accordion title="Lens">
-    Opens a live chart inside Tradion. Set the symbol and timeframe, click Capture, and get a verdict, bull/base/bear price targets, and support and resistance levels. Follow-up questions are allowed. It reads Tradion's own chart only — for a chart image you already have, use Chart Analyzer. Available on every paid plan with no monthly cap. See [Lens](/research/lens).
-  </Accordion>
-  <Accordion title="Operators">
-    How a signal compares a value to your threshold. **Crosses** fires once, at the moment the value passes through. **Goes** stays true for as long as the value sits past it. See [operators](/automations/operators).
+    Opens a live chart inside Tradion. Set the symbol and timeframe, click Capture, and get a verdict, bull/base/bear price targets, and support and resistance levels. Follow-up questions are allowed. It reads Tradion's own chart only. For a chart image you already have, use Chart Analysis. Available on every paid plan with no monthly cap. See [Lens](/research/lens).
   </Accordion>
   <Accordion title="Pattern">
-    A recurring mistake detected across your trades, carrying a severity score, a count of how often it has happened, and what it has cost. In automations, **pattern** also means a candlestick pattern — one of 31 bar shapes (such as a doji or an engulfing candle) that a rule can watch for as a trigger condition.
+    A recurring mistake detected across your trades, carrying a severity score, a count of how often it has happened, and what it has cost.
   </Accordion>
   <Accordion title="Playbook rule">
     A trading rule you've written down, usually after an autopsy showed you the same mistake twice.
-  </Accordion>
-  <Accordion title="Quant session">
-    One message sent in **Analysis** mode in AI Quant Research, the mode that writes and runs new code. Counted against your monthly allowance. Follow-up questions in **Ask** mode are free and unlimited.
   </Accordion>
   <Accordion title="Risk score">
     A 0–100 summary of how safely you have been trading recently. Higher is safer. Shown on Home and Profile.
   </Accordion>
   <Accordion title="Signal">
-    Two meanings. In **automations**, one condition inside a rule, a price level, an indicator reading, a volume threshold. In **analysis**, a saved chart result with its verdict and trade plan.
+    A saved chart result with its verdict and trade plan.
   </Accordion>
   <Accordion title="Tradion Memory">
     The layer that builds a profile of how you trade from everything you do in the app, and attaches it to every AI answer you get. See [Tradion Memory](/concepts/tradion-memory).

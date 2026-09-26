@@ -15,7 +15,6 @@ import { setNamespace, N, ACCENT } from './lib/svg.mjs';
 import * as core from './lib/diagrams-core.mjs';
 import * as feat from './lib/diagrams-features.mjs';
 import * as trade from './lib/diagrams-trade.mjs';
-import * as auto from './lib/diagrams-automations.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'images', 'diagrams');
@@ -32,11 +31,6 @@ const BUILDERS = {
   'scorecard': trade.scorecard,
   'autopsy-loop': trade.autopsyLoop,
   'profile-anatomy': trade.profileAnatomy,
-
-  'automation-flow': auto.automationFlow,
-  'crosses-vs-is': auto.crossesVsIs,
-  'signal-matrix': auto.signalMatrix,
-  'webhook-flow': auto.webhookFlow,
 };
 
 /**

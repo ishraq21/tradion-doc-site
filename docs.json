@@ -86,6 +86,41 @@
       "source": "/research/earnings-spider",
       "destination": "/research/ai-earnings-research",
       "permanent": true
+    },
+    {
+      "source": "/research/quant-research",
+      "destination": "/portfolio/ai-portfolio-analyst",
+      "permanent": true
+    },
+    {
+      "source": "/research/your-first-analysis",
+      "destination": "/portfolio/ai-portfolio-analyst",
+      "permanent": true
+    },
+    {
+      "source": "/research/the-canvas",
+      "destination": "/portfolio/ai-portfolio-analyst",
+      "permanent": true
+    },
+    {
+      "source": "/research/templates-and-scenarios",
+      "destination": "/portfolio/ai-portfolio-analyst",
+      "permanent": true
+    },
+    {
+      "source": "/automations/:slug*",
+      "destination": "/get-started/welcome",
+      "permanent": true
+    },
+    {
+      "source": "/reference/webhook-payloads",
+      "destination": "/get-started/welcome",
+      "permanent": true
+    },
+    {
+      "source": "/reference/technical-indicators",
+      "destination": "/research/chart-analyzer",
+      "permanent": true
     }
   ],
   "navigation": {
@@ -126,10 +161,6 @@
           {
             "group": "Research & Analysis",
             "pages": [
-              "research/quant-research",
-              "research/your-first-analysis",
-              "research/the-canvas",
-              "research/templates-and-scenarios",
               "research/chart-analyzer",
               "research/lens",
               "research/ai-earnings-research",
@@ -146,19 +177,6 @@
               "trade-intelligence/reading-an-autopsy",
               "trade-intelligence/playbook-and-preflight",
               "trade-intelligence/profile"
-            ]
-          },
-          {
-            "group": "Automations",
-            "pages": [
-              "automations/overview",
-              "automations/first-automation",
-              "automations/templates",
-              "automations/operators",
-              "automations/signal-types",
-              "automations/ai-agent-node",
-              "automations/notifications",
-              "automations/runs-and-history"
             ]
           },
           {
@@ -187,9 +205,7 @@
             "group": "Reference",
             "pages": [
               "reference/plan-comparison",
-              "reference/technical-indicators",
-              "reference/supported-assets",
-              "reference/webhook-payloads"
+              "reference/supported-assets"
             ]
           }
         ]

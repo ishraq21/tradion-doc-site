@@ -9,7 +9,7 @@ Read this before writing a page. It is the contract every page in this site foll
 Someone who trades their own money and found Tradion through Reddit, Discord, or a Whop community. They are:
 
 - **Smart, but not formally trained.** They know what RSI is because they've used it, not because they took a stats course. They may not know what "heteroskedasticity" or "Sharpe ratio" means, and they will close the tab if you assume they do.
-- **Curious about quant, intimidated by code.** They want to run real quantitative analysis. They do not want to learn Python first. A big part of Tradion's promise is that they don't have to.
+- **Curious about the numbers, intimidated by jargon.** They want real analysis of their own trades and portfolio. They do not want to learn a vocabulary first. A big part of Tradion's promise is that they don't have to.
 - **Sceptical of hype.** They've been sold signals, bots, and courses. Overpromising loses them instantly.
 - **Impatient.** They will scan before they read. If the first screen doesn't tell them what this page does for them, they leave.
 
@@ -118,7 +118,7 @@ Rules:
 - **A visual within the first screen** on any page that describes a UI.
 - **Every page ends by pointing somewhere** — a `<CardGroup>` of next steps, or one clear link.
 - **Length: 400–900 words** for a feature page. Reference pages can run longer. If you're past 1,200 words the page should be two pages.
-- **State the plan requirement** with `<Info>` at the top of any page describing a gated feature (AI Quant Research and automations are Trader+).
+- **State the plan requirement** with `<Info>` at the top of any page describing a gated feature (AI Earnings Research is Trader+).
 
 ---
 

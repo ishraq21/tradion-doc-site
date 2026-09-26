@@ -4,7 +4,7 @@ description: "Exactly what differs between Starter, Trader, and Quant."
 icon: "table-columns"
 ---
 
-Starter is every analysis tool with no monthly cap. Trader adds AI Earnings Research, AI Quant Research, automations and alerting. Quant is Trader with much bigger allowances (ten times on quant sessions and agent runs) and a stronger agent model.
+Starter is every analysis tool with no monthly cap, plus the AI Portfolio Analyst. Trader adds AI Earnings Research. Quant is Trader with much bigger allowances: double the AI Portfolio Analyst messages and three times the AI Earnings Research messages.
 
 ## Everything that differs
 
@@ -12,25 +12,18 @@ Starter is every analysis tool with no monthly cap. Trader adds AI Earnings Rese
 | --- | :-: | :-: | :-: |
 | Price | $25/mo | $100/mo | $200/mo |
 | Free trial | 7 days | 7 days | None |
-| Chart Analyzer and Lens | Unlimited | Unlimited | Unlimited |
+| Chart Analysis and Lens | Unlimited | Unlimited | Unlimited |
 | Trade Autopsy and Playbook | Unlimited | Unlimited | Unlimited |
 | Portfolio and brokerage sync | Unlimited | Unlimited | Unlimited |
 | Tradion Memory | Included | Included | Included |
 | AI Portfolio Analyst | 150 messages / mo | 500 / mo | 1,000 / mo |
 | AI Earnings Research | Not included | 50 messages / mo | 150 / mo |
-| AI Quant Research | Not included | 30 sessions / mo | 300 sessions / mo |
-| Automations you can own, in total | Not included | 10 | 50 |
-| Alerts those automations send | Not included | Unlimited | Unlimited |
-| AI agent nodes | Not included | 50 runs / mo | 500 runs / mo |
-| Agent model | Not included | Sonnet | **Opus** |
 
 Reading that table:
 
-- **AI Portfolio Analyst messages** are messages you send in the AI Portfolio Analyst portfolio chat. An **earnings message** is one question you send in AI Earnings Research. A **quant session** is one message in Analysis mode in AI Quant Research; Ask mode is free. An **agent run** is one AI agent step firing inside an automation.
-- **The automation number is a total, not a running-at-once count.** On Trader you can own ten automations, full stop. Pausing one does not free the slot, delete it or upgrade.
-- **Agent model** is the AI model behind the agent step in an automation. Starter has no automations, so it has no agent model.
+- **AI Portfolio Analyst messages** are messages you send in the AI Portfolio Analyst portfolio chat. An **earnings message** is one question you send in AI Earnings Research.
 
-Nothing outside this table is metered. Every row that reads *Unlimited* stays unlimited on all three plans, and the counters are the rows above with a monthly number: AI Portfolio Analyst messages, AI Earnings Research messages, quant sessions and agent runs, plus the cap on automations you can own.
+Nothing outside this table is metered. Every row that reads *Unlimited* stays unlimited on all three plans, and the counters are the two rows with a monthly number: AI Portfolio Analyst messages and AI Earnings Research messages.
 
 <Info>
   Detail on what each meter counts and when it resets: [usage limits](/concepts/usage-limits).
@@ -41,7 +34,7 @@ Nothing outside this table is metered. Every row that reads *Unlimited* stays un
 Starter and Trader include a **7-day free trial**. You enter card details up front and are not charged until day 8; cancel any time before then at no cost.
 
 <Warning>
-  **Quant has no trial.** The compute cost of 300 quant sessions and 500 Opus agent runs makes a free week unviable. If you want to evaluate Tradion before committing at that level, trial Trader first and upgrade, the upgrade grants Quant's full allowance immediately.
+  **Quant has no trial.** The compute cost of its allowances makes a free week unviable. If you want to evaluate Tradion before committing at that level, trial Trader first and upgrade, the upgrade grants Quant's full allowance immediately.
 </Warning>
 
 The trial is once per account, not once per plan.
@@ -50,17 +43,17 @@ The trial is once per account, not once per plan.
 
 <AccordionGroup>
   <Accordion title="Choose Starter if…" icon="seedling">
-    You want the analysis and behavioural tools and you're comfortable watching the market yourself. Every research and autopsy tool is unlimited here, what you give up is automation and AI Quant Research.
+    You want the analysis and behavioural tools and you don't need company earnings research. Every chart and autopsy tool is unlimited here, what you give up is AI Earnings Research.
 
     This is the right starting point for most people.
   </Accordion>
 
   <Accordion title="Choose Trader if…" icon="bolt">
-    You're tracking more setups than you can watch, or you want AI Quant Research or AI Earnings Research. This is the first tier where Tradion works while you're away from the screen, and it's where most active traders land.
+    You want AI Earnings Research: a sourced, written read on a company's quarter, with its financials and a notebook for your thesis. AI Portfolio Analyst messages also rise from 150 to 500 a month.
   </Accordion>
 
   <Accordion title="Choose Quant if…" icon="crown">
-    You're running research daily and 30 sessions a month is the binding constraint, or you want Opus driving your agents. The jump is bigger allowances on every meter (ten times on quant sessions and agent runs) plus the model change, not a feature unlock, if you aren't hitting Trader's ceilings, you don't need it yet.
+    You use AI Earnings Research daily and 50 messages a month is the binding constraint, or you chat with the AI Portfolio Analyst more than 500 times a month. The jump is bigger allowances on both meters, not a feature unlock. If you aren't hitting Trader's ceilings, you don't need it yet.
   </Accordion>
 </AccordionGroup>
 
@@ -70,11 +63,7 @@ From **Settings → Subscription**:
 
 - **Upgrades** apply immediately, and the new tier's full monthly allowance is granted right away rather than pro-rated.
 - **Downgrades** reduce your allowances to the new tier's caps. The confirmation screen tells you when the change takes effect and what, if anything, you are charged. Read it before confirming.
-- **Cancellation** keeps access until the period ends, then the account moves to unsubscribed. Your data is retained, but every automation you have is switched off.
-
-<Warning>
-  Cancelling deactivates every automation you own. They are not deleted, but they stop running and stay off until you resubscribe and switch them back on one at a time. Nothing turns them back on for you.
-</Warning>
+- **Cancellation** keeps access until the period ends, then the account moves to unsubscribed. Your data is retained.
 
 ## There is no free plan
 
@@ -89,11 +78,11 @@ Three plans, all paid. Starter and Trader come with a 7-day free trial; there is
     What each meter counts and when it resets.
   </Card>
 
-  <Card title="AI models" icon="microchip" href="/automations/ai-agent-node">
-    Where the Sonnet-to-Opus switch sits, and what it changes.
+  <Card title="AI Earnings Research" icon="magnifying-glass-chart" href="/research/ai-earnings-research">
+    What the Trader tier unlocks and how it works.
   </Card>
 
-  <Card title="Automations" icon="bolt" href="/automations/overview">
-    What the Trader tier unlocks and how it is built.
+  <Card title="AI Portfolio Analyst" icon="comments" href="/portfolio/ai-portfolio-analyst">
+    The portfolio chat that every plan includes.
   </Card>
 </CardGroup>

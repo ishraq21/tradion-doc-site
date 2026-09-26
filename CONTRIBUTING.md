@@ -22,7 +22,7 @@ Concretely:
 - No exclamation marks, no "simply", no "just", no "easy". If it were easy they wouldn't be reading.
 - Never imply a recommendation to trade. Tradion produces analysis; the reader decides.
 
-Read `get-started/quickstart.mdx` and `automations/first-automation.mdx` before writing — they're the calibration.
+Read `get-started/quickstart.mdx` and `portfolio/ai-portfolio-analyst.mdx` before writing — they're the calibration.
 
 ## Page structure
 

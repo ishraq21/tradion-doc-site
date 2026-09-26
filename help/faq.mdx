@@ -21,14 +21,10 @@ The questions people ask before they subscribe, and the ones they ask in week on
     No. A connection saves typing: your positions and closed trades arrive on their own. Without one you enter positions and trades by hand, and every other part of the product behaves the same way. See [portfolio overview](/portfolio/overview).
   </Accordion>
 
-  <Accordion title="Do I need to know Python?" icon="code">
-    No. **Python** is the programming language most quantitative analysis is written in. You type a question in English, Tradion writes the Python, runs it against live market data, and shows you the charts and numbers it produced. The code sits beside each result so you can check the working, but it is read-only. See [quant research](/research/quant-research).
-  </Accordion>
-
-  <Accordion title="What is the difference between Lens and Chart Analyzer?" icon="crosshairs">
+  <Accordion title="What is the difference between Lens and Chart Analysis?" icon="crosshairs">
     Lens reads a live chart inside Tradion. You open a chart in the app, start a capture, and Lens combines what it sees with current prices, indicators, and upcoming events, then takes follow-up questions. It needs Chrome or Edge on a desktop, and it reads Tradion's own chart only: it cannot capture a TradingView tab or anything else on your screen.
 
-    [Chart Analyzer](/research/chart-analyzer) takes a chart image you already have and reads the image, nothing else. It returns BUY, SELL, HOLD, or NO TRADE in a mode you pick (Swing, Day Trade, or Scalp), with no follow-up questions. Both are on every plan with no monthly cap. Full comparison: [Lens](/research/lens).
+    [Chart Analysis](/research/chart-analyzer) takes a chart image you already have and reads the image, nothing else. It returns BUY, SELL, HOLD, or NO TRADE in a mode you pick (Swing, Day Trade, or Scalp), with no follow-up questions. Both are on every plan with no monthly cap. Full comparison: [Lens](/research/lens).
   </Accordion>
 </AccordionGroup>
 
@@ -68,19 +64,13 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="What happens when I hit a limit?" icon="gauge-high">
-    You get a clear block naming the meter you ran out of, not a silent failure. Four things are metered: AI Portfolio Analyst messages, AI Earnings Research messages, quant sessions, and agent runs (one run of the AI step inside an automation).
+    You get a clear block naming the meter you ran out of, not a silent failure. Two things are metered: AI Portfolio Analyst messages and AI Earnings Research messages.
 
-    Out of AI Portfolio Analyst messages, your existing sessions still open. Out of earnings messages, your earlier research threads and notebook still open. Out of quant sessions, your existing analyses still open. Out of agent runs, your automations keep firing and notifying you, and only the AI step is skipped. See [usage limits](/concepts/usage-limits).
+    Out of AI Portfolio Analyst messages, your existing sessions still open. Out of earnings messages, your earlier research threads and notebook still open. See [usage limits](/concepts/usage-limits).
   </Accordion>
 
   <Accordion title="Do unused credits roll over?" icon="rotate-left">
-    No. All four meters reset to the full monthly allowance on your billing cycle date, which is the day of the month you subscribed rather than the 1st. Whatever you did not use is gone. A month where you used 4 of 50 agent runs resets to 50, not 96.
-  </Accordion>
-
-  <Accordion title="How many automations can I have?" icon="bolt">
-    Ten on Trader, fifty on Quant. Starter has no automations.
-
-    That number is a **total**, not a running-at-once count. Pausing an automation does not free a slot. To make room, delete one you no longer need or move up a plan. See [automations overview](/automations/overview).
+    No. Both meters reset to the full monthly allowance on your billing cycle date, which is the day of the month you subscribed rather than the 1st. Whatever you did not use is gone. A month where you used 4 of 50 earnings messages resets to 50, not 96.
   </Accordion>
 
   <Accordion title="Can I get a refund?" icon="receipt">
@@ -104,7 +94,7 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="Can I turn personalisation off?" icon="toggle-off">
-    Yes. A **Personalization On / Off** switch sits in the status bar at the top of the app. The same switch also lives on your [Profile](/trade-intelligence/profile) and in the [AI Quant Research](/research/quant-research) header — all three are the same setting and toggling one toggles them all. Turned off, none of your history is written into AI requests and answers come back generic. It applies everywhere, immediately.
+    Yes. A **Personalization On / Off** switch sits in the status bar at the top of the app. The same switch also lives on your [Profile](/trade-intelligence/profile). It is the same setting in both places, so toggling one toggles the other. Turned off, none of your history is written into AI requests and answers come back generic. It applies everywhere, immediately.
 
     It stops your profile being sent into prompts. It does not stop Tradion building and updating that profile. The data is collected either way.
   </Accordion>
@@ -114,13 +104,11 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="Can I export my data?" icon="download">
-    There is no one-click account export in the app yet. You can export a quant session yourself as a Jupyter notebook, a file that holds the code and its results together, from [the canvas](/research/the-canvas). For everything else, email contact@tradionlabs.com and ask for a copy of your data in a machine-readable format. Do this *before* deleting an account, not after.
+    There is no one-click account export in the app yet. Email contact@tradionlabs.com and ask for a copy of your data in a machine-readable format. Do this *before* deleting an account, not after.
   </Accordion>
 
   <Accordion title="What happens to my data if I cancel?" icon="box-archive">
     It stays. Cancelling ends the billing and drops you to an unsubscribed account at the end of the period you have paid for. Your trades, autopsies, analyses, memory, and playbook rules are all still there when you come back.
-
-    One thing does change. Every automation is switched off at the end of the paid period. They are not deleted, and resubscribing does not switch them back on. You do that yourself, one at a time.
 
     Deleting your account is the separate, permanent action. [That page explains the difference](/account/deleting-your-account).
   </Accordion>
@@ -130,19 +118,17 @@ The questions people ask before they subscribe, and the ones they ask in week on
 
 <AccordionGroup>
   <Accordion title="Is there a watchlist?" icon="list">
-    No, not as a screen. Tradion has no list of symbols you keep and check.
-
-    The equivalent is an [automation](/automations/overview): instead of you looking at a list, Tradion watches the condition and messages you when it is true. "Watchlist" inside an AI agent node means something narrower, the tickers that one agent researches when it runs.
+    No. Tradion has no list of symbols you keep and check. Your [Portfolio](/portfolio/overview) shows what you hold. For any other ticker, ask the [AI Portfolio Analyst](/portfolio/ai-portfolio-analyst), or open it in [Chart Analysis](/research/chart-analyzer) or [Lens](/research/lens).
   </Accordion>
 
   <Accordion title="Can I use Tradion on my phone?" icon="mobile">
     Not for the main product. Signing in works on a phone, but any browser window narrower than 640 pixels gets a screen asking you to move to a desktop, and that screen offers to email you a sign-in link for your computer. It is a width check rather than a device check, so a tablet in landscape usually passes and the same tablet in portrait may not.
 
-    AI Quant Research, the canvas, and the automation builder are wide multi-panel screens. A phone can display them without giving you room to work in them.
+    Charts, the AI Portfolio Analyst, and the research workspaces are wide multi-panel screens. A phone can display them without giving you room to work in them.
   </Accordion>
 
   <Accordion title="How current is the market data?" icon="clock">
-    Live quotes and snapshots refresh on a 60-second cache, and the historical bars behind indicators on a 5-minute one. Slower-moving data is held longer: company overviews and economic series for an hour, earnings history for four. Automations check their conditions on a 60-second cycle, so a price trigger fires on the next check after a level is crossed, not on the tick itself. See [data sources](/concepts/data-sources).
+    Live quotes and snapshots refresh on a 60-second cache, and the historical bars behind indicators on a 5-minute one. Slower-moving data is held longer: company overviews and economic series for an hour, earnings history for four. See [data sources](/concepts/data-sources).
   </Accordion>
 
   <Accordion title="How many trades before the behavioural analysis is useful?" icon="chart-line">
@@ -152,11 +138,11 @@ The questions people ask before they subscribe, and the ones they ask in week on
   </Accordion>
 
   <Accordion title="What AI models do you use?" icon="microchip">
-    Anthropic's Claude does the bulk of the work: Opus for quant code generation and for automation agent runs on Quant, Sonnet for chart and document analysis, chat, AI Earnings Research, and agent runs on Trader, Haiku for short follow-ups and summaries. Google's Gemini reads uploaded files and rewrites quant code cells that fail. OpenAI is used only to turn text into the numeric form that powers search, never for chat or analysis. The one model difference between plans is the automation agent. See [the AI agent node](/automations/ai-agent-node).
+    Anthropic's Claude does the bulk of the work: Sonnet for chart analysis, the AI Portfolio Analyst, trade autopsies, and AI Earnings Research, Haiku for short follow-ups and summaries, and Opus for scoring news sentiment. Google's Gemini handles some lightweight extraction jobs. OpenAI is used only to turn text into the numeric form that powers search, never for chat or analysis. Every plan uses the same models; the difference between plans is the monthly allowance.
   </Accordion>
 
   <Accordion title="Is there an API?" icon="plug">
-    No. There is no public API, there are no API keys, and support cannot issue you one. The only way Tradion talks to a system you control is outbound: an automation can send a **webhook**, one JSON message posted to an address you specify when a trigger matches. Traffic never goes the other way. See [webhook payloads](/reference/webhook-payloads), including the section on when the signature header is present and when it is not.
+    No. There is no public API, there are no API keys, and support cannot issue you one.
   </Accordion>
 </AccordionGroup>
 

@@ -15,8 +15,8 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | Slug | Shows | Intended page |
 | --- | --- | --- |
 | `diagrams/onboarding-steps` | The five onboarding steps as a labelled progression | `get-started/onboarding` |
-| `diagrams/usage-meters` | The four metered counters and what each one counts | `concepts/usage-limits` |
-| `diagrams/memory-sources` | Ten data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
+| `diagrams/usage-meters` | The two metered counters and what each one counts | `concepts/usage-limits` |
+| `diagrams/memory-sources` | Eight data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
 | `diagrams/verdict-decision` | The three checks that produce BUY, SELL, WAIT or NO TRADE, and what each verdict leaves on the card | `concepts/reading-a-verdict` |
 | `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |
 | `diagrams/trade-levels` | Entry, stop and target against the ATR band, and the break-even win rate each ratio demands | `concepts/reading-a-verdict` |
@@ -24,10 +24,6 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | `diagrams/scorecard` | The three grades and what each measures | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/autopsy-loop` | Trade → autopsy → pattern → playbook rule → pre-flight check | `trade-intelligence/playbook-and-preflight` |
 | `diagrams/profile-anatomy` | The Profile page's panels, labelled | `trade-intelligence/profile` |
-| `diagrams/automation-flow` | The five node types in order, with which are optional | `automations/overview` |
-| `diagrams/crosses-vs-is` | Why "crosses below" fires once and "is below" fires constantly | `automations/signal-types` |
-| `diagrams/signal-matrix` | Which of the nine signal types work with which asset types | `automations/signal-types` |
-| `diagrams/webhook-flow` | Trigger → signed POST → your endpoint → verification | `reference/webhook-payloads` |
 
 ## Adding one
 

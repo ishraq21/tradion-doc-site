@@ -63,28 +63,15 @@ const BANNED = [
 // Numbers and definitions that must not disagree between pages. A reader who
 // finds two answers trusts neither.
 const CONSISTENCY = [
-  { name: 'automation indicator count', re: /(\d+)\s+technical indicators?\b/gi, scope: /automation|automations|signal|plan|loop/i },
-  { name: 'canvas cell count', re: /up to (six|eight|ten|twelve|\d+) (?:canvas )?cells/gi },
   { name: 'behavioural fingerprint axes', re: /radar chart[^.]*?\b(three|3|four|4)\s+ax/gi },
 ];
 
 // Claims that were wrong once and must never reappear anywhere on the site.
 // Each is a phrasing the code contradicts, verified against the source.
 const FORBIDDEN_CLAIMS = [
-  [/\b(running at once|concurrent(ly)? automations|automations \(concurrent\))/i,
-   'the automation cap is a TOTAL, not a concurrent count — pausing does not free a slot'],
-  [/re-?run(ning)? (an? )?(existing )?cell/i,
-   'there is no way to re-run a single cell'],
   [/pre-?flight checklist that runs\b|checklist that runs before/i,
    'pre-flight does not run itself — Tradion never sits between you and an order'],
-  [/\bis (above|below)\b\s*\/\s*\bis (above|below)\b|"is below" option/i,
-   'the operator labels on screen are "Goes Below (continuous)" and "Crosses Below (one-shot)"'],
   [/pine ?script/i, 'Pine Script generation does not exist in the codebase'],
-  [/nothing (left )?to cross/i,
-   'a crossing operator DOES fire on the first check after saving — automationWorker.js:2101'],
-  // Negations are the fix, not the defect — "not a share count" must pass.
-  [/(?<!not )(?<!never )(?<!isn't )(?<!is not )\b(raw (number of )?shares?( count)? traded|shares traded today|raw share count)\b/i,
-   'the volume signal takes a MULTIPLE of the 20-bar average, not a share count — automationWorker.js:2354'],
 ];
 // Banned only as a filler adverb, not in every grammatical use.
 const BANNED_SOFT = [

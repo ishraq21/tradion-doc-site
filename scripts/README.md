@@ -77,9 +77,6 @@ The demo account should carry enough history that no screen shows an empty state
 | ≥ 3 playbook rules | Playbook manager, pre-flight checklist |
 | A portfolio of 10–14 positions across 5+ sectors | Portfolio dashboard, allocation chart |
 | ~90 days of portfolio snapshots | Net worth equity curve |
-| 4 automations: 1-condition, 2-condition, options, agent | Every canvas screenshot |
-| ~20 automation runs, at least one failed delivery | Runs list and run detail |
-| 3 saved quant analyses with charts | Terminal, canvas, multi-cell |
 | 2 chart analyses, 2 Lens analyses | Verdict cards, history lists |
 
 Use recognisable but clearly fake tickers and round-ish numbers. Nothing that could be mistaken for a real customer's book.

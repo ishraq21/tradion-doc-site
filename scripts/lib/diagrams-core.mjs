@@ -39,9 +39,9 @@ export function onboardingSteps() {
 export function planLadder() {
   const W = 900, H = 380;
   const tiers = [
-    ['Starter', 'Analysis tools', ['Chart Analyzer', 'Lens', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 140, false],
-    ['Trader', 'Adds research and automation', ['Everything in Starter', 'AI Earnings Research', 'AI Quant Research', 'Automations & alerts', 'AI agent nodes'], 170, true],
-    ['Quant', 'Adds headroom', ['Everything in Trader', 'Much bigger monthly limits', 'More capable agent model'], 200, false],
+    ['Starter', 'Analysis tools', ['Chart Analysis', 'Lens', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 140, false],
+    ['Trader', 'Adds earnings research', ['Everything in Starter', 'AI Earnings Research', 'Bigger monthly limits'], 170, true],
+    ['Quant', 'Adds headroom', ['Everything in Trader', 'Much bigger monthly limits'], 200, false],
   ];
   let s = label(28, 34, 'Each tier adds to the one before it');
   tiers.forEach(([name, sub, items, h, hi], i) => {
@@ -57,23 +57,21 @@ export function planLadder() {
     s += rect(x, 306, 268, 34, { fill: C.panel, r: 6 });
     s += text(x + 18, 327, i === 2 ? 'No free trial' : '7-day free trial', { size: 11, fill: i === 2 ? C.faint : C.accent, weight: 500 });
   });
-  s += text(28, 364, 'The dividing question: do you need Tradion watching the market while you are away?', { size: 11, fill: C.faint });
+  s += text(28, 364, 'The dividing question: do you need AI Earnings Research, and how many messages a month?', { size: 11, fill: C.faint });
   return svg(W, H, s, {
     title: 'The three Tradion plans as a ladder',
-    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Earnings Research, AI Quant Research and automations, Quant adds much bigger monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
+    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Earnings Research, Quant adds much bigger monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
   });
 }
 
 /* ── usage-meters ────────────────────────────────────────────────────────── */
 export function usageMeters() {
-  const W = 900, H = 404;
+  const W = 900, H = 256;
   const meters = [
     ['Chat messages', 'One message to the AI Portfolio Analyst', 0.62],
-    ['Quant sessions', 'One research session in AI Quant Research', 0.3],
-    ['Agent runs', 'One AI agent step inside an automation', 0.84],
     ['Earnings messages', 'One question in AI Earnings Research', 0.45],
   ];
-  let s = label(28, 34, 'Four things are metered. Everything else is unlimited.');
+  let s = label(28, 34, 'Two things are metered. Everything else is unlimited.');
   meters.forEach(([n, d, f], i) => {
     const y = 56 + i * 74;
     s += rect(28, y, W - 56, 60, { fill: C.panel, r: 8 });
@@ -85,21 +83,21 @@ export function usageMeters() {
     s += text(bx, y + 52, 'used this cycle', { size: 9.5, fill: C.faint });
     s += redact(bx + bw, y + 52, { anchor: 'end', s: '— / —' });
   });
-  s += rect(28, 354, W - 56, 30, { fill: C.panelAlt, r: 6 });
-  s += text(48, 374, 'Resets on your billing date, not the 1st. Unused credits do not roll over.', { size: 11, fill: C.dim });
+  s += rect(28, 206, W - 56, 30, { fill: C.panelAlt, r: 6 });
+  s += text(48, 226, 'Resets on your billing date, not the 1st. Unused credits do not roll over.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
-    title: 'The four metered counters',
-    desc: 'Four rows, one per metered item: chat messages, quant sessions, agent runs, and earnings messages. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
+    title: 'The two metered counters',
+    desc: 'Two rows, one per metered item: chat messages and earnings messages. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
   });
 }
 
 /* ── memory-sources ──────────────────────────────────────────────────────── */
 export function memorySources() {
   const W = 940, H = 460;
-  const srcs = ['Quant analyses', 'Chat sessions', 'Chart analyses', 'Lens analyses', 'Trade autopsies', 'Earnings reports', 'Automations', 'Trading patterns', 'Portfolio positions', 'Playbook rules'];
+  const srcs = ['Chat sessions', 'Chart analyses', 'Lens analyses', 'Trade autopsies', 'Earnings reports', 'Trading patterns', 'Portfolio positions', 'Trade journal'];
   let s = label(28, 32, 'What you do') + label(400, 32, 'What it builds') + label(720, 32, 'What it changes');
   srcs.forEach((n, i) => {
-    const y = 50 + i * 37;
+    const y = 50 + i * 46;
     s += rect(28, y, 200, 28, { fill: C.panel, r: 6 });
     s += text(42, y + 18, n, { size: 11, fill: C.dim });
     s += path(`M232,${y + 14} C280,${y + 14} 330,225 386,225`, { stroke: C.border });
@@ -111,9 +109,9 @@ export function memorySources() {
     s += text(429, 204 + i * 22, t, { size: 10.5, fill: C.dim });
   });
   s += flowArrow(644, 706, 225, { arrow: true, stroke: C.accent });
-  const outs = ['Chart & Lens verdicts', 'Quant research answers', 'Portfolio Analyst replies', 'Automation agent briefs', 'Autopsy coaching'];
+  const outs = ['Chart & Lens verdicts', 'Portfolio Analyst replies', 'Autopsy coaching'];
   outs.forEach((n, i) => {
-    const y = 128 + i * 40;
+    const y = 170 + i * 50;
     s += rect(712, y, 200, 30, { fill: C.panel, r: 6, stroke: C.mark });
     s += text(726, y + 19, n, { size: 11, fill: C.dim });
   });
@@ -121,7 +119,7 @@ export function memorySources() {
   s += text(28, 440, 'Memory runs passively. There is no switch to turn it on.', { size: 11, fill: C.faint });
   return svg(W, H, s, {
     title: 'How Tradion Memory works',
-    desc: 'Ten activity sources on the left feed into a single trader profile in the centre, which then shapes five kinds of AI output on the right.',
+    desc: 'Eight activity sources on the left feed into a single trader profile in the centre, which then shapes three kinds of AI output on the right.',
   });
 }
 

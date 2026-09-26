@@ -4,37 +4,21 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
-| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Name, portfolio value, day change, positions, risk score, active automations |
-| `quant-analysis.jpg` | AI Quant Research, saved session | `research/quant-research` | Nothing needed — public tickers only |
 | `chart-analyzer-history.jpg` | Chart Analyzer history | `research/chart-analyzer` | Nothing needed |
 | `earnings-research-thread.jpg`, `earnings-research-overview.jpg`, `earnings-research-what-changed.jpg`, `earnings-research-compare.jpg`, `earnings-research-scenarios.jpg` | AI Earnings Research thread and its four views | `research/ai-earnings-research` | Nothing needed, public tickers only |
 | `earnings-research-working-notes.jpg` | AI Earnings Research, working notes mid-run | `research/ai-earnings-research` | Cropped to the progress area |
 | `earnings-research-sources.jpg`, `earnings-research-estimates.jpg` | AI Earnings Research, Sources panel and estimates table | `research/earnings-evidence` | Nothing needed, public tickers only |
 | `earnings-research-thesis-form.jpg` | Research Notebook, New Thesis form | `research/earnings-notebook` | Cropped to the dialog |
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
-| `automations-list.jpg` | Automations | `automations/overview` | Nothing needed |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
 | `asset-manager.jpg` | AI Portfolio Analyst | `portfolio/ai-portfolio-analyst` | Nothing needed |
 | `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Lens | `research/lens` | Nothing needed |
-| `quant-dashboard.jpg`, `quant-ml-analysis.jpg`, `quant-templates.jpg`, `quant-template-library.jpg` | AI Quant Research | `research/quant-research` | Nothing needed |
-| `automation-agents.jpg` | Automation canvas with agents | `automations/ai-agent-node` | Nothing needed |
-| `automation-action-panel.jpg` | Action drawer, full | `automations/notifications` | Nothing needed |
-| `automation-canvas-signals.jpg` | Automation canvas, two signals and the AND join | `automations/first-automation` | Nothing needed |
-| `automation-first-action.jpg` | Action node beside its drawer | `automations/first-automation` | Nothing needed |
 
-Captured in dark mode. Most are 1452×840; `home.jpg` is 1304×782, and the two
-`automation-*` captures built for `first-automation` came from a 1920-wide window
-and were cropped to the canvas.
+Captured in dark mode, most at 1452×840.
 
 ## Screens deliberately NOT captured
 
 **Profile.** Every panel is personal behavioural analysis, and the AI verdict states real losses and real tickers *inside written sentences* — "AAPL and PLTR alone have erased over $X". Masking prose without wrecking the sentence is not reliably possible. Use `images/diagrams/profile-anatomy.svg`, which labels what each panel measures without showing a single figure.
-
-**A note on `home.jpg`.** The capture account holds almost nothing, so the real tile read a two-figure balance next to zero positions, which teaches a reader nothing and looks broken. The greeting, the portfolio value, the day change and the position count were rewritten in the DOM before capture, so the screenshot is the real interface rendering representative numbers rather than a picture with digits pasted over it. Risk score went the same way, for a different reason: it is a 0–100 figure, so the real 1 read as a failing grade rather than as an empty profile, and the subtitle under it is a trend direction, not a data notice, so "No Data" beside a number contradicted itself. It now reads 68 / Stable, which is a state the app really renders (the trend arrow is null for stable, so nothing is missing from the tile). Active automations went 0 to 3.
-
-Untouched, because they are real and hold up: the 61% win rate over 101 trades, and the session list.
-
-**The AI verdict block on Home.** Same problem, same reason. `home.jpg` was captured from an account where that block was short; check it every time before reusing this screen.
 
 **Portfolio.** Not a privacy problem: the account available for capture holds almost nothing, so a screenshot of it teaches a reader less than the prose does. `portfolio/reading-the-dashboard` runs without an image on purpose. Recapture against an account with real positions and it becomes worth including.
 
