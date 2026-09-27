@@ -29,14 +29,14 @@ That box carries a status row, and it is the first thing to read before asking a
 
 A position count of zero means the assistant has nothing to describe, and its answers will be general rather than about your account. Connect a brokerage or add a holding first.
 
-## Positions tab
+## The positions it sees
 
-The **Positions** tab alongside the chat shows every holding the assistant can see, divided into two groups:
+The **Manage Positions** tab on the Portfolio page lists every holding the assistant can see, each marked by source:
 
 - **Live:** rows synced from a connected brokerage. These are read-only; edit them through your broker.
 - **Manual:** holdings you added yourself. Each row shows a pencil icon to edit the details and a trash icon to remove it. Use manual positions to include accounts you cannot or do not want to connect directly.
 
-Changes here take effect on the next message you send, when the assistant rebuilds its briefing from your current positions.
+Changes there take effect on the next message you send, when the assistant rebuilds its briefing from your current positions.
 
 ## Opening a session
 
@@ -56,18 +56,18 @@ The assistant is not watching your account. It gets one written briefing about y
 
 Before each answer, Tradion assembles a briefing from your account:
 
-- Every position, marked **live** if it came from a broker or **manual** if you added it, with shares (a short shows as, for example, "30 short"), **cost basis** (what you paid per share, averaged across your buys), last price, current value, and **unrealised** profit or loss (the paper result on something you still hold, which the price can still take back). If your broker did not report a cost basis for a position, the analyst is told it is unavailable and does not state a profit or loss for it
+- Up to six of your positions, each marked **live** if it came from a broker or **manual** if you added it, with shares (a short shows as, for example, "30 short"), **cost basis** (what you paid per share, averaged across your buys), last price, current value, and **unrealised** profit or loss (the paper result on something you still hold, which the price can still take back). If your broker did not report a cost basis for a position, the analyst is told it is unavailable and does not state a profit or loss for it
 - Cash balance, how many brokerages are connected, and when they last synced
 - Your largest holding and the combined weight of your top three
 - Recent closed trades and their outcomes
 - Your last few trade autopsies: entry, exit, and risk-management grades, and the mistakes tagged in each
-- Your [Tradion Memory](/concepts/tradion-memory) profile: trade count, average grades, recurring mistakes, favoured setups
+- Your [Tradion Memory](/concepts/tradion-memory) profile: trade count, average grades, recurring mistakes, favoured setups, the dollar cost and trade count of each mistake pattern, and your saved Playbook rules
 
 It can also pull live data mid-answer: quotes, price history, fundamentals, options chains, earnings dates and estimates, insider transactions, news and sentiment, macro indicators, and web search.
 
 ### What it cannot do
 
-It cannot place, change, or cancel an order; the brokerage link is read-only. It does not see your personal details, bank links, or tax documents. It reads the last 16 messages of the thread, so a point made much earlier may need restating. With personalisation off, the behavioural half of the briefing is withheld and answers stay purely positional.
+It cannot place, change, or cancel an order; the brokerage link is read-only. It does not see your personal details, bank links, or tax documents. It reads the last 8 messages of the thread, and at most 2,000 characters of each, so a point made much earlier may need restating. With personalisation off, your Tradion Memory profile, mistake costs and Playbook rules are withheld; your positions, recent trades, and autopsy grades with the mistakes tagged in each are still used.
 
 ## Questions worth asking
 

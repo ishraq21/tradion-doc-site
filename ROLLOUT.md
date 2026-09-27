@@ -101,6 +101,6 @@ You can ship today. The site is complete and accurate without a single photograp
 
 ## Also worth doing
 
-- **`docs/PRICING.md` vs `server/config/tiers.js` vs the landing page** are three places pricing lives. The docs site adds a fourth. Consider generating `reference/plan-comparison.mdx` from `tiers.js` at build time so it can't drift.
+- **`server/config/tiers.js` (with Stripe) vs the landing page** are two places pricing lives. The docs site adds a third. Consider generating `reference/plan-comparison.mdx` from `tiers.js` at build time so it can't drift.
 - **Legal pages** stay on the landing site — footer links point there rather than duplicating.
 - **In-app deep links.** Once live, link from empty states and error toasts straight into the relevant doc page. That's where docs sites actually earn their keep.
