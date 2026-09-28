@@ -1,69 +1,93 @@
 ---
 title: "Usage limits explained"
 sidebarTitle: "Usage limits"
-description: "What each meter counts, when it resets, and what happens when you hit zero."
+description: "What each counter counts, when it resets, and what happens when you hit zero."
 icon: "gauge-high"
 ---
 
-Tradion meters two things. Everything else on your plan is unlimited.
+Tradion meters six things. Everything else on your plan is not counted against an allowance.
 
 <CardGroup cols={2}>
-  <Card title="Chat messages" icon="message">
+  <Card title="AI Portfolio Analyst messages" icon="message">
     Messages to the **AI Portfolio Analyst**, your portfolio chat.
   </Card>
-  <Card title="Earnings messages" icon="magnifying-glass-chart">
+  <Card title="AI Earnings Research messages" icon="magnifying-glass-chart">
     Questions you send in **AI Earnings Research**.
+  </Card>
+  <Card title="Chart Analyses" icon="chart-line">
+    Submissions to **Chart Analysis**.
+  </Card>
+  <Card title="Trade Autopsies" icon="stethoscope">
+    Reports generated in **Trade Autopsy**.
+  </Card>
+  <Card title="Lens analyses" icon="crosshairs">
+    Captures analyzed in **Lens**.
+  </Card>
+  <Card title="Manual Profile refreshes" icon="rotate">
+    Uses of the **Refresh** button on your Profile.
   </Card>
 </CardGroup>
 
 ## Monthly allowances
 
-| Meter | Starter | Trader | Quant |
-| --- | --- | --- | --- |
-| Chat messages | 150 | 500 | 1,000 |
-| Earnings messages | None | 50 | 150 |
+| Counter | Starter | Pro |
+| --- | --- | --- |
+| AI Portfolio Analyst messages | 120 | 250 |
+| AI Earnings Research messages | 10 | 25 |
+| Chart Analyses | 40 | 60 |
+| Trade Autopsies | 20 | 30 |
+| Lens analyses | 20 | 30 |
+| Manual Profile refreshes | 15 | 30 |
 
 <Note>
-  Starter has no earnings messages because it doesn't include AI Earnings Research at all. It's the analysis-tools tier: Chart Analysis, Lens, and Trade Autopsy, all unlimited.
+  During a free trial, a smaller trial allowance applies instead: 15 / 1 / 3 / 2 / 3 / 1 on Starter and 30 / 3 / 5 / 3 / 5 / 2 on Pro, in the same row order as the table above. The full monthly allowance starts once your first payment succeeds, at the end of the trial.
 </Note>
 
 ## What is *not* metered
 
-These run as often as you like on any paid plan:
+These run as often as you like on any paid plan or trial:
 
-- Chart Analysis analyses
-- Lens captures
-- Trade logging and autopsy generation
 - Portfolio dashboard refreshes and brokerage syncs
+- Follow-up questions on a Chart Analysis, Lens, or Trade Autopsy you already ran
+- Autopsy intake (the narrative you type before a report is generated)
+- The automatic Profile recomputation that runs after a Memory reset (only using the Refresh button yourself counts)
 
 ## When they reset
 
-Both counters reset on your **billing cycle date**, the day of the month you subscribed, not the 1st. You can see your next reset date and current balances in **Settings → Monthly Usage**.
+All six counters reset on your **billing cycle date**, the day of the month you subscribed, not the 1st. You can see your next reset date and current balances in **Settings → Monthly Usage**.
 
-<Frame caption="Settings → Monthly Usage shows live balances and the reset date.">
-  <img src="/images/diagrams/usage-meters.svg" alt="Two meter rows, chat messages and earnings messages, each with a progress bar showing how much of the monthly allowance is used" noZoom />
+<Frame caption="Settings → Monthly Usage shows live balances and the reset date for all six counters.">
+  <img src="/images/diagrams/usage-meters.svg" alt="Six counter rows, one per metered feature, each with a progress bar showing how much of the monthly allowance is used" noZoom />
 </Frame>
 
 <Warning>
-  Unused credits **do not roll over**. A month where you used 4 of 50 earnings messages still resets to 50, not 96.
+  Unused allowance **does not roll over**. A month where you used 4 of 10 earnings messages still resets to 10, not 16.
 </Warning>
 
 ## What happens at zero
 
-You get a clear block, not a silent failure. An upgrade prompt appears naming the specific meter you exhausted and the tier that would cover it.
+You get a clear block, not a silent failure. An upgrade prompt appears naming the specific counter you exhausted.
 
-| Meter exhausted | What still works |
+| Counter exhausted | What still works |
 | --- | --- |
-| Chat messages | Everything except new AI Portfolio Analyst messages. Existing sessions stay readable. |
-| Earnings messages | Every earlier thread and your notebook stay readable; you can't send a new question. |
+| AI Portfolio Analyst messages | Everything except sending a new message. Existing sessions stay readable. |
+| AI Earnings Research messages | Every earlier thread and your notebook stay readable; you can't send a new question. |
+| Chart Analyses, Lens analyses, or Trade Autopsies | Everything you already generated stays readable; you can't start a new one. |
+| Manual Profile refreshes | Your existing Profile stays as-is; the automatic recomputation on your next tracked activity still works. |
 
-Your options are to wait for the reset, or upgrade, which grants the new tier's full allowance immediately rather than pro-rating it.
+Your options are to wait for the reset, or upgrade to Pro, which charges the prorated difference immediately and grants the full Pro allowance right away, rather than pro-rating the allowance itself.
 
-## What each meter really counts
+## What each counter really counts
 
-An AI Portfolio Analyst message is one message *you* send in the portfolio chat. The assistant's reply, and any internal tool calls it makes to read your holdings or pull quotes, are all free. The whole exchange counts as one message.
+An **AI Portfolio Analyst message** is one message *you* send in the portfolio chat. The assistant's reply, and any internal tool calls it makes to read your holdings or pull quotes, are all free. The whole exchange counts as one message.
 
-An earnings message is one question you send in AI Earnings Research. Follow-ups count too, and so does a question that names three companies, so a wide question costs the same as a narrow one. A run that fails on Tradion's side gives the message back. **Stop** does not: the message is still counted, and **Ask Again** after a stop is a new question. The balance sits in the top bar of AI Earnings Research as well as in **Settings → Monthly Usage**.
+An **AI Earnings Research message** is one question you send. Follow-ups count too, and so does a question that names three companies, so a wide question costs the same as a narrow one. A run that fails on Tradion's side gives the message back. **Stop** does not: the message is still counted, and **Ask Again** after a stop is a new question. The balance sits in the top bar of AI Earnings Research as well as in **Settings → Monthly Usage**.
+
+A **Chart Analysis** or **Lens** count is one submission, regardless of how many images you include in it. A failed submission (a queueing error, or a job that errors or times out) gives the count back; leaving the page before it finishes does not.
+
+A **Trade Autopsy** count is one generated report. Submitting the intake information, and asking follow-up questions about a completed report, are free. Any error during generation gives the count back.
+
+A **manual Profile refresh** is one use of the Refresh button. A failed or empty result gives the count back.
 
 ## Next
 

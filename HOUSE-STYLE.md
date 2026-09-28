@@ -56,7 +56,7 @@ From `docs/BRAND.md`: **direct, data-first, professional but not cold, zero hype
 
 **Second person, present tense, active voice.** "You click Connect" — not "the user should click" or "Connect can be clicked".
 
-**Say the number.** "150 messages a month" beats "generous limits". "About 20 seconds" beats "quickly".
+**Say the number.** "120 messages a month" beats "generous limits". "About 20 seconds" beats "quickly".
 
 **Name the failure mode.** The most useful paragraph on most pages starts with "this goes wrong when…". Tell them what breaks before they find out themselves.
 
@@ -84,7 +84,7 @@ Allowed and encouraged:
 
 - ✅ Public tickers — AAPL, NVDA, BTC/USD, EUR/USD
 - ✅ Percentages and ratios — "a 12% drawdown", "3:1 risk/reward"
-- ✅ Product limits quoted from `server/config/tiers.js` — "500 messages a month"
+- ✅ Product limits quoted from `server/config/tiers.js` — "250 messages a month"
 - ✅ Placeholder notation in illustrations — `$ ———`, `+ — . — %`, `Account ••••`
 - ✅ Generic role labels — "your account", "a connected brokerage"
 
@@ -118,7 +118,7 @@ Rules:
 - **A visual within the first screen** on any page that describes a UI.
 - **Every page ends by pointing somewhere** — a `<CardGroup>` of next steps, or one clear link.
 - **Length: 400–900 words** for a feature page. Reference pages can run longer. If you're past 1,200 words the page should be two pages.
-- **State the plan requirement** with `<Info>` at the top of any page describing a gated feature (AI Earnings Research is Trader+).
+- **State the plan requirement** with `<Info>` at the top of any page describing a feature with its own monthly allowance, or one gated to a specific plan, if either is ever introduced again. Starter and Pro currently include the same features.
 
 ---
 

@@ -17,7 +17,7 @@ Concretely:
 
 - Write to a smart trader who is busy, not a beginner who needs hand-holding and not an engineer who wants internals.
 - Lead with what the reader does, then why it matters. Never open a page with a definition.
-- Say the number. "150 chat messages a month" beats "generous limits."
+- Say the number. "120 chat messages a month" beats "generous limits."
 - Name the failure mode. The most valuable paragraph on most pages is the one starting "this goes wrong when…"
 - No exclamation marks, no "simply", no "just", no "easy". If it were easy they wouldn't be reading.
 - Never imply a recommendation to trade. Tradion produces analysis; the reader decides.

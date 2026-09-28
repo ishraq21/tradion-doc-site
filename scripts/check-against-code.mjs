@@ -16,12 +16,20 @@
  *
  * Every number below is READ FROM SOURCE, never hardcoded. If someone changes
  * the code, this fails and names the page to fix.
+ *
+ * HISTORY: this used to regex-scrape `trader: {` and `quant: {` blocks out of
+ * tiers.js. Those plans were retired (Starter/Pro replaced them) and the
+ * regex never matched anything afterward — every meter logged "could not
+ * read ... skipped" and the script still printed "✓ docs-site agrees with the
+ * application source". A guard that passes without checking anything is worse
+ * than no guard. tiers.js has no imports of its own, so it's imported directly
+ * now instead of scraped, which can't silently stop matching the same way.
  */
 
 import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, resolve, relative, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -70,8 +78,6 @@ if (!APP) {
 
 console.log(`  app source: ${APP}\n`);
 
-const readIf = async (p) => (existsSync(join(APP, p)) ? readFile(join(APP, p), 'utf8') : null);
-
 async function findMdx(dir, acc = []) {
   for (const e of await readdir(dir, { withFileTypes: true })) {
     if (e.name.startsWith('.') || ['node_modules', 'images', 'scripts', 'logo'].includes(e.name)) continue;
@@ -88,50 +94,124 @@ for (const f of files) {
   pages.set(relative(ROOT, f), (await readFile(f, 'utf8')).replace(/^---[\s\S]*?---\n/, ''));
 }
 
-/* ── Plan limits ────────────────────────────────────────────────────────── */
-const tiers = await readIf('server/config/tiers.js');
-if (tiers) {
-  const grab = (tier, key) => {
-    const block = tiers.split(new RegExp(`\\b${tier}\\s*:\\s*\\{`, 'i'))[1];
-    return block ? block.match(new RegExp(`${key}\\s*:\\s*(\\d+)`))?.[1] : undefined;
-  };
-  // Match the Starter, Trader and Quant CELLS of each row, not just "the number appears somewhere".
-  // A presence check would pass regardless, because 50 and 150 are also other meters' limits.
-  const cells = (row) => row.slice(1, 4).map((n) => n.replace(/,/g, ''));
-  const METERS = [
-    {
-      label: 'Chat messages',
-      key: 'chatMessagesPerMonth',
-      tiers: ['starter', 'trader', 'quant'],
-      rows: [
-        ['concepts/usage-limits.mdx', /\|\s*Chat messages\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-        ['reference/plan-comparison.mdx', /\|\s*AI Portfolio Analyst\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
-      ],
-    },
-    {
-      label: 'AI Earnings Research messages',
-      key: 'earningsMessagesPerMonth',
-      tiers: ['trader', 'quant'],
-      // Starter has no allowance, so its cell is text ("None", "Not included") and the row is matched from Trader.
-      rows: [
-        ['concepts/usage-limits.mdx', /\|\s*Earnings messages\s*\|[^|]*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-        ['reference/plan-comparison.mdx', /\|\s*AI Earnings Research\s*\|[^|]*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
-      ],
-    },
-  ];
-  for (const { label, key, tiers: names, rows } of METERS) {
-    const expected = names.map((t) => grab(t, key));
-    if (expected.some((v) => v === undefined)) { notes.push(`${label}: could not read ${key} from tiers.js — skipped`); continue; }
-    for (const [file, re] of rows) {
-      const m = (pages.get(file) ?? '').match(re);
-      if (!m) { errors.push(`${file}: no "${label}" allowance row to check`); continue; }
-      const got = cells(m).slice(0, names.length);
-      if (got.join('/') !== expected.join('/')) {
-        errors.push(`tiers.js ${key} = ${expected.join('/')}, but ${file} says ${got.join('/')}`);
-      }
+/* ── Plan limits, trial allowances, price and trial length ────────────────
+ * Imported directly from tiers.js — a plain config module with no imports of
+ * its own — instead of regex-scraped, so a renamed or restructured tier
+ * cannot silently stop matching and still report success. */
+const { TIERS, TRIAL_PERIOD_DAYS } = await import(pathToFileURL(join(APP, APP_MARKER)).href);
+
+const cellsFrom = (page, re) => {
+  const m = (pages.get(page) ?? '').match(re);
+  return m ? [m[1], m[2]].map((n) => n.replace(/,/g, '')) : null;
+};
+
+const METERS = [
+  {
+    key: 'chatMessagesPerMonth',
+    label: 'AI Portfolio Analyst messages',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*AI Portfolio Analyst messages\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*AI Portfolio Analyst\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+  {
+    key: 'earningsMessagesPerMonth',
+    label: 'AI Earnings Research messages',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*AI Earnings Research messages\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*AI Earnings Research\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+  {
+    key: 'chartAnalysesPerMonth',
+    label: 'Chart Analyses',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*Chart Analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Chart Analysis\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+  {
+    key: 'autopsiesPerMonth',
+    label: 'Trade Autopsies',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*Trade Autopsies\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Trade Autopsy\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+  {
+    key: 'lensPerMonth',
+    label: 'Lens analyses',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*Lens analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Lens\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+  {
+    key: 'recomputesPerMonth',
+    label: 'Manual Profile refreshes',
+    rows: [
+      ['concepts/usage-limits.mdx', /\|\s*Manual Profile refreshes\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Manual Profile refreshes\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+    ],
+  },
+];
+
+const expectedFullAllowance = METERS.map(({ key }) => `${TIERS.starter[key]}/${TIERS.pro[key]}`);
+for (const [i, { key, label, rows }] of METERS.entries()) {
+  const expected = expectedFullAllowance[i];
+  let found = false;
+  for (const [file, re] of rows) {
+    const got = cellsFrom(file, re);
+    if (!got) { errors.push(`${file}: no "${label}" allowance row to check`); continue; }
+    found = true;
+    if (got.join('/') !== expected) {
+      errors.push(`tiers.js ${key} = ${expected}, but ${file} says ${got.join('/')}`);
     }
-    console.log(`  ${label.padEnd(34)} ${expected.join('/').padEnd(12)} tiers.js`);
   }
+  if (found) console.log(`  ${label.padEnd(34)} ${expected.padEnd(10)} tiers.js`);
+}
+
+/* ── Trial allowances ───────────────────────────────────────────────────── */
+const expectedTrial = METERS.map(({ key }) => `${TIERS.starter.trialAllowance[key]}/${TIERS.pro.trialAllowance[key]}`);
+const trialLine = pages.get('concepts/usage-limits.mdx')?.match(
+  /trial allowance applies instead:\s*([\d\s/]+)\s*on Starter and\s*([\d\s/]+)\s*on Pro/,
+);
+if (!trialLine) {
+  errors.push('concepts/usage-limits.mdx: no trial allowance sentence to check (expected "... trial allowance applies instead: N / N / ... on Starter and N / N / ... on Pro")');
+} else {
+  const starterGot = trialLine[1].split('/').map((n) => n.trim());
+  const proGot = trialLine[2].split('/').map((n) => n.trim());
+  const starterExpected = METERS.map(({ key }) => String(TIERS.starter.trialAllowance[key]));
+  const proExpected = METERS.map(({ key }) => String(TIERS.pro.trialAllowance[key]));
+  if (starterGot.join('/') !== starterExpected.join('/') || proGot.join('/') !== proExpected.join('/')) {
+    errors.push(
+      `tiers.js trialAllowance = Starter ${starterExpected.join('/')}, Pro ${proExpected.join('/')}, ` +
+      `but concepts/usage-limits.mdx says Starter ${starterGot.join('/')}, Pro ${proGot.join('/')}`,
+    );
+  } else {
+    console.log(`  Trial allowance                   ${starterGot.join('/')} / ${proGot.join('/')}     tiers.js`);
+  }
+}
+
+/* ── Price ──────────────────────────────────────────────────────────────── */
+const expectedPrice = [TIERS.starter.price / 100, TIERS.pro.price / 100];
+const priceGot = cellsFrom('reference/plan-comparison.mdx', /\|\s*Price\s*\|\s*\$(\d+)\/mo\s*\|\s*\$(\d+)\/mo\s*\|/);
+if (!priceGot) {
+  errors.push('reference/plan-comparison.mdx: no Price row to check');
+} else if (priceGot.map(Number).join('/') !== expectedPrice.join('/')) {
+  errors.push(`tiers.js price = $${expectedPrice.join('/$')}, but reference/plan-comparison.mdx says $${priceGot.join('/$')}`);
+} else {
+  console.log(`  Price                              $${expectedPrice.join('/$')}       tiers.js`);
+}
+
+/* ── Trial length ───────────────────────────────────────────────────────── */
+const trialDaysGot = cellsFrom('reference/plan-comparison.mdx', /\|\s*Free trial\s*\|\s*(\d+) days?\s*\|\s*(\d+) days?\s*\|/);
+if (!trialDaysGot) {
+  errors.push('reference/plan-comparison.mdx: no Free trial row to check');
+} else if (trialDaysGot.some((d) => Number(d) !== TRIAL_PERIOD_DAYS)) {
+  errors.push(`tiers.js TRIAL_PERIOD_DAYS = ${TRIAL_PERIOD_DAYS}, but reference/plan-comparison.mdx says ${trialDaysGot.join('/')}`);
+} else {
+  console.log(`  Trial length                       ${TRIAL_PERIOD_DAYS} days      tiers.js`);
 }
 
 /* ── report ─────────────────────────────────────────────────────────────── */

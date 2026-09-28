@@ -35,43 +35,18 @@ export function onboardingSteps() {
   });
 }
 
-/* ── plan-ladder ─────────────────────────────────────────────────────────── */
-export function planLadder() {
-  const W = 900, H = 380;
-  const tiers = [
-    ['Starter', 'Analysis tools', ['Chart Analysis', 'Lens', 'Trade Autopsy', 'Portfolio + AI Portfolio Analyst'], 140, false],
-    ['Trader', 'Adds earnings research', ['Everything in Starter', 'AI Earnings Research', 'Bigger monthly limits'], 170, true],
-    ['Quant', 'Adds headroom', ['Everything in Trader', 'Much bigger monthly limits'], 200, false],
-  ];
-  let s = label(28, 34, 'Each tier adds to the one before it');
-  tiers.forEach(([name, sub, items, h, hi], i) => {
-    const x = 28 + i * 290, y = 300 - h;
-    s += rect(x, y, 268, h, { fill: hi ? C.panelAlt : C.panel, r: 8, stroke: hi ? C.accentDim : C.border });
-    s += text(x + 18, y + 26, name, { size: 15, weight: 600, font: F.head, fill: hi ? C.accent : C.text });
-    s += text(x + 18, y + 44, sub, { size: 10.5, fill: C.faint });
-    items.forEach((it, j) => {
-      const iy = y + 68 + j * 20;
-      s += `<circle cx="${x + 22}" cy="${iy - 4}" r="2.5" fill="${hi ? C.accent : C.faint}"/>`;
-      s += text(x + 32, iy, it, { size: 11, fill: C.dim });
-    });
-    s += rect(x, 306, 268, 34, { fill: C.panel, r: 6 });
-    s += text(x + 18, 327, i === 2 ? 'No free trial' : '7-day free trial', { size: 11, fill: i === 2 ? C.faint : C.accent, weight: 500 });
-  });
-  s += text(28, 364, 'The dividing question: do you need AI Earnings Research, and how many messages a month?', { size: 11, fill: C.faint });
-  return svg(W, H, s, {
-    title: 'The three Tradion plans as a ladder',
-    desc: 'Three stacked columns of increasing height. Starter covers the analysis tools, Trader adds AI Earnings Research, Quant adds much bigger monthly limits. Starter and Trader carry a seven-day trial; Quant does not.',
-  });
-}
-
 /* ── usage-meters ────────────────────────────────────────────────────────── */
 export function usageMeters() {
-  const W = 900, H = 256;
+  const W = 900, H = 560;
   const meters = [
-    ['Chat messages', 'One message to the AI Portfolio Analyst', 0.62],
-    ['Earnings messages', 'One question in AI Earnings Research', 0.45],
+    ['AI Portfolio Analyst messages', 'One message to the AI Portfolio Analyst', 0.62],
+    ['AI Earnings Research messages', 'One question in AI Earnings Research', 0.45],
+    ['Chart Analyses', 'One submission to Chart Analysis', 0.3],
+    ['Trade Autopsies', 'One generated autopsy report', 0.5],
+    ['Lens analyses', 'One Lens capture', 0.2],
+    ['Manual Profile refreshes', 'One use of the Refresh button', 0.4],
   ];
-  let s = label(28, 34, 'Two things are metered. Everything else is unlimited.');
+  let s = label(28, 34, 'Six things are metered. Everything else is not counted against an allowance.');
   meters.forEach(([n, d, f], i) => {
     const y = 56 + i * 74;
     s += rect(28, y, W - 56, 60, { fill: C.panel, r: 8 });
@@ -83,11 +58,12 @@ export function usageMeters() {
     s += text(bx, y + 52, 'used this cycle', { size: 9.5, fill: C.faint });
     s += redact(bx + bw, y + 52, { anchor: 'end', s: '— / —' });
   });
-  s += rect(28, 206, W - 56, 30, { fill: C.panelAlt, r: 6 });
-  s += text(48, 226, 'Resets on your billing date, not the 1st. Unused credits do not roll over.', { size: 11, fill: C.dim });
+  const footerY = 56 + meters.length * 74;
+  s += rect(28, footerY, W - 56, 30, { fill: C.panelAlt, r: 6 });
+  s += text(48, footerY + 20, 'Resets on your billing date, not the 1st. Unused allowance does not roll over.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
-    title: 'The two metered counters',
-    desc: 'Two rows, one per metered item: chat messages and earnings messages. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
+    title: 'The six metered counters',
+    desc: 'Six rows, one per metered item: AI Portfolio Analyst messages, AI Earnings Research messages, Chart Analyses, Trade Autopsies, Lens analyses, and manual Profile refreshes. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
   });
 }
 

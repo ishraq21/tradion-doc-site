@@ -128,7 +128,7 @@ for (const file of files) {
   // A money figure is only a problem when it is framed as someone's money.
   // Two things are never that: our own plan prices, and the $1 used to
   // explain how an option moves. Both are product or market facts.
-  const PLAN_PRICES = new Set(['$25', '$100', '$200']);
+  const PLAN_PRICES = new Set(['$50', '$100']);
   for (const m of body.matchAll(MONEY)) {
     const at = m.index ?? 0;
     const value = m[0].trim();

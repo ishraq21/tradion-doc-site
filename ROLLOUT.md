@@ -49,7 +49,7 @@ The Playwright pipeline is still here and still worth running once a demo accoun
 This is the only work that touches the main app, and it unblocks everything else.
 
 1. **Add `data-doc` attributes** to the ~45 components that cropped screenshots target. Grep `scripts/shots.ts` for `data-doc=` to get the list. One-line change per component; they're inert in production.
-2. **Write `scripts/seed-docs-demo.js`** — a seeder producing the demo account described in `scripts/README.md` (40 trades, 5 autopsies, 4 automations, a 14-position portfolio, 90 days of snapshots). Reuse the patterns in your existing `scripts/` seeders.
+2. **Write `scripts/seed-docs-demo.js`** — a seeder producing the demo account described in `scripts/README.md` (40 trades, 5 autopsies, a 14-position portfolio, 90 days of snapshots). Reuse the patterns in your existing `scripts/` seeders.
 3. **Stand up a staging deploy** the capture script can hit, or just run it against localhost with a local seeded DB.
 4. **Tag anything live-updating** with `data-doc-freeze` — the ticker tape, market clock, and any "N seconds ago" label.
 
@@ -93,7 +93,7 @@ You can ship today. The site is complete and accurate without a single photograp
 
 ## Deliberately out of scope
 
-**A public API reference.** Tradion has no public API — CORS is locked to first-party origins, there's no API key system, and auth is an httpOnly cookie or a first-party extension bearer token. Documenting one would invite support questions you can't answer. The one genuinely external surface is the outbound automation webhook, which is covered at `reference/webhook-payloads`.
+**A public API reference.** Tradion has no public API — CORS is locked to first-party origins, there's no API key system, and auth is an httpOnly cookie or a first-party extension bearer token. Documenting one would invite support questions you can't answer. The former external surface, the outbound automation webhook, was retired along with Automations; `reference/webhook-payloads` now redirects rather than describing a live feature.
 
 **Anything about dead code.** `ViewState.WATCHLIST` and `ViewState.TRADE_GPT` are declared but unreachable; `Dashboard.tsx`, `AIMemory.tsx`, `Briefing.tsx`, `Pricing.tsx`, and `Terminal/ChatInterface.tsx` are orphaned. None appear in the docs. Worth deleting from the app while you're at it.
 
