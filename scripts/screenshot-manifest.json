@@ -96,7 +96,7 @@
   },
   {
     "slug": "research/chart-analyzer-full",
-    "caption": "Chart Analysis",
+    "caption": "Tradion Snipe",
     "page": "get-started/tour"
   },
   {
@@ -121,12 +121,12 @@
   },
   {
     "slug": "research/lens-full",
-    "caption": "Lens",
+    "caption": "Tradion Lens",
     "page": "get-started/tour"
   },
   {
     "slug": "research/lens-verdict",
-    "caption": "A Lens verdict card",
+    "caption": "A Tradion Lens verdict card",
     "page": "research/lens"
   },
   {

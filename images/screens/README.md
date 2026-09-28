@@ -4,16 +4,16 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
-| `chart-analyzer-history.jpg` | Chart Analyzer history | `research/chart-analyzer` | Nothing needed |
-| `earnings-research-thread.jpg`, `earnings-research-overview.jpg`, `earnings-research-what-changed.jpg`, `earnings-research-compare.jpg`, `earnings-research-scenarios.jpg` | AI Earnings Research thread and its four views | `research/ai-earnings-research` | Nothing needed, public tickers only |
-| `earnings-research-working-notes.jpg` | AI Earnings Research, working notes mid-run | `research/ai-earnings-research` | Cropped to the progress area |
-| `earnings-research-sources.jpg`, `earnings-research-estimates.jpg` | AI Earnings Research, Sources panel and estimates table | `research/earnings-evidence` | Nothing needed, public tickers only |
+| `chart-analyzer-history.jpg` | Tradion Snipe history | `research/chart-analyzer` | Nothing needed |
+| `earnings-research-thread.jpg`, `earnings-research-overview.jpg`, `earnings-research-what-changed.jpg`, `earnings-research-compare.jpg`, `earnings-research-scenarios.jpg` | Earnings Deep Research thread and its four views | `research/ai-earnings-research` | Nothing needed, public tickers only |
+| `earnings-research-working-notes.jpg` | Earnings Deep Research, working notes mid-run | `research/ai-earnings-research` | Cropped to the progress area |
+| `earnings-research-sources.jpg`, `earnings-research-estimates.jpg` | Earnings Deep Research, Sources panel and estimates table | `research/earnings-evidence` | Nothing needed, public tickers only |
 | `earnings-research-thesis-form.jpg` | Research Notebook, New Thesis form | `research/earnings-notebook` | Cropped to the dialog |
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
 | `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Nothing needed: a demo account (first name "Jane"), public tickers. Cropped to the content column, so the sidebar is not shown |
 | `asset-manager.jpg` | AI Portfolio Analyst | `portfolio/ai-portfolio-analyst` | Nothing needed |
-| `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Lens | `research/lens` | Nothing needed |
+| `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Tradion Lens | `research/lens` | Nothing needed |
 
 Captured in dark mode, most at 1452×840.
 

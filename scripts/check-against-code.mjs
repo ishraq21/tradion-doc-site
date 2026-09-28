@@ -116,18 +116,18 @@ const METERS = [
   },
   {
     key: 'earningsMessagesPerMonth',
-    label: 'AI Earnings Research messages',
+    label: 'Earnings Deep Research messages',
     rows: [
-      ['concepts/usage-limits.mdx', /\|\s*AI Earnings Research messages\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-      ['reference/plan-comparison.mdx', /\|\s*AI Earnings Research\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+      ['concepts/usage-limits.mdx', /\|\s*Earnings Deep Research messages\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Earnings Deep Research\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
     ],
   },
   {
     key: 'chartAnalysesPerMonth',
-    label: 'Chart Analyses',
+    label: 'Tradion Snipe analyses',
     rows: [
-      ['concepts/usage-limits.mdx', /\|\s*Chart Analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-      ['reference/plan-comparison.mdx', /\|\s*Chart Analysis\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+      ['concepts/usage-limits.mdx', /\|\s*Tradion Snipe analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Tradion Snipe\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
     ],
   },
   {
@@ -140,10 +140,10 @@ const METERS = [
   },
   {
     key: 'lensPerMonth',
-    label: 'Lens analyses',
+    label: 'Tradion Lens analyses',
     rows: [
-      ['concepts/usage-limits.mdx', /\|\s*Lens analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-      ['reference/plan-comparison.mdx', /\|\s*Lens\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
+      ['concepts/usage-limits.mdx', /\|\s*Tradion Lens analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
+      ['reference/plan-comparison.mdx', /\|\s*Tradion Lens\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
     ],
   },
   {

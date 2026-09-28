@@ -85,13 +85,13 @@ export function assetManagerAnatomy() {
 export function lensVsAnalyzer() {
   const W = 900, H = 380;
   const cols = [
-    ['Chart Analyzer', 'You have an image file', [
+    ['Tradion Snipe', 'You have an image file', [
       'A screenshot you saved',
       'A chart someone sent you',
       'Any platform, any source',
       'You upload it',
     ], C.accent],
-    ['Lens', 'You are already in Tradion', [
+    ['Tradion Lens', 'You are already in Tradion', [
       'Uses the chart on screen',
       'Reads the ticker for you',
       'One click, no file handling',
@@ -116,7 +116,7 @@ export function lensVsAnalyzer() {
   s += text(48, 328, 'Both return a direction, a confidence score, and price levels.', { size: 11.5, weight: 600, font: F.head });
   s += text(48, 346, 'Neither one places a trade, and neither one is advice.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
-    title: 'Chart Analyzer compared with Lens',
-    desc: 'Two side-by-side columns. Chart Analyzer is for a chart image you upload. Lens works from the chart already open in Tradion. Both return a direction, a confidence score, and price levels.',
+    title: 'Tradion Snipe compared with Tradion Lens',
+    desc: 'Two side-by-side columns. Tradion Snipe is for a chart image you upload. Tradion Lens works from the chart already open in Tradion. Both return a direction, a confidence score, and price levels.',
   });
 }

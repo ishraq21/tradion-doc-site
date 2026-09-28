@@ -40,10 +40,10 @@ export function usageMeters() {
   const W = 900, H = 560;
   const meters = [
     ['AI Portfolio Analyst messages', 'One message to the AI Portfolio Analyst', 0.62],
-    ['AI Earnings Research messages', 'One question in AI Earnings Research', 0.45],
-    ['Chart Analyses', 'One submission to Chart Analysis', 0.3],
+    ['Earnings Deep Research messages', 'One question in Earnings Deep Research', 0.45],
+    ['Tradion Snipe analyses', 'One submission to Tradion Snipe', 0.3],
     ['Trade Autopsies', 'One generated autopsy report', 0.5],
-    ['Lens analyses', 'One Lens capture', 0.2],
+    ['Tradion Lens analyses', 'One Tradion Lens capture', 0.2],
     ['Manual Profile refreshes', 'One use of the Refresh button', 0.4],
   ];
   let s = label(28, 34, 'Six things are metered. Everything else is not counted against an allowance.');
@@ -63,14 +63,14 @@ export function usageMeters() {
   s += text(48, footerY + 20, 'Resets on your billing date, not the 1st. Unused allowance does not roll over.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
     title: 'The six metered counters',
-    desc: 'Six rows, one per metered item: AI Portfolio Analyst messages, AI Earnings Research messages, Chart Analyses, Trade Autopsies, Lens analyses, and manual Profile refreshes. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
+    desc: 'Six rows, one per metered item: AI Portfolio Analyst messages, Earnings Deep Research messages, Tradion Snipe analyses, Trade Autopsies, Tradion Lens analyses, and manual Profile refreshes. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
   });
 }
 
 /* ── memory-sources ──────────────────────────────────────────────────────── */
 export function memorySources() {
   const W = 940, H = 460;
-  const srcs = ['Chat sessions', 'Chart analyses', 'Lens analyses', 'Trade autopsies', 'Earnings reports', 'Trading patterns', 'Portfolio positions', 'Trade journal'];
+  const srcs = ['Chat sessions', 'Tradion Snipe analyses', 'Tradion Lens analyses', 'Trade autopsies', 'Earnings reports', 'Trading patterns', 'Portfolio positions', 'Trade journal'];
   let s = label(28, 32, 'What you do') + label(400, 32, 'What it builds') + label(720, 32, 'What it changes');
   srcs.forEach((n, i) => {
     const y = 50 + i * 46;
@@ -85,7 +85,7 @@ export function memorySources() {
     s += text(429, 204 + i * 22, t, { size: 10.5, fill: C.dim });
   });
   s += flowArrow(644, 706, 225, { arrow: true, stroke: C.accent });
-  const outs = ['Chart & Lens verdicts', 'Portfolio Analyst replies', 'Autopsy coaching'];
+  const outs = ['Snipe & Lens verdicts', 'Portfolio Analyst replies', 'Autopsy coaching'];
   outs.forEach((n, i) => {
     const y = 170 + i * 50;
     s += rect(712, y, 200, 30, { fill: C.panel, r: 6, stroke: C.mark });
