@@ -29,7 +29,7 @@ Full-page shots work out of the box. Cropped shots (`clip` in `shots.ts`) need a
 Add `data-doc="..."` to the component in the app:
 
 ```tsx
-<div data-doc="verdict-card" className="...">
+<div data-doc="lens-verdict" className="...">
 ```
 
 The full list of hooks the script expects is in `shots.ts`. Grep for `data-doc=` to see which ones exist. This is a one-time cost of about an hour and it makes the whole pipeline stop breaking.
@@ -77,7 +77,7 @@ The demo account should carry enough history that no screen shows an empty state
 | ≥ 3 playbook rules | Playbook manager, pre-flight checklist |
 | A portfolio of 10–14 positions across 5+ sectors | Portfolio dashboard, allocation chart |
 | ~90 days of portfolio snapshots | Net worth equity curve |
-| 2 chart analyses, 2 Lens analyses | Verdict cards, history lists |
+| 2 saved Lens analyses | Lens verdict panel, history list |
 
 Use recognisable but clearly fake tickers and round-ish numbers. Nothing that could be mistaken for a real customer's book.
 

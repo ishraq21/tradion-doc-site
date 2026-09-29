@@ -123,14 +123,6 @@ const METERS = [
     ],
   },
   {
-    key: 'chartAnalysesPerMonth',
-    label: 'Tradion Snipe analyses',
-    rows: [
-      ['concepts/usage-limits.mdx', /\|\s*Tradion Snipe analyses\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|/],
-      ['reference/plan-comparison.mdx', /\|\s*Tradion Snipe\s*\|\s*([\d,]+)[^|]*\|\s*([\d,]+)[^|]*\|/],
-    ],
-  },
-  {
     key: 'autopsiesPerMonth',
     label: 'Trade Autopsies',
     rows: [

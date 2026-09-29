@@ -6,7 +6,7 @@ Reference them like this:
 
 ```mdx
 <Frame caption="What the reader should notice.">
-  <img src="/images/diagrams/verdict-decision.svg" alt="What is in the image" />
+  <img src="/images/diagrams/usage-meters.svg" alt="What is in the image" />
 </Frame>
 ```
 
@@ -15,11 +15,8 @@ All illustrations are built by `scripts/build-illustrations.mjs`, use the Tradio
 | Slug | Shows | Intended page |
 | --- | --- | --- |
 | `diagrams/onboarding-steps` | The five onboarding steps as a labelled progression | `get-started/onboarding` |
-| `diagrams/usage-meters` | The six metered counters and what each one counts | `concepts/usage-limits` |
-| `diagrams/memory-sources` | Eight data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
-| `diagrams/verdict-decision` | The three checks that produce BUY, SELL, WAIT or NO TRADE, and what each verdict leaves on the card | `concepts/reading-a-verdict` |
-| `diagrams/confidence-anatomy` | A confidence score broken into contributing factors | `concepts/reading-a-verdict` |
-| `diagrams/trade-levels` | Entry, stop and target against the ATR band, and the break-even win rate each ratio demands | `concepts/reading-a-verdict` |
+| `diagrams/usage-meters` | The five metered counters and what each one counts | `concepts/usage-limits` |
+| `diagrams/memory-sources` | Seven data sources feeding one trader profile, feeding every AI response | `concepts/tradion-memory` |
 | `diagrams/data-sources-map` | Which provider supplies which kind of data | `concepts/data-sources` |
 | `diagrams/scorecard` | The three grades and what each measures | `trade-intelligence/reading-an-autopsy` |
 | `diagrams/autopsy-loop` | Trade → autopsy → pattern → playbook rule → pre-flight check | `trade-intelligence/playbook-and-preflight` |

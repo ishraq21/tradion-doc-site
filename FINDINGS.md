@@ -25,13 +25,6 @@ Nothing here was written into the docs. The docs describe what the code actually
 
 ## README claims the code does not support
 
-### Chart Analyzer
-- **Pine Script and Python strategy generation does not exist.** No `pine` identifier anywhere in the app or server.
-- **"Live Price Validation"** — `currentPrice`, `priceLoading`, `streamStatus`, `levelValidation` are all computed and never rendered.
-- **Options strategies** — removed (`index.tsx:1236`, "Removed per user request").
-- **Follow-up questions** — `CustomQuestion` is explicitly removed from Chart Analyzer (`index.tsx:27`); it only runs in Lens.
-- **Upcoming events panel** lives in `ChartAnalyzer/` but is imported only by Lens.
-
 ### Lens
 - **Lens cannot capture "any chart from TradingView, thinkorswim, or any platform".** It calls `getDisplayMedia({ preferCurrentTab: true })` and captures the Tradion tab's own embedded chart. This is the single biggest gap between the README and reality, and it changes how Lens should be positioned.
 - **Enrichment is Alpaca, not yfinance.**
@@ -87,7 +80,6 @@ Nothing here was written into the docs. The docs describe what the code actually
 - **The holdings table has three sort columns, not four** — `weight` is in the type and has no header.
 - **The net worth chart has no backfill.** Snapshots are written when you load the page, so the chart is empty on day one and gaps if the page goes unopened.
 - **Sector data is a 16-ticker lookup.** Everything outside the mega-caps falls to "Other".
-- **`WAIT` renders as `HOLD`** in `VerdictCard.tsx:22` while the model's enum is `WAIT`.
 - **Goal count is inconsistent**: README and schema say max 3, the server enforces 5, the UI allows one per metric across 4 metrics.
 - **The Telegram chat-ID instructions cannot be right** — there is no bot update handler anywhere in `server/`, only outbound `sendMessage`.
 - **`WEBHOOK_SIGNING_SECRET` is one platform-wide env var** with no per-user provisioning and no UI. If it is unset, the signature header is omitted entirely.

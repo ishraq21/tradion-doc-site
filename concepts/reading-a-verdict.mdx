@@ -1,81 +1,36 @@
 ---
 title: "Reading a verdict"
-description: "What BUY at 72% confidence means, and what it doesn't."
+description: "What BULLISH at 72% probability means, and what it doesn't."
 icon: "gauge"
 ---
 
-A verdict is the one-word answer at the top of a Tradion Snipe or Tradion Lens result, with a confidence percentage under it. Here is what each means, and how both get misread.
-
-<Frame caption="Three checks, in this order. The one that surprises people is the last branch: NO TRADE comes back with its prices removed, WAIT keeps every one of them.">
-  <img src="/images/diagrams/verdict-decision.svg" alt="Three checks in sequence. No directional edge gives NO TRADE, returned with no entry, stop, target or game plan. An edge price has not reached yet gives WAIT, shown on the card as HOLD, which keeps all its levels. An edge price has reached gives BUY or SELL. Confidence appears on all four and scores agreement in the evidence, not the odds of a payout." noZoom />
-</Frame>
-
-## The four chart verdicts
-
-[Tradion Snipe](/research/chart-analyzer) returns one of four:
-
-| Verdict | What Tradion is saying |
-| --- | --- |
-| **BUY** | A bullish setup, price at or near the entry, reward worth the risk. |
-| **SELL** | The same in reverse: a bearish setup, price at or near the entry. |
-| **WAIT** | A real setup exists, price has not reached the entry level yet. The card labels this **HOLD**. |
-| **NO TRADE** | No clear directional edge at all. Unlike WAIT, there is nothing here to wait for. |
-
-WAIT and NO TRADE are common, and neither is a failure. Not every chart holds a trade.
-
-The difference shows up on the card. **NO TRADE** arrives with no entry, no stop, no target and no game plan, stripped so nothing reads as actionable. **WAIT** keeps all of it, because the plan is real and only the trigger is missing. Those are the levels to watch for the trigger yourself.
-
-<Note>
-  The tooltip on a HOLD card reads *no clear directional edge right now*, which is nearer to NO TRADE's meaning than to WAIT's. The levels are the reliable tell: a WAIT card carries an entry, a stop and a target, a NO TRADE card carries none.
-</Note>
+A verdict is the one-word answer at the top of a [Tradion Lens](/research/lens) result, with a **Probability** percentage beside it. Here is what each part means, and how both get misread.
 
 ## BULLISH, BEARISH, NEUTRAL
 
-[Tradion Lens](/research/lens) uses a three-point scale instead. Tradion Snipe answers "is there a trade here" and speaks in actions; Tradion Lens answers "which way does this lean". Tradion Lens labels its number **Probability**, read it as strength of the read, not odds of a payout.
+| Verdict | What Tradion is saying |
+| --- | --- |
+| **BULLISH** | The evidence leans up. |
+| **BEARISH** | The evidence leans down. |
+| **NEUTRAL** | No clear lean either way. |
 
-When the two disagree, that is usually not a contradiction. NO TRADE on the chart with BULLISH underneath it reads as *the direction leans up, this chart does not offer a way in*.
+Tradion Lens answers "which way does this lean", not "buy this now". A BULLISH read describes the chart and the data behind it. It is not an instruction.
 
-## What confidence measures
+A NEUTRAL read comes back with no trade setup: entry, stop and target are removed before the panel renders, so nothing on it reads as actionable. NEUTRAL is common and not a failure. Not every chart leans.
 
-<Frame caption="Two cards can both read 70% and mean completely different things.">
-  <img src="/images/diagrams/confidence-anatomy.svg" alt="A confidence score broken into five weighted factors, each with its own score and reason" noZoom />
-</Frame>
-
-On a Tradion Snipe card, confidence is a weighted average of five factors, each scored 0–100:
-
-| Factor | Weight | What it scores |
-| --- | --- | --- |
-| Trend clarity | 30% | How cleanly price is moving one way. Choppy sideways action scores low. |
-| Pattern quality | 25% | How well-defined the formation is, a clean flag beats a vague one. |
-| Volume | 20% | Whether volume (shares changing hands) backs the move. A breakout on thin volume scores low. |
-| Risk/reward | 15% | What you stand to gain against what you stand to lose. |
-| Market context | 10% | Sector behaviour and conditions around the ticker. |
-
-Each factor comes with a one-line reason. **Read the factors, not the headline number.** A 70% built from clarity 95 and volume 20 is a clean pattern nobody is trading. A 70% built from five scores near 70 is a middling setup. Not the same trade.
-
-<Note>
-  Only Tradion Snipe works this way. Tradion Lens gives you one number and no breakdown. Same 0–100 scale in both; different amounts of showing the working.
-</Note>
-
-### What confidence is not
+## What Probability measures
 
 <Warning>
-  **Confidence is not the probability that the trade makes money.** A verdict at 80% does not win 8 times in 10. It means the evidence pointed one direction more consistently than on a 40% setup.
+  **Probability is not the chance that a trade makes money.** A BULLISH read at 80% does not win 8 times in 10. It is the strength of the read: the evidence pointed one way more consistently than on a 40% read.
 </Warning>
 
-It ignores your position size, your holding period, and news that breaks tomorrow. The separate **Setup Quality** figure, out of 10, averages trend clarity and pattern quality only: it describes the chart, while confidence describes the whole call.
+It is one number with no breakdown behind it. It ignores your position size, your holding period, and news that breaks tomorrow.
 
 ## Entry, stop, target, and the ratio between them
 
-<Frame caption="Left, the geometry: risk is entry to stop, reward is entry to target, and a stop inside the ATR band is taken out by ordinary movement. Right, what each ratio costs you, expressed as the win rate you need to break even.">
-  <img src="/images/diagrams/trade-levels.svg" alt="A price axis with target above, entry in the middle and stop below, a dashed band one ATR either side of entry marked as ordinary movement, and the spans labelled reward and risk. Beside it, four ratios with the break-even win rate each needs: 3:1 needs 25%, 2:1 needs 33%, 1.5:1 needs 40%, 1:1 needs 50%, with a line marking where Tradion prints the ratio in red" noZoom />
-</Frame>
+When a live setup exists, the panel shows a **Trade Setup** with three prices: **entry**, where the setup makes sense; **stop**, where you exit if it goes against you; **target**, where the move is expected to run out. Under them sits **R:R**, the risk/reward ratio.
 
-A chart verdict comes with three prices: **entry**, where the setup makes sense; **stop**, where you exit if it goes against you; **target**, where the move is expected to run out.
-
-**Risk/reward** is the distance from entry to target divided by the distance from entry to stop, written like `3:1`. At 3:1 you gain three times what you risk, so you can be right well under half the time and still come out ahead. Tradion flags anything below **1.5:1** in red.
-
-That red flag is a flat 1.5 whatever mode you selected, but the analysis was held to a different bar: **2:1 for swing, 1.5:1 for day trades, 1:1 for scalps**. A swing setup at 1.8:1 therefore prints in ordinary colour while sitting under the standard it was graded against. Check the ratio against your mode, not against the colour.
+**Risk/reward** is the distance from entry to target divided by the distance from entry to stop, written like `3:1`. At 3:1 you gain three times what you risk, so you can be right well under half the time and still come out ahead.
 
 The ratio is arithmetic on those three prices, not a separate judgement. Move the stop further away and the ratio falls, which is how a good-looking setup quietly becomes mediocre.
 
@@ -89,67 +44,63 @@ The arithmetic is `1 ÷ (ratio + 1)`. At 2:1 you need a third of them to work, a
   This is not an argument for always picking the biggest ratio. A target further away is reached less often, so the two numbers move against each other. A 1:1 setup you win 60% of the time beats a 3:1 setup you win 20% of the time. The break-even rate is the floor you have to clear, not a score to maximise.
 </Warning>
 
-None of it accounts for fees, spread, or slippage, so treat the real floor as a little higher than the table says.
-
-<Note>
-  A card titled *Conditional Levels*, marked "not actionable, waiting for trigger", is the WAIT case above. The ratio shown is what you would get at that entry, not from here.
-</Note>
+None of it accounts for fees, spread, or slippage, so treat the real floor as a little higher than the arithmetic says.
 
 ## The levels above and below the price
 
-Tradion Snipe also returns three reference prices for a stated time window:
+The **Critical levels** block holds three reference prices for a stated time window:
 
-- **Pivot point**, a neutral reference: the previous session's high, low, and close averaged.
+- **Pivot point**, a neutral reference: the last complete candle's high, low, and close averaged. Tradion computes it from market data rather than taking the model's figure.
 - **R1 (resistance)**, a price above, where selling has tended to appear and the move stalls.
 - **S1 (support)**, a price below, where buying has tended to appear and the fall stops.
 
-R1 and S1 each carry a **break probability**: the estimated chance price pushes all the way through inside that window. The model reads it off the shape of the chart, not from counting past occurrences, so treat 55% and 45% as "roughly a coin flip either way".
+R1 and S1 each carry a **break probability**: the model's estimate of the chance price pushes all the way through inside that window. It is an estimate, not a count of past occurrences, so treat 55% and 45% as "roughly a coin flip either way".
 
-The set has to survive a check before you see it: R1 above the current price, S1 below it, each at least half an ATR away. Fail any of that and the whole block is dropped rather than patched, so **a card with no pivot levels is not an omission**. The numbers did not hold together.
+The set has to survive a check before you see it: R1 above the current price, S1 below it, each at least half an ATR away. Fail any of that and the whole block is dropped rather than patched, so **a panel with no critical levels is not an omission**. The numbers did not hold together.
 
-The card also shows **ATR** (Average True Range), how far a symbol typically travels in one period, in dollars. If your stop is tighter than the ATR, ordinary movement takes you out before the idea gets a chance. On a chart card the ATR is read off the picture you uploaded, an estimate resting on an estimate. Tradion Lens calculates its own from real price bars, so trust that one when they differ.
+The block also shows **ATR** (Average True Range), how far a symbol typically travels in one period, in dollars. Tradion Lens calculates it from real price bars. If your stop is tighter than the ATR, ordinary movement takes you out before the idea gets a chance.
 
 ## In plain English
 
-Read the card in this order:
+Read the panel in this order:
 
 1. **The word**, a reading of the chart, not an instruction.
-2. **The five factors**, not the headline percentage. Two very different setups can average to the same number.
+2. **Probability**, the strength of the read, not the odds of a payout.
 3. **The three prices.** If entry-to-stop is smaller than the ATR, the stop is too tight for this symbol.
-4. **The ratio.** Anything red needs you to be right most of the time.
+4. **The ratio.** A low one needs you to be right most of the time.
 
-Nothing on the card knows your account size, your other positions, or what you will do once you are in.
+Nothing on the panel knows your account size, your other positions, or what you will do once you are in.
 
 ## When to distrust a verdict
 
 <AccordionGroup>
-  <Accordion title="The chart image is hard to read">
-    Tradion Snipe and Tradion Lens read pixels. Heavy indicator overlays, a cropped price axis, or a low-resolution capture all degrade the read. If the analysis describes levels not on your chart, recapture it cleanly.
+  <Accordion title="The chart is hard to read">
+    Tradion Lens reads the captured chart alongside live market data. Heavy indicator overlays or a cramped chart degrade the visual part of the read. If the analysis describes levels not on your chart, capture it again with a cleaner layout.
   </Accordion>
-  <Accordion title="The factor scores don't line up">
-    Low volume means a pattern nobody is trading, and those resolve badly. A wide spread across the five scores means conflicting evidence. A tight cluster, high or low, is a more reliable read than an average of extremes.
+  <Accordion title="The market data banner is showing">
+    *Analysis based on chart vision only* means the live data behind the read was unavailable, so indicator values may be estimated from the picture. Weigh that read less.
   </Accordion>
   <Accordion title="A major event is pending">
     Earnings, an economic release, or a rate decision can override chart structure entirely. Technical analysis two days before earnings is analysis of a chart, not of the situation.
   </Accordion>
   <Accordion title="You expected it to know your history">
-    Tradion Snipe does not. The verdict comes from the image and nothing else; your optional notes are read as context and cannot move the call, by design. Tradion Lens is the personalised one, drawing on [Tradion Memory](/concepts/tradion-memory), so with few autopsies logged that layer has little to say and its read is closer to generic.
+    Tradion Lens draws on [Tradion Memory](/concepts/tradion-memory) when personalisation is on. With few autopsies logged that layer has little to say, and the read is closer to generic.
   </Accordion>
 </AccordionGroup>
 
 ## Nobody is keeping score
 
-Tradion saves every verdict it gives you and never goes back to check it. There is no accuracy figure on a past call, no win rate by verdict, no record of where price went afterwards. That is the second reason not to read confidence as odds: no number on the card has ever been measured against an outcome.
+Tradion never goes back to check a verdict it gave you. There is no accuracy figure on a past read, no win rate by verdict, no record of where price went afterwards. That is the second reason not to read Probability as odds: no number on the panel has ever been measured against an outcome.
 
-So keep the score yourself. [Log the trade](/trade-intelligence/logging-a-trade) you took off a verdict and let [Trade Autopsy](/trade-intelligence/trade-autopsy) grade how you handled it. Ten of those tell you the thing no card can: whether these reads work on the instruments and timeframes you actually trade.
+So keep the score yourself. [Log the trade](/trade-intelligence/logging-a-trade) you took off a verdict and let [Trade Autopsy](/trade-intelligence/trade-autopsy) grade how you handled it. Ten of those tell you the thing no panel can: whether these reads work on the instruments and timeframes you trade.
 
 ## Verdicts are analysis, not advice
 
-A verdict is one input from a model reading a chart, and it can be wrong in ways the confidence score gives no warning about. The decision is yours every time.
+A verdict is one input from a model reading a chart and market data, and it can be wrong in ways the Probability gives no warning about. The decision is yours every time.
 
 <CardGroup cols={2}>
-  <Card title="Tradion Snipe" icon="chart-line" href="/research/chart-analyzer">
-    Where verdicts come from, and how to feed it a chart it can read.
+  <Card title="Tradion Lens" icon="crosshairs" href="/research/lens">
+    Where verdicts come from, and how to capture a chart it can read.
   </Card>
   <Card title="Glossary" icon="book" href="/help/glossary">
     Plain-English definitions of the terms used across the site.

@@ -11,7 +11,7 @@ Tradion Lens opens a live chart **inside Tradion**. Set the symbol, timeframe, a
 </Info>
 
 <Warning>
-  **Tradion Lens reads Tradion's own chart, not your other tabs.** It cannot capture a TradingView tab, a desktop platform, or anything else on your screen. If the chart you want is elsewhere, screenshot it and use [Tradion Snipe](/research/chart-analyzer).
+  **Tradion Lens reads Tradion's own chart, not your other tabs.** It cannot capture a TradingView tab, a desktop platform, or anything else on your screen, and it does not take an uploaded image. Open the symbol on Tradion's chart instead.
 </Warning>
 
 <Frame caption="Before you capture: a live chart you drive inside Tradion. Set the symbol, timeframe, and indicators, then hit Capture.">
@@ -21,18 +21,6 @@ Tradion Lens opens a live chart **inside Tradion**. Set the symbol, timeframe, a
 <Frame caption="After: the chart you drove on the left, the read on the right, with a forecast and bull, base, and bear targets.">
   <img src="/images/screens/lens-analysis.jpg" alt="The Tradion Lens screen showing a daily candlestick chart with MACD and RSI panes, and an analysis panel giving a bullish call with probability, a written summary, a price forecast with bull, base and bear targets, and a trade setup with entry, stop and target" noZoom />
 </Frame>
-
-## Tradion Lens or Tradion Snipe
-
-| | **Tradion Lens** | **Tradion Snipe** |
-| --- | --- | --- |
-| The chart | A live one you drive inside Tradion | An image file you already have |
-| What it reads | The chart **plus** live prices, indicators, analyst data, and events | The image only |
-| What it returns | BULLISH / BEARISH / NEUTRAL | BUY / SELL / HOLD / NO TRADE, in a mode you pick |
-| Follow-up questions | Yes, in the panel | No |
-| Needs | A desktop Chromium browser | Nothing beyond the file |
-
-**Use Tradion Lens** for a listed symbol you want read with real data behind it. **Use [Tradion Snipe](/research/chart-analyzer)** for a chart Tradion Lens can't draw, a screenshot from a friend, an unsupported platform, an old capture.
 
 ## Capturing
 
@@ -91,7 +79,7 @@ Before the model writes anything, Tradion pulls real bars for the ticker from Al
 
 An indicator reading in a Tradion Lens result is calculated from market data, not read off your chart. If your chart shows no RSI panel at all, Tradion Lens can still tell you the RSI. Fibonacci levels are skipped and labelled as such when the price range is too narrow (under about 2% across the last 60 bars) to mean anything.
 
-When a source is unavailable a banner says so: *some sources unavailable*, or *analysis based on chart vision only*. Treat the second as a Tradion Snipe result in the Tradion Lens panel, see [Data sources](/concepts/data-sources) for who supplies what.
+When a source is unavailable a banner says so: *some sources unavailable*, or *analysis based on chart vision only*. The second means the read rests on the picture alone and indicator values may be estimated, so weigh it less. See [Data sources](/concepts/data-sources) for who supplies what.
 
 ## Personalised feedback
 
@@ -108,8 +96,8 @@ Capture again after saving and Tradion Lens asks first: the new capture replaces
 A reopened analysis carries a dated banner: the chart behind it has moved on since. The verdict was true about a moment that has passed.
 
 <CardGroup cols={2}>
-  <Card title="Tradion Snipe" icon="chart-line" href="/research/chart-analyzer">
-    For charts that arrive as files.
+  <Card title="Reading a verdict" icon="gauge" href="/concepts/reading-a-verdict">
+    What the verdict, probability, and levels mean.
   </Card>
   <Card title="Troubleshooting" icon="wrench" href="/help/troubleshooting">
     Capture prompts, blank frames, and wrong tickers.

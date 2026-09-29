@@ -5,7 +5,7 @@ description: "What each counter counts, when it resets, and what happens when yo
 icon: "gauge-high"
 ---
 
-Tradion meters six things. Everything else on your plan is not counted against an allowance.
+Tradion meters five things. Everything else on your plan is not counted against an allowance.
 
 <CardGroup cols={2}>
   <Card title="AI Portfolio Analyst messages" icon="message">
@@ -13,9 +13,6 @@ Tradion meters six things. Everything else on your plan is not counted against a
   </Card>
   <Card title="Earnings Deep Research messages" icon="magnifying-glass-chart">
     Questions you send in **Earnings Deep Research**.
-  </Card>
-  <Card title="Tradion Snipe analyses" icon="chart-line">
-    Submissions to **Tradion Snipe**.
   </Card>
   <Card title="Trade Autopsies" icon="stethoscope">
     Reports generated in **Trade Autopsy**.
@@ -34,13 +31,12 @@ Tradion meters six things. Everything else on your plan is not counted against a
 | --- | --- | --- |
 | AI Portfolio Analyst messages | 120 | 250 |
 | Earnings Deep Research messages | 10 | 25 |
-| Tradion Snipe analyses | 60 | 100 |
 | Trade Autopsies | 20 | 30 |
 | Tradion Lens analyses | 30 | 50 |
 | Manual Profile refreshes | 15 | 30 |
 
 <Note>
-  During a free trial, a smaller trial allowance applies instead: 15 / 1 / 3 / 2 / 3 / 1 on Starter and 30 / 3 / 5 / 3 / 5 / 2 on Pro, in the same row order as the table above. The full monthly allowance starts once your first payment succeeds, at the end of the trial.
+  During a free trial, a smaller trial allowance applies instead: 15 / 1 / 2 / 3 / 1 on Starter and 30 / 3 / 3 / 5 / 2 on Pro, in the same row order as the table above. The full monthly allowance starts once your first payment succeeds, at the end of the trial.
 </Note>
 
 ## What is *not* metered
@@ -48,16 +44,16 @@ Tradion meters six things. Everything else on your plan is not counted against a
 These run as often as you like on any paid plan or trial:
 
 - Portfolio dashboard refreshes and brokerage syncs
-- Follow-up questions on a Tradion Snipe, Tradion Lens, or Trade Autopsy you already ran
+- Follow-up questions on a Tradion Lens analysis or Trade Autopsy you already ran
 - Autopsy intake (the narrative you type before a report is generated)
 - The automatic Profile recomputation that runs after a Memory reset (only using the Refresh button yourself counts)
 
 ## When they reset
 
-All six counters reset on your **billing cycle date**, the day of the month you subscribed, not the 1st. You can see your next reset date and current balances in **Settings → Monthly Usage**.
+All five counters reset on your **billing cycle date**, the day of the month you subscribed, not the 1st. You can see your next reset date and current balances in **Settings → Monthly Usage**.
 
-<Frame caption="Settings → Monthly Usage shows live balances and the reset date for all six counters.">
-  <img src="/images/diagrams/usage-meters.svg" alt="Six counter rows, one per metered feature, each with a progress bar showing how much of the monthly allowance is used" noZoom />
+<Frame caption="Settings → Monthly Usage shows live balances and the reset date for all five counters.">
+  <img src="/images/diagrams/usage-meters.svg" alt="Five counter rows, one per metered feature, each with a progress bar showing how much of the monthly allowance is used" noZoom />
 </Frame>
 
 <Warning>
@@ -72,7 +68,7 @@ You get a clear block, not a silent failure. An upgrade prompt appears naming th
 | --- | --- |
 | AI Portfolio Analyst messages | Everything except sending a new message. Existing sessions stay readable. |
 | Earnings Deep Research messages | Every earlier thread and your notebook stay readable; you can't send a new question. |
-| Tradion Snipe, Tradion Lens analyses, or Trade Autopsies | Everything you already generated stays readable; you can't start a new one. |
+| Tradion Lens analyses or Trade Autopsies | Everything you already generated stays readable; you can't start a new one. |
 | Manual Profile refreshes | Your existing Profile stays as-is; the automatic recomputation on your next tracked activity still works. |
 
 Your options are to wait for the reset, or upgrade to Pro, which charges the prorated difference immediately and grants the full Pro allowance right away, rather than pro-rating the allowance itself.
@@ -83,7 +79,7 @@ An **AI Portfolio Analyst message** is one message *you* send in the portfolio c
 
 An **Earnings Deep Research message** is one question you send. Follow-ups count too, and so does a question that names three companies, so a wide question costs the same as a narrow one. A run that fails on Tradion's side gives the message back. **Stop** does not: the message is still counted, and **Ask Again** after a stop is a new question. The balance sits in the top bar of Earnings Deep Research as well as in **Settings → Monthly Usage**.
 
-A **Tradion Snipe** or **Tradion Lens** count is one submission, regardless of how many images you include in it. A failed submission (a queueing error, or a job that errors or times out) gives the count back; leaving the page before it finishes does not.
+A **Tradion Lens** count is one capture submitted for analysis. A failed submission (a queueing error, or a job that errors or times out) gives the count back; leaving the page before it finishes does not.
 
 A **Trade Autopsy** count is one generated report. Submitting the intake information, and asking follow-up questions about a completed report, are free. Any error during generation gives the count back.
 

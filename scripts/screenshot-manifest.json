@@ -95,26 +95,6 @@
     "page": "portfolio/reading-the-dashboard"
   },
   {
-    "slug": "research/chart-analyzer-full",
-    "caption": "Tradion Snipe",
-    "page": "get-started/tour"
-  },
-  {
-    "slug": "research/chart-analyzer-upload",
-    "caption": "The upload state",
-    "page": "research/chart-analyzer"
-  },
-  {
-    "slug": "research/confidence-breakdown",
-    "caption": "Confidence factor breakdown",
-    "page": "concepts/reading-a-verdict"
-  },
-  {
-    "slug": "research/forecast-cone",
-    "caption": "Forecast cone",
-    "page": "research/chart-analyzer"
-  },
-  {
     "slug": "research/lens-capture",
     "caption": "The capture flow",
     "page": "research/lens"
@@ -128,16 +108,6 @@
     "slug": "research/lens-verdict",
     "caption": "A Tradion Lens verdict card",
     "page": "research/lens"
-  },
-  {
-    "slug": "research/trade-levels",
-    "caption": "Entry, stop, and target levels",
-    "page": "concepts/reading-a-verdict"
-  },
-  {
-    "slug": "research/verdict-card",
-    "caption": "A verdict card",
-    "page": "concepts/reading-a-verdict"
   },
   {
     "slug": "shell/feedback-modal",

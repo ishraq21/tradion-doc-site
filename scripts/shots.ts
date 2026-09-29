@@ -72,12 +72,6 @@ export const SHOTS: Shot[] = [
   { slug: 'portfolio/asset-manager-chart', view: 'PORTFOLIO_AGENT', clip: '[data-doc="agent-chart"]', settle: 3000 },
 
   // ── Research ────────────────────────────────────────────────────────────
-  { slug: 'research/chart-analyzer-full', view: 'CHART_ANALYZER', settle: 2500 },
-  { slug: 'research/chart-analyzer-upload', view: 'CHART_ANALYZER', clip: '[data-doc="upload-dropzone"]' },
-  { slug: 'research/verdict-card', view: 'CHART_ANALYZER', clip: '[data-doc="verdict-card"]', settle: 2500 },
-  { slug: 'research/confidence-breakdown', view: 'CHART_ANALYZER', clip: '[data-doc="confidence-breakdown"]', settle: 2500 },
-  { slug: 'research/trade-levels', view: 'CHART_ANALYZER', clip: '[data-doc="trade-levels"]', settle: 2500 },
-  { slug: 'research/forecast-cone', view: 'CHART_ANALYZER', clip: '[data-doc="forecast-cone"]', settle: 2500 },
 
   { slug: 'research/lens-full', view: 'LENS', settle: 2000 },
   { slug: 'research/lens-capture', view: 'LENS', clip: '[data-doc="lens-capture"]' },

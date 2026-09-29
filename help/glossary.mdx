@@ -138,12 +138,6 @@ Only needed if you trade options.
   <Accordion title="Behavioural fingerprint">
     A radar chart comparing your last 30 days against the 60 before them, across entry quality, exit discipline, and risk management.
   </Accordion>
-  <Accordion title="Tradion Snipe">
-    Drop in a saved chart image and get a directional verdict (BUY, SELL, HOLD, or NO TRADE) with a 0–100 confidence score, an entry price, a stop, a target, and the factors behind the call. Counted against your monthly allowance: 60 on Starter, 100 on Pro. See [Tradion Snipe](/research/chart-analyzer).
-  </Accordion>
-  <Accordion title="Confidence score">
-    A 0–100 number attached to a verdict, broken into named contributing factors. It measures how much the evidence agrees with itself, not the probability of making money. See [reading a verdict](/concepts/reading-a-verdict).
-  </Accordion>
   <Accordion title="Counterfactual">
     The same trade replayed with one thing changed (the stop honoured, or half the size) showing what your own stated rules would have returned. The gap between that and what happened is the cost of the deviation.
   </Accordion>
@@ -154,7 +148,7 @@ Only needed if you trade options.
     First in, first out. When your broker sends a list of buys and sells with no record of which sell closed which buy, Tradion pairs the oldest open buy with the next sell. It's the standard convention, and it's what lets a raw transaction list become a list of trades.
   </Accordion>
   <Accordion title="Tradion Lens">
-    Opens a live chart inside Tradion. Set the symbol and timeframe, click Capture, and get a verdict, bull/base/bear price targets, and support and resistance levels. Follow-up questions are allowed. It reads Tradion's own chart only. For a chart image you already have, use Tradion Snipe. Counted against your monthly allowance: 30 on Starter, 50 on Pro. See [Tradion Lens](/research/lens).
+    Opens a live chart inside Tradion. Set the symbol and timeframe, click Capture, and get a verdict, bull/base/bear price targets, and support and resistance levels. Follow-up questions are allowed. It reads Tradion's own chart only, not an uploaded image or another tab. Counted against your monthly allowance: 30 on Starter, 50 on Pro. See [Tradion Lens](/research/lens).
   </Accordion>
   <Accordion title="Pattern">
     A recurring mistake detected across your trades, carrying a severity score, a count of how often it has happened, and what it has cost.
@@ -162,11 +156,11 @@ Only needed if you trade options.
   <Accordion title="Playbook rule">
     A trading rule you've written down, usually after an autopsy showed you the same mistake twice.
   </Accordion>
+  <Accordion title="Probability">
+    The 0–100 percentage beside a Tradion Lens verdict. It measures the strength of the read, how consistently the evidence pointed one way, not the chance of making money. See [reading a verdict](/concepts/reading-a-verdict).
+  </Accordion>
   <Accordion title="Risk score">
     A 0–100 summary of how safely you have been trading recently. Higher is safer. Shown on Home and Profile.
-  </Accordion>
-  <Accordion title="Signal">
-    A saved chart result with its verdict and trade plan.
   </Accordion>
   <Accordion title="Tradion Memory">
     The layer that builds a profile of how you trade from everything you do in the app, and attaches it to every AI answer you get. See [Tradion Memory](/concepts/tradion-memory).
@@ -175,7 +169,7 @@ Only needed if you trade options.
     One of five behavioural classifications assigned by the Psychological Profile, which unlocks after two completed autopsies. The five archetypes are **Momentum Chaser**, **Methodical Planner**, **Contrarian Thinker**, **Reactive Trader**, and **Patient Stalker**.
   </Accordion>
   <Accordion title="Verdict">
-    A directional call. Tradion Snipe returns BUY, SELL, WAIT (shown on the card as HOLD, meaning the setup exists but has not triggered), or NO TRADE (no edge at all, and no levels). Tradion Lens returns BULLISH, BEARISH, or NEUTRAL.
+    A directional call from Tradion Lens: BULLISH, BEARISH, or NEUTRAL. A NEUTRAL read comes back with no entry, stop, or target.
   </Accordion>
 </AccordionGroup>
 
@@ -183,7 +177,7 @@ Only needed if you trade options.
 
 <CardGroup cols={2}>
   <Card title="Reading a verdict" icon="gauge" href="/concepts/reading-a-verdict">
-    What a confidence score measures, and what it doesn't.
+    What a verdict's probability measures, and what it doesn't.
   </Card>
   <Card title="FAQ" icon="circle-question" href="/help/faq">
     Short answers to the questions we get most.

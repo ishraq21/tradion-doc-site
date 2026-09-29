@@ -4,14 +4,13 @@ Real screens from the live app, captured with `scripts/capture-mask.js` active s
 
 | File | Screen | Used on | Masked |
 | --- | --- | --- | --- |
-| `chart-analyzer-history.jpg` | Tradion Snipe history | `research/chart-analyzer` | Nothing needed |
 | `earnings-research-thread.jpg`, `earnings-research-overview.jpg`, `earnings-research-what-changed.jpg`, `earnings-research-compare.jpg`, `earnings-research-scenarios.jpg` | Earnings Deep Research thread and its four views | `research/ai-earnings-research` | Nothing needed, public tickers only |
 | `earnings-research-working-notes.jpg` | Earnings Deep Research, working notes mid-run | `research/ai-earnings-research` | Cropped to the progress area |
 | `earnings-research-sources.jpg`, `earnings-research-estimates.jpg` | Earnings Deep Research, Sources panel and estimates table | `research/earnings-evidence` | Nothing needed, public tickers only |
 | `earnings-research-thesis-form.jpg` | Research Notebook, New Thesis form | `research/earnings-notebook` | Cropped to the dialog |
 | `trade-autopsy-overview.jpg` | Trade Autopsy → Overview | `trade-intelligence/trade-autopsy` | Ticker, P&L |
 | `account-settings.jpg` | Settings | `account/settings` | Name, email |
-| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Nothing needed: a demo account (first name "Jane"), public tickers. Cropped to the content column, so the sidebar is not shown |
+| `home.jpg` | Home | `get-started/welcome`, `get-started/tour` | Nothing needed: a demo account (first name "Jane"), public tickers. Cropped to the content column, so the sidebar is not shown. **Needs recapture:** the Research row at the bottom still shows a retired tool |
 | `asset-manager.jpg` | AI Portfolio Analyst | `portfolio/ai-portfolio-analyst` | Nothing needed |
 | `lens-analysis.jpg`, `lens-chart.jpg`, `lens-signals.jpg` | Tradion Lens | `research/lens` | Nothing needed |
 

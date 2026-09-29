@@ -37,16 +37,15 @@ export function onboardingSteps() {
 
 /* ── usage-meters ────────────────────────────────────────────────────────── */
 export function usageMeters() {
-  const W = 900, H = 560;
+  const W = 900, H = 486;
   const meters = [
     ['AI Portfolio Analyst messages', 'One message to the AI Portfolio Analyst', 0.62],
     ['Earnings Deep Research messages', 'One question in Earnings Deep Research', 0.45],
-    ['Tradion Snipe analyses', 'One submission to Tradion Snipe', 0.3],
     ['Trade Autopsies', 'One generated autopsy report', 0.5],
     ['Tradion Lens analyses', 'One Tradion Lens capture', 0.2],
     ['Manual Profile refreshes', 'One use of the Refresh button', 0.4],
   ];
-  let s = label(28, 34, 'Six things are metered. Everything else is not counted against an allowance.');
+  let s = label(28, 34, 'Five things are metered. Everything else is not counted against an allowance.');
   meters.forEach(([n, d, f], i) => {
     const y = 56 + i * 74;
     s += rect(28, y, W - 56, 60, { fill: C.panel, r: 8 });
@@ -62,18 +61,18 @@ export function usageMeters() {
   s += rect(28, footerY, W - 56, 30, { fill: C.panelAlt, r: 6 });
   s += text(48, footerY + 20, 'Resets on your billing date, not the 1st. Unused allowance does not roll over.', { size: 11, fill: C.dim });
   return svg(W, H, s, {
-    title: 'The six metered counters',
-    desc: 'Six rows, one per metered item: AI Portfolio Analyst messages, Earnings Deep Research messages, Tradion Snipe analyses, Trade Autopsies, Tradion Lens analyses, and manual Profile refreshes. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
+    title: 'The five metered counters',
+    desc: 'Five rows, one per metered item: AI Portfolio Analyst messages, Earnings Deep Research messages, Trade Autopsies, Tradion Lens analyses, and manual Profile refreshes. Each shows a progress bar with the amount redacted. A footer notes that counters reset on your billing date and do not roll over.',
   });
 }
 
 /* ── memory-sources ──────────────────────────────────────────────────────── */
 export function memorySources() {
   const W = 940, H = 460;
-  const srcs = ['Chat sessions', 'Tradion Snipe analyses', 'Tradion Lens analyses', 'Trade autopsies', 'Earnings reports', 'Trading patterns', 'Portfolio positions', 'Trade journal'];
+  const srcs = ['Chat sessions', 'Tradion Lens analyses', 'Trade autopsies', 'Earnings reports', 'Trading patterns', 'Portfolio positions', 'Trade journal'];
   let s = label(28, 32, 'What you do') + label(400, 32, 'What it builds') + label(720, 32, 'What it changes');
   srcs.forEach((n, i) => {
-    const y = 50 + i * 46;
+    const y = 72 + i * 46;
     s += rect(28, y, 200, 28, { fill: C.panel, r: 6 });
     s += text(42, y + 18, n, { size: 11, fill: C.dim });
     s += path(`M232,${y + 14} C280,${y + 14} 330,225 386,225`, { stroke: C.border });
@@ -85,7 +84,7 @@ export function memorySources() {
     s += text(429, 204 + i * 22, t, { size: 10.5, fill: C.dim });
   });
   s += flowArrow(644, 706, 225, { arrow: true, stroke: C.accent });
-  const outs = ['Snipe & Lens verdicts', 'Portfolio Analyst replies', 'Autopsy coaching'];
+  const outs = ['Tradion Lens reads', 'Portfolio Analyst replies', 'Autopsy coaching'];
   outs.forEach((n, i) => {
     const y = 170 + i * 50;
     s += rect(712, y, 200, 30, { fill: C.panel, r: 6, stroke: C.mark });
@@ -95,204 +94,7 @@ export function memorySources() {
   s += text(28, 440, 'Memory runs passively. There is no switch to turn it on.', { size: 11, fill: C.faint });
   return svg(W, H, s, {
     title: 'How Tradion Memory works',
-    desc: 'Eight activity sources on the left feed into a single trader profile in the centre, which then shapes three kinds of AI output on the right.',
-  });
-}
-
-/* ── verdict-decision ────────────────────────────────────────────────────── */
-/**
- * Why there are four verdict words, and what each one leaves on the card.
- *
- * This replaced a labelled mock-up of a verdict card. That version showed a
- * reader where the confidence bar sits, which they can see for themselves by
- * looking at the product. It did not answer the question a beginner actually
- * arrives with: what is the difference between WAIT and NO TRADE, and why does
- * one of them come back with no prices on it.
- *
- * The three checks below are the real ones, from server/prompts/chartAnalysis.js
- * and server/utils/chartValidators.js. NO TRADE has its levels and game plan
- * deleted on the way out; WAIT is deliberately left intact. That behaviour is
- * invisible until someone tells you, which is what makes it worth a diagram.
- */
-export function verdictDecision() {
-  const W = 900, H = 444;
-  const QX = 40, QW = 336, QCX = QX + QW / 2, QR = QX + QW;
-  const OX = 464, OW = 396;
-
-  let s = label(QX + 4, 40, 'What Tradion checks');
-  s += label(OX + 4, 40, 'What the card gives you');
-
-  const question = (y, l1, l2) =>
-    rect(QX, y, QW, 62, { fill: C.panel, r: 8 }) +
-    text(QX + 18, y + 27, l1, { size: 12.5, fill: C.text, weight: 500 }) +
-    text(QX + 18, y + 45, l2, { size: 12.5, fill: C.text, weight: 500 });
-
-  s += question(56, 'Is there a directional edge', 'on this chart at all?');
-  s += question(178, 'Has price reached the', 'entry level yet?');
-  s += question(300, 'Which way does the', 'setup lean?');
-
-  // The accent traces the one route that ends in a trade you can take now.
-  const yes = (y1, y2) =>
-    line(QCX, y1, QCX, y2, { stroke: C.accent, sw: 1.2 }) +
-    text(QCX + 10, (y1 + y2) / 2 + 4, 'yes', { size: 10.5, fill: C.accent, weight: 500 });
-  s += yes(118, 178);
-  s += yes(240, 300);
-
-  const branch = (y, word) =>
-    flowArrow(QR, OX - 6, y) +
-    (word ? text((QR + OX) / 2 - 6, y - 8, word, { size: 10.5, fill: C.faint, anchor: 'middle' }) : '');
-  s += branch(87, 'no');
-  s += branch(209, 'no');
-
-  const card = (y, h, word, sub, lines) => {
-    let o = rect(OX, y, OW, h, { fill: C.panelAlt, r: 8 });
-    o += text(OX + 18, y + 25, word, { size: 13.5, weight: 700, fill: C.text, font: F.head });
-    // Fixed column rather than a width guess: it lines the note up with the
-    // BUY / SELL text below, and a mis-measured word length collided here once.
-    if (sub) o += text(OX + 108, y + 25, sub, { size: 10, fill: C.faint, font: F.mono });
-    lines.forEach((t, i) => { o += text(OX + 18, y + 46 + i * 16, t, { size: 11, fill: C.dim }); });
-    return o;
-  };
-
-  s += card(52, 70, 'NO TRADE', null, [
-    'No entry, no stop, no target, no game plan.',
-    'Tradion strips them, so nothing reads as actionable.',
-  ]);
-  s += card(174, 70, 'WAIT', 'the card prints HOLD', [
-    'A real setup, levels and all, that has not triggered.',
-    'These are the prices worth setting an alert on.',
-  ]);
-
-  // The last question splits rather than branching off, so it forks.
-  s += flowArrow(QR, 444, 331);
-  s += line(444, 312, 444, 350, { stroke: C.mark, sw: 1.2 });
-  s += flowArrow(444, OX - 6, 312);
-  s += flowArrow(444, OX - 6, 350);
-
-  const row = (y, word, t) =>
-    rect(OX, y, OW, 32, { fill: C.panelAlt, r: 8 }) +
-    text(OX + 18, y + 21, word, { size: 13.5, weight: 700, fill: C.text, font: F.head }) +
-    text(OX + 108, y + 21, t, { size: 11, fill: C.dim });
-  s += row(296, 'BUY', 'Bullish, and price is already at the entry.');
-  s += row(334, 'SELL', 'Bearish, and price is already at the entry.');
-
-  s += line(QX, 396, W - QX, 396, { stroke: C.hairline });
-  s += text(QX + 4, 420, 'Confidence rides on all four. It scores how much the evidence agreed, never the odds of a payout.', { size: 11.5, fill: C.dim });
-
-  return svg(W, H, s, {
-    title: 'How Tradion arrives at one of four chart verdicts',
-    desc: 'Three checks in sequence. No directional edge gives NO TRADE, which comes back with no entry, stop, target or game plan. An edge that price has not reached yet gives WAIT, shown on the card as HOLD, which keeps all of its levels. An edge price has reached gives BUY or SELL. Confidence appears on all four and scores agreement in the evidence, not the odds of a payout.',
-  });
-}
-
-/* ── confidence-anatomy ──────────────────────────────────────────────────── */
-export function confidenceAnatomy() {
-  const W = 900, H = 340;
-  const factors = [
-    ['Trend agreement', 0.86, 'Do the timeframes point the same way?'],
-    ['Pattern quality', 0.7, 'How cleanly does the setup match a known shape?'],
-    ['Volume confirmation', 0.55, 'Is participation backing the move?'],
-    ['Risk / reward', 0.4, 'Is the target far enough from the stop?'],
-    ['Market context', 0.62, 'Does the wider tape support it?'],
-  ];
-  let s = label(28, 34, 'A confidence score is a sum of parts. Read the parts');
-  factors.forEach(([n, v, d], i) => {
-    const y = 58 + i * 46;
-    s += text(28, y + 14, n, { size: 12, weight: 500 });
-    s += text(28, y + 30, d, { size: 10, fill: C.faint });
-    const bx = 330, bw = 420;
-    s += rect(bx, y + 6, bw, 12, { r: 6, fill: C.hairline, stroke: 'none', sw: 0 });
-    s += rect(bx, y + 6, bw * v, 12, { r: 6, fill: v < 0.5 ? C.faint : C.accent, stroke: 'none', sw: 0 });
-    s += text(bx + bw + 14, y + 16, v < 0.5 ? 'weak' : v < 0.75 ? 'fair' : 'strong', { size: 10, fill: C.faint });
-  });
-  s += rect(28, 290, W - 56, 34, { fill: C.panelAlt, r: 6, stroke: C.accentDim, dash: '4 3' });
-  s += text(48, 312, 'One weak factor inside a high overall score is the most useful thing on the card.', { size: 11.5, fill: C.dim });
-  return svg(W, H, s, {
-    title: 'How a confidence score breaks down',
-    desc: 'Five contributing factors (trend agreement, pattern quality, volume confirmation, risk and reward, and market context), each shown as a bar labelled weak, fair, or strong.',
-  });
-}
-
-/* ── trade-levels ────────────────────────────────────────────────────────── */
-/**
- * The geometry on the left, the consequence of it on the right.
- *
- * The previous version drew a sparkline, three labelled lines, and "3 : 1" in
- * large type. Every one of those restated the caption underneath it. Worse, it
- * left the ratio feeling like a grade the model awards, which is the exact
- * misreading the page spends a paragraph correcting.
- *
- * So: no invented prices, because we never show numbers that look like account
- * data. What the picture adds instead is the part prose is bad at. On the left,
- * the ATR band, so a beginner can see what "your stop is inside the noise"
- * looks like rather than being told. On the right, the break-even win rate each
- * ratio demands, which turns an abstract ratio into a number about you, plus
- * the 1.5 line the interface flags at (VerdictCard.tsx) and the per-mode
- * minimums the analysis is actually graded against (chartAnalysis.js).
- */
-export function tradeLevels() {
-  const W = 900, H = 372;
-  const AX = 150, AR = 400;               // price axis, and how far levels run
-  const yT = 76, yE = 190, yS = 252;      // target, entry, stop
-  const bandTop = 154, bandBot = 226;     // one ATR either side of entry
-
-  let s = label(40, 40, 'The three prices');
-
-  // One ATR of ordinary movement, drawn first so the levels sit on top of it.
-  s += rect(AX, bandTop, AR - AX, bandBot - bandTop, { fill: C.panelAlt, stroke: C.border, dash: '4 4', r: 6 });
-  s += label(AX + 12, 172, 'One ATR · ordinary movement', { fill: C.faint });
-
-  const level = (y, name) =>
-    line(AX, y, AR, y, { stroke: C.border, sw: 1.2 }) +
-    text(AX - 12, y + 4, name, { size: 11.5, fill: C.text, weight: 600, anchor: 'end' });
-  s += level(yT, 'Target') + level(yE, 'Entry') + level(yS, 'Stop');
-
-  // The part a beginner cannot see for themselves: the stop has to clear the
-  // noise before it is a stop at all. Explicit lines, never a computed slice.
-  s += text(AX + 12, 206, 'a stop in here is taken out by', { size: 10, fill: C.faint });
-  s += text(AX + 12, 219, 'ordinary movement, not by being wrong', { size: 10, fill: C.faint });
-
-  // Reward and risk as spans, not as a score.
-  const span = (y1, y2, name) => {
-    const x = AR + 16;
-    return path(`M${x},${y1} L${x},${y2}`, { stroke: C.mark, sw: 1.2 }) +
-      line(x - 5, y1, x + 5, y1, { stroke: C.mark }) +
-      line(x - 5, y2, x + 5, y2, { stroke: C.mark }) +
-      text(x + 12, (y1 + y2) / 2 + 4, name, { size: 11, fill: C.dim, weight: 500 });
-  };
-  s += span(yT, yE, 'reward');
-  s += span(yE, yS, 'risk');
-
-  /* ── right panel: what the ratio asks of you ──────────────────────────── */
-  const PX = 500, BX = 584, BW = 200;
-  s += label(PX, 40, 'What each ratio asks of you');
-  s += text(PX, 62, 'The win rate you need to break even, before costs', { size: 11, fill: C.faint });
-
-  const rung = (y, ratio, rate) =>
-    text(PX, y + 8, ratio, { size: 12, fill: C.text, font: F.mono }) +
-    meter(BX, y + 1, BW, rate / 100, { fill: C.mark }) +
-    text(BX + BW + 14, y + 8, `${rate}%`, { size: 12, fill: C.dim, font: F.mono });
-
-  s += rung(88, '3 : 1', 25);
-  s += rung(124, '2 : 1', 33);
-  s += rung(160, '1.5 : 1', 40);
-
-  // Anything under this line prints red on the card. Drawn as a floor, because
-  // that is where it sits in the list.
-  s += line(PX, 192, PX + 320, 192, { stroke: C.accentDim, dash: '4 4' });
-  s += text(PX, 208, 'Tradion prints the ratio in red below this line', { size: 10.5, fill: C.accent });
-
-  s += rung(224, '1 : 1', 50);
-
-  s += text(PX, 268, 'The analysis is graded harder than the card is coloured:', { size: 10.5, fill: C.faint });
-  s += text(PX, 283, '2:1 swing, 1.5:1 day trade, 1:1 scalp.', { size: 10.5, fill: C.faint });
-
-  s += line(40, 320, W - 40, 320, { stroke: C.hairline });
-  s += text(44, 344, 'The ratio is arithmetic on the three prices, never a judgement. Widen the stop and it falls with you.', { size: 11.5, fill: C.dim });
-
-  return svg(W, H, s, {
-    title: 'Entry, stop and target, and what the ratio between them demands',
-    desc: 'On the left, a price axis with target above, entry in the middle and stop below. A dashed band one ATR either side of entry marks ordinary movement, noting that a stop placed inside it is taken out by noise rather than by being wrong. The spans above and below entry are labelled reward and risk. On the right, four ratios with the break-even win rate each needs: three to one needs twenty-five per cent, two to one needs thirty-three, one and a half to one needs forty, one to one needs fifty. A line marks where Tradion prints the ratio in red, with a note that the analysis itself is graded against two to one for swing, one and a half for day trades and one to one for scalps.',
+    desc: 'Seven activity sources on the left feed into a single trader profile in the centre, which then shapes three kinds of AI output on the right.',
   });
 }
 

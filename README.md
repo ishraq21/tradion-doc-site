@@ -8,7 +8,7 @@ Live at **[docs.tradionlabs.com](https://docs.tradionlabs.com)**
 
 ```
 get-started/       Onboarding and quick-start guides
-research/          Tradion Snipe, Earnings Deep Research, Tradion Lens
+research/          Tradion Lens, Earnings Deep Research
 trade-intelligence/ Trade Autopsy and behavioral analysis
 portfolio/         AI Portfolio Analyst and brokerage connections
 account/           Billing, settings, and plan management
